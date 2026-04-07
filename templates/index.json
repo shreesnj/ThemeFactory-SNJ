@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "hero": {
       "type": "hero",
@@ -125,8 +125,7 @@
             "custom_width": 100,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100
+            "height": "fit"
           }
         }
       },
@@ -188,6 +187,9 @@
               "name": "t:names.heading",
               "settings": {
                 "text": "<h2>Shop by Category</h2>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
                 "type_preset": "h3",
                 "font": "var(--font-body--family)",
                 "font_size": "2.25rem",
@@ -195,9 +197,6 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -217,16 +216,19 @@
               }
             }
           },
-          "block_order": ["heading_text", "view_all_btn"]
+          "block_order": [
+            "heading_text",
+            "view_all_btn"
+          ]
         },
         "static-collection-card": {
           "type": "_collection-card",
           "name": "t:names.collection_card",
           "static": true,
           "settings": {
+            "placement": "on_image",
             "horizontal_alignment": "center",
             "vertical_alignment": "flex-end",
-            "placement": "on_image",
             "inherit_color_scheme": true,
             "color_scheme": "",
             "border": "none",
@@ -247,6 +249,9 @@
               "type": "collection-title",
               "name": "t:names.collection_title",
               "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "center",
                 "type_preset": "h5",
                 "font": "var(--font-body--family)",
                 "font_size": "1.5rem",
@@ -254,9 +259,6 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "center",
                 "background": false,
                 "background_color": "#00000026",
                 "padding-block-start": 4,
@@ -266,10 +268,14 @@
               }
             }
           },
-          "block_order": ["collection-title"]
+          "block_order": [
+            "collection-title"
+          ]
         }
       },
-      "block_order": ["group_header"],
+      "block_order": [
+        "group_header"
+      ],
       "settings": {
         "layout_type": "grid",
         "carousel_on_mobile": false,
@@ -318,15 +324,18 @@
               "name": "t:names.heading",
               "settings": {
                 "text": "<h2>Market America | SHOP.COM is a product brokerage and internet marketing company powered by entrepreneurs around the world.</h2>",
+                "max_width": "normal",
                 "type_preset": "h3",
                 "font": "var(--font-body--family)",
                 "font_size": "2rem",
-                "line_height": "normal",
-                "max_width": "normal"
+                "line_height": "normal"
               }
             }
           },
-          "block_order": ["caption", "heading"]
+          "block_order": [
+            "caption",
+            "heading"
+          ]
         }
       },
       "settings": {
