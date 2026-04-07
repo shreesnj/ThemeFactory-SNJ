@@ -1,6 +1,6 @@
 {{ 'custom-sections.css' | asset_url | stylesheet_tag }}
 
-<div class="brand-carousel color-{{ section.settings.color_scheme }}"
+<brand-carousel class="brand-carousel color-{{ section.settings.color_scheme }}"
   style="
     --section-padding-top: {{ section.settings.padding_top }}px;
     --section-padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -50,7 +50,7 @@
       {% endif %}
     {% endfor %}
   </div>
-</div>
+</brand-carousel>
 
 {% javascript %}
 import { Component } from '@theme/component';
@@ -89,7 +89,6 @@ customElements.define('brand-carousel', BrandCarousel);
 {% schema %}
 {
   "name": "t:names.brand_carousel",
-  "tag": "brand-carousel",
   "settings": [
     {
       "type": "text",
