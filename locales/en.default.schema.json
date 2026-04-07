@@ -151,7 +151,18 @@
     "width": "Width",
     "width_is_automatically_optimized": "Width is automatically optimized for mobile.",
     "app_required_for_ratings": "An app is required for product ratings. [Learn more](https://help.shopify.com/manual/apps)",
-    "navigation": "Navigation"
+    "navigation": "Navigation",
+    "left_text": "Left text",
+    "right_text": "Right text",
+    "right_link": "Right link",
+    "promo_text": "Promo text",
+    "button_label": "Button label",
+    "button_link": "Button link",
+    "brand_title": "Brand title",
+    "brand_description": "Brand description",
+    "view_all_label": "View all label",
+    "view_all_link": "View all link",
+    "brand_link": "Brand link"
   },
   "html_defaults": {
     "join_our_email_list": "<h2>Join our email list</h2>",
@@ -434,7 +445,11 @@
     "video_section": "Video",
     "view_all_button": "View all",
     "pills": "Pills",
-    "comparison_slider": "Comparison slider"
+    "comparison_slider": "Comparison slider",
+    "consultant_bar": "Consultant bar",
+    "subheader_nav": "Brand navigation",
+    "brand_carousel": "Brand carousel",
+    "brand_card": "Brand card"
   },
   "options": {
     "above_carousel": "Above carousel",

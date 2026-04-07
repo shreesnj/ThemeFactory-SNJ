@@ -1,0 +1,138 @@
+{{ 'custom-sections.css' | asset_url | stylesheet_tag }}
+
+<div class="subheader-nav color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="subheader-nav__left">
+    <button class="subheader-nav__hamburger" type="button" aria-label="Menu">
+      <img src="{{ 'menu-streamline-sharp-material-symbols.svg' | asset_url }}" alt="" width="28" height="28" loading="lazy">
+    </button>
+    {% if section.settings.menu != blank %}
+      <nav aria-label="Brand navigation">
+        <ul class="subheader-nav__links">
+          {% for link in linklists[section.settings.menu].links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    {% else %}
+      <nav aria-label="Brand navigation">
+        <ul class="subheader-nav__links">
+          {% for block in section.blocks %}
+            {% if block.type == 'nav-link' %}
+              <li {{ block.shopify_attributes }}>
+                <a href="{{ block.settings.link }}">{{ block.settings.label }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    {% endif %}
+  </div>
+
+  <div class="subheader-nav__center">
+    {{ section.settings.promo_text }}
+  </div>
+
+  <div class="subheader-nav__right">
+    {% if section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="subheader-nav__gradient-btn">
+        <span>{{ section.settings.button_label }}</span>
+        <svg width="52" height="12" viewBox="0 0 52 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0 6H50M50 6L45 1M50 6L45 11" stroke="#141414" stroke-width="1.5"/>
+        </svg>
+      </a>
+    {% else %}
+      <a href="#" class="subheader-nav__gradient-btn">
+        <span>{{ section.settings.button_label }}</span>
+        <svg width="52" height="12" viewBox="0 0 52 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M0 6H50M50 6L45 1M50 6L45 11" stroke="#141414" stroke-width="1.5"/>
+        </svg>
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:names.subheader_nav",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "menu",
+      "id": "menu",
+      "label": "t:content.menu"
+    },
+    {
+      "type": "text",
+      "id": "promo_text",
+      "label": "t:content.promo_text",
+      "default": "$6,073,506,282 awarded in cash! Learn More"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:content.button_label",
+      "default": "Get Paid Daily."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:content.button_link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:content.padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:content.padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav-link",
+      "name": "t:names.menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:content.link",
+          "default": "Link"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:content.link"
+        }
+      ]
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}

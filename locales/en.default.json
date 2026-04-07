@@ -296,6 +296,10 @@
     "product_count": "Product count",
     "errors": "Errors",
     "wrong_password": "Wrong password",
+    "consultant_bar_default_left_text": "Your Shop Consultant is SHOP.COM",
+    "consultant_bar_default_right_text": "Start Your SHOP.COM Business",
+    "subheader_nav_default_promo": "$6,073,506,282 awarded in cash! Learn More",
+    "brand_carousel_view_all": "View All",
     // Legend text for gift card delivery options
     "recipient_form_send_to": "Send to",
     "recipient_form_email_label": "Recipient’s email",

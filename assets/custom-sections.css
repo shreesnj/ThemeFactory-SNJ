@@ -1,0 +1,318 @@
+/* ==========================================================================
+   Consultant Bar
+   ========================================================================== */
+
+.consultant-bar {
+  --consultant-bar-bg: #141414;
+  --consultant-bar-text: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 35px;
+  padding-block: 5px;
+  padding-inline: var(--padding-2xl);
+  background-color: var(--consultant-bar-bg);
+  color: var(--consultant-bar-text);
+  font-family: 'Roboto', var(--font-body--family), sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.43;
+}
+
+.consultant-bar__left {
+  display: flex;
+  align-items: center;
+}
+
+.consultant-bar__right a {
+  color: var(--consultant-bar-text);
+  text-decoration: underline;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.consultant-bar__right a:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .consultant-bar {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    padding-inline: var(--padding-sm);
+    font-size: 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   Subheader Navigation
+   ========================================================================== */
+
+.subheader-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 40px;
+  padding-block: 10px;
+  padding-inline: var(--padding-2xl);
+  background-color: #F0F0F0;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.subheader-nav__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.subheader-nav__hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.subheader-nav__hamburger img {
+  width: 28px;
+  height: 28px;
+}
+
+.subheader-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.subheader-nav__links a {
+  color: #141414;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.subheader-nav__links a:hover {
+  text-decoration: underline;
+}
+
+.subheader-nav__center {
+  font-family: 'Roboto', var(--font-body--family), sans-serif;
+  font-size: 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.16px;
+  color: #000000;
+  text-align: center;
+}
+
+.subheader-nav__right {
+  display: flex;
+  align-items: center;
+}
+
+.subheader-nav__gradient-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 32px;
+  background: linear-gradient(90deg, #C9D855 0%, #69BA86 49%, #408DA1 100%);
+  color: #141414;
+  text-decoration: none;
+  font-family: 'Roboto', var(--font-body--family), sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  letter-spacing: -0.14px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.subheader-nav__gradient-btn:hover {
+  opacity: 0.9;
+}
+
+.subheader-nav__gradient-btn svg {
+  width: 52px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .subheader-nav {
+    padding-inline: var(--padding-sm);
+    gap: 8px;
+  }
+
+  .subheader-nav__center {
+    display: none;
+  }
+
+  .subheader-nav__links {
+    gap: 12px;
+    font-size: 0.875rem;
+  }
+}
+
+/* ==========================================================================
+   Brand Carousel
+   ========================================================================== */
+
+.brand-carousel {
+  padding-block-start: var(--section-padding-top, 64px);
+  padding-block-end: var(--section-padding-bottom, 64px);
+  padding-inline: var(--padding-2xl);
+}
+
+.brand-carousel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-end: 32px;
+}
+
+.brand-carousel__title {
+  font-size: 2.25rem;
+  line-height: 1.11;
+  font-weight: 400;
+  color: #141414;
+  margin: 0;
+}
+
+.brand-carousel__header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-carousel__nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-carousel__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.brand-carousel__nav-btn img {
+  width: 9px;
+  height: 16px;
+}
+
+.brand-carousel__nav-btn--prev img {
+  transform: rotate(180deg);
+}
+
+.brand-carousel__view-all {
+  font-size: 1.125rem;
+  line-height: 2.11;
+  font-weight: 500;
+  color: #098AA7;
+  text-decoration: underline;
+}
+
+.brand-carousel__view-all:hover {
+  color: #207D94;
+}
+
+.brand-carousel__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-block: 4px;
+}
+
+.brand-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.brand-card {
+  flex: 0 0 221px;
+  scroll-snap-align: start;
+  border-radius: 4px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-card__image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 221px;
+  height: 221px;
+  border-radius: 50%;
+  border: 1px solid #D3D3D3;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.brand-card__image-wrapper img {
+  max-width: 70%;
+  max-height: 40%;
+  object-fit: contain;
+}
+
+.brand-card__content {
+  margin-block-start: 12px;
+  text-align: center;
+}
+
+.brand-card__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.61;
+  color: #141414;
+  margin: 0;
+}
+
+.brand-card__description {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+  color: #7E7E7E;
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .brand-carousel {
+    padding-inline: var(--padding-sm);
+  }
+
+  .brand-carousel__title {
+    font-size: 1.5rem;
+  }
+
+  .brand-carousel__nav {
+    display: none;
+  }
+
+  .brand-card {
+    flex: 0 0 160px;
+  }
+
+  .brand-card__image-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+}

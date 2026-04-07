@@ -1,0 +1,74 @@
+{{ 'custom-sections.css' | asset_url | stylesheet_tag }}
+
+<div class="consultant-bar color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="consultant-bar__left">
+    <span>{{ section.settings.left_text }}</span>
+  </div>
+  <div class="consultant-bar__right">
+    {% if section.settings.right_link != blank %}
+      <a href="{{ section.settings.right_link }}">{{ section.settings.right_text }}</a>
+    {% else %}
+      <a href="#">{{ section.settings.right_text }}</a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:names.consultant_bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "left_text",
+      "label": "t:content.left_text",
+      "default": "Your Shop Consultant is SHOP.COM"
+    },
+    {
+      "type": "text",
+      "id": "right_text",
+      "label": "t:content.right_text",
+      "default": "Start Your SHOP.COM Business"
+    },
+    {
+      "type": "url",
+      "id": "right_link",
+      "label": "t:content.right_link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:content.padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:content.padding",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 0,
+      "unit": "px"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["header"]
+  }
+}
+{% endschema %}
