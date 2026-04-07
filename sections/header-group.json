@@ -1,0 +1,55 @@
+{
+  "type": "header",
+  "name": "t:names.header",
+  "sections": {
+    "custom-header": {
+      "type": "custom-header",
+      "settings": {
+        "cta_text": "Take Quiz",
+        "search_placeholder": "Search products"
+      }
+    },
+    "subheader-nav": {
+      "type": "subheader-nav",
+      "settings": {
+        "promo_text": "$6,073,506,282 awarded in cash! Learn More",
+        "button_label": "Get Paid Daily.",
+        "color_scheme": "scheme-2",
+        "padding_top": 0,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "nav-link-brands": {
+          "type": "nav-link",
+          "settings": {
+            "label": "Brands",
+            "link": "/"
+          }
+        },
+        "nav-link-deals": {
+          "type": "nav-link",
+          "settings": {
+            "label": "Deals",
+            "link": "/"
+          }
+        },
+        "nav-link-stores": {
+          "type": "nav-link",
+          "settings": {
+            "label": "Stores",
+            "link": "/"
+          }
+        }
+      },
+      "block_order": [
+        "nav-link-brands",
+        "nav-link-deals",
+        "nav-link-stores"
+      ]
+    }
+  },
+  "order": [
+    "custom-header",
+    "subheader-nav"
+  ]
+}

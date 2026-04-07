@@ -1,0 +1,203 @@
+{{ 'custom-sections.css' | asset_url | stylesheet_tag }}
+
+<div class="custom-footer">
+  <div class="custom-footer__top">
+    <div class="custom-footer__left">
+      <div class="custom-footer__selectors">
+        <button type="button" class="custom-footer__selector" aria-label="Select language">
+          <span class="custom-footer__selector-text custom-footer__selector-text--desktop">English</span>
+          <span class="custom-footer__selector-text custom-footer__selector-text--mobile">EN</span>
+          <span class="custom-footer__selector-chevron">
+            <img src="{{ 'chevron-forward-streamline-outlined-material-symbols.svg' | asset_url }}" alt="" width="20" height="20">
+          </span>
+        </button>
+        <button type="button" class="custom-footer__selector" aria-label="Select country">
+          <span class="custom-footer__selector-flag">
+            <img src="{{ 'us-united-states-streamline-flagpack-2.svg' | asset_url }}" alt="" width="18" height="18">
+            <span>United States</span>
+          </span>
+          <span class="custom-footer__selector-chevron">
+            <img src="{{ 'chevron-forward-streamline-outlined-material-symbols.svg' | asset_url }}" alt="" width="20" height="20">
+          </span>
+        </button>
+      </div>
+
+      <div class="custom-footer__content">
+        <div class="custom-footer__signup">
+          <h2 class="custom-footer__signup-heading">{{ section.settings.signup_heading }}</h2>
+          <div class="custom-footer__signup-form-wrap">
+            <form class="custom-footer__signup-form" action="{{ routes.root_url }}" method="post">
+              <input type="hidden" name="form_type" value="customer">
+              <input type="hidden" name="utf8" value="✓">
+              <input
+                type="email"
+                name="contact[email]"
+                class="custom-footer__signup-input"
+                placeholder="{{ section.settings.email_placeholder }}"
+                required
+                aria-label="{{ section.settings.email_placeholder }}"
+                autocomplete="email"
+              >
+              <button type="submit" class="custom-footer__signup-btn">
+                {{ section.settings.cta_text }}
+              </button>
+            </form>
+            <div class="custom-footer__disclaimer">
+              <span>By signing up you agree to our</span>
+              <a href="/policies/terms-of-service">Terms of Use</a>
+              <span>&amp;</span>
+              <a href="/policies/privacy-policy">Privacy Policy</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="custom-footer__social">
+          <a href="https://www.facebook.com" class="custom-footer__social-icon" aria-label="Facebook" target="_blank" rel="noopener">
+            <img class="custom-footer__social-icon--desktop" src="{{ 'social-icons.svg' | asset_url }}" alt="" width="28" height="28">
+            <img class="custom-footer__social-icon--mobile" src="{{ 'social-icons-6.svg' | asset_url }}" alt="" width="24" height="24">
+          </a>
+          <a href="https://www.twitter.com" class="custom-footer__social-icon" aria-label="Twitter" target="_blank" rel="noopener">
+            <img class="custom-footer__social-icon--desktop" src="{{ 'social-icons-2.svg' | asset_url }}" alt="" width="28" height="28">
+            <img class="custom-footer__social-icon--mobile" src="{{ 'social-icons-7.svg' | asset_url }}" alt="" width="24" height="24">
+          </a>
+          <a href="https://www.instagram.com" class="custom-footer__social-icon" aria-label="Instagram" target="_blank" rel="noopener">
+            <img class="custom-footer__social-icon--desktop" src="{{ 'social-icons-3.svg' | asset_url }}" alt="" width="28" height="28">
+            <img class="custom-footer__social-icon--mobile" src="{{ 'social-icons-8.svg' | asset_url }}" alt="" width="24" height="24">
+          </a>
+          <a href="https://www.pinterest.com" class="custom-footer__social-icon" aria-label="Pinterest" target="_blank" rel="noopener">
+            <img class="custom-footer__social-icon--desktop" src="{{ 'social-icons-4.svg' | asset_url }}" alt="" width="28" height="28">
+            <img class="custom-footer__social-icon--mobile" src="{{ 'social-icons-9.svg' | asset_url }}" alt="" width="24" height="24">
+          </a>
+          <a href="https://www.youtube.com" class="custom-footer__social-icon" aria-label="YouTube" target="_blank" rel="noopener">
+            <img class="custom-footer__social-icon--desktop" src="{{ 'social-icons-5.svg' | asset_url }}" alt="" width="28" height="28">
+            <img class="custom-footer__social-icon--mobile" src="{{ 'social-icons-10.svg' | asset_url }}" alt="" width="24" height="24">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="custom-footer__links">
+      {% assign menus = 'shop_menu,features_menu,learn_menu,support_menu' | split: ',' %}
+      {% assign headings = 'Shop,Features,Learn,Support' | split: ',' %}
+      {% assign chevrons = 'chevron-forward-streamline-outlined-material-symbols-5.svg,chevron-forward-streamline-outlined-material-symbols-6.svg,chevron-forward-streamline-outlined-material-symbols-7.svg,chevron-forward-streamline-outlined-material-symbols-8.svg' | split: ',' %}
+
+      {% for i in (0..3) %}
+        {% assign menu_id = menus[i] %}
+        {% assign heading = headings[i] %}
+        {% assign chevron = chevrons[i] %}
+        <div class="custom-footer__link-column" data-footer-accordion>
+          <h3 class="custom-footer__link-heading">{{ heading }}</h3>
+          <button type="button" class="custom-footer__link-toggle" aria-expanded="false" data-footer-toggle>
+            <span>{{ heading }}</span>
+            <span class="custom-footer__link-chevron">
+              <img src="{{ chevron | asset_url }}" alt="" width="15" height="9">
+            </span>
+          </button>
+          {% assign menu_handle = section.settings[menu_id] %}
+          {% if menu_handle != blank %}
+            <ul class="custom-footer__link-list">
+              {% for link in linklists[menu_handle].links %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="custom-footer__bottom">
+    <div class="custom-footer__bottom-logo">
+      <div class="custom-footer__bottom-logo--desktop">
+        <img src="{{ 'shop-logo-all-white-1.svg' | asset_url }}" alt="{{ shop.name }}" width="475" height="64" loading="lazy">
+      </div>
+      <div class="custom-footer__bottom-logo--mobile">
+        <img src="{{ 'shop-logo-all-white-1.svg' | asset_url }}" alt="{{ shop.name }}" width="356" height="48" loading="lazy">
+      </div>
+    </div>
+    <div class="custom-footer__cards">
+      {% assign desktop_cards = 'img.svg,img-2.svg,img-3.svg,img-4.svg,img-5.svg,img-6.svg' | split: ',' %}
+      {% assign mobile_cards = 'img-7.svg,img-8.svg,img-9.svg,img-10.svg,img-11.svg,img-12.svg' | split: ',' %}
+      {% for i in (0..5) %}
+        <span class="custom-footer__card">
+          <span class="custom-footer__card--desktop">
+            <img src="{{ desktop_cards[i] | asset_url }}" alt="Payment method" width="57" height="36" loading="lazy">
+          </span>
+          <span class="custom-footer__card--mobile">
+            <img src="{{ mobile_cards[i] | asset_url }}" alt="Payment method" width="44" height="28" loading="lazy">
+          </span>
+        </span>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const accordions = document.querySelectorAll('[data-footer-accordion]');
+    for (const accordion of accordions) {
+      const toggle = accordion.querySelector('[data-footer-toggle]');
+      if (!toggle) continue;
+      toggle.addEventListener('click', function() {
+        const isOpen = accordion.classList.contains('is-open');
+        accordion.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', !isOpen);
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "t:names.custom_footer",
+  "tag": "footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "signup_heading",
+      "label": "t:content.signup_heading",
+      "default": "Sign up for new product launches, priority access and updates"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "t:content.email_placeholder",
+      "default": "Email address"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "t:content.subscribe_text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "link_list",
+      "id": "shop_menu",
+      "label": "t:content.shop_menu"
+    },
+    {
+      "type": "link_list",
+      "id": "features_menu",
+      "label": "t:content.features_menu"
+    },
+    {
+      "type": "link_list",
+      "id": "learn_menu",
+      "label": "t:content.learn_menu"
+    },
+    {
+      "type": "link_list",
+      "id": "support_menu",
+      "label": "t:content.support_menu"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme"
+    }
+  ],
+  "enabled_on": {
+    "groups": ["footer"]
+  }
+}
+{% endschema %}

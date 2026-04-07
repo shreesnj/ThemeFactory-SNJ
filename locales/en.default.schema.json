@@ -162,7 +162,18 @@
     "brand_description": "Brand description",
     "view_all_label": "View all label",
     "view_all_link": "View all link",
-    "brand_link": "Brand link"
+    "brand_link": "Brand link",
+    "cta_text": "CTA text",
+    "cta_link": "CTA link",
+    "search_placeholder": "Search placeholder",
+    "signup_heading": "Signup heading",
+    "email_placeholder": "Email placeholder",
+    "subscribe_text": "Subscribe text",
+    "shop_menu": "Shop menu",
+    "features_menu": "Features menu",
+    "learn_menu": "Learn menu",
+    "support_menu": "Support menu",
+    "disclaimer": "Disclaimer"
   },
   "html_defaults": {
     "join_our_email_list": "<h2>Join our email list</h2>",
@@ -449,7 +460,9 @@
     "consultant_bar": "Consultant bar",
     "subheader_nav": "Brand navigation",
     "brand_carousel": "Brand carousel",
-    "brand_card": "Brand card"
+    "brand_card": "Brand card",
+    "custom_header": "Header",
+    "custom_footer": "Footer"
   },
   "options": {
     "above_carousel": "Above carousel",
