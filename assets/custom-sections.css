@@ -32,7 +32,7 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .consultant-bar {
     flex-direction: column;
     gap: 4px;
@@ -52,7 +52,7 @@
   justify-content: space-between;
   min-height: 40px;
   padding-block: 10px;
-  padding-inline: var(--padding-2xl);
+  padding-inline: 64px;
   background-color: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
   font-size: 1rem;
@@ -144,19 +144,49 @@
   flex-shrink: 0;
 }
 
-@media screen and (max-width: 768px) {
+/* Subheader — hidden on mobile */
+@media screen and (max-width: 767px) {
   .subheader-nav {
-    padding-inline: var(--padding-sm);
-    gap: 8px;
+    display: none;
+  }
+}
+
+/* Subheader — tablet */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .subheader-nav {
+    padding-inline: 32px;
+    gap: 16px;
   }
 
   .subheader-nav__center {
-    display: none;
+    font-size: 0.875rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .subheader-nav__left {
+    flex-shrink: 0;
+  }
+
+  .subheader-nav__right {
+    flex-shrink: 0;
   }
 
   .subheader-nav__links {
-    gap: 12px;
-    font-size: 0.875rem;
+    gap: 16px;
+  }
+
+  .subheader-nav__gradient-btn {
+    padding: 6px 12px;
+    font-size: 0.8125rem;
+  }
+
+  .subheader-nav__gradient-btn svg {
+    width: 40px;
+    height: 10px;
   }
 }
 
@@ -292,7 +322,7 @@
   margin: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .brand-carousel {
     padding-inline: var(--padding-sm);
   }
@@ -329,6 +359,7 @@
   padding-inline: 64px;
   background-color: #FFFFFF;
   border-bottom: 1px solid #DDDDDD;
+  overflow: hidden;
 }
 
 .custom-header__logo {
@@ -478,7 +509,8 @@
   display: block;
 }
 
-@media screen and (max-width: 768px) {
+/* Header — mobile */
+@media screen and (max-width: 767px) {
   .custom-header {
     height: 52px;
     padding: 0 16px 12px 16px;
@@ -500,10 +532,43 @@
   .custom-header__search {
     max-width: 313px;
     flex: 1;
+    justify-content: space-between;
+    padding: 8px 20px;
   }
 
   .custom-header__mobile-btn {
     display: flex;
+  }
+}
+
+/* Header — tablet */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .custom-header {
+    padding-inline: 32px;
+    gap: 24px;
+  }
+
+  .custom-header__search {
+    max-width: 400px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .custom-header__right {
+    gap: 24px;
+  }
+
+  .custom-header__actions {
+    gap: 16px;
+  }
+
+  .custom-header__action span:not(.custom-header__action-icon) {
+    display: none;
+  }
+
+  .custom-header__cta {
+    font-size: 0.875rem;
+    padding: 6px 12px;
   }
 }
 
@@ -515,6 +580,7 @@
   background-color: #262626;
   color: #FFFFFF;
   font-family: var(--font-body--family), sans-serif;
+  overflow: hidden;
 }
 
 .custom-footer a {
@@ -788,7 +854,8 @@
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+/* Footer — mobile */
+@media screen and (max-width: 767px) {
   .custom-footer__top {
     flex-direction: column;
     gap: 32px;
@@ -845,6 +912,7 @@
     letter-spacing: 0.56px;
     text-transform: uppercase;
     cursor: pointer;
+    min-height: 44px;
   }
 
   .custom-footer__link-chevron {
@@ -882,6 +950,9 @@
   .custom-footer__link-list a {
     font-size: 0.875rem;
     line-height: 1.43;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
 
   .custom-footer__social {
@@ -935,5 +1006,44 @@
 
   .custom-footer__card--mobile {
     display: block;
+  }
+}
+
+/* Footer — tablet */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .custom-footer__top {
+    gap: 60px;
+    padding: 56px 32px 0 32px;
+  }
+
+  .custom-footer__left {
+    width: 300px;
+  }
+
+  .custom-footer__signup-heading {
+    font-size: 1.125rem;
+    line-height: 1.33;
+  }
+
+  .custom-footer__links {
+    gap: 20px;
+  }
+
+  .custom-footer__link-list a {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .custom-footer__link-heading {
+    font-size: 0.875rem;
+  }
+
+  .custom-footer__bottom {
+    padding: 40px 32px;
+  }
+
+  .custom-footer__bottom-logo--desktop img {
+    width: 356px;
+    height: auto;
   }
 }
