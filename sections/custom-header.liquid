@@ -1,9 +1,23 @@
 {{ 'custom-sections.css' | asset_url | stylesheet_tag }}
 
 <div class="custom-header">
+  <button type="button" class="custom-header__hamburger" aria-label="Menu">
+    <img src="{{ 'menu-streamline-sharp-material-symbols.svg' | asset_url }}" alt="" width="28" height="28" loading="eager">
+  </button>
+
   <a href="/" class="custom-header__logo" aria-label="{{ shop.name }}">
-    <img src="{{ 'shop-logo.svg' | asset_url }}" alt="{{ shop.name }}" width="178" height="24" loading="eager">
+    <img class="custom-header__logo-desktop" src="{{ 'shop-logo-2.svg' | asset_url }}" alt="{{ shop.name }}" width="178" height="24" loading="eager">
+    <img class="custom-header__logo-mobile" src="{{ 'shop-logo.svg' | asset_url }}" alt="{{ shop.name }}" width="148" height="20" loading="eager">
   </a>
+
+  <div class="custom-header__mobile-icons">
+    <a href="{{ routes.account_login_url }}" class="custom-header__mobile-icon" aria-label="Sign in">
+      <img src="{{ 'frame-663.svg' | asset_url }}" alt="" width="20" height="20">
+    </a>
+    <a href="{{ routes.cart_url }}" class="custom-header__mobile-icon" aria-label="Cart">
+      <img src="{{ 'shopping-bag-streamline-outlined-material-symbols.svg' | asset_url }}" alt="" width="28" height="28">
+    </a>
+  </div>
 
   <button
     type="button"

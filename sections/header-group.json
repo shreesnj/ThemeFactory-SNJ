@@ -2,6 +2,16 @@
   "type": "header",
   "name": "t:names.header",
   "sections": {
+    "consultant-bar": {
+      "type": "consultant-bar",
+      "settings": {
+        "left_text": "Your Shop Consultant is SHOP.COM",
+        "right_text": "Start Your SHOP.COM Business",
+        "color_scheme": "scheme-5",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "custom-header": {
       "type": "custom-header",
       "settings": {
@@ -49,6 +59,7 @@
     }
   },
   "order": [
+    "consultant-bar",
     "custom-header",
     "subheader-nav"
   ]

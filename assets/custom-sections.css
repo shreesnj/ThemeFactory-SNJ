@@ -11,7 +11,7 @@
   padding-inline: var(--padding-2xl);
   background-color: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
-  font-family: 'Roboto', var(--font-body--family), sans-serif;
+  font-family: var(--font-body--family), sans-serif;
   font-size: 0.875rem;
   line-height: 1.43;
 }
@@ -34,11 +34,7 @@
 
 @media screen and (max-width: 767px) {
   .consultant-bar {
-    flex-direction: column;
-    gap: 4px;
-    text-align: center;
-    padding-inline: var(--padding-sm);
-    font-size: 0.75rem;
+    display: none;
   }
 }
 
@@ -368,10 +364,16 @@
   flex-shrink: 0;
 }
 
-.custom-header__logo img {
+.custom-header__logo-desktop {
   width: 178px;
   height: 24px;
   display: block;
+}
+
+.custom-header__logo-mobile {
+  width: 148px;
+  height: 20px;
+  display: none;
 }
 
 .custom-header__search {
@@ -489,6 +491,45 @@
   display: block;
 }
 
+.custom-header__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.custom-header__hamburger img {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.custom-header__mobile-icons {
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+
+.custom-header__mobile-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  text-decoration: none;
+  color: #141414;
+}
+
+.custom-header__mobile-icon img {
+  display: block;
+}
+
 .custom-header__mobile-btn {
   display: none;
   align-items: center;
@@ -515,32 +556,54 @@
 /* Header — mobile */
 @media screen and (max-width: 767px) {
   .custom-header {
-    height: 52px;
-    padding: 0 16px 12px 16px;
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 16px 12px 16px;
     gap: 12px;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
     border-bottom: none;
   }
 
-  .custom-header__logo,
-  .custom-header__cta,
-  .custom-header__actions {
+  .custom-header__hamburger {
+    display: flex;
+    order: 0;
+  }
+
+  .custom-header__logo {
+    display: flex;
+    order: 1;
+  }
+
+  .custom-header__logo-desktop {
     display: none;
   }
 
-  .custom-header__right {
-    gap: 12px;
+  .custom-header__logo-mobile {
+    display: block;
+  }
+
+  .custom-header__mobile-icons {
+    display: flex;
+    order: 2;
+    margin-inline-start: auto;
   }
 
   .custom-header__search {
-    max-width: 313px;
-    flex: 1;
+    order: 3;
+    flex: 1 0 calc(100% - 48px);
+    max-width: none;
     justify-content: space-between;
     padding: 8px 20px;
   }
 
+  .custom-header__right {
+    display: none;
+  }
+
   .custom-header__mobile-btn {
     display: flex;
+    order: 4;
   }
 }
 
