@@ -1,13 +1,256 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
-  "sections": {},
-  "order": []
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/eir-health-utzsb-b2toe-unsplash-desktop-3095187.png",
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 24,
+        "section_width": "full-width",
+        "section_height": "medium",
+        "color_scheme": "scheme-5",
+        "toggle_overlay": true,
+        "overlay_color": "#00000099",
+        "overlay_style": "gradient",
+        "gradient_direction": "to bottom",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      },
+      "blocks": {
+        "text_heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Feel Younger. Think Sharper. Age Better</h1>",
+            "type_preset": "h1",
+            "max_width": "narrow"
+          }
+        },
+        "text_subtitle": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Engineered for fast uptake and cellular support.</p>",
+            "type_preset": "rte",
+            "max_width": "narrow"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Start Now",
+            "link": "shopify://collections/all",
+            "style_class": "button--primary"
+          }
+        }
+      },
+      "block_order": ["text_heading", "text_subtitle", "button"]
+    },
+    "brand-logos": {
+      "type": "section",
+      "settings": {
+        "content_direction": "column",
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 0,
+        "section_width": "full-width",
+        "section_height": "auto",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      },
+      "blocks": {
+        "brand_logos_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image-30-desktop-3095210.png",
+            "image_ratio": "adapt",
+            "width": "fill",
+            "width_mobile": "fill"
+          }
+        }
+      },
+      "block_order": ["brand_logos_image"]
+    },
+    "shop-by-category": {
+      "type": "category-grid",
+      "settings": {
+        "heading": "Shop by Category",
+        "view_all_text": "Shop All",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      },
+      "blocks": {
+        "cat_1": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-31-desktop-3095217.png",
+            "title": "Beauty & Skincare"
+          }
+        },
+        "cat_2": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-31-desktop-3095220.png",
+            "title": "Health & Nutrition"
+          }
+        },
+        "cat_3": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-31-desktop-3095223.png",
+            "title": "Jewelery"
+          }
+        },
+        "cat_4": {
+          "type": "category-card",
+          "settings": {
+            "image": "shopify://shop_images/image-31-desktop-3095226.png",
+            "title": "Weight Management"
+          }
+        }
+      },
+      "block_order": ["cat_1", "cat_2", "cat_3", "cat_4"]
+    },
+    "brand-carousel": {
+      "type": "brand-carousel",
+      "settings": {
+        "heading": "Shop by Brand",
+        "view_all_label": "View All",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      },
+      "blocks": {
+        "brand_1": {
+          "type": "brand-card",
+          "settings": {
+            "title": "Isotonix",
+            "description": "Vitamins with\nmaximum absorption"
+          }
+        },
+        "brand_2": {
+          "type": "brand-card",
+          "settings": {
+            "title": "Prime",
+            "description": "Anti-Aging\nNutraceuticals"
+          }
+        },
+        "brand_3": {
+          "type": "brand-card",
+          "settings": {
+            "title": "Lumiere de Vie",
+            "description": "Skin care products\nfor men and women."
+          }
+        },
+        "brand_4": {
+          "type": "brand-card",
+          "settings": {
+            "image": "shopify://shop_images/image-66-desktop-3095363.png",
+            "title": "GoTrim",
+            "description": "Sustainable weight loss\n& vibrant lifestyle"
+          }
+        },
+        "brand_5": {
+          "type": "brand-card",
+          "settings": {
+            "title": "Layered",
+            "description": "Anti-Aging\nNutraceuticals"
+          }
+        },
+        "brand_6": {
+          "type": "brand-card",
+          "settings": {
+            "image": "shopify://shop_images/image-67-desktop-3095382.png",
+            "title": "Vita Shield",
+            "description": "Therapy treatments to promote younger-looking skin"
+          }
+        }
+      },
+      "block_order": ["brand_1", "brand_2", "brand_3", "brand_4", "brand_5", "brand_6"]
+    },
+    "about-shopcom": {
+      "type": "media-with-content",
+      "settings": {
+        "media_position": "right",
+        "media_width": "medium",
+        "media_height": "auto",
+        "section_width": "full-width",
+        "color_scheme": "scheme-3",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      },
+      "blocks": {
+        "media": {
+          "type": "_media-without-appearance",
+          "static": true,
+          "settings": {
+            "image": "shopify://shop_images/rectangle-3458-desktop-3095318.png"
+          }
+        },
+        "content": {
+          "type": "_content-without-appearance",
+          "static": true,
+          "settings": {
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center"
+          },
+          "blocks": {
+            "about_label": {
+              "type": "text",
+              "settings": {
+                "text": "<p>About SHOP.COM</p>",
+                "type_preset": "h6",
+                "case": "uppercase"
+              }
+            },
+            "about_body": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Market America | SHOP.COM is a product brokerage and internet marketing company powered by entrepreneurs around the world.</p>",
+                "type_preset": "h3",
+                "max_width": "narrow"
+              }
+            }
+          },
+          "block_order": ["about_label", "about_body"]
+        }
+      }
+    },
+    "top-beauty": {
+      "type": "product-showcase",
+      "settings": {
+        "heading": "Top Beauty",
+        "view_all_text": "View All",
+        "hero_image": "shopify://shop_images/image-desktop-3095421.png",
+        "max_products": 4,
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "top-jewelry": {
+      "type": "product-showcase",
+      "settings": {
+        "heading": "Top Beauty",
+        "view_all_text": "View All",
+        "hero_image": "shopify://shop_images/image-desktop-3095563.png",
+        "max_products": 4,
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "brand-logos",
+    "shop-by-category",
+    "brand-carousel",
+    "about-shopcom",
+    "top-beauty",
+    "top-jewelry"
+  ]
 }

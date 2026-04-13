@@ -173,7 +173,17 @@
     "features_menu": "Features menu",
     "learn_menu": "Learn menu",
     "support_menu": "Support menu",
-    "disclaimer": "Disclaimer"
+    "disclaimer": "Disclaimer",
+    "section_heading": "Heading",
+    "view_all_text": "View all text",
+    "category_title": "Title",
+    "category_link": "Link",
+    "hero_image": "Hero image",
+    "showcase_collection": "Collection",
+    "cashback_label": "Cashback",
+    "cards_per_row": "Cards per row",
+    "hero_image_position": "Hero image position",
+    "max_products": "Max products"
   },
   "html_defaults": {
     "join_our_email_list": "<h2>Join our email list</h2>",
@@ -462,7 +472,10 @@
     "brand_carousel": "Brand carousel",
     "brand_card": "Brand card",
     "custom_header": "Header",
-    "custom_footer": "Footer"
+    "custom_footer": "Footer",
+    "category_grid": "Shop by Category",
+    "category_card": "Category card",
+    "product_showcase": "Product Showcase"
   },
   "options": {
     "above_carousel": "Above carousel",

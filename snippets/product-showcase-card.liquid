@@ -1,0 +1,74 @@
+{% doc %}
+  Product Showcase Card
+
+  Renders a product card for product-showcase sections with image, vendor,
+  title, star rating, description, price with cashback badge, and Add to Cart button.
+
+  @param {Object} product - Shopify product object (required)
+
+  @example
+    {% render 'product-showcase-card', product: product %}
+{% enddoc %}
+
+{% liquid
+  assign product = product | default: empty
+  unless product != empty
+    break
+  endunless
+
+  assign current_variant = product.selected_or_first_available_variant
+%}
+
+<div class="product-showcase-card">
+  <div class="product-showcase-card__image">
+    {% if product.featured_image != blank %}
+      {{ product.featured_image | image_url: width: 600 | image_tag:
+        sizes: '(min-width: 1280px) 300px, (min-width: 768px) 250px, 280px',
+        widths: '300,400,500,600',
+        loading: 'lazy',
+        alt: product.featured_image.alt | default: product.title
+      }}
+    {% else %}
+      {{ 'product-1' | placeholder_svg_tag: 'product-showcase-card__placeholder' }}
+    {% endif %}
+  </div>
+  <div class="product-showcase-card__content">
+    <div class="product-showcase-card__info">
+      <div class="product-showcase-card__meta">
+        {% if product.vendor != blank %}
+          <span class="product-showcase-card__vendor">Sold by {{ product.vendor }}</span>
+        {% endif %}
+        <h3 class="product-showcase-card__title">
+          <a href="{{ product.url }}">{{ product.title | escape }}</a>
+        </h3>
+        <div class="product-showcase-card__rating">
+          <img src="{{ 'stars.svg' | asset_url }}" alt="Rating" width="68" height="12" loading="lazy">
+          <span>4.5 ({{ product.metafields.reviews.rating_count | default: '31' }})</span>
+        </div>
+        {% if product.metafields.descriptors.subtitle != blank %}
+          <p class="product-showcase-card__desc">{{ product.metafields.descriptors.subtitle.value }}</p>
+        {% else %}
+          <p class="product-showcase-card__desc">{{ product.description | strip_html | truncate: 60 }}</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="product-showcase-card__bottom">
+      <div class="product-showcase-card__price-row">
+        <div class="product-showcase-card__price">
+          {% if product.compare_at_price > product.price %}
+            <span class="product-showcase-card__price-current">{{ product.price | money }}</span>
+            <span class="product-showcase-card__price-compare"><s>{{ product.compare_at_price | money }}</s></span>
+          {% else %}
+            <span class="product-showcase-card__price-current">{{ product.price | money }}</span>
+          {% endif %}
+        </div>
+        <div class="product-showcase-card__cashback">
+          <span>2%</span>
+          <img src="{{ 'cashback-icon.svg' | asset_url }}" alt="" width="12" height="12" loading="lazy">
+          <span>Cashback</span>
+        </div>
+      </div>
+      <button type="button" class="product-showcase-card__atc" aria-label="Add {{ product.title | escape }} to cart">Add to Cart</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,189 @@
+{{ 'custom-sections.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign collection = section.settings.collection
+  assign max_products = section.settings.max_products
+%}
+
+<section class="product-showcase color-{{ section.settings.color_scheme }}"
+  id="product-showcase-{{ section.id }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="product-showcase__header">
+    <h2 class="product-showcase__title">{{ section.settings.heading }}</h2>
+    <div class="product-showcase__header-right">
+      <div class="product-showcase__nav">
+        <button class="product-showcase__nav-btn product-showcase__nav-btn--prev" type="button" aria-label="Scroll left">
+          <img src="{{ 'chevron.svg' | asset_url }}" alt="" width="9" height="16" loading="lazy">
+        </button>
+        <button class="product-showcase__nav-btn product-showcase__nav-btn--next" type="button" aria-label="Scroll right">
+          <img src="{{ 'chevron.svg' | asset_url }}" alt="" width="9" height="16" loading="lazy">
+        </button>
+      </div>
+      {% if section.settings.view_all_link != blank %}
+        <a href="{{ section.settings.view_all_link }}" class="product-showcase__view-all">{{ section.settings.view_all_text }}</a>
+      {% else %}
+        <span class="product-showcase__view-all">{{ section.settings.view_all_text }}</span>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="product-showcase__body">
+    {% if section.settings.hero_image != blank %}
+      <div class="product-showcase__hero">
+        {{ section.settings.hero_image | image_url: width: 700 | image_tag:
+          sizes: '(min-width: 1280px) 328px, 328px',
+          widths: '328,500,656,700',
+          loading: 'lazy',
+          alt: section.settings.heading
+        }}
+      </div>
+    {% endif %}
+
+    {% if collection != blank %}
+      {% for product in collection.products limit: max_products %}
+        {% render 'product-showcase-card', product: product %}
+      {% endfor %}
+    {% else %}
+      {% for i in (1..4) %}
+        <div class="product-showcase-card product-showcase-card--placeholder">
+          <div class="product-showcase-card__image">
+            {{ 'product-1' | placeholder_svg_tag: 'product-showcase-card__placeholder' }}
+          </div>
+          <div class="product-showcase-card__content">
+            <div class="product-showcase-card__info">
+              <div class="product-showcase-card__meta">
+                <span class="product-showcase-card__vendor">Sold by Brand</span>
+                <h3 class="product-showcase-card__title">Product Title</h3>
+                <div class="product-showcase-card__rating">
+                  <img src="{{ 'stars.svg' | asset_url }}" alt="Rating" width="68" height="12" loading="lazy">
+                  <span>4.5 (31)</span>
+                </div>
+                <p class="product-showcase-card__desc">Product description here</p>
+              </div>
+            </div>
+            <div class="product-showcase-card__bottom">
+              <div class="product-showcase-card__price-row">
+                <div class="product-showcase-card__price">
+                  <span class="product-showcase-card__price-current">$38.95</span>
+                  <span class="product-showcase-card__price-compare"><s>$45.95</s></span>
+                </div>
+                <div class="product-showcase-card__cashback">
+                  <span>2%</span>
+                  <img src="{{ 'cashback-icon.svg' | asset_url }}" alt="" width="12" height="12" loading="lazy">
+                  <span>Cashback</span>
+                </div>
+              </div>
+              <button type="button" class="product-showcase-card__atc">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  (function() {
+    var section = document.getElementById('product-showcase-{{ section.id }}');
+    if (!section) return;
+
+    var body = section.querySelector('.product-showcase__body');
+    var prevBtn = section.querySelector('.product-showcase__nav-btn--prev');
+    var nextBtn = section.querySelector('.product-showcase__nav-btn--next');
+
+    if (!body || !prevBtn || !nextBtn) return;
+
+    var scrollAmount = 352;
+
+    prevBtn.addEventListener('click', function() {
+      body.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', function() {
+      body.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "t:names.product_showcase",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:content.section_heading",
+      "default": "Top Products"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "t:content.view_all_text",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "t:content.view_all_link"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:content.showcase_collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "t:content.hero_image"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "t:content.max_products",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 64,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_showcase"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

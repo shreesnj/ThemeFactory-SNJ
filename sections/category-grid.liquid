@@ -1,0 +1,148 @@
+{{ 'custom-sections.css' | asset_url | stylesheet_tag }}
+
+<section class="category-grid color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="category-grid__header">
+    <h2 class="category-grid__title">{{ section.settings.heading }}</h2>
+    {% if section.settings.view_all_link != blank %}
+      <a href="{{ section.settings.view_all_link }}" class="category-grid__view-all">{{ section.settings.view_all_text }}</a>
+    {% else %}
+      <span class="category-grid__view-all">{{ section.settings.view_all_text }}</span>
+    {% endif %}
+  </div>
+
+  <div class="category-grid__cards">
+    {% for block in section.blocks %}
+      {% if block.type == 'category-card' %}
+        <a href="{{ block.settings.link | default: '#' }}" class="category-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            {{ block.settings.image | image_url: width: 700 | image_tag:
+              class: 'category-card__image',
+              sizes: '(min-width: 1280px) 334px, (min-width: 768px) 50vw, 50vw',
+              widths: '334,400,500,668,700',
+              loading: 'lazy',
+              alt: block.settings.title
+            }}
+          {% endif %}
+          <div class="category-card__overlay"></div>
+          <span class="category-card__title">{{ block.settings.title }}</span>
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:names.category_grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:content.section_heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "t:content.view_all_text",
+      "default": "Shop All"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "t:content.view_all_link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 64,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category-card",
+      "name": "t:names.category_card",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:content.image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:content.category_title",
+          "default": "Category"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:content.category_link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.category_grid",
+      "blocks": [
+        {
+          "type": "category-card",
+          "settings": {
+            "title": "Beauty & Skincare"
+          }
+        },
+        {
+          "type": "category-card",
+          "settings": {
+            "title": "Health & Nutrition"
+          }
+        },
+        {
+          "type": "category-card",
+          "settings": {
+            "title": "Jewelery"
+          }
+        },
+        {
+          "type": "category-card",
+          "settings": {
+            "title": "Weight Management"
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
