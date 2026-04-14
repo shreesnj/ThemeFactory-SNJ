@@ -1,4 +1,4 @@
-<div class="logo-bar color-{{ section.settings.color_scheme }}" style="--logo-bar-padding-top: {{ section.settings.padding_top }}px; --logo-bar-padding-bottom: {{ section.settings.padding_bottom }}px;">
+<div class="logo-bar color-{{ section.settings.color_scheme }}" style="--logo-bar-padding-top: {{ section.settings.padding-block-start }}px; --logo-bar-padding-bottom: {{ section.settings.padding-block-end }}px;">
   <div class="logo-bar__inner">
     {%- for i in (1..6) -%}
       {%- assign logo_key = 'logo_' | append: i -%}
@@ -120,7 +120,7 @@
     },
     {
       "type": "range",
-      "id": "padding_top",
+      "id": "padding-block-start",
       "label": "t:settings.top",
       "min": 0,
       "max": 100,
@@ -130,7 +130,7 @@
     },
     {
       "type": "range",
-      "id": "padding_bottom",
+      "id": "padding-block-end",
       "label": "t:settings.bottom",
       "min": 0,
       "max": 100,
