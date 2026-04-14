@@ -1,0 +1,343 @@
+<div class="product-features color-{{ section.settings.color_scheme }}" style="--pf-padding-top: {{ section.settings.padding_top }}px; --pf-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="product-features__inner">
+    <div class="product-features__grid">
+      {%- for block in section.blocks -%}
+        <div class="product-features__card" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="product-features__card-image">
+              {{
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag:
+                  sizes: '(min-width: 990px) 368px, calc(100vw - 32px)',
+                  widths: '334,368,668,736',
+                  loading: 'lazy',
+                  alt: block.settings.image.alt | default: block.settings.description
+              }}
+            </div>
+          {%- endif -%}
+
+          <div class="product-features__card-content">
+            {%- if block.settings.brand_logo != blank -%}
+              <div class="product-features__brand-logo">
+                <img src="{{ block.settings.brand_logo | asset_url }}" alt="" loading="lazy">
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.tag_1 != blank or block.settings.tag_2 != blank or block.settings.tag_3 != blank -%}
+              <div class="product-features__tags">
+                {%- if block.settings.tag_1 != blank -%}
+                  <span class="product-features__tag">
+                    <span class="product-features__tag-plus">+</span>
+                    <span>{{ block.settings.tag_1 }}</span>
+                  </span>
+                {%- endif -%}
+                {%- if block.settings.tag_2 != blank -%}
+                  <span class="product-features__tag">
+                    <span class="product-features__tag-plus">+</span>
+                    <span>{{ block.settings.tag_2 }}</span>
+                  </span>
+                {%- endif -%}
+                {%- if block.settings.tag_3 != blank -%}
+                  <span class="product-features__tag">
+                    <span class="product-features__tag-plus">+</span>
+                    <span>{{ block.settings.tag_3 }}</span>
+                  </span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="product-features__description">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+
+          {%- if block.settings.button_label != blank -%}
+            <a href="{{ block.settings.button_link }}" class="product-features__button">
+              <span>{{ block.settings.button_label }}</span>
+              {%- if block.settings.show_arrow -%}
+                <img src="{{ 'solar-arrow-up-linear.svg' | asset_url }}" alt="" width="32" height="32" class="product-features__button-icon">
+              {%- endif -%}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.product-features {
+  padding-block-start: var(--pf-padding-top, 64px);
+  padding-block-end: var(--pf-padding-bottom, 64px);
+  padding-inline: 144px;
+}
+
+.product-features__inner {
+  max-width: 1152px;
+  margin: 0 auto;
+}
+
+.product-features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.product-features__card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.product-features__card-image {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.product-features__card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 368 / 224;
+  object-fit: cover;
+}
+
+.product-features__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  padding-inline: 4px;
+}
+
+.product-features__brand-logo {
+  height: 16px;
+}
+
+.product-features__brand-logo img {
+  height: 16px;
+  width: auto;
+  display: block;
+}
+
+.product-features__tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.product-features__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 24px;
+  background-color: #0033FF;
+  color: #0033FF;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  letter-spacing: -0.36px;
+  text-transform: uppercase;
+}
+
+.product-features__tag-plus {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.product-features__description {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0.16px;
+  color: #4D4D4D;
+  margin: 0;
+}
+
+.product-features__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 40px;
+  background-color: #0033FF;
+  color: #ffffff;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  min-height: 48px;
+  transition: background-color 0.2s ease;
+}
+
+.product-features__button:hover {
+  background-color: #0029CC;
+}
+
+.product-features__button-icon {
+  width: 32px;
+  height: 32px;
+  transform: rotate(45deg);
+  filter: brightness(0) invert(1);
+}
+
+@media screen and (max-width: 749px) {
+  .product-features {
+    padding-inline: 16px;
+    padding-block-start: var(--pf-padding-top, 32px);
+    padding-block-end: var(--pf-padding-bottom, 32px);
+  }
+
+  .product-features__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_features",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature-card",
+      "name": "Feature card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.image"
+        },
+        {
+          "type": "text",
+          "id": "brand_logo",
+          "label": "Brand logo SVG"
+        },
+        {
+          "type": "text",
+          "id": "tag_1",
+          "label": "Tag 1"
+        },
+        {
+          "type": "text",
+          "id": "tag_2",
+          "label": "Tag 2"
+        },
+        {
+          "type": "text",
+          "id": "tag_3",
+          "label": "Tag 3"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_arrow",
+          "label": "Show arrow icon",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_features",
+      "blocks": [
+        {
+          "type": "feature-card",
+          "settings": {
+            "brand_logo": "frame-1086997.svg",
+            "tag_1": "Precision",
+            "tag_2": "Tailored",
+            "tag_3": "Optimized",
+            "description": "A custom formula personalized to your needs, built to help you operate beyond perceived.",
+            "button_label": "CREATE YOUR FORMULA",
+            "show_arrow": true
+          }
+        },
+        {
+          "type": "feature-card",
+          "settings": {
+            "brand_logo": "longer-black-6-desktop-46024050.png",
+            "tag_1": "Cellular",
+            "tag_2": "Metabolic",
+            "tag_3": "Aging",
+            "description": "A longevity formula designed to support healthy aging and cellular function.",
+            "button_label": "SHOP LONGER",
+            "show_arrow": false
+          }
+        },
+        {
+          "type": "feature-card",
+          "settings": {
+            "brand_logo": "stronger-black-3-desktop-46024067.png",
+            "tag_1": "Strength",
+            "tag_2": "Endurance",
+            "tag_3": "Recovery",
+            "description": "A performance formula designed to support strength, power, and recovery.",
+            "button_label": "SHOP STRONGER",
+            "show_arrow": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

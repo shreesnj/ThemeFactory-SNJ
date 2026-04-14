@@ -1,0 +1,45 @@
+<style>
+  /*
+   * GT America Custom Font Loading
+   * Font files (.woff2) must be uploaded to theme assets/ directory.
+   * Until uploaded, the theme falls back to DM Sans / system sans-serif.
+   */
+  @font-face {
+    font-family: 'GT America';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('{{ "gt-america-regular.woff2" | asset_url }}') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'GT America';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('{{ "gt-america-medium.woff2" | asset_url }}') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'GT America';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('{{ "gt-america-bold.woff2" | asset_url }}') format('woff2');
+  }
+
+  :root {
+    --font-heading--family: 'GT America', sans-serif;
+    --font-heading--weight: 700;
+    --font-heading--style: normal;
+    --font-body--family: 'GT America', sans-serif;
+    --font-body--weight: 400;
+    --font-body--style: normal;
+    --font-subheading--family: 'GT America', sans-serif;
+    --font-subheading--weight: 500;
+    --font-subheading--style: normal;
+    --font-accent--family: 'GT America', sans-serif;
+    --font-accent--weight: 400;
+    --font-accent--style: normal;
+  }
+</style>

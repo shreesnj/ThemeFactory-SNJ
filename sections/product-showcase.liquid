@@ -1,0 +1,447 @@
+<div class="product-showcase color-{{ section.settings.color_scheme }}" style="--ps-padding-top: {{ section.settings.padding_top }}px; --ps-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="product-showcase__inner">
+    <div class="product-showcase__header">
+      {%- if section.settings.subheading != blank -%}
+        <p class="product-showcase__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="product-showcase__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    <div class="product-showcase__grid">
+      {%- for block in section.blocks -%}
+        <div class="product-showcase__card {% if block.settings.is_featured %}product-showcase__card--featured{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="product-showcase__card-image">
+              {{
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag:
+                  sizes: '(min-width: 990px) 405px, calc(100vw - 56px)',
+                  widths: '334,405,668,810',
+                  loading: 'lazy',
+                  alt: block.settings.image.alt | default: block.settings.description
+              }}
+            </div>
+          {%- endif -%}
+
+          <div class="product-showcase__card-content">
+            {%- if block.settings.brand_logo_svg != blank -%}
+              <div class="product-showcase__brand-logo">
+                <img src="{{ block.settings.brand_logo_svg | asset_url }}" alt="" loading="lazy"
+                  {%- if block.settings.brand_logo_color != blank %} style="filter: none;"{% endif -%}
+                >
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="product-showcase__description">{{ block.settings.description }}</p>
+            {%- endif -%}
+
+            <div class="product-showcase__price-row">
+              {%- if block.settings.original_price != blank or block.settings.sale_price != blank -%}
+                <div class="product-showcase__prices">
+                  {%- if block.settings.original_price != blank -%}
+                    <span class="product-showcase__original-price">{{ block.settings.original_price }}</span>
+                  {%- endif -%}
+                  {%- if block.settings.sale_price != blank -%}
+                    <span class="product-showcase__sale-price">{{ block.settings.sale_price }}</span>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+              {%- if block.settings.discount_text != blank -%}
+                <span class="product-showcase__discount-badge">{{ block.settings.discount_text }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+
+          {%- if block.settings.button_label != blank -%}
+            <a href="{{ block.settings.button_link }}" class="product-showcase__button">
+              {%- if block.settings.button_icon == 'arrow' -%}
+                <img src="{{ 'solar-arrow-up-linear.svg' | asset_url }}" alt="" width="32" height="32" class="product-showcase__button-icon product-showcase__button-icon--arrow">
+              {%- endif -%}
+              <span>{{ block.settings.button_label }}</span>
+              {%- if block.settings.button_icon == 'arrow-after' -%}
+                <img src="{{ 'solar-arrow-up-linear.svg' | asset_url }}" alt="" width="32" height="32" class="product-showcase__button-icon product-showcase__button-icon--arrow">
+              {%- endif -%}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.product-showcase {
+  padding-block-start: var(--ps-padding-top, 64px);
+  padding-block-end: var(--ps-padding-bottom, 64px);
+  padding-inline: 64px;
+}
+
+.product-showcase__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1312px;
+  margin: 0 auto;
+}
+
+.product-showcase__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-showcase__subheading {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: rgb(var(--color-foreground-heading));
+  margin: 0;
+}
+
+.product-showcase__heading {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 44px;
+  letter-spacing: -1.2px;
+  text-transform: capitalize;
+  color: rgb(var(--color-foreground-heading));
+  margin: 0;
+  max-width: 832px;
+}
+
+.product-showcase__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.product-showcase__card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px 12px 16px 12px;
+  border-radius: 12px;
+  border: 1px solid #E4E4E4;
+  background-color: rgb(var(--color-background));
+}
+
+.product-showcase__card--featured {
+  border-color: #0033FF;
+  background-color: #F9F9F9;
+}
+
+.product-showcase__card-image {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.product-showcase__card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 405 / 222;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-showcase__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.product-showcase__brand-logo {
+  height: 16px;
+}
+
+.product-showcase__brand-logo img {
+  height: 16px;
+  width: auto;
+  display: block;
+}
+
+.product-showcase__description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #4D4D4D;
+  margin: 0;
+}
+
+.product-showcase__price-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-showcase__prices {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.product-showcase__original-price {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 28px;
+  color: #A6A6A6;
+  text-decoration: line-through;
+}
+
+.product-showcase__sale-price {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+  color: rgb(var(--color-foreground-heading));
+}
+
+.product-showcase__discount-badge {
+  display: inline-flex;
+  align-items: flex-end;
+  padding: 4px 8px;
+  border-radius: 24px;
+  background-color: #DAE1FC;
+  color: #0033FF;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.product-showcase__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 8px 40px;
+  background-color: #0033FF;
+  color: #ffffff;
+  border-radius: 24px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  min-height: 48px;
+  transition: background-color 0.2s ease;
+}
+
+.product-showcase__button:hover {
+  background-color: #0029CC;
+}
+
+.product-showcase__button-icon--arrow {
+  width: 32px;
+  height: 32px;
+  transform: rotate(45deg);
+  filter: brightness(0) invert(1);
+}
+
+@media screen and (max-width: 749px) {
+  .product-showcase {
+    padding-inline: 16px;
+    padding-block-start: var(--ps-padding-top, 32px);
+    padding-block-end: var(--ps-padding-bottom, 32px);
+  }
+
+  .product-showcase__heading {
+    font-size: 32px;
+    line-height: 35px;
+    letter-spacing: -0.96px;
+  }
+
+  .product-showcase__subheading {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .product-showcase__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .product-showcase__card-image img {
+    aspect-ratio: 334 / 212;
+    border-radius: 6px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_showcase",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Our Products"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Performance Essentials, Engineered for Results"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 64,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product-card",
+      "name": "t:names.product_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.image"
+        },
+        {
+          "type": "text",
+          "id": "brand_logo_svg",
+          "label": "Brand logo SVG file"
+        },
+        {
+          "type": "color",
+          "id": "brand_logo_color",
+          "label": "Brand logo color",
+          "default": "#0033FF"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "original_price",
+          "label": "Original price"
+        },
+        {
+          "type": "text",
+          "id": "sale_price",
+          "label": "Sale price"
+        },
+        {
+          "type": "text",
+          "id": "discount_text",
+          "label": "Discount text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_icon",
+          "label": "Button icon",
+          "options": [
+            { "value": "none", "label": "t:options.none" },
+            { "value": "arrow-after", "label": "Arrow after text" },
+            { "value": "arrow", "label": "Arrow before text" }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_featured",
+          "label": "Featured card",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_showcase",
+      "blocks": [
+        {
+          "type": "product-card",
+          "settings": {
+            "brand_logo_svg": "frame-1086997.svg",
+            "brand_logo_color": "#0033FF",
+            "description": "Custom daily supplement granules tailored to your goals and biology.",
+            "original_price": "$199",
+            "sale_price": "$99",
+            "discount_text": "50% OFF",
+            "button_label": "CREATE YOUR FORMULA",
+            "button_icon": "arrow-after",
+            "is_featured": true
+          }
+        },
+        {
+          "type": "product-card",
+          "settings": {
+            "brand_logo_svg": "longer-black-5-desktop-44123556.png",
+            "description": "A longevity formula designed to support healthy aging and cellular function.",
+            "original_price": "$189",
+            "sale_price": "$89",
+            "discount_text": "50% OFF",
+            "button_label": "ADD TO CART",
+            "button_icon": "arrow",
+            "is_featured": false
+          }
+        },
+        {
+          "type": "product-card",
+          "settings": {
+            "brand_logo_svg": "stronger-black-3-desktop-44123568.png",
+            "description": "A performance formula designed to support strength, power, and recovery.",
+            "original_price": "$169",
+            "sale_price": "$69",
+            "discount_text": "50% OFF",
+            "button_label": "ADD TO CART",
+            "button_icon": "arrow",
+            "is_featured": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

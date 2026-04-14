@@ -435,7 +435,14 @@
     "video_section": "Video",
     "view_all_button": "View all",
     "pills": "Pills",
-    "comparison_slider": "Comparison slider"
+    "comparison_slider": "Comparison slider",
+    "logo_bar": "Logo bar",
+    "product_showcase": "Product showcase",
+    "product_features": "Product features",
+    "athlete_testimonials": "Athlete testimonials",
+    "cta_banner": "CTA banner",
+    "faq_section_custom": "FAQ",
+    "results_banner": "Results banner"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1218,5 +1225,68 @@
     "what_is_return_policy": "What is the return policy?",
     "when_will_order_arrive": "When will I get my order?",
     "where_are_products_made": "Where are your products manufactured?"
+  },
+  "custom_sections": {
+    "logo_bar": {
+      "logo_image": "Logo image",
+      "logo_1": "Logo 1",
+      "logo_2": "Logo 2",
+      "logo_3": "Logo 3",
+      "logo_4": "Logo 4",
+      "logo_5": "Logo 5",
+      "logo_6": "Logo 6"
+    },
+    "product_showcase": {
+      "subheading": "Subheading",
+      "heading": "Heading",
+      "brand_logo_svg": "Brand logo SVG file",
+      "brand_logo_color": "Brand logo color",
+      "description": "Description",
+      "original_price": "Original price",
+      "sale_price": "Sale price",
+      "discount_text": "Discount text",
+      "button_label": "Button label",
+      "button_link": "Button link",
+      "is_featured": "Featured card"
+    },
+    "results_banner": {
+      "heading": "Heading",
+      "button_label": "Button label",
+      "button_link": "Button link",
+      "section_height": "Section height"
+    },
+    "product_features": {
+      "brand_logo": "Brand logo SVG",
+      "tag_1": "Tag 1",
+      "tag_2": "Tag 2",
+      "tag_3": "Tag 3",
+      "description": "Description",
+      "button_label": "Button label",
+      "button_link": "Button link"
+    },
+    "athlete_testimonials": {
+      "subheading": "Subheading",
+      "heading": "Heading",
+      "button_label": "Button label",
+      "button_link": "Button link",
+      "quote": "Quote",
+      "athlete_name": "Athlete name",
+      "sport": "Sport"
+    },
+    "faq": {
+      "heading": "Heading",
+      "heading_accent": "Heading accent word",
+      "button_label": "Button label",
+      "button_link": "Button link",
+      "question": "Question",
+      "answer": "Answer"
+    },
+    "cta_banner": {
+      "heading": "Heading",
+      "heading_accent": "Heading accent text",
+      "description": "Description",
+      "button_label": "Button label",
+      "button_link": "Button link"
+    }
   }
 }

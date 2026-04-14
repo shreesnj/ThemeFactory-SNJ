@@ -340,6 +340,35 @@
     "blog_post_date": "Date",
     "blog_post_description": "An excerpt of your blog post's content"
   },
+  "sections": {
+    "logo_bar": {
+      "name": "Logo bar"
+    },
+    "product_showcase": {
+      "name": "Product showcase",
+      "subheading": "Our Products",
+      "heading": "Performance Essentials, Engineered for Results"
+    },
+    "results_banner": {
+      "name": "Results banner",
+      "heading": "Built for Measurable Results"
+    },
+    "product_features": {
+      "name": "Product features"
+    },
+    "athlete_testimonials": {
+      "name": "Athlete testimonials",
+      "subheading": "Our Athletes",
+      "heading": "Validated by Leading Athletes"
+    },
+    "faq_section": {
+      "name": "FAQ",
+      "heading": "Your Questions, Answered"
+    },
+    "cta_banner": {
+      "name": "CTA banner"
+    }
+  },
   "products": {
     "product": {
       "add_to_cart": "Add to cart",

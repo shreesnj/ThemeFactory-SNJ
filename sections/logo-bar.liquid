@@ -1,0 +1,148 @@
+<div class="logo-bar color-{{ section.settings.color_scheme }}" style="--logo-bar-padding-top: {{ section.settings.padding_top }}px; --logo-bar-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="logo-bar__inner">
+    {%- for i in (1..6) -%}
+      {%- assign logo_key = 'logo_' | append: i -%}
+      {%- assign logo_image = section.settings[logo_key] -%}
+      {%- if logo_image != blank -%}
+        <div class="logo-bar__item">
+          {{
+            logo_image
+            | image_url: width: logo_image.width
+            | image_tag:
+              sizes: '(min-width: 990px) 160px, 96px',
+              widths: '96,160,192,320',
+              loading: 'lazy',
+              alt: logo_image.alt | default: 'Partner logo'
+          }}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.logo-bar {
+  padding-block-start: var(--logo-bar-padding-top, 24px);
+  padding-block-end: var(--logo-bar-padding-bottom, 24px);
+  padding-inline: var(--padding-md);
+  overflow: hidden;
+}
+
+.logo-bar__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 108px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.logo-bar__item {
+  flex-shrink: 0;
+}
+
+.logo-bar__item img {
+  display: block;
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 749px) {
+  .logo-bar__inner {
+    gap: 40px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding-inline: 16px;
+  }
+
+  .logo-bar__inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .logo-bar__item img {
+    height: 24px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.logo_bar",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo_1",
+      "label": "Logo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_2",
+      "label": "Logo 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_3",
+      "label": "Logo 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_4",
+      "label": "Logo 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_5",
+      "label": "Logo 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_6",
+      "label": "Logo 6"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.logo_bar"
+    }
+  ]
+}
+{% endschema %}
