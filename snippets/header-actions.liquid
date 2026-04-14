@@ -49,6 +49,10 @@
   {% endif %}
   {{- block.shopify_attributes -}}
 >
+  {% if cta != blank %}
+    {{ cta }}
+  {% endif %}
+
   {% if shop.customer_accounts_enabled %}
     {% liquid
       assign account_actions_style = ''
@@ -533,7 +537,7 @@
   }
 
   .header__column--right header-actions {
-    margin-inline-start: calc(var(--gap-md) * -1);
+    margin-inline-start: 0;
   }
 
   .header-actions__cart-icon {

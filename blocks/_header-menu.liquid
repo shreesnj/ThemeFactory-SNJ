@@ -253,6 +253,11 @@
     height: 100%;
   }
 
+  /* Override top-level nav link gap to match design */
+  #header-component .header-menu .menu-list {
+    --menu-horizontal-gap: 44px;
+  }
+
   .menu-list__list {
     display: flex;
     justify-content: var(--grid-area-alignment);
@@ -297,7 +302,7 @@
   }
 
   .menu-list__link-title {
-    padding-inline: calc(var(--gap-xl) / 2);
+    padding-inline: calc(var(--menu-horizontal-gap) / 2);
   }
   [slot='overflow'] .menu-list__link-title {
     padding-inline: 0;
@@ -341,7 +346,7 @@
     --focus-outline-size: calc(var(--focus-outline-offset) + var(--focus-outline-width));
 
     gap: 0;
-    margin-inline: calc(-1 * var(--menu-horizontal-gap) / 2);
+    margin-inline: calc(-1 * var(--menu-horizontal-gap, var(--gap-xl)) / 2);
   }
 
   .overflow-menu {
