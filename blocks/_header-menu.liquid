@@ -253,9 +253,15 @@
     height: 100%;
   }
 
-  /* Override top-level nav link gap to match design */
-  #header-component .header-menu .menu-list {
-    --menu-horizontal-gap: 44px;
+  /* Override top-level nav link gap to match design (44px) */
+  /* Scoped to direct .menu-list__list only — not mega-menu__grid descendants */
+  #header-component .header-menu .menu-list > .menu-list__list {
+    gap: 0 44px;
+  }
+
+  /* Ensure mega-menu__grid retains its default gap and is not affected by the 44px override */
+  #header-component .header-menu .mega-menu__grid {
+    gap: var(--menu-vertical-gap, var(--gap-xl)) var(--menu-horizontal-gap, var(--gap-xl));
   }
 
   .menu-list__list {

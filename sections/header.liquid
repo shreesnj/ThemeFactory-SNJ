@@ -63,7 +63,7 @@
       assign cta_color = section.settings.cta_text_color | default: '#FFFFFF'
       assign cta_text = section.settings.cta_text | default: 'Find Your Formula'
       assign cta_url = section.settings.cta_url | default: '#'
-      echo '<span class="header-cta-wrapper mobile:hidden">'
+      echo '<span class="header-cta-wrapper header-cta-desktop-only">'
       echo '<a href="'
       echo cta_url
       echo '" class="header-cta-button" style="--cta-bg: '
@@ -1160,15 +1160,22 @@
     align-items: center;
   }
 
+  /* Hide CTA below 960px desktop breakpoint */
+  @media screen and (max-width: 959px) {
+    .header-cta-desktop-only {
+      display: none;
+    }
+  }
+
   /* Desktop: 24px gap between CTA, account, and cart icons */
   .header__column--right header-actions {
-    gap: var(--gap-md);
+    gap: 24px;
   }
 
   /* Mobile: 16px gap between account and cart icons */
-  @media screen and (max-width: 749px) {
+  @media screen and (max-width: 959px) {
     .header__column--right header-actions {
-      gap: var(--gap-sm);
+      gap: 16px;
     }
   }
 {% endstylesheet %}
