@@ -152,7 +152,11 @@
     "width": "Width",
     "width_is_automatically_optimized": "Width is automatically optimized for mobile.",
     "app_required_for_ratings": "An app is required for product ratings. [Learn more](https://help.shopify.com/manual/apps)",
-    "navigation": "Navigation"
+    "navigation": "Navigation",
+    "contact": "Contact",
+    "disclaimer": "Disclaimer",
+    "legal": "Legal",
+    "branding": "Branding"
   },
   "html_defaults": {
     "join_our_email_list": "<h2>Join our email list</h2>",
@@ -442,7 +446,8 @@
     "athlete_testimonials": "Athlete testimonials",
     "cta_banner": "CTA banner",
     "faq_section_custom": "FAQ",
-    "results_banner": "Results banner"
+    "results_banner": "Results banner",
+    "custom_footer": "Custom footer"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -894,6 +899,26 @@
     "font_weight": "Font weight",
     "full_width_first_image": "Full width first image",
     "full_width_on_mobile": "Full width on mobile",
+    "background_image_mobile": "Mobile background image",
+    "explore_heading": "Explore heading",
+    "company_heading": "Company heading",
+    "contact_heading": "Contact heading",
+    "company_menu": "Company menu",
+    "product_logo_1": "Product logo 1",
+    "product_logo_2": "Product logo 2",
+    "product_logo_3": "Product logo 3",
+    "product_link_1": "Product link 1",
+    "product_link_2": "Product link 2",
+    "product_link_3": "Product link 3",
+    "contact_email": "Contact email",
+    "contact_description": "Contact description",
+    "disclaimer_text": "Disclaimer text",
+    "copyright_text": "Copyright text",
+    "footer_logo": "Footer logo",
+    "facebook_url": "Facebook URL",
+    "pinterest_url": "Pinterest URL",
+    "instagram_url": "Instagram URL",
+    "tiktok_url": "TikTok URL",
     "gap": "Gap",
     // CSS Y-axis transform setting for vertical positioning (legacy/unused)
     "geometric_translate_y": "Geometric translate Y",

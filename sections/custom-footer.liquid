@@ -1,0 +1,689 @@
+{% liquid
+  assign section_id = section.id
+  assign bg_image = section.settings.background_image
+  assign bg_image_mobile = section.settings.background_image_mobile
+%}
+
+<footer
+  id="section-{{ section_id }}"
+  class="custom-footer color-{{ section.settings.color_scheme }}"
+  role="contentinfo"
+  style="
+    --custom-footer-padding-top: {{ section.settings.padding-block-start }}px;
+    --custom-footer-padding-bottom: {{ section.settings.padding-block-end }}px;
+  "
+>
+  <div class="custom-footer__background">
+    {% if bg_image != blank %}
+      <picture>
+        {% if bg_image_mobile != blank %}
+          <source
+            media="(min-width: 750px)"
+            srcset="{{ bg_image | image_url: width: bg_image.width }}"
+          >
+          {{
+            bg_image_mobile
+            | image_url: width: bg_image_mobile.width
+            | image_tag:
+              loading: 'lazy',
+              sizes: '100vw',
+              widths: '375,550,750,1100,1500',
+              class: 'custom-footer__bg-image',
+              alt: 'Footer background'
+          }}
+        {% else %}
+          {{
+            bg_image
+            | image_url: width: bg_image.width
+            | image_tag:
+              loading: 'lazy',
+              sizes: '100vw',
+              widths: '375,550,750,1100,1500,1780,2000',
+              class: 'custom-footer__bg-image',
+              alt: 'Footer background'
+          }}
+        {% endif %}
+      </picture>
+    {% endif %}
+  </div>
+
+  <div class="custom-footer__inner">
+    {%- comment -%} Navigation area {%- endcomment -%}
+    <div class="custom-footer__nav">
+      <div class="custom-footer__nav-left">
+        {%- comment -%} Explore products column {%- endcomment -%}
+        <div class="custom-footer__column custom-footer__column--explore">
+          {% if section.settings.explore_heading != blank %}
+            <h3 class="custom-footer__heading">{{ section.settings.explore_heading | escape }}</h3>
+          {% endif %}
+          <div class="custom-footer__product-logos">
+            {% if section.settings.product_logo_1 != blank %}
+              <a {% if section.settings.product_link_1 != blank %}href="{{ section.settings.product_link_1 }}"{% endif %} class="custom-footer__product-link">
+                {{
+                  section.settings.product_logo_1
+                  | image_url: width: 300
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'custom-footer__product-logo',
+                    alt: section.settings.product_logo_1.alt
+                }}
+              </a>
+            {% endif %}
+            {% if section.settings.product_logo_2 != blank %}
+              <a {% if section.settings.product_link_2 != blank %}href="{{ section.settings.product_link_2 }}"{% endif %} class="custom-footer__product-link">
+                {{
+                  section.settings.product_logo_2
+                  | image_url: width: 300
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'custom-footer__product-logo',
+                    alt: section.settings.product_logo_2.alt
+                }}
+              </a>
+            {% endif %}
+            {% if section.settings.product_logo_3 != blank %}
+              <a {% if section.settings.product_link_3 != blank %}href="{{ section.settings.product_link_3 }}"{% endif %} class="custom-footer__product-link">
+                {{
+                  section.settings.product_logo_3
+                  | image_url: width: 300
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'custom-footer__product-logo',
+                    alt: section.settings.product_logo_3.alt
+                }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+
+        {%- comment -%} Company column {%- endcomment -%}
+        <div class="custom-footer__column custom-footer__column--company">
+          {% if section.settings.company_heading != blank %}
+            <h3 class="custom-footer__heading">{{ section.settings.company_heading | escape }}</h3>
+          {% endif %}
+          {% if section.settings.company_menu != blank %}
+            <ul class="custom-footer__menu">
+              {% for link in linklists[section.settings.company_menu].links %}
+                <li class="custom-footer__menu-item">
+                  <a href="{{ link.url }}" class="custom-footer__menu-link">{{ link.title | escape }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+
+      {%- comment -%} Mobile disclaimer (between nav and contact on mobile) {%- endcomment -%}
+      <div class="custom-footer__disclaimer custom-footer__disclaimer--mobile">
+        {% if section.settings.disclaimer_text != blank %}
+          <div class="custom-footer__disclaimer-content">
+            <svg class="custom-footer__disclaimer-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M5 0V10" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M0 5H10" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+            <p class="custom-footer__disclaimer-text">{{ section.settings.disclaimer_text | escape }}</p>
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} Get in touch column {%- endcomment -%}
+      <div class="custom-footer__column custom-footer__column--contact">
+        {% if section.settings.contact_heading != blank %}
+          <h3 class="custom-footer__heading">{{ section.settings.contact_heading | escape }}</h3>
+        {% endif %}
+        <div class="custom-footer__social-icons">
+          {% if section.settings.facebook_url != blank %}
+            <a href="{{ section.settings.facebook_url }}" class="custom-footer__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor" aria-hidden="true">
+                {% render 'icon', icon: 'facebook' %}
+              </svg>
+            </a>
+          {% endif %}
+          {% if section.settings.pinterest_url != blank %}
+            <a href="{{ section.settings.pinterest_url }}" class="custom-footer__social-link" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor" aria-hidden="true">
+                {% render 'icon', icon: 'pinterest' %}
+              </svg>
+            </a>
+          {% endif %}
+          {% if section.settings.instagram_url != blank %}
+            <a href="{{ section.settings.instagram_url }}" class="custom-footer__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor" aria-hidden="true">
+                {% render 'icon', icon: 'instagram' %}
+              </svg>
+            </a>
+          {% endif %}
+          {% if section.settings.tiktok_url != blank %}
+            <a href="{{ section.settings.tiktok_url }}" class="custom-footer__social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 20 20" width="20" height="20" fill="currentColor" aria-hidden="true">
+                {% render 'icon', icon: 'tiktok' %}
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+        <div class="custom-footer__contact-info">
+          {% if section.settings.contact_email != blank %}
+            <p class="custom-footer__contact-email">{{ section.settings.contact_email | escape }}</p>
+          {% endif %}
+          {% if section.settings.contact_description != blank %}
+            <p class="custom-footer__contact-description">{{ section.settings.contact_description | escape }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} Desktop disclaimer {%- endcomment -%}
+    <div class="custom-footer__disclaimer custom-footer__disclaimer--desktop">
+      {% if section.settings.disclaimer_text != blank %}
+        <div class="custom-footer__disclaimer-content">
+          <svg class="custom-footer__disclaimer-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5 0V10" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M0 5H10" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          <p class="custom-footer__disclaimer-text">{{ section.settings.disclaimer_text | escape }}</p>
+        </div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Legal area: policies + copyright {%- endcomment -%}
+    <div class="custom-footer__legal">
+      <div class="custom-footer__policies">
+        {% for policy in shop.policies %}
+          {% if policy != blank %}
+            <a href="{{ policy.url }}" class="custom-footer__policy-link">{{ policy.title }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% if section.settings.copyright_text != blank %}
+        <p class="custom-footer__copyright">{{ section.settings.copyright_text | escape }}</p>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Brand logo {%- endcomment -%}
+    {% if section.settings.footer_logo != blank %}
+      <div class="custom-footer__brand-logo">
+        {{
+          section.settings.footer_logo
+          | image_url: width: section.settings.footer_logo.width
+          | image_tag:
+            loading: 'lazy',
+            sizes: '100vw',
+            widths: '375,550,750,1100,1500',
+            class: 'custom-footer__logo-img',
+            alt: shop.name
+        }}
+      </div>
+    {% endif %}
+  </div>
+</footer>
+
+{% stylesheet %}
+.custom-footer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  padding-block-start: var(--custom-footer-padding-top, 32px);
+  padding-block-end: var(--custom-footer-padding-bottom, 32px);
+  padding-inline: 32px;
+  color: #FFFFFF;
+}
+
+.custom-footer__background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.custom-footer__bg-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.custom-footer__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 54px;
+}
+
+/* Nav area */
+.custom-footer__nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-footer__nav-left {
+  display: flex;
+  gap: 64px;
+}
+
+.custom-footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.custom-footer__heading {
+  font-family: var(--font-body--family);
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.56px;
+  font-weight: 400;
+  color: #A6A6A6;
+  margin: 0;
+}
+
+/* Product logos */
+.custom-footer__product-logos {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.custom-footer__product-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.custom-footer__product-logo {
+  display: block;
+  height: auto;
+  max-width: 175px;
+}
+
+/* Company menu */
+.custom-footer__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.custom-footer__menu-item {
+  margin: 0;
+  padding: 0;
+}
+
+.custom-footer__menu-link {
+  font-family: var(--font-subheading--family, var(--font-body--family));
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.custom-footer__menu-link:hover {
+  opacity: 0.8;
+}
+
+/* Contact column */
+.custom-footer__column--contact {
+  gap: 24px;
+}
+
+.custom-footer__social-icons {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.custom-footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.custom-footer__social-link:hover {
+  opacity: 0.8;
+}
+
+.custom-footer__social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
+.custom-footer__contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-block-start: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 24px;
+}
+
+.custom-footer__contact-email {
+  font-family: var(--font-body--family);
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 500;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.custom-footer__contact-description {
+  font-family: var(--font-body--family);
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Disclaimer */
+.custom-footer__disclaimer--mobile {
+  display: none;
+}
+
+.custom-footer__disclaimer-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.custom-footer__disclaimer-icon {
+  flex-shrink: 0;
+  color: #FFFFFF;
+}
+
+.custom-footer__disclaimer-text {
+  font-family: var(--font-body--family);
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 400;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Legal area */
+.custom-footer__legal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.custom-footer__policies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+}
+
+.custom-footer__policy-link {
+  font-family: var(--font-body--family);
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: #E4E4E4;
+  text-decoration: none;
+}
+
+.custom-footer__policy-link:hover {
+  opacity: 0.8;
+}
+
+.custom-footer__copyright {
+  font-family: var(--font-body--family);
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 400;
+  color: #E4E4E4;
+  margin: 0;
+}
+
+/* Brand logo */
+.custom-footer__brand-logo {
+  width: 100%;
+}
+
+.custom-footer__logo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 749px) {
+  .custom-footer {
+    border-radius: 8px;
+    padding: 16px 16px 32px 16px;
+  }
+
+  .custom-footer__inner {
+    gap: 40px;
+  }
+
+  .custom-footer__nav {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .custom-footer__nav-left {
+    gap: 32px;
+  }
+
+  .custom-footer__disclaimer--desktop {
+    display: none;
+  }
+
+  .custom-footer__disclaimer--mobile {
+    display: block;
+  }
+
+  .custom-footer__disclaimer-content {
+    gap: 8px;
+    align-items: center;
+  }
+
+  .custom-footer__column--contact {
+    gap: 12px;
+  }
+
+  .custom-footer__contact-info {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .custom-footer__policy-link {
+    color: #FFFFFF;
+  }
+
+  .custom-footer__copyright {
+    color: #FFFFFF;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.custom_footer",
+  "tag": "div",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.background_image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:content.background_image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:settings.background_image_mobile"
+    },
+    {
+      "type": "header",
+      "content": "t:content.navigation"
+    },
+    {
+      "type": "text",
+      "id": "explore_heading",
+      "label": "t:settings.explore_heading",
+      "default": "Explore products"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_logo_1",
+      "label": "t:settings.product_logo_1"
+    },
+    {
+      "type": "url",
+      "id": "product_link_1",
+      "label": "t:settings.product_link_1"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_logo_2",
+      "label": "t:settings.product_logo_2"
+    },
+    {
+      "type": "url",
+      "id": "product_link_2",
+      "label": "t:settings.product_link_2"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_logo_3",
+      "label": "t:settings.product_logo_3"
+    },
+    {
+      "type": "url",
+      "id": "product_link_3",
+      "label": "t:settings.product_link_3"
+    },
+    {
+      "type": "text",
+      "id": "company_heading",
+      "label": "t:settings.company_heading",
+      "default": "Company"
+    },
+    {
+      "type": "link_list",
+      "id": "company_menu",
+      "label": "t:settings.company_menu"
+    },
+    {
+      "type": "header",
+      "content": "t:content.contact"
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "t:settings.contact_heading",
+      "default": "Get in touch"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "t:settings.facebook_url"
+    },
+    {
+      "type": "url",
+      "id": "pinterest_url",
+      "label": "t:settings.pinterest_url"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "t:settings.instagram_url"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "t:settings.tiktok_url"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "t:settings.contact_email",
+      "default": "media@enhanced.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_description",
+      "label": "t:settings.contact_description",
+      "default": "Important: For media enquiries or interview requests only."
+    },
+    {
+      "type": "header",
+      "content": "t:content.disclaimer"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer_text",
+      "label": "t:settings.disclaimer_text",
+      "default": "The Product is not a medicinal product and does not diagnose, treat, cure, or prevent disease."
+    },
+    {
+      "type": "header",
+      "content": "t:content.legal"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "t:settings.copyright_text",
+      "default": "© 2025 Enhanced.  All Rights Reserved \"Enhanced\" and \"Enhanced Games\" are registered trademarks of Enhanced Ltd."
+    },
+    {
+      "type": "header",
+      "content": "t:content.branding"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "t:settings.footer_logo"
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 32,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 32,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.custom_footer"
+    }
+  ]
+}
+{% endschema %}
