@@ -53,8 +53,8 @@
       <div class="custom-footer__nav-left">
         {%- comment -%} Explore products column {%- endcomment -%}
         <div class="custom-footer__column custom-footer__column--explore">
-          {% if section.settings.explore_heading != blank %}
-            <h3 class="custom-footer__heading">{{ section.settings.explore_heading | escape }}</h3>
+          {% if section.settings.heading_explore != blank %}
+            <h3 class="custom-footer__heading">{{ section.settings.heading_explore | escape }}</h3>
           {% endif %}
           <div class="custom-footer__product-logos">
             {% if section.settings.product_logo_1 != blank %}
@@ -98,8 +98,8 @@
 
         {%- comment -%} Company column {%- endcomment -%}
         <div class="custom-footer__column custom-footer__column--company">
-          {% if section.settings.company_heading != blank %}
-            <h3 class="custom-footer__heading">{{ section.settings.company_heading | escape }}</h3>
+          {% if section.settings.heading_company != blank %}
+            <h3 class="custom-footer__heading">{{ section.settings.heading_company | escape }}</h3>
           {% endif %}
           {% if section.settings.company_menu != blank %}
             <ul class="custom-footer__menu">
@@ -128,8 +128,8 @@
 
       {%- comment -%} Get in touch column {%- endcomment -%}
       <div class="custom-footer__column custom-footer__column--contact">
-        {% if section.settings.contact_heading != blank %}
-          <h3 class="custom-footer__heading">{{ section.settings.contact_heading | escape }}</h3>
+        {% if section.settings.heading_contact != blank %}
+          <h3 class="custom-footer__heading">{{ section.settings.heading_contact | escape }}</h3>
         {% endif %}
         <div class="custom-footer__social-icons">
           {% if section.settings.facebook_url != blank %}
@@ -200,8 +200,8 @@
     </div>
 
     {%- comment -%} Brand logo {%- endcomment -%}
-    {% if section.settings.footer_logo != blank %}
-      <div class="custom-footer__brand-logo">
+    <div class="custom-footer__brand-logo">
+      {% if section.settings.footer_logo != blank %}
         {{
           section.settings.footer_logo
           | image_url: width: section.settings.footer_logo.width
@@ -212,20 +212,33 @@
             class: 'custom-footer__logo-img',
             alt: shop.name
         }}
-      </div>
-    {% endif %}
+      {% else %}
+        <img
+          src="{{ 'logos.svg' | asset_url }}"
+          alt="{{ shop.name | escape }}"
+          class="custom-footer__logo-img"
+          loading="lazy"
+          width="346"
+          height="37"
+        >
+      {% endif %}
+    </div>
   </div>
 </footer>
 
 {% stylesheet %}
 .custom-footer {
+  --footer-color-heading: #A6A6A6;
+  --footer-color-text: #FFFFFF;
+  --footer-color-legal: #E4E4E4;
+
   position: relative;
   overflow: hidden;
   border-radius: 12px;
   padding-block-start: var(--custom-footer-padding-top, 32px);
   padding-block-end: var(--custom-footer-padding-bottom, 32px);
   padding-inline: 32px;
-  color: #FFFFFF;
+  color: var(--footer-color-text);
 }
 
 .custom-footer__background {
@@ -272,7 +285,7 @@
   line-height: 17px;
   letter-spacing: -0.56px;
   font-weight: 400;
-  color: #A6A6A6;
+  color: var(--footer-color-heading);
   margin: 0;
 }
 
@@ -314,7 +327,7 @@
   font-size: 14px;
   line-height: 17px;
   font-weight: 500;
-  color: #FFFFFF;
+  color: var(--footer-color-text);
   text-decoration: none;
 }
 
@@ -337,7 +350,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  color: var(--footer-color-text);
   text-decoration: none;
 }
 
@@ -354,7 +367,6 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding-block-start: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding-top: 24px;
 }
@@ -364,7 +376,7 @@
   font-size: 16px;
   line-height: 16px;
   font-weight: 500;
-  color: #FFFFFF;
+  color: var(--footer-color-text);
   margin: 0;
 }
 
@@ -373,7 +385,7 @@
   font-size: 12px;
   line-height: 17px;
   font-weight: 400;
-  color: #FFFFFF;
+  color: var(--footer-color-text);
   margin: 0;
 }
 
@@ -390,7 +402,7 @@
 
 .custom-footer__disclaimer-icon {
   flex-shrink: 0;
-  color: #FFFFFF;
+  color: var(--footer-color-text);
 }
 
 .custom-footer__disclaimer-text {
@@ -398,7 +410,7 @@
   font-size: 12px;
   line-height: 17px;
   font-weight: 400;
-  color: #FFFFFF;
+  color: var(--footer-color-text);
   margin: 0;
 }
 
@@ -421,7 +433,7 @@
   font-size: 12px;
   line-height: 12px;
   font-weight: 400;
-  color: #E4E4E4;
+  color: var(--footer-color-legal);
   text-decoration: none;
 }
 
@@ -434,7 +446,7 @@
   font-size: 12px;
   line-height: 12px;
   font-weight: 400;
-  color: #E4E4E4;
+  color: var(--footer-color-legal);
   margin: 0;
 }
 
@@ -492,11 +504,11 @@
   }
 
   .custom-footer__policy-link {
-    color: #FFFFFF;
+    color: var(--footer-color-text);
   }
 
   .custom-footer__copyright {
-    color: #FFFFFF;
+    color: var(--footer-color-text);
   }
 }
 {% endstylesheet %}
@@ -529,8 +541,8 @@
     },
     {
       "type": "text",
-      "id": "explore_heading",
-      "label": "t:settings.explore_heading",
+      "id": "heading_explore",
+      "label": "t:settings.heading_explore",
       "default": "Explore products"
     },
     {
@@ -565,8 +577,8 @@
     },
     {
       "type": "text",
-      "id": "company_heading",
-      "label": "t:settings.company_heading",
+      "id": "heading_company",
+      "label": "t:settings.heading_company",
       "default": "Company"
     },
     {
@@ -580,8 +592,8 @@
     },
     {
       "type": "text",
-      "id": "contact_heading",
-      "label": "t:settings.contact_heading",
+      "id": "heading_contact",
+      "label": "t:settings.heading_contact",
       "default": "Get in touch"
     },
     {
