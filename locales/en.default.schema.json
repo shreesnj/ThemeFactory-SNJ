@@ -751,6 +751,8 @@
   "settings": {
     "accordion": "Accordion",
     "account": "Account",
+    "cta_text": "Button text",
+    "cta_url": "Button link",
     "actions_display_style": "Menu style",
     "alignment": "Alignment",
     "alignment_mobile": "Mobile alignment",
@@ -1081,6 +1083,7 @@
     "show_author": "Author",
     "show_alignment": "Show alignment",
     "show_count": "Show count",
+    "show_cta": "Show CTA button",
     "show_date": "Date",
     "show_filter_label": "Text labels for applied filters",
     "show_grid_layout_selector": "Show grid layout selector",

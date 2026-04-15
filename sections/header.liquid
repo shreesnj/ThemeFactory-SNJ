@@ -1104,6 +1104,51 @@
     font-family: var(--menu-localization-font);
     font-size: var(--menu-localization-font-size);
   }
+
+  /* Header padding override to match design */
+  .header {
+    --header-padding: var(--padding-2xs);
+  }
+
+  @media screen and (max-width: 749px) {
+    .header {
+      --header-padding: 12px;
+    }
+  }
+
+  /* Header CTA button */
+  .header-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    background-color: #0033FF;
+    color: #FFFFFF;
+    border-radius: 24px;
+    padding: 8px 12px;
+    font-family: var(--font-heading--family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .header-cta-button svg {
+    width: 18px;
+    height: 18px;
+    transform: rotate(45deg);
+  }
+
+  @media screen and (max-width: 749px) {
+    .header-cta-button {
+      display: none;
+    }
+  }
 {% endstylesheet %}
 
 {% unless request.design_mode %}
@@ -1354,6 +1399,28 @@
       ],
       "default": "top",
       "visible_if": "{{ section.settings.show_country or section.settings.show_language }}"
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "t:settings.show_cta",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "t:settings.cta_text",
+      "default": "Find Your Formula",
+      "visible_if": "{{ section.settings.show_cta }}"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "t:settings.cta_url"
     },
     {
       "type": "header",

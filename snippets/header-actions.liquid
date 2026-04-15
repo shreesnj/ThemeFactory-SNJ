@@ -49,6 +49,19 @@
   {% endif %}
   {{- block.shopify_attributes -}}
 >
+  {% if section.settings.show_cta and section.settings.cta_text != blank %}
+    <a
+      href="{{ section.settings.cta_url | default: '#' }}"
+      class="header-cta-button"
+    >
+      {{- section.settings.cta_text -}}
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  {% endif %}
+
   {% if shop.customer_accounts_enabled %}
     {% liquid
       assign account_actions_style = ''
