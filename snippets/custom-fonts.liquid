@@ -4,10 +4,11 @@
    * Font files (.woff2) must be uploaded to theme assets/ directory.
    * Until uploaded, the theme falls back to DM Sans / system sans-serif.
    *
-   * These overrides ensure GT America is used across all font slots.
-   * To disable, add enable_custom_heading_font / enable_custom_body_font
-   * checkbox settings to settings_schema.json and gate accordingly.
+   * Gated behind enable_custom_heading_font and enable_custom_body_font
+   * checkbox settings in Theme Settings > Typography. When disabled,
+   * the Shopify font_picker values from settings_data.json take effect.
    */
+  {% if settings.enable_custom_heading_font or settings.enable_custom_body_font %}
   @font-face {
     font-family: 'GT America';
     font-style: normal;
@@ -31,19 +32,24 @@
     font-display: swap;
     src: url('{{ "gt-america-bold.woff2" | asset_url }}') format('woff2');
   }
+  {% endif %}
 
   :root {
+    {% if settings.enable_custom_heading_font %}
     --font-heading--family: 'GT America', sans-serif;
     --font-heading--weight: 700;
     --font-heading--style: normal;
+    --font-accent--family: 'GT America', sans-serif;
+    --font-accent--weight: 700;
+    --font-accent--style: normal;
+    {% endif %}
+    {% if settings.enable_custom_body_font %}
     --font-body--family: 'GT America', sans-serif;
     --font-body--weight: 400;
     --font-body--style: normal;
     --font-subheading--family: 'GT America', sans-serif;
     --font-subheading--weight: 500;
     --font-subheading--style: normal;
-    --font-accent--family: 'GT America', sans-serif;
-    --font-accent--weight: 700;
-    --font-accent--style: normal;
+    {% endif %}
   }
 </style>
