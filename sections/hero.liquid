@@ -742,6 +742,15 @@
       }
     }
   }
+  /* Mobile card effect for group blocks inside hero */
+  @media screen and (max-width: 749px) {
+    .hero__content-wrapper > .group-block-content {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(26px);
+      -webkit-backdrop-filter: blur(26px);
+      border-radius: 10px;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}

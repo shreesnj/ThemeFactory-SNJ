@@ -1,108 +1,19 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
- {
+{
   "sections": {
-    "hero_jVaWmY": {
+    "hero_main": {
       "type": "hero",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "content_card": {
+          "type": "group",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
-      ],
-      "name": "t:names.hero",
-      "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
-      }
-    },
-    "product_list_fa6P9H": {
-      "type": "product-list",
-      "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
-          "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
+            "gap": 14,
+            "width": "fit-content",
             "custom_width": 100,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
@@ -111,89 +22,34 @@
             "inherit_color_scheme": true,
             "color_scheme": "",
             "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
             "border": "none",
-            "border_width": 1,
+            "border_width": 0,
             "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "border_radius": 12,
+            "padding-block-start": 16,
+            "padding-block-end": 24,
+            "padding-inline-start": 16,
+            "padding-inline-end": 16
           },
           "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
+            "text_group": {
+              "type": "group",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 14,
+                "width": "fill",
                 "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 4,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "background_media": "none",
                 "border": "none",
-                "border_width": 1,
+                "border_width": 0,
                 "border_opacity": 100,
                 "border_radius": 0,
                 "padding-block-start": 0,
@@ -201,88 +57,583 @@
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {}
-            },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+              "blocks": {
+                "heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h1>Reimagining Human Potential.</h1>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h2",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "",
+                    "line_height": "tight",
+                    "letter_spacing": "tight",
+                    "case": "upper",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  }
+                },
+                "subtitle": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>A custom formula designed to help you exceed your potential.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  }
+                }
               },
-              "blocks": {}
+              "block_order": ["heading", "subtitle"]
             },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
+            "buttons_row": {
+              "type": "group",
               "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
+                "content_direction": "row",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 16,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "background_media": "none",
+                "border": "none",
+                "border_width": 0,
+                "border_opacity": 100,
+                "border_radius": 0,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
-              "blocks": {}
+              "blocks": {
+                "cta_button": {
+                  "type": "button",
+                  "settings": {
+                    "label": "CREATE YOUR FORMULA",
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "style_class": "button-primary",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100
+                  }
+                },
+                "shop_button": {
+                  "type": "button",
+                  "settings": {
+                    "label": "Shop Performance",
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "style_class": "button-secondary",
+                    "width": "fit-content",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100
+                  }
+                }
+              },
+              "block_order": ["cta_button", "shop_button"]
             }
           },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+          "block_order": ["text_group", "buttons_row"]
         }
       },
-      "name": "t:names.featured_collection",
+      "block_order": ["content_card"],
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/gemini-generated-image-4s4c934s4c934s4c-copy-1-desktop-46023959.png",
+        "media_type_2": "image",
+        "custom_mobile_media": true,
+        "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/frame-1086823-mobile-46024135.png",
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 14,
         "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
+        "section_height": "medium",
+        "color_scheme": "scheme-6",
+        "toggle_overlay": true,
+        "overlay_color": "#12121266",
+        "overlay_style": "solid",
+        "blurred_reflection": false,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "logo_bar": {
+      "type": "logo-bar",
+      "settings": {
+        "logo_1": "shopify://shop_images/logo-06-1-desktop-46023970.png",
+        "logo_2": "shopify://shop_images/logo-05-1-desktop-46023971.png",
+        "logo_3": "shopify://shop_images/logo-04-1-desktop-46023972.png",
+        "logo_4": "shopify://shop_images/logo-03-1-desktop-46023973.png",
+        "logo_5": "shopify://shop_images/logo-02-1-desktop-46023974.png",
+        "logo_6": "shopify://shop_images/logo-01-1-desktop-46023975.png",
+        "color_scheme": "scheme-2",
+        "padding-block-start": 24,
+        "padding-block-end": 24
+      }
+    },
+    "marquee_trust": {
+      "type": "marquee",
+      "blocks": {
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Third Party Tested</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "0.875rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "upper",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "text_2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>NO UNNECESSARY FILLERS</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "0.875rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "upper",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "text_3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>NON-GMO</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "0.875rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "upper",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "text_4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>GAME-CHANGING RESULTS</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "0.875rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "upper",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "text_5": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Clinically Dosed</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "0.875rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "upper",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        }
+      },
+      "block_order": ["text_1", "text_2", "text_3", "text_4", "text_5"],
+      "settings": {
+        "movement_direction": "reverse",
+        "color_scheme": "scheme-5",
+        "padding-block-start": 16,
+        "padding-block-end": 16,
+        "gap_between_elements": 20
+      }
+    },
+    "product_showcase": {
+      "type": "product-showcase",
+      "blocks": {
+        "card_1": {
+          "type": "product-card",
+          "settings": {
+            "image": "shopify://shop_images/image-4-desktop-44123542.png",
+            "brand_logo_svg": "frame-1086997.svg",
+            "brand_logo_color": "#0033FF",
+            "description": "Custom daily supplement granules tailored to your goals and biology.",
+            "original_price": "$199",
+            "sale_price": "$99",
+            "discount_text": "50% OFF",
+            "button_label": "CREATE YOUR FORMULA",
+            "button_icon": "arrow-after",
+            "is_featured": true
+          }
+        },
+        "card_2": {
+          "type": "product-card",
+          "settings": {
+            "image": "shopify://shop_images/image-4-desktop-44123554.png",
+            "brand_logo_svg": "longer-black-5-desktop-44123556.png",
+            "description": "A longevity formula designed to support healthy aging and cellular function.",
+            "original_price": "$189",
+            "sale_price": "$89",
+            "discount_text": "50% OFF",
+            "button_label": "ADD TO CART",
+            "button_icon": "arrow",
+            "is_featured": false
+          }
+        },
+        "card_3": {
+          "type": "product-card",
+          "settings": {
+            "image": "shopify://shop_images/image-4-desktop-44123566.png",
+            "brand_logo_svg": "stronger-black-3-desktop-44123568.png",
+            "description": "A performance formula designed to support strength, power, and recovery.",
+            "original_price": "$169",
+            "sale_price": "$69",
+            "discount_text": "50% OFF",
+            "button_label": "ADD TO CART",
+            "button_icon": "arrow",
+            "is_featured": false
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2", "card_3"],
+      "settings": {
+        "subheading": "Our Products",
+        "heading": "Performance Essentials, Engineered for Results",
         "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "hero_results": {
+      "type": "hero",
+      "blocks": {
+        "results_heading": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Built for Measurable Results</h2>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-heading--family)",
+            "font_size": "",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "upper",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "results_button": {
+          "type": "button",
+          "settings": {
+            "label": "CREATE YOUR FORMULA",
+            "link": "",
+            "open_in_new_tab": false,
+            "style_class": "button-primary",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          }
+        }
+      },
+      "block_order": ["results_heading", "results_button"],
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/desktop-8-desktop-46024020.jpg",
+        "media_type_2": "image",
+        "custom_mobile_media": true,
+        "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/frame-1087017-mobile-46024197.jpg",
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "small",
+        "color_scheme": "scheme-6",
+        "toggle_overlay": true,
+        "overlay_color": "#12121266",
+        "overlay_style": "solid",
+        "blurred_reflection": false,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "product_features": {
+      "type": "product-features",
+      "blocks": {
+        "feature_1": {
+          "type": "feature-card",
+          "settings": {
+            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024030.png",
+            "brand_logo": "frame-1086997.svg",
+            "tag_1": "Precision",
+            "tag_2": "Tailored",
+            "tag_3": "Optimized",
+            "description": "A custom formula personalized to your needs, built to help you operate beyond perceived.",
+            "button_label": "CREATE YOUR FORMULA",
+            "show_arrow": true
+          }
+        },
+        "feature_2": {
+          "type": "feature-card",
+          "settings": {
+            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024048.png",
+            "brand_logo": "longer-black-6-desktop-46024050.png",
+            "tag_1": "Cellular",
+            "tag_2": "Metabolic",
+            "tag_3": "Aging",
+            "description": "A longevity formula designed to support healthy aging and cellular function.",
+            "button_label": "SHOP LONGER",
+            "show_arrow": false
+          }
+        },
+        "feature_3": {
+          "type": "feature-card",
+          "settings": {
+            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024065.png",
+            "brand_logo": "stronger-black-3-desktop-46024067.png",
+            "tag_1": "Strength",
+            "tag_2": "Endurance",
+            "tag_3": "Recovery",
+            "description": "A performance formula designed to support strength, power, and recovery.",
+            "button_label": "SHOP STRONGER",
+            "show_arrow": false
+          }
+        }
+      },
+      "block_order": ["feature_1", "feature_2", "feature_3"],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "athlete_testimonials": {
+      "type": "athlete-testimonials",
+      "blocks": {
+        "athlete_1": {
+          "type": "athlete-card",
+          "settings": {
+            "image": "shopify://shop_images/athlete-desktop-46321374.png",
+            "quote": "\u201cI\u2019m always looking for good, wholesome fuel, to make me feel good and strong.\u201d",
+            "name": "John Smith",
+            "sport": "Swimmer"
+          }
+        },
+        "athlete_2": {
+          "type": "athlete-card",
+          "settings": {
+            "image": "shopify://shop_images/athlete-desktop-46321375.png",
+            "quote": "\u201cI\u2019m always looking for good, wholesome fuel, to make me feel good and strong.\u201d",
+            "name": "Jane Smith",
+            "sport": "Swimmer"
+          }
+        },
+        "athlete_3": {
+          "type": "athlete-card",
+          "settings": {
+            "image": "shopify://shop_images/athlete-desktop-46321376.png",
+            "quote": "\u201cI\u2019m always looking for good, wholesome fuel, to make me feel good and strong.\u201d",
+            "name": "John Smith",
+            "sport": "Swimmer"
+          }
+        },
+        "athlete_4": {
+          "type": "athlete-card",
+          "settings": {
+            "image": "shopify://shop_images/athlete-desktop-46321377.png",
+            "quote": "\u201cI\u2019m always looking for good, wholesome fuel, to make me feel good and strong.\u201d",
+            "name": "Jane Smith",
+            "sport": "Swimmer"
+          }
+        }
+      },
+      "block_order": ["athlete_1", "athlete_2", "athlete_3", "athlete_4"],
+      "settings": {
+        "subheading": "Our Athletes",
+        "heading": "Validated by Leading Athletes",
+        "button_label": "ADD TO CART",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "faq": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_1": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Is LIVEENHANCED Safe To Take Every Day?",
+            "answer": "<p>Yes, LIVEENHANCED is formulated with clinically tested ingredients that are safe for daily use. Each ingredient is carefully selected and dosed to ensure optimal safety and efficacy.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How Long Does It Take To Notice Results With LIVEENHANCED?",
+            "answer": "<p>Most users begin to notice improvements within 2-4 weeks of consistent daily use. However, individual results may vary based on your unique biology and goals.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How Is LIVEENHANCED Personalized For Me?",
+            "answer": "<p>We use a comprehensive assessment of your goals, lifestyle, and biology to create a custom formula tailored specifically to your needs.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Can LIVEENHANCED Change As My Goals Evolve?",
+            "answer": "<p>Absolutely. Your formula can be adjusted as your goals and needs change over time, ensuring you always have the optimal blend for your current objectives.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Can I Take LIVEENHANCED With Other Supplements?",
+            "answer": "<p>In most cases, yes. However, we recommend consulting with your healthcare provider before combining LIVEENHANCED with other supplements to ensure there are no interactions.</p>"
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
+      "settings": {
+        "heading": "Your Questions, Answered",
+        "heading_accent": "Answered",
+        "button_label": "ADD TO CART",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "cta_banner": {
+      "type": "cta-banner",
+      "settings": {
+        "image": "shopify://shop_images/chatgpt-image-jan-13-2026-01-53-41-pm-copy-1-desktop-46321410.png",
+        "heading": "Your Path to Living an Enhanced Life Starts Here.",
+        "heading_accent": "Enhanced Life Starts Here.",
+        "description": "A custom formula designed to help you exceed your potential.",
+        "button_label": "CREATE YOUR FORMULA",
+        "color_scheme": "scheme-2",
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "hero_main",
+    "logo_bar",
+    "marquee_trust",
+    "product_showcase",
+    "hero_results",
+    "product_features",
+    "athlete_testimonials",
+    "faq",
+    "cta_banner"
   ]
 }
