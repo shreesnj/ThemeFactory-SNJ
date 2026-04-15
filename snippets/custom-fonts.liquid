@@ -1,8 +1,12 @@
 <style>
   /*
-   * GT America Custom Font Loading
+   * Market America — GT America Custom Font Loading
    * Font files (.woff2) must be uploaded to theme assets/ directory.
    * Until uploaded, the theme falls back to DM Sans / system sans-serif.
+   *
+   * These overrides ensure GT America is used across all font slots.
+   * To disable, add enable_custom_heading_font / enable_custom_body_font
+   * checkbox settings to settings_schema.json and gate accordingly.
    */
   @font-face {
     font-family: 'GT America';
@@ -39,7 +43,7 @@
     --font-subheading--weight: 500;
     --font-subheading--style: normal;
     --font-accent--family: 'GT America', sans-serif;
-    --font-accent--weight: 400;
+    --font-accent--weight: 700;
     --font-accent--style: normal;
   }
 </style>
