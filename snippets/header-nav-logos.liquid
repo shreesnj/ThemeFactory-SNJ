@@ -1,0 +1,30 @@
+{% doc %}
+  Header Nav Logos
+
+  Renders the three brand partner logos displayed in the header center column on desktop.
+  Hidden on mobile (mobile uses the hamburger drawer instead).
+{% enddoc %}
+
+<nav class="header-nav-logos" aria-label="Partner brands">
+  <a href="/" class="header-nav-logos__item" aria-label="LiveEnhanced">
+    {{ 'liveenhanced-1.svg' | inline_asset_content }}
+  </a>
+  <a href="/" class="header-nav-logos__item" aria-label="Longer+">
+    <img
+      src="{{ 'header-nav-longer.png' | asset_url }}"
+      alt="Longer+"
+      width="65"
+      height="12"
+      loading="eager"
+    >
+  </a>
+  <a href="/" class="header-nav-logos__item" aria-label="Stronger+">
+    <img
+      src="{{ 'header-nav-stronger.png' | asset_url }}"
+      alt="Stronger+"
+      width="87"
+      height="12"
+      loading="eager"
+    >
+  </a>
+</nav>

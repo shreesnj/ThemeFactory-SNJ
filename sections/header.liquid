@@ -46,7 +46,7 @@
   endcapture
 
   capture menu
-    content_for 'block', type: '_header-menu', id: 'header-menu'
+    render 'header-nav-logos'
   endcapture
 
   capture drawer_menu
@@ -400,7 +400,7 @@
 
 {% stylesheet %}
   body {
-    --header-height: 60px;
+    --header-height: 64px;
     --header-group-height: var(--header-height);
     --transparent-header-offset-boolean: 0; /* stylelint-disable-line declaration-property-value-disallowed-list */
   }
@@ -1111,8 +1111,46 @@
   }
 
   @media screen and (max-width: 749px) {
+    body {
+      --header-height: 48px;
+    }
+
     .header {
       --header-padding: 12px;
+    }
+  }
+
+  /* Header nav logos — desktop center column */
+  .header-nav-logos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 44px;
+  }
+
+  .header-nav-logos__item {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    line-height: 0;
+    text-decoration: none;
+
+    img {
+      display: block;
+      height: 12px;
+      width: auto;
+    }
+
+    svg {
+      display: block;
+      height: 12px;
+      width: auto;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .header-nav-logos {
+      display: none;
     }
   }
 
@@ -1141,7 +1179,7 @@
   .header-cta-button svg {
     width: 18px;
     height: 18px;
-    transform: rotate(45deg);
+    flex-shrink: 0;
   }
 
   @media screen and (max-width: 749px) {
