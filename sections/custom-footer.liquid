@@ -1,0 +1,582 @@
+{%- liquid
+  assign facebook_url = section.settings.facebook_url
+  assign pinterest_url = section.settings.pinterest_url
+  assign instagram_url = section.settings.instagram_url
+  assign tiktok_url = section.settings.tiktok_url
+-%}
+
+<footer
+  class="custom-footer color-{{ section.settings.color_scheme }}"
+  style="
+    --cf-padding-top: {{ section.settings.padding_top }}px;
+    --cf-padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="custom-footer__bg-image" aria-hidden="true"></div>
+
+  <div class="custom-footer__inner page-width">
+
+    {%- comment -%} ── Navigation columns ── {%- endcomment -%}
+    <div class="custom-footer__nav">
+
+      {%- comment -%} Left group: Explore products + Company {%- endcomment -%}
+      <div class="custom-footer__nav-left">
+
+        {%- comment -%} Explore products column {%- endcomment -%}
+        <div class="custom-footer__col">
+          <p class="custom-footer__col-label">Explore products</p>
+          <div class="custom-footer__brand-logos">
+            <a href="{{ section.settings.liveenhanced_url | default: '/' }}" class="custom-footer__brand-link" aria-label="LiveEnhanced">
+              {{ 'liveenhanced-1.svg' | inline_asset_content }}
+            </a>
+            <a href="{{ section.settings.longer_url | default: '/' }}" class="custom-footer__brand-link" aria-label="Longer+">
+              <img
+                src="{{ 'footer-nav-longer.png' | asset_url }}"
+                alt="Longer+"
+                width="75"
+                height="13"
+                loading="lazy"
+              >
+            </a>
+            <a href="{{ section.settings.stronger_url | default: '/' }}" class="custom-footer__brand-link" aria-label="Stronger+">
+              <img
+                src="{{ 'footer-nav-stronger.png' | asset_url }}"
+                alt="Stronger+"
+                width="101"
+                height="14"
+                loading="lazy"
+              >
+            </a>
+          </div>
+        </div>
+
+        {%- comment -%} Company column {%- endcomment -%}
+        <div class="custom-footer__col">
+          <p class="custom-footer__col-label">Company</p>
+          <ul class="custom-footer__col-links">
+            {%- if section.settings.about_url != blank -%}
+              <li><a href="{{ section.settings.about_url }}">About us</a></li>
+            {%- else -%}
+              <li><a href="/pages/about">About us</a></li>
+            {%- endif -%}
+            {%- if section.settings.team_url != blank -%}
+              <li><a href="{{ section.settings.team_url }}">Team</a></li>
+            {%- else -%}
+              <li><a href="/pages/team">Team</a></li>
+            {%- endif -%}
+            {%- if section.settings.careers_url != blank -%}
+              <li><a href="{{ section.settings.careers_url }}">Careers</a></li>
+            {%- else -%}
+              <li><a href="/pages/careers">Careers</a></li>
+            {%- endif -%}
+            {%- if section.settings.faqs_url != blank -%}
+              <li><a href="{{ section.settings.faqs_url }}">FAQs</a></li>
+            {%- else -%}
+              <li><a href="/pages/faqs">FAQs</a></li>
+            {%- endif -%}
+          </ul>
+        </div>
+
+      </div>{%- comment -%} /.custom-footer__nav-left {%- endcomment -%}
+
+      {%- comment -%} Right: Get in touch {%- endcomment -%}
+      <div class="custom-footer__col custom-footer__col--contact">
+        <p class="custom-footer__col-label">Get in touch</p>
+
+        <div class="custom-footer__social">
+          {%- if facebook_url != blank -%}
+            <a href="{{ facebook_url }}" class="custom-footer__social-link" target="_blank" rel="noopener" aria-label="Facebook">
+              {{ 'footer-social-facebook.svg' | inline_asset_content }}
+            </a>
+          {%- endif -%}
+          {%- if pinterest_url != blank -%}
+            <a href="{{ pinterest_url }}" class="custom-footer__social-link" target="_blank" rel="noopener" aria-label="Pinterest">
+              {{ 'footer-social-pinterest.svg' | inline_asset_content }}
+            </a>
+          {%- endif -%}
+          {%- if instagram_url != blank -%}
+            <a href="{{ instagram_url }}" class="custom-footer__social-link" target="_blank" rel="noopener" aria-label="Instagram">
+              {{ 'footer-social-instagram.svg' | inline_asset_content }}
+            </a>
+          {%- endif -%}
+          {%- if tiktok_url != blank -%}
+            <a href="{{ tiktok_url }}" class="custom-footer__social-link" target="_blank" rel="noopener" aria-label="TikTok">
+              {{ 'footer-social-tiktok.svg' | inline_asset_content }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        <div class="custom-footer__contact-info">
+          <a href="mailto:{{ section.settings.email | default: 'media@enhanced.com' }}" class="custom-footer__email">
+            {{- section.settings.email | default: 'media@enhanced.com' -}}
+          </a>
+          <p class="custom-footer__contact-note">Important: For media enquiries or interview requests only.</p>
+        </div>
+
+      </div>
+
+    </div>{%- comment -%} /.custom-footer__nav {%- endcomment -%}
+
+    {%- comment -%} ── Disclaimer ── {%- endcomment -%}
+    <div class="custom-footer__disclaimer">
+      <svg class="custom-footer__disclaimer-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="5" cy="5" r="4.5" stroke="currentColor"/>
+        <text x="5" y="8.5" text-anchor="middle" font-size="7" fill="currentColor" font-family="sans-serif">i</text>
+      </svg>
+      <p>{{ section.settings.disclaimer_text | default: 'The Product is not a medicinal product and does not diagnose, treat, cure, or prevent disease.' }}</p>
+    </div>
+
+    {%- comment -%} ── Legal / copyright ── {%- endcomment -%}
+    <div class="custom-footer__legal">
+      <div class="custom-footer__policy-links">
+        {%- if section.settings.terms_url != blank -%}<a href="{{ section.settings.terms_url }}">Terms of service</a>{%- else -%}<a href="/policies/terms-of-service">Terms of service</a>{%- endif -%}
+        {%- if section.settings.privacy_url != blank -%}<a href="{{ section.settings.privacy_url }}">Privacy policy</a>{%- else -%}<a href="/policies/privacy-policy">Privacy policy</a>{%- endif -%}
+        {%- if section.settings.health_data_url != blank -%}<a href="{{ section.settings.health_data_url }}">Consumer Health Data Policy</a>{%- else -%}<a href="/pages/consumer-health-data-policy">Consumer Health Data Policy</a>{%- endif -%}
+        {%- if section.settings.cookie_policy_url != blank -%}<a href="{{ section.settings.cookie_policy_url }}">Cookie policy</a>{%- else -%}<a href="/pages/cookie-policy">Cookie policy</a>{%- endif -%}
+        <button type="button" class="custom-footer__cookie-settings-btn">Cookie settings</button>
+      </div>
+      <p class="custom-footer__copyright">{{ section.settings.copyright_text | default: '© 2025 Enhanced.  All Rights Reserved "Enhanced" and "Enhanced Games" are registered trademarks of Enhanced Ltd.' }}</p>
+    </div>
+
+    {%- comment -%} ── Wordmark ── {%- endcomment -%}
+    <div class="custom-footer__wordmark" aria-label="E+ Enhanced">
+      {{ 'footer-wordmark.svg' | inline_asset_content }}
+    </div>
+
+  </div>{%- comment -%} /.custom-footer__inner {%- endcomment -%}
+</footer>
+
+{% stylesheet %}
+
+/* ── Custom Footer ── */
+.custom-footer {
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--cf-padding-top, 32px);
+  padding-bottom: var(--cf-padding-bottom, 32px);
+  background-color: #060912;
+}
+
+/* Background gradient (approximates the Figma dark-blue cosmic gradient) */
+.custom-footer__bg-image {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 55% 85%, rgba(30, 60, 200, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(10, 30, 130, 0.7) 0%, transparent 55%),
+    linear-gradient(180deg, #0a0b18 0%, #060912 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.custom-footer__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 54px;
+}
+
+/* ── Navigation columns ── */
+.custom-footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.custom-footer__nav-left {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.custom-footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.custom-footer__col-label {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.04em;
+  color: #A6A6A6;
+  margin: 0;
+}
+
+/* Brand logos column */
+.custom-footer__brand-logos {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.custom-footer__brand-link {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  text-decoration: none;
+  flex-shrink: 0;
+
+  svg,
+  img {
+    display: block;
+    height: 14px;
+    width: auto;
+  }
+}
+
+/* Company links */
+.custom-footer__col-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  a {
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Contact column */
+.custom-footer__col--contact {
+  gap: 24px;
+}
+
+/* Social icons */
+.custom-footer__social {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+
+.custom-footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  text-decoration: none;
+  flex-shrink: 0;
+
+  svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+/* Contact info */
+.custom-footer__contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.custom-footer__email {
+  font-size: 16px;
+  line-height: 1.2;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.custom-footer__contact-note {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* ── Disclaimer ── */
+.custom-footer__disclaimer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+.custom-footer__disclaimer-icon {
+  flex-shrink: 0;
+  color: #FFFFFF;
+  width: 10px;
+  height: 10px;
+}
+
+.custom-footer__disclaimer p {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* ── Legal ── */
+.custom-footer__legal {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.custom-footer__policy-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+
+  a,
+  button {
+    font-size: 12px;
+    line-height: 1.2;
+    color: #E4E4E4;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.custom-footer__cookie-settings-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.custom-footer__copyright {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #E4E4E4;
+  margin: 0;
+}
+
+/* ── Wordmark ── */
+.custom-footer__wordmark {
+  width: 100%;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ── Desktop layout (≥ 750px) ── */
+@media screen and (min-width: 750px) {
+  .custom-footer__nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .custom-footer__nav-left {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  .custom-footer__col--contact {
+    align-items: flex-end;
+  }
+
+  .custom-footer__social {
+    justify-content: flex-end;
+  }
+
+  .custom-footer__contact-info {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .custom-footer__disclaimer {
+    flex-direction: row;
+  }
+
+  .custom-footer__legal {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .custom-footer__policy-links {
+    flex-wrap: nowrap;
+    gap: 24px;
+  }
+
+  .custom-footer__copyright {
+    text-align: right;
+    white-space: nowrap;
+  }
+}
+
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.custom_footer",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "header",
+      "content": "Brand links"
+    },
+    {
+      "type": "url",
+      "id": "liveenhanced_url",
+      "label": "LiveEnhanced URL"
+    },
+    {
+      "type": "url",
+      "id": "longer_url",
+      "label": "Longer+ URL"
+    },
+    {
+      "type": "url",
+      "id": "stronger_url",
+      "label": "Stronger+ URL"
+    },
+    {
+      "type": "header",
+      "content": "Company links"
+    },
+    {
+      "type": "url",
+      "id": "about_url",
+      "label": "About us URL"
+    },
+    {
+      "type": "url",
+      "id": "team_url",
+      "label": "Team URL"
+    },
+    {
+      "type": "url",
+      "id": "careers_url",
+      "label": "Careers URL"
+    },
+    {
+      "type": "url",
+      "id": "faqs_url",
+      "label": "FAQs URL"
+    },
+    {
+      "type": "header",
+      "content": "Social links"
+    },
+    {
+      "type": "url",
+      "id": "facebook_url",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "pinterest_url",
+      "label": "Pinterest URL"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "TikTok URL"
+    },
+    {
+      "type": "header",
+      "content": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Contact email",
+      "default": "media@enhanced.com"
+    },
+    {
+      "type": "header",
+      "content": "Legal"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer_text",
+      "label": "Disclaimer",
+      "default": "The Product is not a medicinal product and does not diagnose, treat, cure, or prevent disease."
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright",
+      "default": "© 2025 Enhanced.  All Rights Reserved \"Enhanced\" and \"Enhanced Games\" are registered trademarks of Enhanced Ltd."
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms of service URL"
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Privacy policy URL"
+    },
+    {
+      "type": "url",
+      "id": "health_data_url",
+      "label": "Consumer Health Data URL"
+    },
+    {
+      "type": "url",
+      "id": "cookie_policy_url",
+      "label": "Cookie policy URL"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "t:settings.top",
+      "default": 32
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "t:settings.bottom",
+      "default": 32
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.custom_footer",
+      "category": "t:categories.footer"
+    }
+  ]
+}
+{% endschema %}
