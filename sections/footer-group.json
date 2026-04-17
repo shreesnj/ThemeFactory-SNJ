@@ -14,20 +14,16 @@
     "custom_footer": {
       "type": "custom-footer",
       "settings": {
-        "background_image": "shopify://shop_images/nav-desktop-107131901.png",
-        "background_image_mobile": "shopify://shop_images/footer-mobile-46321008.png",
-        "heading_explore": "Explore products",
-        "product_logo_1": "shopify://shop_images/longer-black-5-mobile-I463210082918968.png",
-        "product_logo_2": "shopify://shop_images/stronger-black-3-mobile-I463210082918969.png",
-        "heading_company": "Company",
-        "heading_contact": "Get in touch",
-        "contact_email": "media@enhanced.com",
-        "contact_description": "Important: For media enquiries or interview requests only.",
-        "disclaimer_text": "The Product is not a medicinal product and does not diagnose, treat, cure, or prevent disease.",
-        "copyright_text": "© 2025 Enhanced.  All Rights Reserved \"Enhanced\" and \"Enhanced Games\" are registered trademarks of Enhanced Ltd.",
+        "heading_shop": "Shop",
+        "heading_features": "Features",
+        "heading_learn": "Learn",
+        "heading_support": "Support",
+        "show_newsletter": true,
+        "newsletter_heading": "Sign up for new product launches, priority access and updates",
+        "show_payment_icons": true,
         "color_scheme": "scheme-5",
-        "padding-block-start": 32,
-        "padding-block-end": 32
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     }
   },
