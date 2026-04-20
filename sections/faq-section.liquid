@@ -1,29 +1,17 @@
 <div class="faq-section color-{{ section.settings.color_scheme }}" style="--faq-padding-top: {{ section.settings.padding_top }}px; --faq-padding-bottom: {{ section.settings.padding_bottom }}px;">
   <div class="faq-section__inner">
     {%- if section.settings.heading != blank -%}
-      <div class="faq-section__heading-group">
-        {%- if section.settings.label != blank -%}
-          <p class="faq-section__label">{{ section.settings.label | escape }}</p>
-        {%- endif -%}
-        <h2 class="faq-section__heading">
-          {%- if section.settings.heading_accent != blank -%}
-            {%- assign parts = section.settings.heading | split: section.settings.heading_accent -%}
-            {{ parts[0] }}<span class="faq-section__heading-accent">{{ section.settings.heading_accent }}</span>{% if parts.size > 1 %}{{ parts[1] }}{% endif %}
-          {%- else -%}
-            {{ section.settings.heading }}
-          {%- endif -%}
-        </h2>
-      </div>
+      <h2 class="faq-section__heading">{{ section.settings.heading | escape }}</h2>
     {%- endif -%}
 
     <div class="faq-section__accordion">
       {%- for block in section.blocks -%}
         <details class="faq-section__item" {{ block.shopify_attributes }}>
           <summary class="faq-section__question">
-            <span class="faq-section__question-text">{{ block.settings.question }}</span>
+            <span class="faq-section__question-text">{{ block.settings.question | escape }}</span>
             <span class="faq-section__icon" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8 3V13M3 8H13" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.5 2.5V16.5M2.5 9.5H16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
           </summary>
@@ -39,7 +27,10 @@
     {%- if section.settings.button_label != blank -%}
       <div class="faq-section__button-wrapper">
         <a href="{{ section.settings.button_link }}" class="faq-section__button">
-          <span>{{ section.settings.button_label }}</span>
+          <span>{{ section.settings.button_label | escape }}</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
       </div>
     {%- endif -%}
@@ -48,51 +39,27 @@
 
 {% stylesheet %}
 .faq-section {
-  padding-block-start: var(--faq-padding-top, 64px);
-  padding-block-end: var(--faq-padding-bottom, 64px);
+  padding-block-start: var(--faq-padding-top, 80px);
+  padding-block-end: var(--faq-padding-bottom, 80px);
   padding-inline: 24px;
 }
 
 .faq-section__inner {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 48px;
-  max-width: 840px;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 804px;
   margin: 0 auto;
-}
-
-.faq-section__heading-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  text-align: center;
-}
-
-.faq-section__label {
-  font-family: var(--font-body--family);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #F9A31A;
-  margin: 0;
 }
 
 .faq-section__heading {
   font-family: var(--font-heading--family);
   font-size: 40px;
   font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  text-align: center;
+  line-height: 44px;
   color: rgb(var(--color-foreground-heading));
   margin: 0;
-}
-
-.faq-section__heading-accent {
-  color: #F9A31A;
 }
 
 .faq-section__accordion {
@@ -103,11 +70,7 @@
 
 .faq-section__item {
   width: 100%;
-  border-block-end: 1px solid rgb(var(--color-border));
-}
-
-.faq-section__item:first-child {
-  border-block-start: 1px solid rgb(var(--color-border));
+  border-bottom: 2px solid rgb(var(--color-border));
 }
 
 .faq-section__question {
@@ -118,8 +81,12 @@
   gap: 24px;
   cursor: pointer;
   list-style: none;
-  padding-block: 20px;
+  padding-block: 30px;
   width: 100%;
+}
+
+.faq-section__item:first-child > .faq-section__question {
+  padding-block-start: 0;
 }
 
 .faq-section__question::-webkit-details-marker {
@@ -128,43 +95,38 @@
 
 .faq-section__question-text {
   font-family: var(--font-body--family);
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.4;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 26px;
   color: rgb(var(--color-foreground-heading));
 }
 
 .faq-section__icon {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: rgb(var(--color-foreground-heading));
-  color: rgb(var(--color-background));
-  transition: transform 0.25s ease, background-color 0.2s ease;
+  color: rgb(var(--color-foreground-heading));
+  transition: transform 0.2s ease;
 }
 
 .faq-section__icon svg {
-  width: 16px;
-  height: 16px;
+  width: 19px;
+  height: 19px;
 }
 
 .faq-section__item[open] .faq-section__icon {
   transform: rotate(45deg);
-  background-color: #F9A31A;
 }
 
 .faq-section__answer {
-  padding-block-end: 20px;
+  padding-block-end: 30px;
+  padding-inline-end: 43px;
   font-family: var(--font-body--family);
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.6;
   color: rgb(var(--color-foreground));
-  padding-inline-end: 56px;
 }
 
 .faq-section__answer p {
@@ -174,60 +136,73 @@
 .faq-section__button-wrapper {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .faq-section__button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 48px;
+  gap: 8px;
+  padding: 8px 40px;
   background-color: rgb(var(--color-button));
   color: rgb(var(--color-button-text));
   border-radius: 100px;
-  border: 1px solid rgb(var(--color-button));
+  border: none;
   font-family: var(--font-body--family);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   text-decoration: none;
   min-height: 48px;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease;
 }
 
 .faq-section__button:hover {
   background-color: rgb(var(--color-button-hover));
-  border-color: rgb(var(--color-button-hover));
 }
 
 @media screen and (max-width: 749px) {
   .faq-section {
-    padding-inline: 20px;
+    padding-inline: 16px;
+  }
+
+  .faq-section__inner {
+    gap: 32px;
   }
 
   .faq-section__heading {
-    font-size: 28px;
-    letter-spacing: -0.5px;
+    font-size: 32px;
+    line-height: 35px;
+  }
+
+  .faq-section__question {
+    padding-block: 12px;
+  }
+
+  .faq-section__item:first-child > .faq-section__question {
+    padding-block-start: 0;
   }
 
   .faq-section__question-text {
     font-size: 16px;
-  }
-
-  .faq-section__answer {
-    padding-inline-end: 0;
-    font-size: 15px;
-  }
-
-  .faq-section__icon {
-    width: 28px;
-    height: 28px;
+    line-height: 22px;
   }
 
   .faq-section__icon svg {
     width: 14px;
     height: 14px;
+  }
+
+  .faq-section__answer {
+    padding-inline-end: 0;
+    padding-block-end: 12px;
+  }
+
+  .faq-section__button {
+    width: 100%;
   }
 }
 {% endstylesheet %}
@@ -239,21 +214,9 @@
   "settings": [
     {
       "type": "text",
-      "id": "label",
-      "label": "Label",
-      "default": "FAQ"
-    },
-    {
-      "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Your Questions, Answered"
-    },
-    {
-      "type": "text",
-      "id": "heading_accent",
-      "label": "Heading accent word",
-      "default": "Answered"
+      "default": "Your questions, answered"
     },
     {
       "type": "text",
@@ -287,7 +250,7 @@
       "min": 0,
       "max": 100,
       "step": 4,
-      "default": 64,
+      "default": 80,
       "unit": "px"
     },
     {
@@ -297,7 +260,7 @@
       "min": 0,
       "max": 100,
       "step": 4,
-      "default": 64,
+      "default": 80,
       "unit": "px"
     }
   ],

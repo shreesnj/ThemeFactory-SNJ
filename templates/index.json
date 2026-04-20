@@ -575,10 +575,8 @@
     "faq": {
       "type": "faq-section",
       "settings": {
-        "label": "FAQ",
-        "heading": "Your Questions, Answered",
-        "heading_accent": "Answered",
-        "button_label": "",
+        "heading": "Your questions, answered",
+        "button_label": "ADD TO CART",
         "color_scheme": "scheme-1",
         "padding_top": 80,
         "padding_bottom": 80
