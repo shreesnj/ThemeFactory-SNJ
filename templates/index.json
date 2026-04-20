@@ -574,6 +574,15 @@
     },
     "faq": {
       "type": "faq-section",
+      "settings": {
+        "label": "FAQ",
+        "heading": "Your Questions, Answered",
+        "heading_accent": "Answered",
+        "button_label": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 80,
+        "padding_bottom": 80
+      },
       "blocks": {
         "faq_1": {
           "type": "faq-item",
@@ -611,15 +620,7 @@
           }
         }
       },
-      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
-      "settings": {
-        "heading": "Your Questions, Answered",
-        "heading_accent": "Answered",
-        "button_label": "ADD TO CART",
-        "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"]
     },
     "cta_banner": {
       "type": "cta-banner",
