@@ -9,49 +9,49 @@
   style="--snj-footer-padding-top: {{ section.settings.padding-block-start }}px; --snj-footer-padding-bottom: {{ section.settings.padding-block-end }}px;"
 >
   <div class="snj-footer__container">
-    {%- comment -%} ─── Background image ─── {%- endcomment -%}
-    {% if section.settings.background_image != blank or section.settings.background_image_mobile != blank %}
+
+    {%- comment -%} Background image {%- endcomment -%}
+    {%- if section.settings.background_image != blank or section.settings.background_image_mobile != blank -%}
       <picture class="snj-footer__bg">
-        {% if section.settings.background_image != blank %}
-          <source media="(min-width: 750px)" srcset="{{ section.settings.background_image | image_url: width: 1500 }}">
-        {% endif %}
-        {% if section.settings.background_image_mobile != blank %}
+        {%- if section.settings.background_image != blank -%}
+          <source media="(min-width: 750px)" srcset="{{ section.settings.background_image | image_url: width: 2000 }}">
+        {%- endif -%}
+        {%- if section.settings.background_image_mobile != blank -%}
           <img
-            src="{{ section.settings.background_image_mobile | image_url: width: 750 }}"
+            src="{{ section.settings.background_image_mobile | image_url: width: 800 }}"
             alt=""
             class="snj-footer__bg-img"
             loading="lazy"
             width="{{ section.settings.background_image_mobile.width }}"
             height="{{ section.settings.background_image_mobile.height }}"
           >
-        {% elsif section.settings.background_image != blank %}
+        {%- elsif section.settings.background_image != blank -%}
           <img
-            src="{{ section.settings.background_image | image_url: width: 1500 }}"
+            src="{{ section.settings.background_image | image_url: width: 2000 }}"
             alt=""
             class="snj-footer__bg-img"
             loading="lazy"
             width="{{ section.settings.background_image.width }}"
             height="{{ section.settings.background_image.height }}"
           >
-        {% endif %}
+        {%- endif -%}
       </picture>
-    {% endif %}
+    {%- endif -%}
 
     <div class="snj-footer__inner">
 
-      {%- comment -%} ─── Navigation columns (Explore products + Company) ─── {%- endcomment -%}
+      {%- comment -%} ── Nav columns (left side) ── {%- endcomment -%}
       <div class="snj-footer__nav-columns">
 
-        {%- comment -%} Explore products column {%- endcomment -%}
-        <div class="snj-footer__column snj-footer__column--explore">
-          {% if section.settings.heading_explore != blank %}
+        {%- comment -%} Explore products {%- endcomment -%}
+        <div class="snj-footer__column">
+          {%- if section.settings.heading_explore != blank -%}
             <p class="snj-footer__column-label">{{ section.settings.heading_explore | escape }}</p>
-          {% endif %}
+          {%- endif -%}
           <div class="snj-footer__brand-logos">
-            {% if section.settings.brand_logo_1 != blank %}
-              {% if section.settings.product_link_1 != blank %}
-                <a href="{{ section.settings.product_link_1 }}" class="snj-footer__brand-logo-link">
-              {% endif %}
+            {%- comment -%} Brand logo 1 — LIVEENHANCED {%- endcomment -%}
+            {%- if section.settings.brand_logo_1 != blank -%}
+              {%- if section.settings.product_link_1 != blank -%}<a href="{{ section.settings.product_link_1 }}" class="snj-footer__brand-logo-link">{%- endif -%}
               <img
                 src="{{ section.settings.brand_logo_1 | image_url: width: 300 }}"
                 alt="{{ section.settings.brand_logo_1.alt | default: 'Brand logo' | escape }}"
@@ -60,30 +60,23 @@
                 width="{{ section.settings.brand_logo_1.width }}"
                 height="{{ section.settings.brand_logo_1.height }}"
               >
-              {% if section.settings.product_link_1 != blank %}
-                </a>
-              {% endif %}
-            {% else %}
-              {% if section.settings.product_link_1 != blank %}
-                <a href="{{ section.settings.product_link_1 }}" class="snj-footer__brand-logo-link">
-              {% endif %}
+              {%- if section.settings.product_link_1 != blank -%}</a>{%- endif -%}
+            {%- else -%}
+              {%- if section.settings.product_link_1 != blank -%}<a href="{{ section.settings.product_link_1 }}" class="snj-footer__brand-logo-link">{%- endif -%}
               <img
                 src="{{ 'liveenhanced-1.svg' | asset_url }}"
                 alt="LIVEENHANCED"
-                class="snj-footer__brand-logo-img snj-footer__brand-logo-img--invert"
+                class="snj-footer__brand-logo-img"
                 loading="lazy"
                 width="117"
                 height="12"
               >
-              {% if section.settings.product_link_1 != blank %}
-                </a>
-              {% endif %}
-            {% endif %}
+              {%- if section.settings.product_link_1 != blank -%}</a>{%- endif -%}
+            {%- endif -%}
 
-            {% if section.settings.brand_logo_2 != blank %}
-              {% if section.settings.product_link_2 != blank %}
-                <a href="{{ section.settings.product_link_2 }}" class="snj-footer__brand-logo-link">
-              {% endif %}
+            {%- comment -%} Brand logo 2 — LONGER {%- endcomment -%}
+            {%- if section.settings.brand_logo_2 != blank -%}
+              {%- if section.settings.product_link_2 != blank -%}<a href="{{ section.settings.product_link_2 }}" class="snj-footer__brand-logo-link">{%- endif -%}
               <img
                 src="{{ section.settings.brand_logo_2 | image_url: width: 300 }}"
                 alt="{{ section.settings.brand_logo_2.alt | default: 'Brand logo' | escape }}"
@@ -92,15 +85,12 @@
                 width="{{ section.settings.brand_logo_2.width }}"
                 height="{{ section.settings.brand_logo_2.height }}"
               >
-              {% if section.settings.product_link_2 != blank %}
-                </a>
-              {% endif %}
-            {% endif %}
+              {%- if section.settings.product_link_2 != blank -%}</a>{%- endif -%}
+            {%- endif -%}
 
-            {% if section.settings.brand_logo_3 != blank %}
-              {% if section.settings.product_link_3 != blank %}
-                <a href="{{ section.settings.product_link_3 }}" class="snj-footer__brand-logo-link">
-              {% endif %}
+            {%- comment -%} Brand logo 3 — STRONGER {%- endcomment -%}
+            {%- if section.settings.brand_logo_3 != blank -%}
+              {%- if section.settings.product_link_3 != blank -%}<a href="{{ section.settings.product_link_3 }}" class="snj-footer__brand-logo-link">{%- endif -%}
               <img
                 src="{{ section.settings.brand_logo_3 | image_url: width: 300 }}"
                 alt="{{ section.settings.brand_logo_3.alt | default: 'Brand logo' | escape }}"
@@ -109,30 +99,75 @@
                 width="{{ section.settings.brand_logo_3.width }}"
                 height="{{ section.settings.brand_logo_3.height }}"
               >
-              {% if section.settings.product_link_3 != blank %}
-                </a>
-              {% endif %}
-            {% endif %}
+              {%- if section.settings.product_link_3 != blank -%}</a>{%- endif -%}
+            {%- endif -%}
           </div>
         </div>
 
         {%- comment -%} Company column {%- endcomment -%}
-        <div class="snj-footer__column snj-footer__column--company">
-          {% if section.settings.heading_company != blank %}
+        <div class="snj-footer__column">
+          {%- if section.settings.heading_company != blank -%}
             <p class="snj-footer__column-label">{{ section.settings.heading_company | escape }}</p>
-          {% endif %}
-          {% if section.settings.link_list_company != blank %}
+          {%- endif -%}
+          {%- if section.settings.link_list_company != blank -%}
             <ul class="snj-footer__link-list">
-              {% for link in linklists[section.settings.link_list_company].links %}
+              {%- for link in linklists[section.settings.link_list_company].links -%}
                 <li><a href="{{ link.url }}" class="snj-footer__link">{{ link.title | escape }}</a></li>
-              {% endfor %}
+              {%- endfor -%}
             </ul>
-          {% endif %}
+          {%- endif -%}
+        </div>
+
+      </div>
+
+      {%- comment -%} ── Get in touch (right side) ── {%- endcomment -%}
+      <div class="snj-footer__contact">
+        {%- if section.settings.heading_get_in_touch != blank -%}
+          <p class="snj-footer__column-label">{{ section.settings.heading_get_in_touch | escape }}</p>
+        {%- endif -%}
+
+        {%- assign has_social = false -%}
+        {%- if section.settings.facebook_url != blank or section.settings.pinterest_url != blank or section.settings.instagram_url != blank or section.settings.tiktok_url != blank -%}
+          {%- assign has_social = true -%}
+        {%- endif -%}
+
+        {%- if has_social -%}
+          <div class="snj-footer__social">
+            {%- if section.settings.facebook_url != blank -%}
+              <a href="{{ section.settings.facebook_url }}" class="snj-footer__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <img src="{{ 'frame.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.pinterest_url != blank -%}
+              <a href="{{ section.settings.pinterest_url }}" class="snj-footer__social-link" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
+                <img src="{{ 'frame-2.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.instagram_url != blank -%}
+              <a href="{{ section.settings.instagram_url }}" class="snj-footer__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                <img src="{{ 'frame-3.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.tiktok_url != blank -%}
+              <a href="{{ section.settings.tiktok_url }}" class="snj-footer__social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                <img src="{{ 'frame-4.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        <div class="snj-footer__media-info">
+          {%- if section.settings.media_email != blank -%}
+            <p class="snj-footer__media-email">{{ section.settings.media_email | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.media_description != blank -%}
+            <p class="snj-footer__media-desc">{{ section.settings.media_description | escape }}</p>
+          {%- endif -%}
         </div>
       </div>
 
-      {%- comment -%} ─── Disclaimer ─── {%- endcomment -%}
-      {% if section.settings.show_disclaimer and section.settings.disclaimer_text != blank %}
+      {%- comment -%} ── Disclaimer ── {%- endcomment -%}
+      {%- if section.settings.show_disclaimer and section.settings.disclaimer_text != blank -%}
         <div class="snj-footer__disclaimer">
           <svg class="snj-footer__disclaimer-icon" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
             <path d="M5 0V10" stroke="white" stroke-width="1.5"/>
@@ -140,80 +175,41 @@
           </svg>
           <p class="snj-footer__disclaimer-text">{{ section.settings.disclaimer_text | escape }}</p>
         </div>
-      {% endif %}
+      {%- endif -%}
 
-      {%- comment -%} ─── Get in touch ─── {%- endcomment -%}
-      <div class="snj-footer__contact">
-        {% if section.settings.heading_get_in_touch != blank %}
-          <p class="snj-footer__column-label">{{ section.settings.heading_get_in_touch | escape }}</p>
-        {% endif %}
-
-        <div class="snj-footer__social">
-          {% if section.settings.facebook_url != blank %}
-            <a href="{{ section.settings.facebook_url }}" class="snj-footer__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-              <img src="{{ 'frame.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
-            </a>
-          {% endif %}
-          {% if section.settings.pinterest_url != blank %}
-            <a href="{{ section.settings.pinterest_url }}" class="snj-footer__social-link" aria-label="Pinterest" target="_blank" rel="noopener noreferrer">
-              <img src="{{ 'frame-2.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
-            </a>
-          {% endif %}
-          {% if section.settings.instagram_url != blank %}
-            <a href="{{ section.settings.instagram_url }}" class="snj-footer__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-              <img src="{{ 'frame-3.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
-            </a>
-          {% endif %}
-          {% if section.settings.tiktok_url != blank %}
-            <a href="{{ section.settings.tiktok_url }}" class="snj-footer__social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
-              <img src="{{ 'frame-4.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
-            </a>
-          {% endif %}
-        </div>
-
-        <div class="snj-footer__media-info">
-          {% if section.settings.media_email != blank %}
-            <p class="snj-footer__media-email">{{ section.settings.media_email | escape }}</p>
-          {% endif %}
-          {% if section.settings.media_description != blank %}
-            <p class="snj-footer__media-desc">{{ section.settings.media_description | escape }}</p>
-          {% endif %}
-        </div>
-      </div>
-
-      {%- comment -%} ─── Legal (policies + copyright) ─── {%- endcomment -%}
+      {%- comment -%} ── Legal (policies + copyright) ── {%- endcomment -%}
       <div class="snj-footer__legal">
-        {% if section.settings.link_list_policies != blank %}
+        {%- if section.settings.link_list_policies != blank -%}
           <div class="snj-footer__policies">
-            {% for link in linklists[section.settings.link_list_policies].links %}
+            {%- for link in linklists[section.settings.link_list_policies].links -%}
               <a href="{{ link.url }}" class="snj-footer__policy-link">{{ link.title | escape }}</a>
-            {% endfor %}
+            {%- endfor -%}
           </div>
-        {% endif %}
-        {% if section.settings.copyright_text != blank %}
+        {%- endif -%}
+        {%- if section.settings.copyright_text != blank -%}
           <p class="snj-footer__copyright">{{ section.settings.copyright_text | escape }}</p>
-        {% endif %}
+        {%- endif -%}
       </div>
 
-      {%- comment -%} ─── Large ENHANCED logo ─── {%- endcomment -%}
+      {%- comment -%} ── Large footer logo ── {%- endcomment -%}
       <div class="snj-footer__large-logo">
-        {% if section.settings.footer_logo != blank %}
+        {%- if section.settings.footer_logo != blank -%}
           <img
-            src="{{ section.settings.footer_logo | image_url: width: 1400 }}"
+            src="{{ section.settings.footer_logo | image_url: width: 2000 }}"
             alt="{{ shop.name | escape }}"
             class="snj-footer__large-logo-img"
             loading="lazy"
           >
-        {% else %}
+        {%- else -%}
           <img
             src="{{ 'logos.svg' | asset_url }}"
             alt="{{ shop.name | escape }}"
-            class="snj-footer__large-logo-img snj-footer__large-logo-img--invert"
+            class="snj-footer__large-logo-img"
             loading="lazy"
-            width="346"
-            height="37"
+            width="150"
+            height="16"
           >
-        {% endif %}
+        {%- endif -%}
       </div>
 
     </div>
@@ -221,32 +217,33 @@
 </footer>
 
 {% stylesheet %}
-/* ============================================================
+/* ====================================================================
    SNJ Footer — Enhanced Redesign
-   Desktop: 12px radius, 32px padding, grid layout
-   Mobile: 8px radius, 16px/32px padding, flex column
-   ============================================================ */
+   Matches desktop Figma: 32px padding, 12px radius, grid layout
+   Mobile: stacked, 16px padding, 8px radius
+   ==================================================================== */
 
 .snj-footer {
-  color: #ffffff;
   font-family: var(--font-body--family);
   padding-top: var(--snj-footer-padding-top, 0px);
   padding-bottom: var(--snj-footer-padding-bottom, 0px);
 }
 
-/* ── Container with background image ── */
+/* ── Container ── */
 .snj-footer__container {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
   padding: 32px;
-  background-color: #0d0d1a;
+  background-color: #0a0a14;
 }
 
+/* ── Background image ── */
 .snj-footer__bg {
   position: absolute;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
 
 .snj-footer__bg-img {
@@ -256,40 +253,41 @@
   object-fit: cover;
 }
 
-/* ── Inner layout — CSS Grid on desktop ── */
+/* ── Inner grid layout ── */
 .snj-footer__inner {
   position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr auto;
-  row-gap: 54px;
+  row-gap: 48px;
+  column-gap: 40px;
   grid-template-areas:
-    "nav contact"
+    "nav     contact"
     "disclaimer disclaimer"
-    "legal legal"
-    "logo logo";
+    "legal   legal"
+    "logo    logo";
 }
 
-/* ── Navigation columns ── */
+/* ── Navigation columns (left side) ── */
 .snj-footer__nav-columns {
   grid-area: nav;
   display: flex;
-  gap: 64px;
+  gap: 80px;
+  align-items: flex-start;
 }
 
 .snj-footer__column {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  overflow: hidden;
+  gap: 20px;
 }
 
 .snj-footer__column-label {
   font-family: var(--font-body--family);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 400;
-  line-height: 17px;
-  letter-spacing: -0.56px;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
   color: #A6A6A6;
   margin: 0;
 }
@@ -298,36 +296,35 @@
 .snj-footer__brand-logos {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 .snj-footer__brand-logo-link {
   display: block;
   text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 .snj-footer__brand-logo-link:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
+/* All brand logos are displayed white-on-dark — invert black/colored assets to white */
 .snj-footer__brand-logo-img {
   display: block;
   height: auto;
-  max-width: 175px;
-}
-
-.snj-footer__brand-logo-img--invert {
+  max-width: 160px;
   filter: brightness(0) invert(1);
 }
 
-/* ── Company links ── */
+/* ── Company nav links ── */
 .snj-footer__link-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 
 .snj-footer__link-list li {
@@ -339,29 +336,30 @@
   font-family: var(--font-body--family);
   font-size: 14px;
   font-weight: 500;
-  line-height: 17px;
+  line-height: 1.2;
   color: #ffffff;
   text-decoration: none;
   display: block;
+  transition: opacity 0.2s ease;
 }
 
 .snj-footer__link:hover {
   opacity: 0.7;
 }
 
-/* ── Contact / Get in touch ── */
+/* ── Get in touch (right side) ── */
 .snj-footer__contact {
   grid-area: contact;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  overflow: hidden;
+  gap: 20px;
+  align-items: flex-start;
 }
 
 .snj-footer__social {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
 }
 
 .snj-footer__social-link {
@@ -370,8 +368,8 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  color: #ffffff;
   text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 .snj-footer__social-link:hover {
@@ -387,14 +385,14 @@
 .snj-footer__media-info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .snj-footer__media-email {
   font-family: var(--font-body--family);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 16px;
+  line-height: 1.3;
   color: #ffffff;
   margin: 0;
 }
@@ -403,8 +401,8 @@
   font-family: var(--font-body--family);
   font-size: 12px;
   font-weight: 400;
-  line-height: 17px;
-  color: #ffffff;
+  line-height: 1.4;
+  color: #A6A6A6;
   margin: 0;
 }
 
@@ -412,21 +410,22 @@
 .snj-footer__disclaimer {
   grid-area: disclaimer;
   display: flex;
-  align-items: center;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .snj-footer__disclaimer-icon {
   flex-shrink: 0;
   width: 10px;
   height: 10px;
+  margin-top: 3px;
 }
 
 .snj-footer__disclaimer-text {
   font-family: var(--font-body--family);
   font-size: 12px;
   font-weight: 400;
-  line-height: 17px;
+  line-height: 1.5;
   color: #ffffff;
   margin: 0;
 }
@@ -436,50 +435,49 @@
   grid-area: legal;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
 }
 
 .snj-footer__policies {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 4px 16px;
 }
 
 .snj-footer__policy-link {
   font-family: var(--font-body--family);
   font-size: 12px;
   font-weight: 400;
-  line-height: 12px;
-  color: #E4E4E4;
+  line-height: 1.4;
+  color: #A6A6A6;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 .snj-footer__policy-link:hover {
-  opacity: 0.7;
+  color: #ffffff;
 }
 
 .snj-footer__copyright {
   font-family: var(--font-body--family);
   font-size: 12px;
   font-weight: 400;
-  line-height: 12px;
-  color: #E4E4E4;
+  line-height: 1.4;
+  color: #A6A6A6;
   margin: 0;
 }
 
-/* ── Large logo ── */
+/* ── Large footer logo ── */
 .snj-footer__large-logo {
   grid-area: logo;
   overflow: hidden;
 }
 
+/* Always invert to white — footer is always on a dark background */
 .snj-footer__large-logo-img {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.snj-footer__large-logo-img--invert {
   filter: brightness(0) invert(1);
 }
 
@@ -487,46 +485,43 @@
 @media screen and (max-width: 749px) {
   .snj-footer__container {
     border-radius: 8px;
-    padding: 16px 16px 32px 16px;
+    padding: 20px 16px 24px;
   }
 
   .snj-footer__inner {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-  }
-
-  .snj-footer__nav-columns {
-    order: 1;
     gap: 32px;
   }
 
-  .snj-footer__disclaimer {
-    order: 2;
-    gap: 8px;
+  .snj-footer__nav-columns {
+    gap: 32px;
+    flex-wrap: wrap;
   }
 
   .snj-footer__contact {
-    order: 3;
-    gap: 12px;
+    gap: 16px;
+  }
+
+  .snj-footer__social {
+    gap: 20px;
+  }
+
+  .snj-footer__media-email {
+    font-size: 13px;
   }
 
   .snj-footer__legal {
-    order: 4;
-    padding-top: 16px;
+    gap: 6px;
   }
 
-  .snj-footer__large-logo {
-    order: 5;
+  .snj-footer__policies {
+    gap: 4px 12px;
   }
 
-  .snj-footer__policy-link {
-    color: #ffffff;
-  }
-
+  .snj-footer__policy-link,
   .snj-footer__copyright {
-    color: #ffffff;
-    line-height: 17px;
+    color: #A6A6A6;
   }
 }
 {% endstylesheet %}
