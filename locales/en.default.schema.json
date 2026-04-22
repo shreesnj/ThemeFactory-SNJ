@@ -932,6 +932,8 @@
     "newsletter_heading": "Newsletter heading",
     "show_newsletter": "Show newsletter signup",
     "show_payment_icons": "Show payment icons",
+    "show_disclaimer": "Show disclaimer",
+    "link_list_policies": "Policy links menu",
     "gap": "Gap",
     // CSS Y-axis transform setting for vertical positioning (legacy/unused)
     "geometric_translate_y": "Geometric translate Y",
