@@ -1,0 +1,531 @@
+{% liquid
+  assign bg_image = section.settings.background_image
+%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--full-width site-footer-content color-{{ section.settings.color_scheme }} spacing-style"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="site-footer-content__inner">
+    {%- if bg_image != blank -%}
+      <div class="site-footer-content__bg">
+        {%- liquid
+          assign sizes_val = '100vw'
+        -%}
+        {{
+          bg_image
+          | image_url: width: bg_image.width
+          | image_tag:
+            sizes: sizes_val,
+            widths: '375,750,1100,1420',
+            loading: 'lazy',
+            class: 'site-footer-content__bg-image',
+            alt: bg_image.alt
+        }}
+      </div>
+    {%- endif -%}
+
+    <div class="site-footer-content__content">
+      <div class="site-footer-content__nav">
+        <div class="site-footer-content__nav-col">
+          <p class="site-footer-content__nav-label">Explore products</p>
+          <div class="site-footer-content__nav-links">
+            {%- if section.settings.product_1_svg != blank -%}
+              <a
+                {%- if section.settings.product_1_link != blank %}
+                  href="{{ section.settings.product_1_link }}"
+                {%- endif %}
+                class="site-footer-content__product-link"
+              >
+                <img
+                  src="{{ section.settings.product_1_svg | asset_url }}"
+                  alt="Product 1"
+                  class="site-footer-content__product-logo"
+                  loading="lazy"
+                >
+              </a>
+            {%- endif -%}
+            {%- if section.settings.product_2_svg != blank -%}
+              <a
+                {%- if section.settings.product_2_link != blank %}
+                  href="{{ section.settings.product_2_link }}"
+                {%- endif %}
+                class="site-footer-content__product-link"
+              >
+                <img
+                  src="{{ section.settings.product_2_svg | asset_url }}"
+                  alt="Product 2"
+                  class="site-footer-content__product-logo"
+                  loading="lazy"
+                >
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- if section.settings.company_menu != blank -%}
+          <div class="site-footer-content__nav-col">
+            <p class="site-footer-content__nav-label">Company</p>
+            <div class="site-footer-content__nav-links">
+              {%- for link in section.settings.company_menu.links -%}
+                <a href="{{ link.url }}" class="site-footer-content__nav-link">{{ link.title | escape }}</a>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+        <div class="site-footer-content__nav-col">
+          <p class="site-footer-content__nav-label">Get in touch</p>
+          <div class="site-footer-content__social-links">
+            {%- if section.settings.social_1_svg != blank -%}
+              <a href="#" class="site-footer-content__social-link" aria-label="Social link 1">
+                <img src="{{ section.settings.social_1_svg | asset_url }}" alt="" role="presentation" width="20" height="20" loading="lazy">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.social_2_svg != blank -%}
+              <a href="#" class="site-footer-content__social-link" aria-label="Social link 2">
+                <img src="{{ section.settings.social_2_svg | asset_url }}" alt="" role="presentation" width="20" height="20" loading="lazy">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.social_3_svg != blank -%}
+              <a href="#" class="site-footer-content__social-link" aria-label="Social link 3">
+                <img src="{{ section.settings.social_3_svg | asset_url }}" alt="" role="presentation" width="20" height="20" loading="lazy">
+              </a>
+            {%- endif -%}
+            {%- if section.settings.social_4_svg != blank -%}
+              <a href="#" class="site-footer-content__social-link" aria-label="Social link 4">
+                <img src="{{ section.settings.social_4_svg | asset_url }}" alt="" role="presentation" width="20" height="20" loading="lazy">
+              </a>
+            {%- endif -%}
+          </div>
+          {%- if section.settings.contact_email != blank -%}
+            <div class="site-footer-content__contact">
+              <a href="mailto:{{ section.settings.contact_email }}" class="site-footer-content__email">{{ section.settings.contact_email | escape }}</a>
+              {%- if section.settings.contact_note != blank -%}
+                <p class="site-footer-content__contact-note">{{ section.settings.contact_note | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if section.settings.disclaimer != blank -%}
+        <div class="site-footer-content__disclaimer">
+          <span class="site-footer-content__disclaimer-icon" aria-hidden="true">●</span>
+          <p class="site-footer-content__disclaimer-text">{{ section.settings.disclaimer | escape }}</p>
+        </div>
+      {%- endif -%}
+
+      <div class="site-footer-content__legal">
+        {%- if section.settings.policy_menu != blank -%}
+          <div class="site-footer-content__policies">
+            {%- for link in section.settings.policy_menu.links -%}
+              <a href="{{ link.url }}" class="site-footer-content__policy-link">{{ link.title | escape }}</a>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.copyright_text != blank -%}
+          <p class="site-footer-content__copyright">{{ section.settings.copyright_text | escape }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.logo_svg != blank -%}
+        <div class="site-footer-content__brand-logo">
+          <img
+            src="{{ section.settings.logo_svg | asset_url }}"
+            alt="{{ shop.name }}"
+            class="site-footer-content__brand-logo-img"
+            loading="lazy"
+          >
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .site-footer-content {
+    padding: 10px;
+  }
+
+  .site-footer-content__inner {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 32px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .site-footer-content__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .site-footer-content__bg-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .site-footer-content__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .site-footer-content__nav {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+  }
+
+  .site-footer-content__nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+  }
+
+  .site-footer-content__nav-label {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.56px;
+    color: #A6A6A6;
+    margin: 0;
+  }
+
+  .site-footer-content__nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow: hidden;
+  }
+
+  .site-footer-content__product-link {
+    display: block;
+  }
+
+  .site-footer-content__product-logo {
+    height: 14px;
+    width: auto;
+    display: block;
+  }
+
+  .site-footer-content__nav-link {
+    font-family: var(--font-body--family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-footer-content__nav-link:hover {
+    opacity: 0.8;
+  }
+
+  .site-footer-content__social-links {
+    display: flex;
+    gap: 32px;
+    justify-content: flex-end;
+  }
+
+  .site-footer-content__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-footer-content__social-link:hover {
+    opacity: 0.8;
+  }
+
+  .site-footer-content__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .site-footer-content__email {
+    font-family: var(--font-body--family);
+    font-weight: 500;
+    font-size: var(--font-size--base);
+    line-height: 16px;
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+
+  .site-footer-content__email:hover {
+    text-decoration: underline;
+  }
+
+  .site-footer-content__contact-note {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .site-footer-content__disclaimer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .site-footer-content__disclaimer-icon {
+    color: #FFFFFF;
+    font-size: 10px;
+  }
+
+  .site-footer-content__disclaimer-text {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .site-footer-content__legal {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .site-footer-content__policies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    overflow: hidden;
+  }
+
+  .site-footer-content__policy-link {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #E4E4E4;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-footer-content__policy-link:hover {
+    opacity: 0.8;
+  }
+
+  .site-footer-content__copyright {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #E4E4E4;
+    margin: 0;
+  }
+
+  .site-footer-content__brand-logo {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .site-footer-content__brand-logo-img {
+    width: 100%;
+    max-width: 1356px;
+    height: auto;
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .site-footer-content__inner {
+      padding: 24px 16px;
+    }
+
+    .site-footer-content__nav {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .site-footer-content__social-links {
+      justify-content: flex-start;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.site_footer_content",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "text",
+      "id": "product_1_svg",
+      "label": "Product 1 logo filename",
+      "default": "longer-black-5-desktop-I10713190146324282.png"
+    },
+    {
+      "type": "url",
+      "id": "product_1_link",
+      "label": "Product 1 link"
+    },
+    {
+      "type": "text",
+      "id": "product_2_svg",
+      "label": "Product 2 logo filename",
+      "default": "stronger-black-3-desktop-I10713190146324283.png"
+    },
+    {
+      "type": "url",
+      "id": "product_2_link",
+      "label": "Product 2 link"
+    },
+    {
+      "type": "header",
+      "content": "t:content.navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "company_menu",
+      "label": "Company menu"
+    },
+    {
+      "type": "header",
+      "content": "t:content.social_media"
+    },
+    {
+      "type": "text",
+      "id": "social_1_svg",
+      "label": "Social icon 1 filename",
+      "default": "frame.svg"
+    },
+    {
+      "type": "text",
+      "id": "social_2_svg",
+      "label": "Social icon 2 filename",
+      "default": "frame-2.svg"
+    },
+    {
+      "type": "text",
+      "id": "social_3_svg",
+      "label": "Social icon 3 filename",
+      "default": "frame-3.svg"
+    },
+    {
+      "type": "text",
+      "id": "social_4_svg",
+      "label": "Social icon 4 filename",
+      "default": "frame-4.svg"
+    },
+    {
+      "type": "header",
+      "content": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email",
+      "default": "media@enhanced.com"
+    },
+    {
+      "type": "text",
+      "id": "contact_note",
+      "label": "Contact note",
+      "default": "Important: For media enquiries or interview requests only."
+    },
+    {
+      "type": "header",
+      "content": "Legal"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "The Product is not a medicinal product and does not diagnose, treat, cure, or prevent disease."
+    },
+    {
+      "type": "link_list",
+      "id": "policy_menu",
+      "label": "Policy menu"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright",
+      "default": "© 2025 Enhanced. All Rights Reserved \"Enhanced\" and \"Enhanced Games\" are registered trademarks of Enhanced Ltd."
+    },
+    {
+      "type": "header",
+      "content": "Brand logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_svg",
+      "label": "Logo SVG filename",
+      "default": "logos-2.svg"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.site_footer_content",
+      "category": "t:categories.footer"
+    }
+  ]
+}
+{% endschema %}

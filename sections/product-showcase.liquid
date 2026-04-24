@@ -1,0 +1,445 @@
+{% liquid
+  assign heading_subtitle = section.settings.heading_subtitle
+  assign heading = section.settings.heading
+%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--{{ section.settings.section_width }} product-showcase color-{{ section.settings.color_scheme }} spacing-style"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="product-showcase__header">
+    {%- if heading_subtitle != blank -%}
+      <p class="product-showcase__subtitle">{{ heading_subtitle | escape }}</p>
+    {%- endif -%}
+    {%- if heading != blank -%}
+      <h2 class="product-showcase__heading">{{ heading | escape }}</h2>
+    {%- endif -%}
+  </div>
+
+  <div class="product-showcase__grid">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'product-card' -%}
+        <div
+          class="product-showcase__card{% if block.settings.is_featured %} product-showcase__card--featured{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.image != blank -%}
+            <div class="product-showcase__card-image">
+              {%- liquid
+                assign sizes_val = '(min-width: 990px) 33vw, 100vw'
+              -%}
+              {{
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag:
+                  sizes: sizes_val,
+                  widths: '375,550,750,1100',
+                  loading: 'lazy',
+                  class: 'product-showcase__image',
+                  alt: block.settings.image.alt
+              }}
+            </div>
+          {%- endif -%}
+
+          <div class="product-showcase__card-content">
+            {%- if block.settings.logo_image != blank -%}
+              <div class="product-showcase__card-logo">
+                {{
+                  block.settings.logo_image
+                  | image_url: width: block.settings.logo_image.width
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'product-showcase__logo-img',
+                    alt: block.settings.logo_image.alt
+                }}
+              </div>
+            {%- elsif block.settings.logo_asset != blank -%}
+              <div class="product-showcase__card-logo">
+                <img
+                  src="{{ block.settings.logo_asset | asset_url }}"
+                  alt=""
+                  role="presentation"
+                  class="product-showcase__logo-img"
+                  loading="lazy"
+                >
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="product-showcase__description">{{ block.settings.description | escape }}</p>
+            {%- endif -%}
+
+            <div class="product-showcase__pricing">
+              <div class="product-showcase__prices">
+                {%- if block.settings.original_price != blank -%}
+                  <s class="product-showcase__original-price">{{ block.settings.original_price | escape }}</s>
+                {%- endif -%}
+                {%- if block.settings.sale_price != blank -%}
+                  <span class="product-showcase__sale-price">{{ block.settings.sale_price | escape }}</span>
+                {%- endif -%}
+              </div>
+              {%- if block.settings.discount_text != blank -%}
+                <span class="product-showcase__discount-badge">{{ block.settings.discount_text | escape }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+
+          {%- if block.settings.button_label != blank -%}
+            <a
+              {%- if block.settings.button_link != blank %}
+                href="{{ block.settings.button_link }}"
+              {%- endif %}
+              class="product-showcase__button"
+            >
+              {{- block.settings.button_label | escape -}}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .product-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .product-showcase__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .product-showcase__subtitle {
+    font-family: var(--font-body--family);
+    font-style: var(--font-body--style);
+    font-weight: 500;
+    font-size: var(--font-size--base);
+    line-height: 1;
+    text-transform: uppercase;
+    margin: 0;
+    color: var(--color-foreground);
+  }
+
+  .product-showcase__heading {
+    font-family: var(--font-heading--family);
+    font-style: var(--font-heading--style);
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: -1.2px;
+    margin: 0;
+    color: var(--color-foreground);
+  }
+
+  .product-showcase__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .product-showcase__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px 12px 16px 12px;
+    border-radius: 12px;
+    border: 1px solid #E4E4E4;
+    background-color: transparent;
+  }
+
+  .product-showcase__card--featured {
+    border-color: var(--color-accent);
+    background-color: #F9F9F9;
+  }
+
+  .product-showcase__card-image {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .product-showcase__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .product-showcase__card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .product-showcase__card-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .product-showcase__logo-img {
+    height: 16px;
+    width: auto;
+    display: block;
+  }
+
+  .product-showcase__description {
+    font-family: var(--font-body--family);
+    font-style: var(--font-body--style);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4D4D4D;
+    margin: 0;
+  }
+
+  .product-showcase__pricing {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .product-showcase__prices {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .product-showcase__original-price {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: var(--font-size--xl);
+    line-height: 28px;
+    color: #A6A6A6;
+    text-decoration: line-through;
+  }
+
+  .product-showcase__sale-price {
+    font-family: var(--font-body--family);
+    font-weight: 700;
+    font-size: var(--font-size--xl);
+    line-height: 28px;
+    color: var(--color-foreground);
+  }
+
+  .product-showcase__discount-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 24px;
+    background-color: #DAE1FC;
+    font-family: var(--font-body--family);
+    font-weight: 500;
+    font-size: var(--font-size--base);
+    line-height: 18px;
+    color: var(--color-accent);
+  }
+
+  .product-showcase__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 40px;
+    border-radius: 24px;
+    background-color: var(--color-accent);
+    color: #FFFFFF;
+    font-family: var(--font-body--family);
+    font-weight: 700;
+    font-size: var(--font-size--base);
+    line-height: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    min-height: 48px;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+  }
+
+  .product-showcase__button:hover {
+    opacity: 0.9;
+  }
+
+  @media screen and (max-width: 989px) {
+    .product-showcase__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .product-showcase__heading {
+      font-size: 32px;
+      line-height: 35px;
+      letter-spacing: -0.96px;
+    }
+
+    .product-showcase__subtitle {
+      font-size: 14px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_showcase",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_subtitle",
+      "label": "Subtitle",
+      "default": "Our Products"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Performance Essentials, Engineered for Results"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product-card",
+      "name": "t:names.product_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.image"
+        },
+        {
+          "type": "text",
+          "id": "logo_asset",
+          "label": "Logo asset filename"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo image"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "original_price",
+          "label": "Original price"
+        },
+        {
+          "type": "text",
+          "id": "sale_price",
+          "label": "Sale price"
+        },
+        {
+          "type": "text",
+          "id": "discount_text",
+          "label": "Discount text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_featured",
+          "label": "Featured card",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_showcase",
+      "category": "t:categories.products",
+      "blocks": [
+        {
+          "type": "product-card",
+          "settings": {
+            "is_featured": true,
+            "description": "Custom daily supplement granules tailored to your goals and biology.",
+            "original_price": "$199",
+            "sale_price": "$99",
+            "discount_text": "50% OFF",
+            "button_label": "CREATE YOUR FORMULA"
+          }
+        },
+        {
+          "type": "product-card",
+          "settings": {
+            "description": "A longevity formula designed to support healthy aging and cellular function.",
+            "original_price": "$189",
+            "sale_price": "$89",
+            "discount_text": "50% OFF",
+            "button_label": "ADD TO CART"
+          }
+        },
+        {
+          "type": "product-card",
+          "settings": {
+            "description": "A performance formula designed to support strength, power, and recovery.",
+            "original_price": "$169",
+            "sale_price": "$69",
+            "discount_text": "50% OFF",
+            "button_label": "ADD TO CART"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

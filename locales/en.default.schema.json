@@ -434,7 +434,13 @@
     "video_section": "Video",
     "view_all_button": "View all",
     "pills": "Pills",
-    "comparison_slider": "Comparison slider"
+    "comparison_slider": "Comparison slider",
+    "product_showcase": "Product showcase",
+    "product_features": "Product features",
+    "athlete_testimonials": "Athlete testimonials",
+    "site_footer_content": "Footer content",
+    "feature_card": "Feature card",
+    "athlete_card": "Athlete card"
   },
   "options": {
     "above_carousel": "Above carousel",
