@@ -3,42 +3,52 @@
     "hero_main": {
       "type": "hero",
       "blocks": {
-        "subtitle": {
-          "type": "text",
-          "settings": {
-            "text": "<p>OUR PRODUCTS</p>",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "uppercase",
-            "wrap": "pretty",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "color": "var(--color-foreground)"
-          }
-        },
         "heading": {
           "type": "text",
           "settings": {
-            "text": "<p>OPTIMIZED BY SCIENCE, VALIDATED BY ATHLETES</p>",
+            "text": "<p>REIMAGINING HUMAN POTENTIAL.</p>",
             "type_preset": "h1",
             "max_width": "narrow",
             "color": "var(--color-foreground-heading)"
           }
         },
-        "button": {
-          "type": "button",
+        "subtext": {
+          "type": "text",
           "settings": {
-            "label": "LEARN MORE",
-            "style_class": "button",
-            "width": "fit-content"
+            "text": "<p>A custom formula designed to help you exceed your potential.</p>",
+            "type_preset": "paragraph",
+            "color": "var(--color-foreground)"
           }
+        },
+        "button_group": {
+          "type": "group",
+          "settings": {
+            "content_direction": "row",
+            "gap": 16,
+            "width": "fit-content"
+          },
+          "blocks": {
+            "button_primary": {
+              "type": "button",
+              "settings": {
+                "label": "CREATE YOUR FORMULA",
+                "style_class": "button",
+                "width": "fit-content"
+              }
+            },
+            "button_secondary": {
+              "type": "button",
+              "settings": {
+                "label": "Shop Performance",
+                "style_class": "button-secondary",
+                "width": "fit-content"
+              }
+            }
+          },
+          "block_order": ["button_primary", "button_secondary"]
         }
       },
-      "block_order": ["subtitle", "heading", "button"],
+      "block_order": ["heading", "subtext", "button_group"],
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/frame-1086830-desktop-46023957.png",
@@ -48,9 +58,9 @@
         "image_1_mobile": "shopify://shop_images/frame-1086823-mobile-46024135.png",
         "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 16,
+        "gap": 14,
         "section_width": "full-width",
         "section_height": "full-screen",
         "color_scheme": "scheme-6",
@@ -68,7 +78,7 @@
           "type": "icon",
           "settings": {
             "icon": "none",
-            "image_upload": "shopify://shop_images/logo-01-1-desktop-46023975.png",
+            "image_upload": "shopify://shop_images/logo-01-1-mobile-46024151.png",
             "width": 160
           }
         },
@@ -76,7 +86,7 @@
           "type": "icon",
           "settings": {
             "icon": "none",
-            "image_upload": "shopify://shop_images/logo-02-1-desktop-46023974.png",
+            "image_upload": "shopify://shop_images/logo-02-1-mobile-46024150.png",
             "width": 160
           }
         },
@@ -84,7 +94,7 @@
           "type": "icon",
           "settings": {
             "icon": "none",
-            "image_upload": "shopify://shop_images/logo-03-1-desktop-46023973.png",
+            "image_upload": "shopify://shop_images/logo-03-1-mobile-46024149.png",
             "width": 160
           }
         },
@@ -92,7 +102,7 @@
           "type": "icon",
           "settings": {
             "icon": "none",
-            "image_upload": "shopify://shop_images/logo-04-1-desktop-46023972.png",
+            "image_upload": "shopify://shop_images/logo-04-1-mobile-46024148.png",
             "width": 160
           }
         },
@@ -100,7 +110,7 @@
           "type": "icon",
           "settings": {
             "icon": "none",
-            "image_upload": "shopify://shop_images/logo-05-1-desktop-46023971.png",
+            "image_upload": "shopify://shop_images/logo-05-1-mobile-46024147.png",
             "width": 160
           }
         },
@@ -108,7 +118,7 @@
           "type": "icon",
           "settings": {
             "icon": "none",
-            "image_upload": "shopify://shop_images/logo-06-1-desktop-46023970.png",
+            "image_upload": "shopify://shop_images/logo-06-1-mobile-46024146.png",
             "width": 160
           }
         }
@@ -139,6 +149,14 @@
             "width": "fit-content"
           }
         },
+        "icon_1": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image_upload": "shopify://shop_images/longer-white-3-mobile-61928596.png",
+            "width": 18
+          }
+        },
         "text_2": {
           "type": "text",
           "settings": {
@@ -151,6 +169,14 @@
             "case": "uppercase",
             "wrap": "nowrap",
             "width": "fit-content"
+          }
+        },
+        "icon_2": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image_upload": "shopify://shop_images/longer-white-3-mobile-61928596.png",
+            "width": 18
           }
         },
         "text_3": {
@@ -167,6 +193,14 @@
             "width": "fit-content"
           }
         },
+        "icon_3": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image_upload": "shopify://shop_images/longer-white-3-mobile-61928596.png",
+            "width": 18
+          }
+        },
         "text_4": {
           "type": "text",
           "settings": {
@@ -179,6 +213,14 @@
             "case": "uppercase",
             "wrap": "nowrap",
             "width": "fit-content"
+          }
+        },
+        "icon_4": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image_upload": "shopify://shop_images/longer-white-3-mobile-61928596.png",
+            "width": 18
           }
         },
         "text_5": {
@@ -196,13 +238,13 @@
           }
         }
       },
-      "block_order": ["text_1", "text_2", "text_3", "text_4", "text_5"],
+      "block_order": ["text_1", "icon_1", "text_2", "icon_2", "text_3", "icon_3", "text_4", "icon_4", "text_5"],
       "settings": {
         "movement_direction": "reverse",
         "color_scheme": "scheme-5",
         "padding-block-start": 16,
         "padding-block-end": 16,
-        "gap_between_elements": 48
+        "gap_between_elements": 20
       }
     },
     "product_showcase": {
@@ -211,7 +253,7 @@
         "card_1": {
           "type": "product-card",
           "settings": {
-            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024030.png",
+            "image": "shopify://shop_images/image-4-desktop-44123542.png",
             "logo_asset": "liveenhanced-1.svg",
             "is_featured": true,
             "description": "Custom daily supplement granules tailored to your goals and biology.",
@@ -224,8 +266,8 @@
         "card_2": {
           "type": "product-card",
           "settings": {
-            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024048.png",
-            "logo_image": "shopify://shop_images/longer-black-5-desktop-I4602395546325340.png",
+            "image": "shopify://shop_images/image-4-mobile-46024171.png",
+            "logo_image": "shopify://shop_images/longer-black-5-mobile-46024173.png",
             "description": "A longevity formula designed to support healthy aging and cellular function.",
             "original_price": "$189",
             "sale_price": "$89",
@@ -236,8 +278,8 @@
         "card_3": {
           "type": "product-card",
           "settings": {
-            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024065.png",
-            "logo_image": "shopify://shop_images/stronger-black-3-desktop-I4602395546325341.png",
+            "image": "shopify://shop_images/image-4-mobile-46024183.png",
+            "logo_image": "shopify://shop_images/stronger-black-3-mobile-46024185.png",
             "description": "A performance formula designed to support strength, power, and recovery.",
             "original_price": "$169",
             "sale_price": "$69",
@@ -303,7 +345,7 @@
         "feature_1": {
           "type": "feature-card",
           "settings": {
-            "image": "shopify://shop_images/image-4-desktop-44123542.png",
+            "image": "shopify://shop_images/gemini-generated-image-uagn3quagn3quagn-copy-2-mobile-46024136.png",
             "logo_asset": "liveenhanced-1.svg",
             "tags": "Precision, Tailored, Optimized",
             "description": "A custom formula personalized to your needs, built to help you operate beyond perceived.",
@@ -313,8 +355,8 @@
         "feature_2": {
           "type": "feature-card",
           "settings": {
-            "image": "shopify://shop_images/image-4-desktop-44123554.png",
-            "logo_image": "shopify://shop_images/longer-black-5-desktop-I4602395546325340.png",
+            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-mobile-46024233.png",
+            "logo_image": "shopify://shop_images/longer-black-5-mobile-46024173.png",
             "tags": "Cellular, Metabolic, Aging",
             "description": "A longevity formula designed to support healthy aging and cellular function.",
             "button_label": "SHOP LONGER"
@@ -323,8 +365,8 @@
         "feature_3": {
           "type": "feature-card",
           "settings": {
-            "image": "shopify://shop_images/image-4-desktop-44123566.png",
-            "logo_image": "shopify://shop_images/stronger-black-3-desktop-I4602395546325341.png",
+            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024065.png",
+            "logo_image": "shopify://shop_images/stronger-black-3-mobile-46024185.png",
             "tags": "Strength, Endurance, Recovery",
             "description": "A performance formula designed to support strength, power, and recovery.",
             "button_label": "SHOP STRONGER"
@@ -345,7 +387,7 @@
         "athlete_1": {
           "type": "athlete-card",
           "settings": {
-            "image": "shopify://shop_images/athlete-desktop-46321374.png",
+            "image": "shopify://shop_images/athlete-mobile-46320969.png",
             "quote": "“I’m always looking for good, wholesome fuel, to make me feel good and strong.”",
             "name": "John Smith",
             "role": "Swimmer"
@@ -354,7 +396,7 @@
         "athlete_2": {
           "type": "athlete-card",
           "settings": {
-            "image": "shopify://shop_images/athlete-desktop-46321375.png",
+            "image": "shopify://shop_images/athlete-mobile-46320970.png",
             "quote": "“I’m always looking for good, wholesome fuel, to make me feel good and strong.”",
             "name": "Jane Smith",
             "role": "Swimmer"
@@ -363,7 +405,7 @@
         "athlete_3": {
           "type": "athlete-card",
           "settings": {
-            "image": "shopify://shop_images/athlete-desktop-46321376.png",
+            "image": "shopify://shop_images/athlete-mobile-46320971.png",
             "quote": "“I’m always looking for good, wholesome fuel, to make me feel good and strong.”",
             "name": "John Smith",
             "role": "Swimmer"
@@ -372,7 +414,7 @@
         "athlete_4": {
           "type": "athlete-card",
           "settings": {
-            "image": "shopify://shop_images/athlete-desktop-46321377.png",
+            "image": "shopify://shop_images/athlete-mobile-46320972.png",
             "quote": "“I’m always looking for good, wholesome fuel, to make me feel good and strong.”",
             "name": "Jane Smith",
             "role": "Swimmer"
@@ -502,7 +544,7 @@
               "block_order": ["text"]
             }
           },
-          "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5"]
+          "block_order": ["row_3", "row_2", "row_1", "row_5", "row_4"]
         },
         "faq_button": {
           "type": "button",
@@ -517,7 +559,7 @@
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
-        "horizontal_alignment_flex_direction_column": "flex-start",
+        "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "center",
         "gap": 32,
         "section_width": "page-width",
@@ -536,7 +578,7 @@
           "static": true,
           "settings": {
             "media_type": "image",
-            "image": "shopify://shop_images/chatgpt-image-jan-13-2026-01-53-41-pm-copy-1-desktop-46321410.png",
+            "image": "shopify://shop_images/chatgpt-image-jan-13-2026-01-53-41-pm-copy-1-mobile-46321002.png",
             "image_position": "cover"
           }
         },
@@ -549,19 +591,19 @@
             "gap": 24
           },
           "blocks": {
-            "caption": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Enhanced Living</p>",
-                "type_preset": "h6"
-              }
-            },
             "heading": {
               "type": "text",
               "settings": {
-                "text": "<p>Your Path to Living an Enhanced Life Starts Here.</p>",
+                "text": "<p>Your Path to Living an  Enhanced Life Starts Here.</p>",
                 "type_preset": "h3",
                 "color": "var(--color-primary)"
+              }
+            },
+            "description": {
+              "type": "text",
+              "settings": {
+                "text": "<p>A custom formula designed to help you exceed your potential.</p>",
+                "type_preset": "paragraph"
               }
             },
             "button": {
@@ -573,7 +615,7 @@
               }
             }
           },
-          "block_order": ["caption", "heading", "button"]
+          "block_order": ["heading", "description", "button"]
         }
       },
       "settings": {
@@ -581,7 +623,7 @@
         "media_width": "medium",
         "media_height": "60svh",
         "section_width": "full-width",
-        "color_scheme": "scheme-4",
+        "color_scheme": "scheme-2",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
