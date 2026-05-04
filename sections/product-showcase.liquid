@@ -1,0 +1,461 @@
+<div class="color-{{ section.settings.color_scheme }}">
+  <div
+    class="product-showcase section--{{ section.settings.section_width }}"
+    style="
+      --padding-block-start: {{ section.settings.padding-block-start }}px;
+      --padding-block-end: {{ section.settings.padding-block-end }}px;
+    "
+  >
+    <div class="product-showcase__header">
+      {% if section.settings.subtitle != blank %}
+        <p class="product-showcase__subtitle">{{ section.settings.subtitle | escape }}</p>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="product-showcase__heading">{{ section.settings.heading | escape }}</h2>
+      {% endif %}
+    </div>
+
+    <div class="product-showcase__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'product-card' %}
+          <div
+            class="product-showcase__card{% if block.settings.featured %} product-showcase__card--featured{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.image != blank %}
+              <div class="product-showcase__card-image">
+                {{
+                  block.settings.image
+                  | image_url: width: block.settings.image.width
+                  | image_tag:
+                    sizes: '(min-width: 990px) 405px, (min-width: 750px) 50vw, 100vw',
+                    widths: '334,405,550,750',
+                    loading: 'lazy',
+                    alt: block.settings.image.alt
+                }}
+              </div>
+            {% endif %}
+
+            <div class="product-showcase__card-info">
+              {% if block.settings.logo_svg != blank %}
+                <img
+                  src="{{ block.settings.logo_svg | asset_url }}"
+                  alt="{{ block.settings.logo_svg | remove: '.svg' | remove: '.png' | replace: '-', ' ' }}"
+                  class="product-showcase__card-logo"
+                  loading="lazy"
+                  width="155"
+                  height="16"
+                />
+              {% elsif block.settings.logo_image != blank %}
+                {{
+                  block.settings.logo_image
+                  | image_url: width: 200
+                  | image_tag:
+                    class: 'product-showcase__card-logo',
+                    loading: 'lazy',
+                    alt: block.settings.logo_image.alt
+                }}
+              {% endif %}
+
+              {% if block.settings.description != blank %}
+                <p class="product-showcase__card-description">{{ block.settings.description }}</p>
+              {% endif %}
+
+              <div class="product-showcase__card-pricing">
+                <div class="product-showcase__card-prices">
+                  {% if block.settings.compare_price != blank %}
+                    <span class="product-showcase__card-compare-price">{{ block.settings.compare_price }}</span>
+                  {% endif %}
+                  {% if block.settings.price != blank %}
+                    <span class="product-showcase__card-price">{{ block.settings.price }}</span>
+                  {% endif %}
+                </div>
+                {% if block.settings.badge_text != blank %}
+                  <span class="product-showcase__card-badge">{{ block.settings.badge_text }}</span>
+                {% endif %}
+              </div>
+            </div>
+
+            {% if block.settings.button_label != blank %}
+              <a
+                {% if block.settings.button_link != blank %}href="{{ block.settings.button_link }}"{% endif %}
+                class="product-showcase__card-button"
+              >
+                <span>{{ block.settings.button_label | escape }}</span>
+                {% if block.settings.button_label contains 'CREATE' %}
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true" class="product-showcase__card-button-arrow">
+                    <path d="M9.33 22.67L22.67 9.33M22.67 9.33H12M22.67 9.33V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                {% endif %}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .product-showcase {
+    padding-block-start: var(--padding-block-start, 64px);
+    padding-block-end: var(--padding-block-end, 64px);
+    padding-inline: var(--padding-md);
+  }
+
+  .product-showcase.section--page-width {
+    max-width: var(--page-width);
+    margin-inline: auto;
+  }
+
+  .product-showcase__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-block-end: 32px;
+  }
+
+  .product-showcase__subtitle {
+    font-family: var(--font-body--family);
+    font-weight: 500;
+    font-size: var(--font-size--md);
+    line-height: 16px;
+    text-transform: uppercase;
+    color: var(--color-foreground-heading);
+    margin: 0;
+  }
+
+  .product-showcase__heading {
+    font-family: var(--font-heading--family);
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: -1.2px;
+    color: var(--color-foreground-heading);
+    margin: 0;
+  }
+
+  .product-showcase__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .product-showcase__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px 12px 16px 12px;
+    border-radius: 12px;
+    border: 1px solid #E4E4E4;
+    background-color: var(--color-background);
+  }
+
+  .product-showcase__card--featured {
+    border-color: #0033FF;
+    background-color: #F9F9F9;
+  }
+
+  .product-showcase__card-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    aspect-ratio: 405 / 222;
+    object-fit: cover;
+  }
+
+  .product-showcase__card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .product-showcase__card-logo {
+    height: 16px;
+    width: auto;
+    object-fit: contain;
+    object-position: left;
+    display: block;
+  }
+
+  .product-showcase__card-description {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4D4D4D;
+    margin: 0;
+  }
+
+  .product-showcase__card-pricing {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .product-showcase__card-prices {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .product-showcase__card-compare-price {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: var(--font-size--xl);
+    line-height: 28px;
+    text-decoration: line-through;
+    color: #A6A6A6;
+  }
+
+  .product-showcase__card-price {
+    font-family: var(--font-body--family);
+    font-weight: 700;
+    font-size: var(--font-size--xl);
+    line-height: 28px;
+    color: var(--color-foreground-heading);
+  }
+
+  .product-showcase__card-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 24px;
+    background-color: #DAE1FC;
+    color: #0033FF;
+    font-family: var(--font-body--family);
+    font-weight: 500;
+    font-size: var(--font-size--md);
+    line-height: 18px;
+    white-space: nowrap;
+  }
+
+  .product-showcase__card-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 8px 40px;
+    border-radius: 24px;
+    background-color: #0033FF;
+    color: #ffffff;
+    font-family: var(--font-body--family);
+    font-weight: 700;
+    font-size: var(--font-size--md);
+    line-height: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .product-showcase__card-button:hover {
+    background-color: #0029CC;
+  }
+
+  .product-showcase__card-button-arrow {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 990px) {
+    .product-showcase__heading {
+      font-size: 32px;
+      line-height: 35px;
+      letter-spacing: -0.96px;
+    }
+
+    .product-showcase__grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    .product-showcase {
+      padding-inline: var(--padding-sm);
+    }
+
+    .product-showcase__subtitle {
+      font-size: 14px;
+      line-height: 14px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.product_showcase",
+  "tag": "section",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "product-card",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "logo_svg",
+          "label": "Logo SVG filename",
+          "info": "e.g. frame-1086997.svg"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo image (fallback)"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Compare price"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge text"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Featured card",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our Products"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Performance Essentials, Engineered for Results"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-8"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.product_showcase",
+      "category": "t:categories.products",
+      "blocks": [
+        {
+          "type": "product-card",
+          "settings": {
+            "logo_svg": "frame-1086997.svg",
+            "description": "Custom daily supplement granules tailored to your goals and biology.",
+            "compare_price": "$199",
+            "price": "$99",
+            "badge_text": "50% OFF",
+            "button_label": "CREATE YOUR FORMULA",
+            "featured": true
+          }
+        },
+        {
+          "type": "product-card",
+          "settings": {
+            "description": "A longevity formula designed to support healthy aging and cellular function.",
+            "compare_price": "$189",
+            "price": "$89",
+            "badge_text": "50% OFF",
+            "button_label": "ADD TO CART",
+            "featured": false
+          }
+        },
+        {
+          "type": "product-card",
+          "settings": {
+            "description": "A performance formula designed to support strength, power, and recovery.",
+            "compare_price": "$169",
+            "price": "$69",
+            "badge_text": "50% OFF",
+            "button_label": "ADD TO CART",
+            "featured": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

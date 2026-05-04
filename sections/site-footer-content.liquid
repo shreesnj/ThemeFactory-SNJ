@@ -1,0 +1,746 @@
+<div class="color-{{ section.settings.color_scheme }}">
+  <div
+    class="site-footer-content section--{{ section.settings.section_width }}"
+    style="
+      --padding-block-start: {{ section.settings.padding-block-start }}px;
+      --padding-block-end: {{ section.settings.padding-block-end }}px;
+    "
+  >
+    <div class="site-footer-content__container">
+      {% if section.settings.background_image != blank %}
+        <div class="site-footer-content__bg-image">
+          {{
+            section.settings.background_image
+            | image_url: width: section.settings.background_image.width
+            | image_tag:
+              sizes: '(min-width: 990px) 1420px, 100vw',
+              widths: '375,550,750,1100,1420',
+              loading: 'lazy',
+              alt: section.settings.background_image.alt
+          }}
+        </div>
+      {% endif %}
+
+      <div class="site-footer-content__inner">
+        <div class="site-footer-content__nav-row">
+          <div class="site-footer-content__nav-left">
+            {% for block in section.blocks %}
+              {% if block.type == 'nav-column' %}
+                <div class="site-footer-content__nav-column" {{ block.shopify_attributes }}>
+                  {% if block.settings.heading != blank %}
+                    <p class="site-footer-content__nav-heading">{{ block.settings.heading | escape }}</p>
+                  {% endif %}
+                  <div class="site-footer-content__nav-links">
+                    {% if block.settings.use_image_links %}
+                      {% if block.settings.link_1_image != blank %}
+                        <a {% if block.settings.link_1_url != blank %}href="{{ block.settings.link_1_url }}"{% endif %} class="site-footer-content__nav-image-link">
+                          {{
+                            block.settings.link_1_image
+                            | image_url: width: 200
+                            | image_tag:
+                              loading: 'lazy',
+                              alt: block.settings.link_1_image.alt
+                          }}
+                        </a>
+                      {% endif %}
+                      {% if block.settings.link_2_image != blank %}
+                        <a {% if block.settings.link_2_url != blank %}href="{{ block.settings.link_2_url }}"{% endif %} class="site-footer-content__nav-image-link">
+                          {{
+                            block.settings.link_2_image
+                            | image_url: width: 200
+                            | image_tag:
+                              loading: 'lazy',
+                              alt: block.settings.link_2_image.alt
+                          }}
+                        </a>
+                      {% endif %}
+                    {% else %}
+                      {% if block.settings.link_1_label != blank %}
+                        <a {% if block.settings.link_1_url != blank %}href="{{ block.settings.link_1_url }}"{% endif %} class="site-footer-content__nav-link">{{ block.settings.link_1_label | escape }}</a>
+                      {% endif %}
+                      {% if block.settings.link_2_label != blank %}
+                        <a {% if block.settings.link_2_url != blank %}href="{{ block.settings.link_2_url }}"{% endif %} class="site-footer-content__nav-link">{{ block.settings.link_2_label | escape }}</a>
+                      {% endif %}
+                      {% if block.settings.link_3_label != blank %}
+                        <a {% if block.settings.link_3_url != blank %}href="{{ block.settings.link_3_url }}"{% endif %} class="site-footer-content__nav-link">{{ block.settings.link_3_label | escape }}</a>
+                      {% endif %}
+                      {% if block.settings.link_4_label != blank %}
+                        <a {% if block.settings.link_4_url != blank %}href="{{ block.settings.link_4_url }}"{% endif %} class="site-footer-content__nav-link">{{ block.settings.link_4_label | escape }}</a>
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          {% for block in section.blocks %}
+            {% if block.type == 'social-links' %}
+              <div class="site-footer-content__contact" {{ block.shopify_attributes }}>
+                {% if block.settings.heading != blank %}
+                  <p class="site-footer-content__nav-heading">{{ block.settings.heading | escape }}</p>
+                {% endif %}
+                <div class="site-footer-content__social-icons">
+                  {% if block.settings.instagram_url != blank %}
+                    <a href="{{ block.settings.instagram_url }}" class="site-footer-content__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M10 6.667a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm0 5.5a2.167 2.167 0 110-4.334 2.167 2.167 0 010 4.334z" fill="currentColor"/>
+                        <path d="M13.5 6.5a.833.833 0 100-1.667.833.833 0 000 1.667z" fill="currentColor"/>
+                        <path d="M14.167 2.5H5.833A3.337 3.337 0 002.5 5.833v8.334A3.337 3.337 0 005.833 17.5h8.334a3.337 3.337 0 003.333-3.333V5.833A3.337 3.337 0 0014.167 2.5zm2.166 11.667a2.169 2.169 0 01-2.166 2.166H5.833a2.169 2.169 0 01-2.166-2.166V5.833a2.169 2.169 0 012.166-2.166h8.334a2.169 2.169 0 012.166 2.166v8.334z" fill="currentColor"/>
+                      </svg>
+                    </a>
+                  {% endif %}
+                  {% if block.settings.tiktok_url != blank %}
+                    <a href="{{ block.settings.tiktok_url }}" class="site-footer-content__social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M14.167 2.5h-2.5v10.417a1.667 1.667 0 11-1.667-1.667v-2.5a4.167 4.167 0 104.167 4.167V8.75a6.25 6.25 0 003.333.917V7.167a3.75 3.75 0 01-3.333-3.75V2.5z" fill="currentColor"/>
+                      </svg>
+                    </a>
+                  {% endif %}
+                  {% if block.settings.youtube_url != blank %}
+                    <a href="{{ block.settings.youtube_url }}" class="site-footer-content__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M17.78 5.907a2.084 2.084 0 00-1.467-1.476C15.005 4.083 10 4.083 10 4.083s-5.005 0-6.313.348A2.084 2.084 0 002.22 5.907 21.845 21.845 0 001.875 10c-.012 1.38.103 2.758.345 4.093a2.084 2.084 0 001.467 1.476c1.308.348 6.313.348 6.313.348s5.005 0 6.313-.348a2.084 2.084 0 001.467-1.476c.242-1.335.357-2.713.345-4.093.012-1.38-.103-2.758-.345-4.093zM8.333 12.5V7.5L12.917 10 8.333 12.5z" fill="currentColor"/>
+                      </svg>
+                    </a>
+                  {% endif %}
+                  {% if block.settings.x_url != blank %}
+                    <a href="{{ block.settings.x_url }}" class="site-footer-content__social-link" aria-label="X" target="_blank" rel="noopener noreferrer">
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                        <path d="M15.27 2.5h2.89l-6.31 7.21L19.17 17.5h-5.81l-4.55-5.95L3.74 17.5H.85l6.75-7.71L.83 2.5h5.96l4.11 5.44L15.27 2.5zm-1.01 13.5h1.6L5.82 4.13H4.1L14.26 16z" fill="currentColor"/>
+                      </svg>
+                    </a>
+                  {% endif %}
+                </div>
+                {% if block.settings.email != blank %}
+                  <div class="site-footer-content__contact-info">
+                    <p class="site-footer-content__contact-email">{{ block.settings.email | escape }}</p>
+                    {% if block.settings.email_note != blank %}
+                      <p class="site-footer-content__contact-note">{{ block.settings.email_note | escape }}</p>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% for block in section.blocks %}
+          {% if block.type == 'disclaimer' %}
+            <div class="site-footer-content__disclaimer" {{ block.shopify_attributes }}>
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" class="site-footer-content__disclaimer-icon">
+                <circle cx="5" cy="5" r="4.5" stroke="currentColor"/>
+                <path d="M5 3v2.5M5 7h.005" stroke="currentColor" stroke-linecap="round"/>
+              </svg>
+              <p class="site-footer-content__disclaimer-text">{{ block.settings.text | escape }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% for block in section.blocks %}
+          {% if block.type == 'policy-links' %}
+            <div class="site-footer-content__policies" {{ block.shopify_attributes }}>
+              <div class="site-footer-content__policy-links">
+                {% if block.settings.link_1_label != blank %}
+                  <a {% if block.settings.link_1_url != blank %}href="{{ block.settings.link_1_url }}"{% endif %} class="site-footer-content__policy-link">{{ block.settings.link_1_label | escape }}</a>
+                {% endif %}
+                {% if block.settings.link_2_label != blank %}
+                  <a {% if block.settings.link_2_url != blank %}href="{{ block.settings.link_2_url }}"{% endif %} class="site-footer-content__policy-link">{{ block.settings.link_2_label | escape }}</a>
+                {% endif %}
+                {% if block.settings.link_3_label != blank %}
+                  <a {% if block.settings.link_3_url != blank %}href="{{ block.settings.link_3_url }}"{% endif %} class="site-footer-content__policy-link">{{ block.settings.link_3_label | escape }}</a>
+                {% endif %}
+                {% if block.settings.link_4_label != blank %}
+                  <a {% if block.settings.link_4_url != blank %}href="{{ block.settings.link_4_url }}"{% endif %} class="site-footer-content__policy-link">{{ block.settings.link_4_label | escape }}</a>
+                {% endif %}
+                {% if block.settings.link_5_label != blank %}
+                  <a {% if block.settings.link_5_url != blank %}href="{{ block.settings.link_5_url }}"{% endif %} class="site-footer-content__policy-link">{{ block.settings.link_5_label | escape }}</a>
+                {% endif %}
+              </div>
+              {% if block.settings.copyright != blank %}
+                <p class="site-footer-content__copyright">{{ block.settings.copyright | escape }}</p>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        <div class="site-footer-content__brand-logo">
+          <img
+            src="{{ 'logos-2.svg' | asset_url }}"
+            alt="Enhanced"
+            class="site-footer-content__brand-logo-img"
+            loading="lazy"
+            width="346"
+            height="37"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .site-footer-content {
+    padding-block-start: var(--padding-block-start, 10px);
+    padding-block-end: var(--padding-block-end, 10px);
+    padding-inline: var(--padding-md);
+  }
+
+  .site-footer-content.section--page-width {
+    max-width: var(--page-width);
+    margin-inline: auto;
+  }
+
+  .site-footer-content__container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .site-footer-content__bg-image {
+    position: absolute;
+    inset: 0;
+  }
+
+  .site-footer-content__bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .site-footer-content__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 54px;
+    padding: 32px;
+    justify-content: center;
+  }
+
+  .site-footer-content__nav-row {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+  }
+
+  .site-footer-content__nav-left {
+    display: flex;
+    gap: 64px;
+  }
+
+  .site-footer-content__nav-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .site-footer-content__nav-heading {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.56px;
+    color: #A6A6A6;
+    margin: 0;
+  }
+
+  .site-footer-content__nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .site-footer-content__nav-image-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  .site-footer-content__nav-image-link img {
+    height: 14px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+  }
+
+  .site-footer-content__nav-link {
+    font-family: var(--font-body--family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-footer-content__nav-link:hover {
+    opacity: 0.8;
+  }
+
+  .site-footer-content__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .site-footer-content__social-icons {
+    display: flex;
+    gap: 32px;
+    justify-content: flex-end;
+  }
+
+  .site-footer-content__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-footer-content__social-link:hover {
+    opacity: 0.8;
+  }
+
+  .site-footer-content__social-link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .site-footer-content__contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .site-footer-content__contact-email {
+    font-family: var(--font-body--family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .site-footer-content__contact-note {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .site-footer-content__disclaimer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .site-footer-content__disclaimer-icon {
+    flex-shrink: 0;
+    color: #FFFFFF;
+  }
+
+  .site-footer-content__disclaimer-text {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin: 0;
+  }
+
+  .site-footer-content__policies {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .site-footer-content__policy-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .site-footer-content__policy-link {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #E4E4E4;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .site-footer-content__policy-link:hover {
+    opacity: 0.8;
+  }
+
+  .site-footer-content__copyright {
+    font-family: var(--font-body--family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 12px;
+    color: #E4E4E4;
+    margin: 0;
+  }
+
+  .site-footer-content__brand-logo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .site-footer-content__brand-logo-img {
+    width: 100%;
+    max-width: 1356px;
+    height: auto;
+    display: block;
+  }
+
+  @media screen and (max-width: 990px) {
+    .site-footer-content__nav-row {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .site-footer-content__nav-left {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .site-footer-content__social-icons {
+      justify-content: flex-start;
+    }
+
+    .site-footer-content__inner {
+      gap: 32px;
+    }
+  }
+
+  @media screen and (max-width: 750px) {
+    .site-footer-content {
+      padding-inline: var(--padding-sm);
+    }
+
+    .site-footer-content__inner {
+      padding: 24px 16px;
+    }
+
+    .site-footer-content__brand-logo-img {
+      max-width: 100%;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.site_footer_content",
+  "tag": "section",
+  "class": "section-wrapper",
+  "blocks": [
+    {
+      "type": "nav-column",
+      "name": "Navigation column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_image_links",
+          "label": "Use image links",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Image links"
+        },
+        {
+          "type": "image_picker",
+          "id": "link_1_image",
+          "label": "Link 1 image"
+        },
+        {
+          "type": "url",
+          "id": "link_1_url",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "image_picker",
+          "id": "link_2_image",
+          "label": "Link 2 image"
+        },
+        {
+          "type": "url",
+          "id": "link_2_url",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "header",
+          "content": "Text links"
+        },
+        {
+          "type": "text",
+          "id": "link_1_label",
+          "label": "Link 1 label"
+        },
+        {
+          "type": "text",
+          "id": "link_2_label",
+          "label": "Link 2 label"
+        },
+        {
+          "type": "text",
+          "id": "link_3_label",
+          "label": "Link 3 label"
+        },
+        {
+          "type": "text",
+          "id": "link_4_label",
+          "label": "Link 4 label"
+        }
+      ]
+    },
+    {
+      "type": "social-links",
+      "name": "Social links",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Get in touch"
+        },
+        {
+          "type": "url",
+          "id": "instagram_url",
+          "label": "Instagram URL"
+        },
+        {
+          "type": "url",
+          "id": "tiktok_url",
+          "label": "TikTok URL"
+        },
+        {
+          "type": "url",
+          "id": "youtube_url",
+          "label": "YouTube URL"
+        },
+        {
+          "type": "url",
+          "id": "x_url",
+          "label": "X URL"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email",
+          "default": "media@enhanced.com"
+        },
+        {
+          "type": "text",
+          "id": "email_note",
+          "label": "Email note",
+          "default": "Important: For media enquiries or interview requests only."
+        }
+      ]
+    },
+    {
+      "type": "disclaimer",
+      "name": "Disclaimer",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Disclaimer text",
+          "default": "The Product is not a medicinal product and does not diagnose, treat, cure, or prevent disease."
+        }
+      ]
+    },
+    {
+      "type": "policy-links",
+      "name": "Policy links",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_1_label",
+          "label": "Link 1 label",
+          "default": "Terms of service"
+        },
+        {
+          "type": "url",
+          "id": "link_1_url",
+          "label": "Link 1 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_2_label",
+          "label": "Link 2 label",
+          "default": "Privacy policy"
+        },
+        {
+          "type": "url",
+          "id": "link_2_url",
+          "label": "Link 2 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_3_label",
+          "label": "Link 3 label",
+          "default": "Consumer Health Data Policy"
+        },
+        {
+          "type": "url",
+          "id": "link_3_url",
+          "label": "Link 3 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_4_label",
+          "label": "Link 4 label",
+          "default": "Cookie policy"
+        },
+        {
+          "type": "url",
+          "id": "link_4_url",
+          "label": "Link 4 URL"
+        },
+        {
+          "type": "text",
+          "id": "link_5_label",
+          "label": "Link 5 label",
+          "default": "Cookie settings"
+        },
+        {
+          "type": "url",
+          "id": "link_5_url",
+          "label": "Link 5 URL"
+        },
+        {
+          "type": "text",
+          "id": "copyright",
+          "label": "Copyright text",
+          "default": "© 2025 Enhanced. All Rights Reserved \"Enhanced\" and \"Enhanced Games\" are registered trademarks of Enhanced Ltd."
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.site_footer_content",
+      "category": "t:categories.footer",
+      "blocks": [
+        {
+          "type": "nav-column",
+          "settings": {
+            "heading": "Explore products",
+            "use_image_links": true
+          }
+        },
+        {
+          "type": "nav-column",
+          "settings": {
+            "heading": "Company",
+            "use_image_links": false,
+            "link_1_label": "About us",
+            "link_2_label": "Team",
+            "link_3_label": "Careers",
+            "link_4_label": "FAQs"
+          }
+        },
+        {
+          "type": "social-links",
+          "settings": {
+            "heading": "Get in touch",
+            "email": "media@enhanced.com",
+            "email_note": "Important: For media enquiries or interview requests only."
+          }
+        },
+        {
+          "type": "disclaimer",
+          "settings": {
+            "text": "The Product is not a medicinal product and does not diagnose, treat, cure, or prevent disease."
+          }
+        },
+        {
+          "type": "policy-links",
+          "settings": {
+            "link_1_label": "Terms of service",
+            "link_2_label": "Privacy policy",
+            "link_3_label": "Consumer Health Data Policy",
+            "link_4_label": "Cookie policy",
+            "link_5_label": "Cookie settings",
+            "copyright": "© 2025 Enhanced. All Rights Reserved \"Enhanced\" and \"Enhanced Games\" are registered trademarks of Enhanced Ltd."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
