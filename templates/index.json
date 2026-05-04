@@ -380,7 +380,7 @@
         "card_1": {
           "type": "product-card",
           "settings": {
-            "image": "shopify://shop_images/image-4-desktop-44123554.png",
+            "image": "shopify://shop_images/image-4-desktop-44123542.png",
             "logo_svg": "frame-1086997.svg",
             "description": "Custom daily supplement granules tailored to your goals and biology.",
             "compare_price": "$199",
@@ -393,7 +393,8 @@
         "card_2": {
           "type": "product-card",
           "settings": {
-            "image": "shopify://shop_images/image-4-desktop-44123566.png",
+            "image": "shopify://shop_images/image-4-desktop-44123554.png",
+            "logo_image": "shopify://shop_images/longer-black-5-desktop-I4602395546325340.png",
             "description": "A longevity formula designed to support healthy aging and cellular function.",
             "compare_price": "$189",
             "price": "$89",
@@ -405,6 +406,8 @@
         "card_3": {
           "type": "product-card",
           "settings": {
+            "image": "shopify://shop_images/image-4-desktop-44123566.png",
+            "logo_image": "shopify://shop_images/stronger-black-3-desktop-I4602395546325341.png",
             "description": "A performance formula designed to support strength, power, and recovery.",
             "compare_price": "$169",
             "price": "$69",
@@ -492,7 +495,7 @@
         "feature_1": {
           "type": "feature-card",
           "settings": {
-            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024048.png",
+            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024030.png",
             "logo_svg": "frame-1086997.svg",
             "tags": "Precision, Tailored, Optimized",
             "description": "A custom formula personalized to your needs, built to help you operate beyond perceived.",
@@ -502,7 +505,8 @@
         "feature_2": {
           "type": "feature-card",
           "settings": {
-            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024030.png",
+            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024048.png",
+            "logo_image": "shopify://shop_images/longer-black-5-desktop-I4602395546325340.png",
             "tags": "Cellular, Metabolic, Aging",
             "description": "A longevity formula designed to support healthy aging and cellular function.",
             "button_label": "SHOP LONGER"
@@ -511,6 +515,8 @@
         "feature_3": {
           "type": "feature-card",
           "settings": {
+            "image": "shopify://shop_images/enhanced-brand-guidelines-2026-internal-3-1-desktop-46024065.png",
+            "logo_image": "shopify://shop_images/stronger-black-3-desktop-I4602395546325341.png",
             "tags": "Strength, Endurance, Recovery",
             "description": "A performance formula designed to support strength, power, and recovery.",
             "button_label": "SHOP STRONGER"
@@ -624,7 +630,7 @@
             "row_1": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "What is Enhanced?"
+                "heading": "Is LIVEENHANCED safe to take every day?"
               },
               "blocks": {
                 "text": {
@@ -653,7 +659,7 @@
             "row_2": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "How does the custom formula work?"
+                "heading": "How Long Does It Take To Notice Results With LIVEENHANCED?"
               },
               "blocks": {
                 "text": {
@@ -682,7 +688,7 @@
             "row_3": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "Are the ingredients clinically dosed?"
+                "heading": "How Is LIVEENHANCED Personalized For Me?"
               },
               "blocks": {
                 "text": {
@@ -711,7 +717,7 @@
             "row_4": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "What makes Enhanced different from other supplements?"
+                "heading": "Can LIVEENHANCED Change As My Goals Evolve?"
               },
               "blocks": {
                 "text": {
@@ -740,7 +746,7 @@
             "row_5": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "How long until I see results?"
+                "heading": "Can I Take LIVEENHANCED With Other Supplements?"
               },
               "blocks": {
                 "text": {
@@ -822,30 +828,6 @@
             "gap": 24
           },
           "blocks": {
-            "caption": {
-              "type": "text",
-              "settings": {
-                "text": "<h6>Your Path to Living Enhanced</h6>",
-                "type_preset": "h6",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "uppercase",
-                "wrap": "pretty",
-                "color": "var(--color-foreground-heading)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              }
-            },
             "group": {
               "type": "group",
               "settings": {
@@ -879,7 +861,7 @@
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Power lights, fans, and everyday essentials.</p>",
+                    "text": "<p>A custom formula designed to help you exceed your potential.</p>",
                     "type_preset": "rte",
                     "width": "fit-content",
                     "max_width": "narrow",
@@ -917,7 +899,7 @@
               }
             }
           },
-          "block_order": ["caption", "group", "button"]
+          "block_order": ["group", "button"]
         }
       },
       "settings": {
