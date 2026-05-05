@@ -357,5 +357,11 @@
       "default_title": "Default Title",
       "sticky_add_to_cart": "Quick add to cart bar"
     }
+  },
+  "sections": {
+    "header": {
+      "drawer_menu_title": "Menu",
+      "drawer_shipping_text": "Free Shipping. Easy Returns. Always."
+    }
   }
 }

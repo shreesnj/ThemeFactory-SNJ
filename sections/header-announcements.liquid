@@ -34,10 +34,44 @@
       {% content_for 'blocks' %}
     </div>
   </announcement-bar-component>
+
+  <button
+    class="announcement-bar__close"
+    type="button"
+    aria-label="{{ 'actions.close' | t }}"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1"/>
+      <line x1="8" y1="8" x2="16" y2="16" stroke="currentColor" stroke-width="1"/>
+      <line x1="16" y1="8" x2="8" y2="16" stroke="currentColor" stroke-width="1"/>
+    </svg>
+  </button>
 </aside>
+
+<script>
+  (function() {
+    var STORAGE_KEY = 'announcement-bar-dismissed';
+    var section = document.querySelector('.announcement-bar');
+    var closeBtn = document.querySelector('.announcement-bar__close');
+    if (!section || !closeBtn) return;
+
+    if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
+      section.closest('.shopify-section').style.display = 'none';
+    }
+
+    closeBtn.addEventListener('click', function() {
+      sessionStorage.setItem(STORAGE_KEY, 'true');
+      var wrapper = section.closest('.shopify-section');
+      if (wrapper) {
+        wrapper.style.display = 'none';
+      }
+    });
+  })();
+</script>
 
 {% stylesheet %}
   .announcement-bar {
+    position: relative;
     border-block-end: var(--border-bottom-width) solid var(--color-border);
   }
 
@@ -118,6 +152,43 @@
   .announcement-bar__link {
     position: absolute;
     inset: 0;
+  }
+
+  .announcement-bar__close {
+    position: absolute;
+    inset-inline-end: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: var(--color-foreground);
+    opacity: 0.7;
+    transition: opacity var(--animation-speed) var(--animation-easing);
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-foreground);
+      outline-offset: 2px;
+    }
+
+    @media screen and (max-width: 749px) {
+      inset-inline-end: 8px;
+    }
+  }
+
+  .announcement-bar__close svg {
+    width: 24px;
+    height: 24px;
   }
 {% endstylesheet %}
 

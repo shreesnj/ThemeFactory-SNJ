@@ -73,16 +73,19 @@
         color-{{ block_settings.color_scheme }}
       "
     >
-      <button
-        class="button close-button menu-drawer__close-button"
-        type="button"
-        aria-label="{{ 'actions.close' | t }}"
-        on:click="/close"
-      >
-        <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
-          {{- 'icon-close.svg' | inline_asset_content -}}
-        </span>
-      </button>
+      <div class="menu-drawer__header">
+        <button
+          class="button close-button menu-drawer__close-button"
+          type="button"
+          aria-label="{{ 'actions.close' | t }}"
+          on:click="/close"
+        >
+          <span class="svg-wrapper header-drawer-icon header-drawer-icon--close">
+            {{- 'icon-close.svg' | inline_asset_content -}}
+          </span>
+        </button>
+        <span class="menu-drawer__title">{{ 'sections.header.drawer_menu_title' | t }}</span>
+      </div>
       <nav
         class="menu-drawer__navigation"
         style="
@@ -750,6 +753,10 @@
           </ul>
         </div>
       {% endif %}
+
+      <div class="menu-drawer__footer">
+        <p class="menu-drawer__footer-text">{{ 'sections.header.drawer_shipping_text' | t }}</p>
+      </div>
     </div>
     <div
       class="menu-drawer__backdrop"
@@ -1403,5 +1410,43 @@
 
   .drawer-localization .language-selector .svg-wrapper.icon-caret svg {
     transform: none;
+  }
+
+  .menu-drawer__header {
+    display: flex;
+    align-items: center;
+    padding-inline: var(--drawer-padding, var(--padding-xl));
+    padding-block: var(--padding-md);
+    gap: var(--gap-sm);
+  }
+
+  .menu-drawer__header .menu-drawer__close-button {
+    padding: var(--padding-sm);
+  }
+
+  .menu-drawer__title {
+    font-family: var(--font-subheading--family);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #767676;
+  }
+
+  .menu-drawer__footer {
+    padding-inline: var(--drawer-padding, var(--padding-xl));
+    padding-block: var(--padding-lg);
+    margin-block-start: auto;
+  }
+
+  .menu-drawer__footer-text {
+    font-family: var(--font-subheading--family);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    opacity: 0.6;
+    margin: 0;
   }
 {% endstylesheet %}

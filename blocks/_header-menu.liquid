@@ -86,10 +86,17 @@
           on:pointerenter="/activate"
           on:pointerleave="/deactivate"
         >
+          {% liquid
+            assign link_title_lower = link.title | downcase
+            assign sale_class = ''
+            if link_title_lower == 'sale'
+              assign sale_class = ' menu-list__link--sale'
+            endif
+          %}
           <a
             href="{{ link.url }}"
             data-skip-node-update="true"
-            class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}"
+            class="menu-list__link{% if link.active %} menu-list__link--active{% endif %}{{ sale_class }}"
             {%- if link.links != blank -%}
               aria-controls="submenu-{{ forloop.index }}"
               aria-haspopup="true"
@@ -664,6 +671,32 @@
   .mega-menu__submenu {
     /* preserves the inherited grid layout when this submenu wrapper is used */
     display: contents;
+  }
+
+  /* M.Gemi nav overrides */
+  .menu-list__link-title {
+    letter-spacing: 2px;
+  }
+
+  .menu-list--mobile {
+    --menu-horizontal-gap: 20px;
+  }
+
+  .menu-list__link--sale {
+    color: #BB2832;
+
+    &:hover,
+    &:focus {
+      color: #BB2832;
+    }
+  }
+
+  .menu-drawer__menu > .menu-drawer__list-item {
+    min-height: 63px;
+  }
+
+  .menu-list--mobile .menu-list__list {
+    justify-content: center;
   }
 {% endstylesheet %}
 

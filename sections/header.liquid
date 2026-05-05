@@ -1104,6 +1104,39 @@
     font-family: var(--menu-localization-font);
     font-size: var(--menu-localization-font-size);
   }
+
+  /* M.Gemi header layout overrides */
+  .header__columns {
+    @media screen and (min-width: 750px) {
+      padding-inline: 56px;
+    }
+
+    @media screen and (max-width: 749px) {
+      padding-inline: 20px;
+    }
+  }
+
+  #header-component[data-menu-style='drawer'] .header__columns {
+    padding-inline: 20px;
+  }
+
+  .header__navigation-bar-row {
+    min-height: 44px;
+  }
+
+  .header__column--right {
+    @media screen and (min-width: 750px) {
+      gap: 20px;
+    }
+
+    @media screen and (max-width: 749px) {
+      gap: 5px;
+    }
+  }
+
+  #header-component[data-menu-style='drawer'] .header__column--right {
+    gap: 5px;
+  }
 {% endstylesheet %}
 
 {% unless request.design_mode %}
