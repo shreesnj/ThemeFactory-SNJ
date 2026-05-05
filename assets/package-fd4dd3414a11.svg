@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icons/24x24/contact/order</title>
+    <g id="Home" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-1440" transform="translate(-172.000000, -5856.000000)">
+            <g id="Footer" transform="translate(0.000000, 5479.000000)">
+                <g id="let's-talk" transform="translate(112.000000, 135.000000)">
+                    <g id="Icons/24x24/contact/order" transform="translate(58.000000, 240.000000)">
+                        <rect id="Box" x="0" y="0" width="20" height="20"></rect>
+                        <g id="icon" transform="translate(2.500000, 2.500000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11.9347826,0.273261262 C11.8122265,0.101576287 11.6142008,-0.000230800434 11.4032609,0 L3.59673913,0 C3.38579918,-0.000230800434 3.18777346,0.101576287 3.06521739,0.273261262 L0.121304354,4.39500039 C0.0423903919,4.50558715 0,4.63805746 0,4.77391343 L0,14.3478265 C0,14.7080122 0.291988212,15 0.652173918,15 L14.3478261,15 C14.7080118,15 15,14.7080122 15,14.3478265 L15,4.77391343 C15,4.63805746 14.9576096,4.50558715 14.8786956,4.39500039 L11.9347826,0.273261262 Z" id="Path"></path>
+                            <line x1="7.5" y1="3.92916718e-07" x2="7.5" y2="4.56521778" id="Path"></line>
+                            <rect id="Rectangle" x="7.82673913" y="11.0869569" width="5.2173913" height="1.95652174" rx="0.5"></rect>
+                            <line x1="0.0345652233" y1="4.56521778" x2="14.9654348" y2="4.56521778" id="Path"></line>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
