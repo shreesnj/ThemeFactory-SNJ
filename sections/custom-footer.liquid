@@ -126,7 +126,7 @@
         </ul>
       </div>
 
-      {%- comment -%} Column 2: Share (desktop: visible, mobile: accordion) {%- endcomment -%}
+      {%- comment -%} Column 2: Share (desktop visible, mobile accordion) {%- endcomment -%}
       <div class='custom-footer__column custom-footer__column--share custom-footer__column--desktop-only'>
         <h3 class='custom-footer__heading'>{{ section.settings.share_heading | escape }}</h3>
         {%- if section.settings.share_menu != blank -%}
@@ -141,7 +141,52 @@
 
         {%- comment -%} Desktop social icons (inside Share column) {%- endcomment -%}
         <div class='custom-footer__social-icons custom-footer__social-icons--desktop'>
-          {%- render 'custom-footer-social-icons', section: section -%}
+          {%- if section.settings.social_email_url != blank -%}
+            <a href='{{ section.settings.social_email_url }}' class='custom-footer__social-link' aria-label='Email'>
+              <img
+                src="{{ 'social-email-a421a6e2faaa.svg' | asset_url }}"
+                alt=""
+                width="20"
+                height="20"
+                loading="lazy"
+              >
+            </a>
+          {%- endif -%}
+          {%- if section.settings.social_instagram_url != blank -%}
+            <a href='{{ section.settings.social_instagram_url }}' class='custom-footer__social-link' aria-label='Instagram' target='_blank' rel='noopener noreferrer'>
+              <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+                {%- render 'icon', icon: 'instagram' -%}
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.social_facebook_url != blank -%}
+            <a href='{{ section.settings.social_facebook_url }}' class='custom-footer__social-link' aria-label='Facebook' target='_blank' rel='noopener noreferrer'>
+              <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+                {%- render 'icon', icon: 'facebook' -%}
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.social_twitter_url != blank -%}
+            <a href='{{ section.settings.social_twitter_url }}' class='custom-footer__social-link' aria-label='Twitter' target='_blank' rel='noopener noreferrer'>
+              <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+                {%- render 'icon', icon: 'twitter' -%}
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.social_pinterest_url != blank -%}
+            <a href='{{ section.settings.social_pinterest_url }}' class='custom-footer__social-link' aria-label='Pinterest' target='_blank' rel='noopener noreferrer'>
+              <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+                {%- render 'icon', icon: 'pinterest' -%}
+              </svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.social_tiktok_url != blank -%}
+            <a href='{{ section.settings.social_tiktok_url }}' class='custom-footer__social-link' aria-label='TikTok' target='_blank' rel='noopener noreferrer'>
+              <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+                {%- render 'icon', icon: 'tiktok' -%}
+              </svg>
+            </a>
+          {%- endif -%}
         </div>
       </div>
 
@@ -171,7 +216,7 @@
         </div>
       </details>
 
-      {%- comment -%} Column 3: Company (desktop: visible, mobile: accordion) {%- endcomment -%}
+      {%- comment -%} Column 3: Company (desktop visible, mobile accordion) {%- endcomment -%}
       <div class='custom-footer__column custom-footer__column--company custom-footer__column--desktop-only'>
         <h3 class='custom-footer__heading'>{{ section.settings.company_heading | escape }}</h3>
         {%- if section.settings.company_menu != blank -%}
@@ -214,7 +259,52 @@
 
     {%- comment -%} Mobile social icons row {%- endcomment -%}
     <div class='custom-footer__social-icons custom-footer__social-icons--mobile'>
-      {%- render 'custom-footer-social-icons', section: section -%}
+      {%- if section.settings.social_email_url != blank -%}
+        <a href='{{ section.settings.social_email_url }}' class='custom-footer__social-link' aria-label='Email'>
+          <img
+            src="{{ 'social-email-a421a6e2faaa.svg' | asset_url }}"
+            alt=""
+            width="20"
+            height="20"
+            loading="lazy"
+          >
+        </a>
+      {%- endif -%}
+      {%- if section.settings.social_instagram_url != blank -%}
+        <a href='{{ section.settings.social_instagram_url }}' class='custom-footer__social-link' aria-label='Instagram' target='_blank' rel='noopener noreferrer'>
+          <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+            {%- render 'icon', icon: 'instagram' -%}
+          </svg>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.social_facebook_url != blank -%}
+        <a href='{{ section.settings.social_facebook_url }}' class='custom-footer__social-link' aria-label='Facebook' target='_blank' rel='noopener noreferrer'>
+          <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+            {%- render 'icon', icon: 'facebook' -%}
+          </svg>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.social_twitter_url != blank -%}
+        <a href='{{ section.settings.social_twitter_url }}' class='custom-footer__social-link' aria-label='Twitter' target='_blank' rel='noopener noreferrer'>
+          <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+            {%- render 'icon', icon: 'twitter' -%}
+          </svg>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.social_pinterest_url != blank -%}
+        <a href='{{ section.settings.social_pinterest_url }}' class='custom-footer__social-link' aria-label='Pinterest' target='_blank' rel='noopener noreferrer'>
+          <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+            {%- render 'icon', icon: 'pinterest' -%}
+          </svg>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.social_tiktok_url != blank -%}
+        <a href='{{ section.settings.social_tiktok_url }}' class='custom-footer__social-link' aria-label='TikTok' target='_blank' rel='noopener noreferrer'>
+          <svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg' width='20' height='20' aria-hidden='true' focusable='false' fill='currentColor'>
+            {%- render 'icon', icon: 'tiktok' -%}
+          </svg>
+        </a>
+      {%- endif -%}
     </div>
 
     {%- comment -%} Optional newsletter {%- endcomment -%}
@@ -267,7 +357,7 @@
 {% stylesheet %}
 /* Custom Footer */
 .custom-footer {
-  color: #000000;
+  color: var(--color-foreground);
   background-color: var(--color-background);
 }
 
@@ -301,7 +391,7 @@
 
 .custom-footer__column--contact,
 .custom-footer__column--share {
-  border-inline-end: 1px solid #B1B1B1;
+  border-inline-end: 1px solid var(--color-border);
 }
 
 /* Headings */
@@ -314,7 +404,7 @@
   letter-spacing: 2.5px;
   text-align: center;
   text-transform: uppercase;
-  color: #000000;
+  color: var(--color-foreground-heading);
 }
 
 /* Contact column */
@@ -326,7 +416,7 @@
   line-height: 22px;
   letter-spacing: 0.25px;
   text-align: center;
-  color: #000000;
+  color: var(--color-foreground);
 }
 
 .custom-footer__contact-list {
@@ -344,7 +434,7 @@
   line-height: 20px;
   letter-spacing: 0.25px;
   text-align: start;
-  color: #000000;
+  color: var(--color-foreground);
 }
 
 .custom-footer__contact-item:last-child {
@@ -394,7 +484,7 @@
   line-height: 22px;
   letter-spacing: 0.25px;
   text-align: center;
-  color: #000000;
+  color: var(--color-foreground);
 }
 
 .custom-footer__link-item:last-child {
@@ -431,7 +521,7 @@
 .custom-footer__social-link {
   display: flex;
   align-items: center;
-  color: #000000;
+  color: var(--color-foreground);
   text-decoration: none;
 }
 
@@ -508,9 +598,9 @@
   font-family: var(--font-body--family);
   font-size: 14px;
   font-weight: 300;
-  border: 1px solid #B1B1B1;
+  border: 1px solid var(--color-border);
   background: transparent;
-  color: #000000;
+  color: var(--color-foreground);
 }
 
 .custom-footer__newsletter-input:focus-visible {
@@ -523,8 +613,8 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
-  background: #000000;
-  color: #ffffff;
+  background: var(--color-primary-button-background);
+  color: var(--color-primary-button-text);
   border: none;
   cursor: pointer;
 }
@@ -554,7 +644,7 @@
   font-weight: 300;
   line-height: 16.667px;
   letter-spacing: 0.1px;
-  color: #000000;
+  color: var(--color-foreground);
 }
 
 .custom-footer__bottom-links {
@@ -572,7 +662,7 @@
   font-weight: 300;
   line-height: 16.667px;
   letter-spacing: 0.1px;
-  color: #000000;
+  color: var(--color-foreground);
 }
 
 .custom-footer__bottom-link {
@@ -607,12 +697,12 @@
 
   .custom-footer__accordion {
     display: block;
-    border-block-end: 1px solid #B1B1B1;
+    border-block-end: 1px solid var(--color-border);
   }
 
   .custom-footer__column--contact {
     border-inline-end: none;
-    border-block-end: 1px solid #B1B1B1;
+    border-block-end: 1px solid var(--color-border);
     padding-block-end: 0;
     margin-block-end: 0;
   }
@@ -654,7 +744,7 @@
   .custom-footer__social-icons--mobile {
     display: flex;
     max-width: 100%;
-    border-block-end: 1px solid #B1B1B1;
+    border-block-end: 1px solid var(--color-border);
   }
 
   .custom-footer__bottom {
