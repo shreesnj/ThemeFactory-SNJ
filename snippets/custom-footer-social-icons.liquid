@@ -1,0 +1,79 @@
+{%- doc -%}
+  Custom Footer Social Icons
+
+  Renders social media icon links for the custom footer section.
+
+  @param {object} section - The section object containing social URL settings
+{%- enddoc -%}
+
+{%- if section.settings.social_email_url != blank -%}
+  <a href='{{ section.settings.social_email_url }}' class='custom-footer__social-link' aria-label='Email'>
+    <img
+      src="{{ 'social-email-a421a6e2faaa.svg' | asset_url }}"
+      alt=""
+      width="20"
+      height="20"
+      loading="lazy"
+    >
+  </a>
+{%- endif -%}
+
+{%- if section.settings.social_instagram_url != blank -%}
+  <a href='{{ section.settings.social_instagram_url }}' class='custom-footer__social-link' aria-label='Instagram' target='_blank' rel='noopener noreferrer'>
+    <img
+      src="{{ 'social-instagram-d3674952de4f.svg' | asset_url }}"
+      alt=""
+      width="20"
+      height="20"
+      loading="lazy"
+    >
+  </a>
+{%- endif -%}
+
+{%- if section.settings.social_facebook_url != blank -%}
+  <a href='{{ section.settings.social_facebook_url }}' class='custom-footer__social-link' aria-label='Facebook' target='_blank' rel='noopener noreferrer'>
+    <img
+      src="{{ 'social-facebook-cced5bab8bb8.svg' | asset_url }}"
+      alt=""
+      width="20"
+      height="20"
+      loading="lazy"
+    >
+  </a>
+{%- endif -%}
+
+{%- if section.settings.social_twitter_url != blank -%}
+  <a href='{{ section.settings.social_twitter_url }}' class='custom-footer__social-link' aria-label='Twitter' target='_blank' rel='noopener noreferrer'>
+    <img
+      src="{{ 'social-twitter-b3d1ffbc5384.svg' | asset_url }}"
+      alt=""
+      width="20"
+      height="20"
+      loading="lazy"
+    >
+  </a>
+{%- endif -%}
+
+{%- if section.settings.social_pinterest_url != blank -%}
+  <a href='{{ section.settings.social_pinterest_url }}' class='custom-footer__social-link' aria-label='Pinterest' target='_blank' rel='noopener noreferrer'>
+    <img
+      src="{{ 'social-pinterest-df12ae6453fc.svg' | asset_url }}"
+      alt=""
+      width="20"
+      height="20"
+      loading="lazy"
+    >
+  </a>
+{%- endif -%}
+
+{%- if section.settings.social_tiktok_url != blank -%}
+  <a href='{{ section.settings.social_tiktok_url }}' class='custom-footer__social-link' aria-label='TikTok' target='_blank' rel='noopener noreferrer'>
+    <img
+      src="{{ 'social-tiktok-4b14d29d1691.svg' | asset_url }}"
+      alt=""
+      width="20"
+      height="20"
+      loading="lazy"
+    >
+  </a>
+{%- endif -%}
