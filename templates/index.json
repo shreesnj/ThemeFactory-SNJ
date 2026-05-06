@@ -39,6 +39,37 @@
         "padding-block-end": 80
       }
     },
+    "image_multiple_column": {
+      "type": "image-multiple-column",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "columns_desktop": 2,
+        "column_gap": 32,
+        "row_gap": 64,
+        "padding-block-start": 0,
+        "padding-block-end": 88
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/050526-siteupdates-travelstory-2-desktop-copy-2-720x-ee55703fe318.jpg",
+            "eyebrow": "TRAVEL-READY STYLES",
+            "heading": "For wearing here, there, and everywhere"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/050526-siteupdates-sandalsstory-2-desktop-copy-2-720x-c7b0fefcf775.jpg",
+            "eyebrow": "NEW ARRIVALS",
+            "heading": "Handwoven sandals, just in from Italy"
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2"]
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -237,6 +268,7 @@
   "order": [
     "hero",
     "essentials_hero",
+    "image_multiple_column",
     "product_list_fa6P9H"
   ]
 }

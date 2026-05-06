@@ -436,7 +436,8 @@
     "view_all_button": "View all",
     "pills": "Pills",
     "comparison_slider": "Comparison slider",
-    "essentials": "Essentials"
+    "essentials": "Essentials",
+    "image_multiple_column": "Image multiple column"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -820,7 +821,9 @@
     "color": "Color",
     "color_scheme": "Color scheme",
     "colors": "Colors",
+    "column_gap": "Column gap",
     "columns": "Columns",
+    "columns_desktop": "Columns",
     // Layout container block name for grouping other blocks
     "content": "Content",
     "content_alignment": "Content alignment",
@@ -866,6 +869,7 @@
     "enable_zoom": "Enable zoom",
     "equal_columns": "Equal columns",
     "error_color": "Error",
+    "eyebrow": "Eyebrow",
     "expand_first_group": "Expand first group",
     "extend_media_to_screen_edge": "Extend media to screen edge",
     "extend_summary": "Extend to screen edge",
@@ -1059,6 +1063,7 @@
     "right": "Right",
     "right_padding": "Right padding",
     "row": "Row",
+    "row_gap": "Row gap",
     "scroll_speed": "Time to next announcement",
     "search": "Search",
     "search_icon": "Search icon",
