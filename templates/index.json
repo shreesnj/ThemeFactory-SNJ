@@ -302,6 +302,17 @@
         }
       },
       "block_order": ["card_1", "card_2", "card_3", "card_4"]
+    },
+    "email_signup_banner": {
+      "type": "email-signup-banner",
+      "settings": {
+        "heading": "<em>become an</em> M.GEMI INSIDER",
+        "placeholder_text": "Enter Email",
+        "color_scheme": "scheme-2",
+        "section_width": "full-width",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
     }
   },
   "order": [
@@ -309,6 +320,7 @@
     "essentials_hero",
     "image_multiple_column",
     "product_list_fa6P9H",
-    "meet_artisans"
+    "meet_artisans",
+    "email_signup_banner"
   ]
 }

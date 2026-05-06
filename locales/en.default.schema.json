@@ -440,7 +440,8 @@
     "comparison_slider": "Comparison slider",
     "essentials": "Essentials",
     "image_multiple_column": "Image multiple column",
-    "meet_artisans": "Meet artisans"
+    "meet_artisans": "Meet artisans",
+    "email_signup_banner": "Email signup banner"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1004,6 +1005,7 @@
     "percent_width": "Percent width",
     "pixel_size": "Pixel size",
     "pixel_size_mobile": "Pixel size",
+    "placeholder_text": "Placeholder",
     "placement": "Placement",
     "position": "Position",
     "desktop_position": "Desktop position",

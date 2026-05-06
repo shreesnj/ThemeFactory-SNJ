@@ -1,0 +1,233 @@
+{% liquid
+  assign scale_min = 20
+  assign padding_top = section.settings.padding-block-start
+  assign padding_bottom = section.settings.padding-block-end
+%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    {%- if padding_top > scale_min -%}
+      --padding-block-start: max({{ scale_min }}px, calc(var(--spacing-scale) * {{ padding_top }}px));
+    {%- else -%}
+      --padding-block-start: {{ padding_top }}px;
+    {%- endif -%}
+    {%- if padding_bottom > scale_min -%}
+      --padding-block-end: max({{ scale_min }}px, calc(var(--spacing-scale) * {{ padding_bottom }}px));
+    {%- else -%}
+      --padding-block-end: {{ padding_bottom }}px;
+    {%- endif -%}
+  "
+>
+  <div class="email-signup-banner spacing-style">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="email-signup-banner__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="email-signup-banner__form-wrapper">
+      {% form 'customer' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+
+        <div class="email-signup-banner__form-row">
+          <div class="email-signup-banner__input-group">
+            <input
+              class="email-signup-banner__input"
+              type="email"
+              name="contact[email]"
+              placeholder="{{ section.settings.placeholder_text }}"
+              required
+              autocomplete="email"
+              aria-label="{{ section.settings.placeholder_text }}"
+            >
+          </div>
+          <button type="submit" class="email-signup-banner__submit" aria-label="Submit">
+            →
+          </button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .email-signup-banner {
+    padding-block-start: var(--padding-block-start, 72px);
+    padding-block-end: var(--padding-block-end, 72px);
+  }
+
+  .email-signup-banner__heading {
+    font-family: var(--font-heading--family);
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 4px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-foreground);
+    margin: 0 0 16px;
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .email-signup-banner__heading em {
+    font-family: var(--font-accent--family);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  .email-signup-banner__form-wrapper {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .email-signup-banner__form-row {
+    display: flex;
+    align-items: flex-end;
+    max-width: 412px;
+    margin: 0 auto;
+  }
+
+  .email-signup-banner__input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .email-signup-banner__input {
+    font-family: var(--font-body--family);
+    font-size: 16px;
+    color: var(--color-foreground);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid currentColor;
+    padding: 1px 2px 6px 2px;
+    width: 100%;
+    outline: none;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .email-signup-banner__input::placeholder {
+    color: var(--color-foreground);
+    opacity: 0.6;
+  }
+
+  .email-signup-banner__input:focus-visible {
+    outline: 2px auto currentColor;
+    outline-offset: 2px;
+  }
+
+  .email-signup-banner__submit {
+    font-family: var(--font-body--family);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    color: var(--color-foreground);
+    background: transparent;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    align-self: flex-end;
+    min-width: 24px;
+    min-height: 24px;
+    text-align: center;
+  }
+
+  .email-signup-banner__submit:focus-visible {
+    outline: 2px auto currentColor;
+    outline-offset: 2px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .email-signup-banner {
+      padding-block-start: 40px;
+      padding-block-end: 48px;
+      padding-inline: 24px;
+    }
+
+    .email-signup-banner__heading {
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.email_signup_banner",
+  "tag": "section",
+  "class": "email-signup-banner-wrapper section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "<em>become an</em> M.GEMI INSIDER"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_text",
+      "label": "t:settings.placeholder_text",
+      "default": "Enter Email"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page_width" },
+        { "value": "full-width", "label": "t:options.full_width" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 72,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 72,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.email_signup_banner",
+      "category": "t:categories.forms",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "section_width": "full-width",
+        "padding-block-start": 72,
+        "padding-block-end": 72
+      }
+    }
+  ]
+}
+{% endschema %}
