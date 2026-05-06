@@ -1,0 +1,354 @@
+{% liquid
+  assign has_desktop_video = false
+  assign has_mobile_video = false
+
+  if section.settings.video_desktop != blank
+    assign has_desktop_video = true
+  endif
+
+  if section.settings.video_mobile != blank
+    assign has_mobile_video = true
+  endif
+
+  assign overlay_opacity = section.settings.overlay_opacity | divided_by: 100.0
+%}
+
+<div
+  id="MeetArtisans-{{ section.id }}"
+  class="meet-artisans color-{{ section.settings.color_scheme }}"
+  style="--overlay-opacity: {{ overlay_opacity }};"
+>
+  {%- if has_desktop_video or has_mobile_video -%}
+    <div class="meet-artisans__media">
+      <div class="meet-artisans__media-desktop{% unless has_mobile_video %} meet-artisans__media-mobile-fallback{% endunless %}">
+        {%- if has_desktop_video -%}
+          {{
+            section.settings.video_desktop
+            | video_tag:
+              autoplay: true,
+              loop: true,
+              controls: false,
+              muted: true,
+              class: 'meet-artisans__video'
+          }}
+        {%- endif -%}
+      </div>
+      {%- if has_mobile_video -%}
+        <div class="meet-artisans__media-mobile">
+          {{
+            section.settings.video_mobile
+            | video_tag:
+              autoplay: true,
+              loop: true,
+              controls: false,
+              muted: true,
+              class: 'meet-artisans__video'
+          }}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="meet-artisans__overlay"></div>
+
+  <div
+    class="meet-artisans__content spacing-style"
+    style="{% render 'spacing-style', settings: section.settings %}"
+  >
+    {%- if section.settings.title != blank -%}
+      <div class="meet-artisans__title">
+        {{ section.settings.title }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.description != blank -%}
+      <div class="meet-artisans__description">
+        {{ section.settings.description }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a
+        {% if section.settings.button_link != blank %}
+          href="{{ section.settings.button_link }}"
+        {% endif %}
+        class="meet-artisans__cta"
+      >
+        {{- section.settings.button_label -}}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .meet-artisans {
+    position: relative;
+    min-height: 700px;
+    overflow: hidden;
+  }
+
+  @media screen and (max-width: 749px) {
+    .meet-artisans {
+      min-height: 533px;
+    }
+  }
+
+  .meet-artisans__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .meet-artisans__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .meet-artisans__media-desktop {
+    display: block;
+    height: 100%;
+  }
+
+  .meet-artisans__media-mobile {
+    display: none;
+    height: 100%;
+  }
+
+  @media screen and (max-width: 749px) {
+    .meet-artisans__media-desktop {
+      display: none;
+    }
+
+    .meet-artisans__media-desktop.meet-artisans__media-mobile-fallback {
+      display: block;
+    }
+
+    .meet-artisans__media-mobile {
+      display: block;
+    }
+  }
+
+  .meet-artisans__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--overlay-opacity));
+    z-index: 1;
+  }
+
+  .meet-artisans__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: inherit;
+    padding-inline: 64px;
+    padding-block: 50px;
+    text-align: center;
+    color: var(--color-foreground);
+  }
+
+  @media screen and (max-width: 749px) {
+    .meet-artisans__content {
+      padding-inline: 24px;
+      padding-block: 50px;
+    }
+  }
+
+  .meet-artisans__title {
+    font-family: var(--font-accent--family);
+    font-size: 56px;
+    line-height: 64px;
+    margin-block-end: 24px;
+    max-width: 675px;
+  }
+
+  .meet-artisans__title em {
+    font-size: 64px;
+    line-height: 72px;
+    font-style: italic;
+  }
+
+  @media screen and (max-width: 749px) {
+    .meet-artisans__title {
+      font-size: 32px;
+      line-height: 40px;
+      letter-spacing: -0.25px;
+      margin-block-end: 16px;
+    }
+
+    .meet-artisans__title em {
+      font-size: 32px;
+      line-height: 40px;
+    }
+  }
+
+  .meet-artisans__description {
+    font-family: var(--font-body--family);
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 32px;
+    margin-block-end: 24px;
+    max-width: 675px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .meet-artisans__description {
+      font-size: 14px;
+      line-height: 22px;
+      letter-spacing: 0.25px;
+      margin-block-end: 16px;
+    }
+  }
+
+  .meet-artisans__cta {
+    display: inline-block;
+    font-family: var(--font-body--family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    color: var(--color-foreground);
+    padding-block: 12px;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .meet-artisans__cta:focus-visible {
+    outline: 1px auto;
+    outline-offset: 1px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .meet-artisans__cta {
+      font-size: 12px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.meet_artisans",
+  "tag": "section",
+  "class": "section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.media"
+    },
+    {
+      "type": "video",
+      "id": "video_desktop",
+      "label": "t:settings.video_desktop"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "t:settings.video_mobile"
+    },
+    {
+      "type": "header",
+      "content": "t:content.content"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "t:settings.title",
+      "default": "<p>All in the <em>Famiglia</em></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:settings.description",
+      "default": "<p>Fathers and sons, sisters and brothers, husbands and wives—there are real families at the heart of M.Gemi. And with every cut of leather, every hand-stitched seam, every thump of the hammer, they keep generations of tradition alive.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:content.button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:settings.button_label",
+      "default": "MEET OUR ARTISANS"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:settings.button_link"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "t:settings.overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "%"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "t:options.page"
+        },
+        {
+          "value": "full-width",
+          "label": "t:options.full"
+        }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 0,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.meet_artisans",
+      "category": "t:categories.banners"
+    }
+  ]
+}
+{% endschema %}

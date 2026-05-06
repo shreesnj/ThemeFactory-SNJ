@@ -263,12 +263,25 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "meet_artisans": {
+      "type": "meet-artisans",
+      "settings": {
+        "video_desktop": "shopify://files/videos/2b70283a39a347b1867d40e117a9fc00-30d5ab640bb9.mp4",
+        "video_mobile": "shopify://files/videos/c49f63a1a3784877b27e14c26a88cb23-16d71bbd480c.mp4",
+        "overlay_opacity": 50,
+        "color_scheme": "scheme-5",
+        "section_width": "full-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "hero",
     "essentials_hero",
     "image_multiple_column",
-    "product_list_fa6P9H"
+    "product_list_fa6P9H",
+    "meet_artisans"
   ]
 }
