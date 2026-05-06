@@ -267,14 +267,41 @@
     "meet_artisans": {
       "type": "meet-artisans",
       "settings": {
-        "video_desktop": "shopify://files/videos/2b70283a39a347b1867d40e117a9fc00-30d5ab640bb9.mp4",
-        "video_mobile": "shopify://files/videos/c49f63a1a3784877b27e14c26a88cb23-16d71bbd480c.mp4",
-        "overlay_opacity": 50,
-        "color_scheme": "scheme-5",
-        "section_width": "full-width",
+        "heading": "The Essentials",
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "columns_desktop": 4,
+        "column_gap": 32,
         "padding-block-start": 0,
-        "padding-block-end": 0
-      }
+        "padding-block-end": 88
+      },
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "link_text": "SHOP THE FELIZE"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "link_text": "SHOP THE LISINDA"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "link_text": "SHOP THE UNA"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "link_text": "SHOP THE FRANCESCA"
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2", "card_3", "card_4"]
     }
   },
   "order": [

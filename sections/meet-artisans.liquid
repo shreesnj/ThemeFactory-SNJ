@@ -1,234 +1,193 @@
 {% liquid
-  assign has_desktop_video = false
-  assign has_mobile_video = false
-
-  if section.settings.video_desktop != blank
-    assign has_desktop_video = true
-  endif
-
-  if section.settings.video_mobile != blank
-    assign has_mobile_video = true
-  endif
-
-  assign overlay_opacity = section.settings.overlay_opacity | divided_by: 100.0
+  assign scale_min = 20
+  assign padding_top = section.settings.padding-block-start
+  assign padding_bottom = section.settings.padding-block-end
 %}
 
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
 <div
-  id="MeetArtisans-{{ section.id }}"
-  class="meet-artisans color-{{ section.settings.color_scheme }}"
-  style="--overlay-opacity: {{ overlay_opacity }};"
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    {%- if padding_top > scale_min -%}
+      --padding-block-start: max({{ scale_min }}px, calc(var(--spacing-scale) * {{ padding_top }}px));
+    {%- else -%}
+      --padding-block-start: {{ padding_top }}px;
+    {%- endif -%}
+    {%- if padding_bottom > scale_min -%}
+      --padding-block-end: max({{ scale_min }}px, calc(var(--spacing-scale) * {{ padding_bottom }}px));
+    {%- else -%}
+      --padding-block-end: {{ padding_bottom }}px;
+    {%- endif -%}
+    --columns-desktop: {{ section.settings.columns_desktop }};
+    --column-gap: {{ section.settings.column_gap }}px;
+  "
 >
-  {%- if has_desktop_video or has_mobile_video -%}
-    <div class="meet-artisans__media">
-      <div class="meet-artisans__media-desktop{% unless has_mobile_video %} meet-artisans__media-mobile-fallback{% endunless %}">
-        {%- if has_desktop_video -%}
-          {{
-            section.settings.video_desktop
-            | video_tag:
-              autoplay: true,
-              loop: true,
-              controls: false,
-              muted: true,
-              class: 'meet-artisans__video'
-          }}
-        {%- endif -%}
-      </div>
-      {%- if has_mobile_video -%}
-        <div class="meet-artisans__media-mobile">
-          {{
-            section.settings.video_mobile
-            | video_tag:
-              autoplay: true,
-              loop: true,
-              controls: false,
-              muted: true,
-              class: 'meet-artisans__video'
-          }}
+  <div class="meet-artisans spacing-style">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="meet-artisans__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    <div class="meet-artisans__grid">
+      {% for block in section.blocks %}
+        <div class="meet-artisans__card" {{ block.shopify_attributes }}>
+          <div class="meet-artisans__media">
+            {%- if block.settings.image != blank -%}
+              {%- assign sizes_val = '(min-width: 750px) 25vw, 68vw' -%}
+              {{
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag:
+                  class: 'meet-artisans__image',
+                  sizes: sizes_val,
+                  widths: '266,304,532,608,720,1000',
+                  loading: 'lazy',
+                  alt: block.settings.image.alt
+              }}
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'meet-artisans__placeholder' }}
+            {%- endif -%}
+          </div>
+
+          <div class="meet-artisans__cta">
+            {%- if block.settings.link != blank -%}
+              <a href="{{ block.settings.link }}">
+                {{- block.settings.link_text -}}
+              </a>
+            {%- else -%}
+              <span>{{ block.settings.link_text }}</span>
+            {%- endif -%}
+          </div>
         </div>
-      {%- endif -%}
+      {% endfor %}
     </div>
-  {%- endif -%}
-
-  <div class="meet-artisans__overlay"></div>
-
-  <div
-    class="meet-artisans__content spacing-style"
-    style="{% render 'spacing-style', settings: section.settings %}"
-  >
-    {%- if section.settings.title != blank -%}
-      <div class="meet-artisans__title">
-        {{ section.settings.title }}
-      </div>
-    {%- endif -%}
-
-    {%- if section.settings.description != blank -%}
-      <div class="meet-artisans__description">
-        {{ section.settings.description }}
-      </div>
-    {%- endif -%}
-
-    {%- if section.settings.button_label != blank -%}
-      <a
-        {% if section.settings.button_link != blank %}
-          href="{{ section.settings.button_link }}"
-        {% endif %}
-        class="meet-artisans__cta"
-      >
-        {{- section.settings.button_label -}}
-      </a>
-    {%- endif -%}
   </div>
 </div>
 
 {% stylesheet %}
   .meet-artisans {
-    position: relative;
-    min-height: 700px;
-    overflow: hidden;
+    padding-block-start: var(--padding-block-start, 0px);
+    padding-block-end: var(--padding-block-end, 0px);
   }
 
-  @media screen and (max-width: 749px) {
-    .meet-artisans {
-      min-height: 533px;
+  .meet-artisans__heading {
+    font-family: var(--font-heading--family);
+    font-size: 30px;
+    line-height: 1.1;
+    text-align: center;
+    margin: 0 0 14px;
+    color: var(--color-foreground);
+  }
+
+  @media screen and (min-width: 750px) {
+    .meet-artisans__heading {
+      font-size: 48px;
+      margin: 0 0 48px;
+    }
+  }
+
+  .meet-artisans__grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 24px;
+    margin-inline: calc(-1 * var(--page-margin, 16px));
+    padding-inline: var(--page-margin, 16px);
+    scrollbar-width: thin;
+    scrollbar-color: rgb(0, 0, 0) rgb(118, 118, 118);
+  }
+
+  .meet-artisans__grid::-webkit-scrollbar {
+    height: 2px;
+  }
+
+  .meet-artisans__grid::-webkit-scrollbar-track {
+    background: rgb(118, 118, 118);
+    border-radius: 10px;
+  }
+
+  .meet-artisans__grid::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0);
+    border-radius: 10px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .meet-artisans__grid {
+      display: grid;
+      grid-template-columns: repeat(var(--columns-desktop, 4), 1fr);
+      column-gap: var(--column-gap, 32px);
+      overflow: visible;
+      scroll-snap-type: none;
+      padding-bottom: 0;
+      margin-inline: 0;
+      padding-inline: 0;
+    }
+  }
+
+  .meet-artisans__card {
+    flex: 0 0 68%;
+    scroll-snap-align: start;
+  }
+
+  @media screen and (min-width: 750px) {
+    .meet-artisans__card {
+      flex: none;
     }
   }
 
   .meet-artisans__media {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
+    position: relative;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
   }
 
-  .meet-artisans__video {
+  .meet-artisans__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .meet-artisans__media-desktop {
-    display: block;
+  .meet-artisans__placeholder {
+    width: 100%;
     height: 100%;
-  }
-
-  .meet-artisans__media-mobile {
-    display: none;
-    height: 100%;
-  }
-
-  @media screen and (max-width: 749px) {
-    .meet-artisans__media-desktop {
-      display: none;
-    }
-
-    .meet-artisans__media-desktop.meet-artisans__media-mobile-fallback {
-      display: block;
-    }
-
-    .meet-artisans__media-mobile {
-      display: block;
-    }
-  }
-
-  .meet-artisans__overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, var(--overlay-opacity));
-    z-index: 1;
-  }
-
-  .meet-artisans__content {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: inherit;
-    padding-inline: 64px;
-    padding-block: 50px;
-    text-align: center;
-    color: var(--color-foreground);
-  }
-
-  @media screen and (max-width: 749px) {
-    .meet-artisans__content {
-      padding-inline: 24px;
-      padding-block: 50px;
-    }
-  }
-
-  .meet-artisans__title {
-    font-family: var(--font-accent--family);
-    font-size: 56px;
-    line-height: 64px;
-    margin-block-end: 24px;
-    max-width: 675px;
-  }
-
-  .meet-artisans__title em {
-    font-size: 64px;
-    line-height: 72px;
-    font-style: italic;
-  }
-
-  @media screen and (max-width: 749px) {
-    .meet-artisans__title {
-      font-size: 32px;
-      line-height: 40px;
-      letter-spacing: -0.25px;
-      margin-block-end: 16px;
-    }
-
-    .meet-artisans__title em {
-      font-size: 32px;
-      line-height: 40px;
-    }
-  }
-
-  .meet-artisans__description {
-    font-family: var(--font-body--family);
-    font-weight: 300;
-    font-size: 20px;
-    line-height: 32px;
-    margin-block-end: 24px;
-    max-width: 675px;
-  }
-
-  @media screen and (max-width: 749px) {
-    .meet-artisans__description {
-      font-size: 14px;
-      line-height: 22px;
-      letter-spacing: 0.25px;
-      margin-block-end: 16px;
-    }
+    object-fit: cover;
   }
 
   .meet-artisans__cta {
-    display: inline-block;
-    font-family: var(--font-body--family);
+    margin-top: 33px;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .meet-artisans__cta {
+      margin-top: 55px;
+    }
+  }
+
+  .meet-artisans__cta a,
+  .meet-artisans__cta span {
+    font-family: var(--font-subheading--family);
+    font-size: 12px;
     font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
+    color: inherit;
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;
-    color: var(--color-foreground);
-    padding-block: 12px;
-    min-height: 44px;
-    min-width: 44px;
   }
 
-  .meet-artisans__cta:focus-visible {
-    outline: 1px auto;
-    outline-offset: 1px;
-  }
-
-  @media screen and (max-width: 749px) {
-    .meet-artisans__cta {
-      font-size: 12px;
+  @media screen and (min-width: 750px) {
+    .meet-artisans__cta a,
+    .meet-artisans__cta span {
+      letter-spacing: 0.8px;
     }
+  }
+
+  .meet-artisans__cta a:focus-visible {
+    outline: 1px auto currentColor;
+    outline-offset: 1px;
   }
 {% endstylesheet %}
 
@@ -236,88 +195,51 @@
 {
   "name": "t:names.meet_artisans",
   "tag": "section",
-  "class": "section-wrapper",
+  "class": "meet-artisans-wrapper section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
   "settings": [
     {
-      "type": "header",
-      "content": "t:content.media"
-    },
-    {
-      "type": "video",
-      "id": "video_desktop",
-      "label": "t:settings.video_desktop"
-    },
-    {
-      "type": "video",
-      "id": "video_mobile",
-      "label": "t:settings.video_mobile"
-    },
-    {
-      "type": "header",
-      "content": "t:content.content"
-    },
-    {
-      "type": "richtext",
-      "id": "title",
-      "label": "t:settings.title",
-      "default": "<p>All in the <em>Famiglia</em></p>"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "t:settings.description",
-      "default": "<p>Fathers and sons, sisters and brothers, husbands and wives—there are real families at the heart of M.Gemi. And with every cut of leather, every hand-stitched seam, every thump of the hammer, they keep generations of tradition alive.</p>"
-    },
-    {
-      "type": "header",
-      "content": "t:content.button"
-    },
-    {
       "type": "text",
-      "id": "button_label",
-      "label": "t:settings.button_label",
-      "default": "MEET OUR ARTISANS"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "t:settings.button_link"
-    },
-    {
-      "type": "header",
-      "content": "t:content.appearance"
-    },
-    {
-      "type": "range",
-      "id": "overlay_opacity",
-      "label": "t:settings.overlay_opacity",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "default": 50,
-      "unit": "%"
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "The Essentials"
     },
     {
       "type": "color_scheme",
       "id": "color_scheme",
       "label": "t:settings.color_scheme",
-      "default": "scheme-5"
+      "default": "scheme-1"
     },
     {
       "type": "select",
       "id": "section_width",
       "label": "t:settings.section_width",
       "options": [
-        {
-          "value": "page-width",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
+        { "value": "page-width", "label": "t:options.page_width" },
+        { "value": "full-width", "label": "t:options.full_width" }
       ],
-      "default": "full-width"
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.grid_layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "t:settings.columns_desktop",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "number",
+      "id": "column_gap",
+      "label": "t:settings.column_gap",
+      "default": 32
     },
     {
       "type": "header",
@@ -340,14 +262,51 @@
       "min": 0,
       "max": 100,
       "step": 1,
-      "default": 0,
+      "default": 88,
       "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "t:names.card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.image"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "t:settings.link_text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:settings.link"
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "t:names.meet_artisans",
-      "category": "t:categories.banners"
+      "category": "t:categories.storytelling",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "columns_desktop": 4,
+        "column_gap": 32,
+        "padding-block-start": 0,
+        "padding-block-end": 88
+      },
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
     }
   ]
 }
