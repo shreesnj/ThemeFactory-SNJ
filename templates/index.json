@@ -7,12 +7,10 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "hero_jVaWmY": {
       "type": "hero",
-      "blocks": {},
-      "block_order": [],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "video",
