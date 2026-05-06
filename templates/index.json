@@ -9,6 +9,22 @@
  */
 {
   "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "media_type_1": "video",
+        "video_1": "shopify://files/videos/d9cf9b0abeac470ba0893806ef7d1778-ce1616f076f3.mp4",
+        "custom_mobile_media": true,
+        "media_type_1_mobile": "video",
+        "video_1_mobile": "shopify://files/videos/7fe7237069744e80bf90ab3755bc771b-f22e39ae8376.mp4",
+        "section_height": "large",
+        "section_width": "full-width",
+        "toggle_overlay": false,
+        "color_scheme": "scheme-5",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "essentials_hero": {
       "type": "essentials",
       "settings": {
@@ -219,6 +235,7 @@
     }
   },
   "order": [
+    "hero",
     "essentials_hero",
     "product_list_fa6P9H"
   ]
