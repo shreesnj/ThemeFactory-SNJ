@@ -37,7 +37,7 @@
               {% elsif block.settings.logo_svg != blank %}
                 <img
                   src="{{ block.settings.logo_svg | asset_url }}"
-                  alt="{{ block.settings.logo_svg | remove: '.svg' | remove: '.png' | replace: '-', ' ' }}"
+                  alt="Product brand logo"
                   class="product-features__card-logo"
                   loading="lazy"
                   width="155"

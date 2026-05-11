@@ -10,11 +10,11 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h1",
+            "type_preset": "custom",
             "font": "var(--font-heading--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
+            "font_size": "3rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
             "case": "uppercase",
             "wrap": "pretty",
             "color": "var(--color-foreground-heading)",
@@ -251,8 +251,8 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h6",
-            "font": "var(--font-body--family)",
+            "type_preset": "h5",
+            "font": "var(--font-heading--family)",
             "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
@@ -266,6 +266,14 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
+          }
+        },
+        "icon_1": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image_upload": "shopify://shop_images/longer-black-5-desktop-I10713190146324282.png",
+            "width": 18
           }
         },
         "text_2": {
@@ -275,8 +283,8 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h6",
-            "font": "var(--font-body--family)",
+            "type_preset": "h5",
+            "font": "var(--font-heading--family)",
             "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
@@ -290,6 +298,14 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
+          }
+        },
+        "icon_2": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image_upload": "shopify://shop_images/longer-black-5-desktop-I10713190146324282.png",
+            "width": 18
           }
         },
         "text_3": {
@@ -299,8 +315,8 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h6",
-            "font": "var(--font-body--family)",
+            "type_preset": "h5",
+            "font": "var(--font-heading--family)",
             "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
@@ -314,6 +330,14 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
+          }
+        },
+        "icon_3": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image_upload": "shopify://shop_images/longer-black-5-desktop-I10713190146324282.png",
+            "width": 18
           }
         },
         "text_4": {
@@ -323,8 +347,8 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h6",
-            "font": "var(--font-body--family)",
+            "type_preset": "h5",
+            "font": "var(--font-heading--family)",
             "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
@@ -340,6 +364,14 @@
             "padding-inline-end": 0
           }
         },
+        "icon_4": {
+          "type": "icon",
+          "settings": {
+            "icon": "none",
+            "image_upload": "shopify://shop_images/longer-black-5-desktop-I10713190146324282.png",
+            "width": 18
+          }
+        },
         "text_5": {
           "type": "text",
           "settings": {
@@ -347,8 +379,8 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h6",
-            "font": "var(--font-body--family)",
+            "type_preset": "h5",
+            "font": "var(--font-heading--family)",
             "font_size": "",
             "line_height": "normal",
             "letter_spacing": "normal",
@@ -365,7 +397,7 @@
           }
         }
       },
-      "block_order": ["text_1", "text_2", "text_3", "text_4", "text_5"],
+      "block_order": ["text_1", "icon_1", "text_2", "icon_2", "text_3", "icon_3", "text_4", "icon_4", "text_5"],
       "settings": {
         "movement_direction": "reverse",
         "color_scheme": "scheme-10",
@@ -437,11 +469,11 @@
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h1",
+            "type_preset": "custom",
             "font": "var(--font-heading--family)",
-            "font_size": "",
-            "line_height": "normal",
-            "letter_spacing": "normal",
+            "font_size": "5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
             "case": "uppercase",
             "wrap": "pretty",
             "color": "var(--color-foreground-heading)",
@@ -595,11 +627,11 @@
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
-            "type_preset": "h2",
+            "type_preset": "custom",
             "font": "var(--font-heading--family)",
-            "font_size": "",
+            "font_size": "2.5rem",
             "line_height": "normal",
-            "letter_spacing": "normal",
+            "letter_spacing": "tight",
             "case": "none",
             "wrap": "pretty",
             "color": "var(--color-foreground-heading)",
@@ -841,14 +873,14 @@
                   "type": "text",
                   "settings": {
                     "text": "<h2>Your Path to Living an Enhanced Life Starts Here.</h2>",
-                    "type_preset": "h2",
+                    "type_preset": "custom",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
                     "font": "var(--font-heading--family)",
-                    "font_size": "",
+                    "font_size": "2.5rem",
                     "line_height": "normal",
-                    "letter_spacing": "normal",
+                    "letter_spacing": "tight",
                     "case": "none",
                     "wrap": "pretty",
                     "color": "#0033FF",
