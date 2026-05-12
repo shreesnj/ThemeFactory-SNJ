@@ -151,7 +151,12 @@
     "width": "Width",
     "width_is_automatically_optimized": "Width is automatically optimized for mobile.",
     "app_required_for_ratings": "An app is required for product ratings. [Learn more](https://help.shopify.com/manual/apps)",
-    "navigation": "Navigation"
+    "navigation": "Navigation",
+    "menus": "Menus",
+    "contact": "Contact",
+    "social_media": "Social media",
+    "disclaimer": "Disclaimer",
+    "legal": "Legal"
   },
   "html_defaults": {
     "join_our_email_list": "<h2>Join our email list</h2>",
@@ -435,7 +440,8 @@
     "view_all_button": "View all",
     "pills": "Pills",
     "comparison_slider": "Comparison slider",
-    "custom_header": "Custom header"
+    "custom_header": "Custom header",
+    "custom_footer": "Custom footer"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1177,7 +1183,21 @@
     "x_position": "Horizontal position",
     "y_position": "Vertical position",
     "cta_text": "CTA text",
-    "cta_link": "CTA link"
+    "cta_link": "CTA link",
+    "menu_1": "Menu 1",
+    "menu_1_heading": "Menu 1 heading",
+    "menu_2": "Menu 2",
+    "menu_2_heading": "Menu 2 heading",
+    "contact_heading": "Contact heading",
+    "email_address": "Email address",
+    "disclaimer_text": "Disclaimer",
+    "legal_menu": "Legal links",
+    "copyright_text": "Copyright text",
+    "instagram_url": "Instagram",
+    "youtube_url": "YouTube",
+    "tiktok_url": "TikTok",
+    "twitter_url": "X (Twitter)",
+    "linkedin_url": "LinkedIn"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",
