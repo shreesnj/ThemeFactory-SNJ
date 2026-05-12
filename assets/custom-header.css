@@ -1,0 +1,442 @@
+/* ==========================================================================
+   Custom Header — Floating pill header
+   ========================================================================== */
+
+.custom-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 20px 0;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+.custom-header__box {
+  display: flex;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-inline: 20px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* --------------------------------------------------------------------------
+   Logo
+   -------------------------------------------------------------------------- */
+
+.custom-header__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.custom-header__logo:hover {
+  opacity: 0.7;
+}
+
+.custom-header__logo:focus-visible {
+  outline: 1px solid currentcolor;
+  outline-offset: 2px;
+}
+
+.custom-header__logo img,
+.custom-header__logo svg {
+  display: block;
+  max-height: 16px;
+  width: auto;
+}
+
+.custom-header__logo-text {
+  font-family: var(--font-heading--family);
+  font-weight: var(--font-heading--weight);
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+}
+
+/* --------------------------------------------------------------------------
+   Navigation (desktop)
+   -------------------------------------------------------------------------- */
+
+.custom-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.custom-header-nav__item {
+  position: relative;
+}
+
+.custom-header-nav__anchor {
+  color: rgb(0, 0, 0);
+  font-family: var(--font-body--family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22.4px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.custom-header-nav__anchor:hover {
+  opacity: 0.7;
+}
+
+.custom-header-nav__anchor:focus-visible {
+  outline: 1px solid currentcolor;
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Submenu (desktop dropdown)
+   -------------------------------------------------------------------------- */
+
+.custom-header-nav__submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 180px;
+  padding: 12px 0;
+  margin-top: 8px;
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  z-index: 10;
+}
+
+.custom-header-nav__item.is-submenu-open > .custom-header-nav__submenu {
+  display: block;
+}
+
+.custom-header-nav__submenu-item {
+  padding: 0;
+}
+
+.custom-header-nav__submenu-link {
+  display: block;
+  padding: 8px 20px;
+  color: rgb(0, 0, 0);
+  font-family: var(--font-body--family);
+  font-size: 14px;
+  font-weight: 450;
+  line-height: 22.4px;
+  text-decoration: none;
+  transition: background-color 0.15s;
+  white-space: nowrap;
+}
+
+.custom-header-nav__submenu-link:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.custom-header-nav__submenu-link:focus-visible {
+  outline: 1px solid currentcolor;
+  outline-offset: -1px;
+}
+
+/* --------------------------------------------------------------------------
+   Actions (cart + CTA + hamburger)
+   -------------------------------------------------------------------------- */
+
+.custom-header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+/* Hide account button inside custom header */
+.custom-header .account-button {
+  display: none;
+}
+
+/* Cart icon override — white circle style */
+.custom-header .header-actions__action {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: rgb(255, 255, 255);
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 0.81);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.custom-header .header-actions__action:hover {
+  opacity: 0.85;
+}
+
+.custom-header .header-actions__action:focus-visible {
+  outline: 1px solid currentcolor;
+  outline-offset: 2px;
+}
+
+.custom-header .header-actions__action svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Cart bubble override */
+.custom-header .cart-bubble {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.custom-header .cart-bubble__background {
+  background-color: rgb(0, 43, 214);
+}
+
+.custom-header .cart-bubble__text {
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+/* Reset header-actions flex to allow custom layout */
+.custom-header header-actions {
+  display: contents;
+}
+
+/* Hide text styles on cart icon — icon only */
+.custom-header .header-actions__cart-icon span:not(.svg-wrapper):not(.cart-bubble):not(.cart-bubble__background):not(.cart-bubble__text):not(.cart-bubble__text-count):not(.visually-hidden) {
+  display: none;
+}
+
+/* CTA Button */
+.custom-header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 20px;
+  height: 36px;
+  background: rgb(26, 4, 255);
+  color: rgb(255, 255, 255);
+  border-radius: 16px;
+  font-family: var(--font-body--family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 36px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.custom-header__cta:hover {
+  opacity: 0.85;
+}
+
+.custom-header__cta:focus-visible {
+  outline: 1px solid currentcolor;
+  outline-offset: 2px;
+}
+
+/* Mobile CTA item — hidden on desktop */
+.custom-header-nav__item--cta-mobile {
+  display: none;
+}
+
+/* Hamburger button */
+.custom-header__hamburger {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Spacer (pushes page content below header)
+   -------------------------------------------------------------------------- */
+
+.custom-header-spacer {
+  height: 92px;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile (<750px)
+   -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 749px) {
+  .custom-header {
+    padding: 0;
+    max-height: 60px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .custom-header__box {
+    flex-wrap: wrap;
+    height: auto;
+    max-width: 100%;
+    background: transparent;
+    border-radius: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .custom-header__logo {
+    height: 60px;
+    width: auto;
+    flex: 0 0 auto;
+  }
+
+  .custom-header__actions {
+    flex: 1 1 0%;
+    order: 0;
+  }
+
+  /* Desktop CTA hidden in header bar on mobile */
+  .custom-header__cta--desktop {
+    display: none;
+  }
+
+  /* Navigation — hidden by default on mobile */
+  .custom-header-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: 100%;
+    padding: 10px 0 20px;
+    order: 10;
+  }
+
+  .custom-header-nav__anchor {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+  .custom-header-nav__anchor:focus-visible {
+    outline-offset: 4px;
+  }
+
+  /* Mobile submenu — accordion style */
+  .custom-header-nav__submenu {
+    position: static;
+    transform: none;
+    display: none;
+    min-width: 100%;
+    margin-top: 0;
+    padding: 4px 0 4px 16px;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .custom-header-nav__item.is-submenu-open > .custom-header-nav__submenu {
+    display: block;
+  }
+
+  .custom-header-nav__submenu-link {
+    padding: 6px 0;
+    font-size: 16px;
+    font-weight: 450;
+    line-height: 24px;
+  }
+
+  .custom-header-nav__submenu-link:hover {
+    background-color: transparent;
+    opacity: 0.7;
+  }
+
+  /* Mobile CTA item visible */
+  .custom-header-nav__item--cta-mobile {
+    display: list-item;
+    width: 100%;
+  }
+
+  /* Mobile CTA inside nav */
+  .custom-header__cta--mobile {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  /* Hamburger */
+  .custom-header__hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 16px 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.81);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .custom-header__hamburger:focus-visible {
+    outline: 1px solid currentcolor;
+    outline-offset: 2px;
+  }
+
+  .custom-header__hamburger-bar {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  /* Hamburger → X transition */
+  .custom-header.is-open .custom-header__hamburger-bar:first-child {
+    transform: translateY(5px) rotate(45deg);
+  }
+
+  .custom-header.is-open .custom-header__hamburger-bar:last-child {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+
+  /* Expand menu when open */
+  .custom-header.is-open {
+    max-height: 100dvh;
+    overflow-y: auto;
+  }
+
+  .custom-header-spacer {
+    height: 60px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Cart drawer overrides within custom header context
+   -------------------------------------------------------------------------- */
+
+.custom-header .cart-drawer {
+  margin-inline-end: 0;
+}
+
+.custom-header .cart-drawer .header-actions__action {
+  width: 30px;
+  height: 30px;
+}

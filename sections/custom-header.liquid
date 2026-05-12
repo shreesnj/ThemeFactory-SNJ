@@ -1,0 +1,135 @@
+{{ 'custom-header.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+  assign cta_text = section.settings.cta_text
+  assign cta_url = section.settings.cta_url
+-%}
+
+<div class="custom-header" data-section-id="{{ section.id }}">
+  <div class="custom-header__box">
+    {%- comment -%} Logo {%- endcomment -%}
+    <a class="custom-header__logo" href="{{ routes.root_url }}">
+      {%- if settings.logo != blank -%}
+        {% render 'image', image: settings.logo, height: 16, class: 'custom-header__logo-img' %}
+      {%- else -%}
+        <span class="custom-header__logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    {%- comment -%} Navigation {%- endcomment -%}
+    <nav aria-label="{{ 'accessibility.header_navigation_label' | t }}">
+      <ul class="custom-header-nav">
+        {%- for link in menu.links -%}
+          <li class="custom-header-nav__item{% if link.links.size > 0 %} custom-header-nav__item--has-submenu{% endif %}{% if link.active %} custom-header-nav__item--active{% endif %}">
+            {%- if link.links.size > 0 -%}
+              <a
+                class="custom-header-nav__anchor custom-header-nav__submenu-toggle"
+                href="{{ link.url }}"
+                aria-expanded="false"
+                aria-controls="submenu-{{ forloop.index }}"
+                {% if link.current %}aria-current="page"{% endif %}
+              >
+                {{- link.title | escape -}}
+              </a>
+              <ul
+                class="custom-header-nav__submenu"
+                id="submenu-{{ forloop.index }}"
+              >
+                {%- for child_link in link.links -%}
+                  <li class="custom-header-nav__submenu-item">
+                    <a
+                      class="custom-header-nav__submenu-link"
+                      href="{{ child_link.url }}"
+                      {% if child_link.current %}aria-current="page"{% endif %}
+                    >
+                      {{- child_link.title | escape -}}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- else -%}
+              <a
+                class="custom-header-nav__anchor"
+                href="{{ link.url }}"
+                {% if link.current %}aria-current="page"{% endif %}
+              >
+                {{- link.title | escape -}}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+
+        {%- comment -%} Mobile CTA inside nav {%- endcomment -%}
+        {%- if cta_text != blank and cta_url != blank -%}
+          <li class="custom-header-nav__item custom-header-nav__item--cta-mobile">
+            <a class="custom-header__cta custom-header__cta--mobile" href="{{ cta_url }}">
+              {{- cta_text | escape -}}
+            </a>
+          </li>
+        {%- endif -%}
+      </ul>
+    </nav>
+
+    {%- comment -%} Actions: cart drawer + CTA + hamburger {%- endcomment -%}
+    <div class="custom-header__actions">
+      {% render 'header-actions', display_style: 'icon', section: section %}
+
+      {%- if cta_text != blank and cta_url != blank -%}
+        <a class="custom-header__cta custom-header__cta--desktop" href="{{ cta_url }}">
+          {{- cta_text | escape -}}
+        </a>
+      {%- endif -%}
+
+      <button
+        class="custom-header__hamburger"
+        aria-expanded="false"
+        aria-label="{{ 'accessibility.menu' | t }}"
+        type="button"
+      >
+        <span class="custom-header__hamburger-bar"></span>
+        <span class="custom-header__hamburger-bar"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} Spacer to offset page content below the fixed header {%- endcomment -%}
+<div class="custom-header-spacer"></div>
+
+<script src="{{ 'custom-header.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "t:names.custom_header",
+  "class": "custom-header-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:settings.menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "t:settings.cta_text",
+      "default": "Get Enhanced"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "t:settings.cta_link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}

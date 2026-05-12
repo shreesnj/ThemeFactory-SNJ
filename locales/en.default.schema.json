@@ -434,7 +434,8 @@
     "video_section": "Video",
     "view_all_button": "View all",
     "pills": "Pills",
-    "comparison_slider": "Comparison slider"
+    "comparison_slider": "Comparison slider",
+    "custom_header": "Custom header"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1174,7 +1175,9 @@
     "cs_slider_inner_color": "Slider inner color",
     "text_on_images": "Text on images",
     "x_position": "Horizontal position",
-    "y_position": "Vertical position"
+    "y_position": "Vertical position",
+    "cta_text": "CTA text",
+    "cta_link": "CTA link"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",
