@@ -227,6 +227,99 @@
         "padding-block-end": 72
       }
     },
+    "news_ticker": {
+      "type": "news-ticker",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "scheme-2",
+        "image_height": 40,
+        "image_height_mobile": 24,
+        "gap_between_elements": 53,
+        "padding-block-start": 15,
+        "padding-block-end": 16
+      },
+      "blocks": {
+        "logo_1": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/the-new-york-times-logo-710fe05cc257.png"
+          }
+        },
+        "logo_2": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/logo-05-1-97752b0d1eb8.png"
+          }
+        },
+        "logo_3": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/download-1-ce1f0c092eb9.png"
+          }
+        },
+        "logo_4": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/espn-wordmark-svg-a65c2e771a8f.png"
+          }
+        },
+        "logo_5": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/download-2-09b998ea5f96.png"
+          }
+        },
+        "logo_6": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/download-8824c1f204f8.png"
+          }
+        },
+        "logo_7": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/www-economist-com-e7f0f41e6f37.png"
+          }
+        },
+        "logo_8": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/the-spectator-logo-svg-885b7775da78.png"
+          }
+        },
+        "logo_9": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/download-1-d790dd24-caf2-4d10-997b-7d6cacd3da95-9851a63918a4.png"
+          }
+        },
+        "logo_10": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/financial-times-logo-wine-1-14c256707bdf.png"
+          }
+        },
+        "logo_11": {
+          "type": "logo-image",
+          "settings": {
+            "image": "shopify://shop_images/le-monde-logo-svg-1-27d1d37231c9.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_1",
+        "logo_2",
+        "logo_3",
+        "logo_4",
+        "logo_5",
+        "logo_6",
+        "logo_7",
+        "logo_8",
+        "logo_9",
+        "logo_10",
+        "logo_11"
+      ]
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -424,6 +517,7 @@
   },
   "order": [
     "hero_jVaWmY",
+    "news_ticker",
     "product_list_fa6P9H"
   ]
 }

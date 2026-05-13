@@ -441,7 +441,9 @@
     "pills": "Pills",
     "comparison_slider": "Comparison slider",
     "custom_header": "Custom header",
-    "custom_footer": "Custom footer"
+    "custom_footer": "Custom footer",
+    "news_ticker": "News ticker",
+    "logo_image": "Logo image"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -922,6 +924,8 @@
     "image_icon": "Image icon",
     "image_opacity": "Image opacity",
     "image_position": "Image position",
+    "image_height": "Image height",
+    "image_height_mobile": "Image height mobile",
     "image_ratio": "Image ratio",
     "inherit_color_scheme": "Inherit color scheme",
     "inventory_threshold": "Low stock threshold",
