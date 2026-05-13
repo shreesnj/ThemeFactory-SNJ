@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "hero_jVaWmY": {
       "type": "hero",
@@ -183,13 +183,22 @@
                       }
                     }
                   },
-                  "block_order": ["button_longer", "button_stronger"]
+                  "block_order": [
+                    "button_longer",
+                    "button_stronger"
+                  ]
                 }
               },
-              "block_order": ["text_heading", "text_body", "group_buttons"]
+              "block_order": [
+                "text_heading",
+                "text_body",
+                "group_buttons"
+              ]
             }
           },
-          "block_order": ["group_content"]
+          "block_order": [
+            "group_content"
+          ]
         }
       },
       "block_order": [
@@ -229,15 +238,6 @@
     },
     "news_ticker": {
       "type": "news-ticker",
-      "settings": {
-        "movement_direction": "normal",
-        "color_scheme": "scheme-2",
-        "image_height": 40,
-        "image_height_mobile": 24,
-        "gap_between_elements": 53,
-        "padding-block-start": 15,
-        "padding-block-end": 16
-      },
       "blocks": {
         "logo_1": {
           "type": "logo-image",
@@ -318,29 +318,19 @@
         "logo_9",
         "logo_10",
         "logo_11"
-      ]
+      ],
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "scheme-2",
+        "image_height": 40,
+        "image_height_mobile": 24,
+        "gap_between_elements": 53,
+        "padding-block-start": 15,
+        "padding-block-end": 16
+      }
     },
     "our_products": {
       "type": "product-list",
-      "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 2,
-        "columns": 2,
-        "mobile_columns": "1",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 12,
-        "rows_gap": 12,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 12,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      },
       "blocks": {
         "static-header": {
           "type": "_product-list-content",
@@ -526,6 +516,25 @@
             "buy_buttons"
           ]
         }
+      },
+      "settings": {
+        "collection": "all",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 2,
+        "columns": 2,
+        "mobile_columns": "1",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 12,
+        "rows_gap": 12,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "horizontal_alignment": "flex-start",
+        "gap": 12,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 40,
+        "padding-block-end": 40
       }
     },
     "product_list_fa6P9H": {
@@ -705,8 +714,6 @@
     },
     "unlock_hero": {
       "type": "hero",
-      "blocks": {},
-      "block_order": [],
       "settings": {
         "media_type_1": "image",
         "image_1": "shopify://shop_images/shopify-banner-b307ac019830.png",
@@ -733,17 +740,6 @@
     },
     "athlete_carousel": {
       "type": "carousel",
-      "settings": {
-        "columns": 3,
-        "mobile_columns": "1",
-        "section_width": "full-width",
-        "columns_gap": 24,
-        "color_scheme": "scheme-2",
-        "icons_style": "none",
-        "icons_shape": "none",
-        "padding-block-start": 64,
-        "padding-block-end": 64
-      },
       "blocks": {
         "static-header": {
           "type": "group",
@@ -841,10 +837,15 @@
                   }
                 }
               },
-              "block_order": ["subtitle_text", "heading_custom_liquid"]
+              "block_order": [
+                "subtitle_text",
+                "heading_custom_liquid"
+              ]
             }
           },
-          "block_order": ["inner_group"]
+          "block_order": [
+            "inner_group"
+          ]
         },
         "static-carousel-content": {
           "type": "_carousel-content",
@@ -852,6 +853,7 @@
           "settings": {
             "inherit_color_scheme": true,
             "color_scheme": "",
+            "height": "fill",
             "position": "top",
             "border": "none",
             "border_width": 1,
@@ -860,8 +862,7 @@
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
-            "padding-inline-end": 0,
-            "height": "fill"
+            "padding-inline-end": 0
           },
           "blocks": {
             "card_1": {
@@ -995,10 +996,16 @@
                       }
                     }
                   },
-                  "block_order": ["name_1", "sport_1"]
+                  "block_order": [
+                    "name_1",
+                    "sport_1"
+                  ]
                 }
               },
-              "block_order": ["quote_1", "info_group_1"]
+              "block_order": [
+                "quote_1",
+                "info_group_1"
+              ]
             },
             "card_2": {
               "type": "_card",
@@ -1131,10 +1138,16 @@
                       }
                     }
                   },
-                  "block_order": ["name_2", "sport_2"]
+                  "block_order": [
+                    "name_2",
+                    "sport_2"
+                  ]
                 }
               },
-              "block_order": ["quote_2", "info_group_2"]
+              "block_order": [
+                "quote_2",
+                "info_group_2"
+              ]
             },
             "card_3": {
               "type": "_card",
@@ -1267,14 +1280,35 @@
                       }
                     }
                   },
-                  "block_order": ["name_3", "sport_3"]
+                  "block_order": [
+                    "name_3",
+                    "sport_3"
+                  ]
                 }
               },
-              "block_order": ["quote_3", "info_group_3"]
+              "block_order": [
+                "quote_3",
+                "info_group_3"
+              ]
             }
           },
-          "block_order": ["card_1", "card_2", "card_3"]
+          "block_order": [
+            "card_1",
+            "card_2",
+            "card_3"
+          ]
         }
+      },
+      "settings": {
+        "columns": 3,
+        "mobile_columns": "1",
+        "section_width": "full-width",
+        "columns_gap": 24,
+        "color_scheme": "scheme-2",
+        "icons_style": "none",
+        "icons_shape": "none",
+        "padding-block-start": 64,
+        "padding-block-end": 64
       }
     }
   },
