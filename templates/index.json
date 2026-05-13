@@ -703,6 +703,34 @@
         "padding-block-end": 48
       }
     },
+    "unlock_hero": {
+      "type": "hero",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/shopify-banner-b307ac019830.png",
+        "media_type_2": "image",
+        "custom_mobile_media": true,
+        "media_type_1_mobile": "image",
+        "image_1_mobile": "shopify://shop_images/shopify-banner-mobile-8e954b00eacc.png",
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "flex-end",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "auto",
+        "color_scheme": "scheme-5",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "athlete_carousel": {
       "type": "carousel",
       "settings": {
@@ -1255,6 +1283,7 @@
     "news_ticker",
     "our_products",
     "product_list_fa6P9H",
+    "unlock_hero",
     "athlete_carousel"
   ]
 }
