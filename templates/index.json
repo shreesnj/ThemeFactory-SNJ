@@ -729,6 +729,7 @@
         "section_width": "page-width",
         "section_height": "auto",
         "color_scheme": "scheme-5",
+        "corner_radius": 8,
         "toggle_overlay": true,
         "overlay_color": "#00000026",
         "overlay_style": "gradient",
