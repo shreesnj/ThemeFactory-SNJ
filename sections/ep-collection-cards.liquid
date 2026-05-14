@@ -1,0 +1,252 @@
+{{ 'ep-collection-cards.css' | asset_url | stylesheet_tag }}
+
+<div class="ep-collection-cards color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px; --section-padding-bottom: {{ section.settings.padding_bottom }}px; padding-block: var(--section-padding-top) var(--section-padding-bottom);">
+  <div class="section section--page-width">
+    <div class="ep-collection-cards__grid">
+
+      {%- comment -%} Card 1 {%- endcomment -%}
+      <div class="ep-collection-cards__card">
+        {%- if section.settings.image_1 != blank -%}
+          <div class="ep-collection-cards__image-wrapper">
+            {%- liquid
+              assign sizes_val = '(min-width: 750px) 50vw, 100vw'
+            -%}
+            {{
+              section.settings.image_1
+              | image_url: width: section.settings.image_1.width
+              | image_tag:
+                sizes: sizes_val,
+                widths: '375,550,750,1100,1500',
+                loading: 'lazy',
+                class: 'ep-collection-cards__image',
+                alt: section.settings.image_1.alt | default: section.settings.title_1
+            }}
+          </div>
+        {%- endif -%}
+
+        <div class="ep-collection-cards__body">
+          {%- if section.settings.title_1 != blank -%}
+            <h2 class="ep-collection-cards__title">
+              {{- section.settings.title_1 | escape -}}<sup class="ep-collection-cards__plus">+</sup>
+            </h2>
+          {%- endif -%}
+
+          <div class="ep-collection-cards__tags">
+            {%- if section.settings.tag_1_1 != blank -%}
+              <span class="ep-collection-cards__tag">+ {{ section.settings.tag_1_1 | upcase | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.tag_1_2 != blank -%}
+              <span class="ep-collection-cards__tag">+ {{ section.settings.tag_1_2 | upcase | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.tag_1_3 != blank -%}
+              <span class="ep-collection-cards__tag">+ {{ section.settings.tag_1_3 | upcase | escape }}</span>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.description_1 != blank -%}
+            <p class="ep-collection-cards__description">{{ section.settings.description_1 | escape }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.button_label_1 != blank -%}
+            <a class="ep-collection-cards__button" href="{{ section.settings.button_link_1 | default: '#' }}">
+              {{- section.settings.button_label_1 | upcase | escape -}}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} Card 2 {%- endcomment -%}
+      <div class="ep-collection-cards__card">
+        {%- if section.settings.image_2 != blank -%}
+          <div class="ep-collection-cards__image-wrapper">
+            {%- liquid
+              assign sizes_val_2 = '(min-width: 750px) 50vw, 100vw'
+            -%}
+            {{
+              section.settings.image_2
+              | image_url: width: section.settings.image_2.width
+              | image_tag:
+                sizes: sizes_val_2,
+                widths: '375,550,750,1100,1500',
+                loading: 'lazy',
+                class: 'ep-collection-cards__image',
+                alt: section.settings.image_2.alt | default: section.settings.title_2
+            }}
+          </div>
+        {%- endif -%}
+
+        <div class="ep-collection-cards__body">
+          {%- if section.settings.title_2 != blank -%}
+            <h2 class="ep-collection-cards__title">
+              {{- section.settings.title_2 | escape -}}<sup class="ep-collection-cards__plus">+</sup>
+            </h2>
+          {%- endif -%}
+
+          <div class="ep-collection-cards__tags">
+            {%- if section.settings.tag_2_1 != blank -%}
+              <span class="ep-collection-cards__tag">+ {{ section.settings.tag_2_1 | upcase | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.tag_2_2 != blank -%}
+              <span class="ep-collection-cards__tag">+ {{ section.settings.tag_2_2 | upcase | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.tag_2_3 != blank -%}
+              <span class="ep-collection-cards__tag">+ {{ section.settings.tag_2_3 | upcase | escape }}</span>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.description_2 != blank -%}
+            <p class="ep-collection-cards__description">{{ section.settings.description_2 | escape }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.button_label_2 != blank -%}
+            <a class="ep-collection-cards__button" href="{{ section.settings.button_link_2 | default: '#' }}">
+              {{- section.settings.button_label_2 | upcase | escape -}}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:names.ep_collection_cards",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Card 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title",
+      "default": "LONGER"
+    },
+    {
+      "type": "text",
+      "id": "tag_1_1",
+      "label": "Tag 1",
+      "default": "Cellular"
+    },
+    {
+      "type": "text",
+      "id": "tag_1_2",
+      "label": "Tag 2",
+      "default": "Metabolic"
+    },
+    {
+      "type": "text",
+      "id": "tag_1_3",
+      "label": "Tag 3",
+      "default": "Aging"
+    },
+    {
+      "type": "textarea",
+      "id": "description_1",
+      "label": "Description",
+      "default": "A longevity formula designed to support healthy aging and cellular function."
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "Button label",
+      "default": "Shop Longer"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title",
+      "default": "STRONGER"
+    },
+    {
+      "type": "text",
+      "id": "tag_2_1",
+      "label": "Tag 1",
+      "default": "Strength"
+    },
+    {
+      "type": "text",
+      "id": "tag_2_2",
+      "label": "Tag 2",
+      "default": "Endurance"
+    },
+    {
+      "type": "text",
+      "id": "tag_2_3",
+      "label": "Tag 3",
+      "default": "Recovery"
+    },
+    {
+      "type": "textarea",
+      "id": "description_2",
+      "label": "Description",
+      "default": "A performance formula designed to support strength, power, and recovery."
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Button label",
+      "default": "Shop Stronger"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.ep_collection_cards"
+    }
+  ]
+}
+{% endschema %}

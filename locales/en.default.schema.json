@@ -445,7 +445,8 @@
     "custom_footer": "Custom footer",
     "news_ticker": "News ticker",
     "logo_image": "Logo image",
-    "ep_our_products": "Our Products"
+    "ep_our_products": "Our Products",
+    "ep_collection_cards": "Collection Cards"
   },
   "options": {
     "above_carousel": "Above carousel",

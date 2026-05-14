@@ -1,0 +1,111 @@
+.ep-collection-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.ep-collection-cards__card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ep-collection-cards__image-wrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+}
+
+.ep-collection-cards__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ep-collection-cards__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ep-collection-cards__title {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--color-foreground);
+}
+
+.ep-collection-cards__plus {
+  color: rgb(0, 51, 255);
+  font-size: 0.45em;
+  vertical-align: super;
+  font-weight: 900;
+}
+
+.ep-collection-cards__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ep-collection-cards__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border: 1.5px solid rgb(0, 51, 255);
+  border-radius: 100px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: rgb(0, 51, 255);
+  white-space: nowrap;
+}
+
+.ep-collection-cards__description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+.ep-collection-cards__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-block: 17px;
+  background: rgb(0, 51, 255);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: opacity 0.2s;
+}
+
+.ep-collection-cards__button:hover {
+  opacity: 0.85;
+}
+
+.ep-collection-cards__button:focus-visible {
+  outline: 2px solid rgb(0, 51, 255);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 749px) {
+  .ep-collection-cards__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .ep-collection-cards__title {
+    font-size: 1.75rem;
+  }
+}

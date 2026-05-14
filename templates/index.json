@@ -706,6 +706,30 @@
         "padding-block-end": 0
       }
     },
+    "ep_collection_cards": {
+      "type": "ep-collection-cards",
+      "settings": {
+        "image_1": "shopify://shop_images/enhanced-longer-product.png",
+        "title_1": "LONGER",
+        "tag_1_1": "Cellular",
+        "tag_1_2": "Metabolic",
+        "tag_1_3": "Aging",
+        "description_1": "A longevity formula designed to support healthy aging and cellular function.",
+        "button_label_1": "Shop Longer",
+        "button_link_1": "/products/longer",
+        "image_2": "shopify://shop_images/enhanced-stronger-product.png",
+        "title_2": "STRONGER",
+        "tag_2_1": "Strength",
+        "tag_2_2": "Endurance",
+        "tag_2_3": "Recovery",
+        "description_2": "A performance formula designed to support strength, power, and recovery.",
+        "button_label_2": "Shop Stronger",
+        "button_link_2": "/products/stronger",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "color_scheme": "scheme-1"
+      }
+    },
     "faq_accordion": {
       "type": "faq-accordion",
       "settings": {
@@ -1231,6 +1255,7 @@
     "ep_our_products",
     "product_list_fa6P9H",
     "unlock_hero",
+    "ep_collection_cards",
     "faq_accordion",
     "athlete_carousel"
   ]
