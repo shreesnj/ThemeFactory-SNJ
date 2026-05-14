@@ -1247,6 +1247,17 @@
         "padding-block-start": 64,
         "padding-block-end": 64
       }
+    },
+    "ep_enhanced_life_cta": {
+      "type": "ep-enhanced-life-cta",
+      "settings": {
+        "image": "shopify://shop_images/blue-bottle-final-5cab5598ed20.jpg",
+        "heading_line_1": "Your Path to Living an ",
+        "heading_line_2": "Enhanced Life Starts Here.",
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "color_scheme": "scheme-2"
+      }
     }
   },
   "order": [
@@ -1256,7 +1267,8 @@
     "product_list_fa6P9H",
     "unlock_hero",
     "ep_collection_cards",
+    "athlete_carousel",
     "faq_accordion",
-    "athlete_carousel"
+    "ep_enhanced_life_cta"
   ]
 }

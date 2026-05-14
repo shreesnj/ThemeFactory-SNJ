@@ -1,0 +1,94 @@
+{{ 'ep-enhanced-life-cta.css' | asset_url | stylesheet_tag }}
+
+<div class="ep-enhanced-life-cta color-{{ section.settings.color_scheme }}"
+  style="--ep-elc-padding-top: {{ section.settings.padding_top }}px; --ep-elc-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="section section--page-width">
+    <div class="ep-enhanced-life-cta__inner">
+
+      {%- if section.settings.image != blank -%}
+        <div class="ep-enhanced-life-cta__image-col">
+          <div class="ep-enhanced-life-cta__image-wrapper">
+            {%- liquid
+              assign sizes_val = '(min-width: 750px) 31vw, 100vw'
+            -%}
+            {{
+              section.settings.image
+              | image_url: width: section.settings.image.width
+              | image_tag:
+                sizes: sizes_val,
+                widths: '375,550,750,1100',
+                loading: 'lazy',
+                class: 'ep-enhanced-life-cta__image',
+                alt: section.settings.image.alt | default: ''
+            }}
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="ep-enhanced-life-cta__text-col">
+        <h2 class="ep-enhanced-life-cta__heading">
+          {{- section.settings.heading_line_1 | escape -}}
+          <span class="ep-enhanced-life-cta__heading-accent">{{ section.settings.heading_line_2 | escape }}</span>
+        </h2>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:names.ep_enhanced_life_cta",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "Heading line 1",
+      "default": "Your Path to Living an "
+    },
+    {
+      "type": "text",
+      "id": "heading_line_2",
+      "label": "Heading line 2 (accent color)",
+      "default": "Enhanced Life Starts Here."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.ep_enhanced_life_cta"
+    }
+  ]
+}
+{% endschema %}
