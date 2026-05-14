@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
+  "type": "footer",
+  "name": "t:names.footer",
+  "sections": {
+    "custom-footer": {
+      "type": "custom-footer",
+      "settings": {
+        "background_image": "shopify://shop_images/footer-bg-desktop-a6e94ab50657.png",
+        "menu_1_heading": "Explore products",
+        "menu_2_heading": "Company",
+        "contact_heading": "Connect with us",
+        "email_address": "action@enhanced.org",
+        "instagram_url": "https://www.instagram.com/enhanced_games/",
+        "youtube_url": "https://www.youtube.com/@enhanced_games1",
+        "tiktok_url": "https://www.tiktok.com/@enhanced_games",
+        "twitter_url": "https://x.com/enhanced_games",
+        "linkedin_url": "https://www.linkedin.com/company/enhanced-games",
+        "disclaimer_text": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Results referenced are based on published peer-reviewed studies of individual ingredients at clinical doses. Individual results may vary.",
+        "copyright_text": "All Rights Reserved \"Enhanced\" and \"Enhanced Games\" are registered trademarks of Enhanced Games Inc.",
+        "color_scheme": "scheme-6"
+      }
+    }
+  },
+  "order": [
+    "custom-footer"
+  ]
+}

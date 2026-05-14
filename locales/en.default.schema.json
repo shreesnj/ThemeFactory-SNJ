@@ -1203,7 +1203,9 @@
     "youtube_url": "YouTube",
     "tiktok_url": "TikTok",
     "twitter_url": "X (Twitter)",
-    "linkedin_url": "LinkedIn"
+    "linkedin_url": "LinkedIn",
+    "background_image_mobile": "Mobile background image",
+    "footer_logo_image": "Footer logo image"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",

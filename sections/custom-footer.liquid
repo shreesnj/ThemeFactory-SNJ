@@ -1,0 +1,369 @@
+{{ 'custom-footer.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign menu_1 = linklists[section.settings.menu_1]
+  assign menu_2 = linklists[section.settings.menu_2]
+  assign legal_menu = linklists[section.settings.legal_menu]
+-%}
+
+<div class="custom-footer">
+  <div class="custom-footer__wrapper">
+    <div class="custom-footer__background">
+      {%- if section.settings.background_image != blank -%}
+        {%- liquid
+          assign bg_desktop = section.settings.background_image
+          assign bg_mobile = section.settings.background_image_mobile
+        -%}
+        {%- if bg_mobile != blank -%}
+          <picture>
+            <source
+              media="(max-width: 749px)"
+              srcset="{{ bg_mobile | image_url: width: 800 }}"
+            >
+            {{
+              bg_desktop
+              | image_url: width: bg_desktop.width
+              | image_tag:
+                sizes: '100vw',
+                widths: '750,1100,1500,1920,2400,3840',
+                loading: 'lazy',
+                class: 'custom-footer__background-image',
+                alt: ''
+            }}
+          </picture>
+        {%- else -%}
+          {{
+            bg_desktop
+            | image_url: width: bg_desktop.width
+            | image_tag:
+              sizes: '100vw',
+              widths: '375,750,1100,1500,1920,2400,3840',
+              loading: 'lazy',
+              class: 'custom-footer__background-image',
+              alt: ''
+          }}
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    <div class="section section--page-width">
+      <div class="custom-footer__content">
+        {%- comment -%} Top row: Menus + Contact {%- endcomment -%}
+        <div class="custom-footer__top">
+          {%- comment -%} Menu 1 {%- endcomment -%}
+          <nav class="custom-footer__menu" aria-label="{{ 'accessibility.footer_navigation_label' | t }}">
+            <details class="custom-footer__menu-details">
+              <summary class="custom-footer__menu-heading">
+                {{- section.settings.menu_1_heading | escape -}}
+                <span class="custom-footer__menu-chevron" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 4.5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </summary>
+              {%- if menu_1 != blank and menu_1.links.size > 0 -%}
+                <ul class="custom-footer__menu-list">
+                  {%- for link in menu_1.links -%}
+                    <li class="custom-footer__menu-item">
+                      <a class="custom-footer__menu-link" href="{{ link.url }}">
+                        {{- link.title | escape -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </details>
+          </nav>
+
+          {%- comment -%} Menu 2 {%- endcomment -%}
+          <nav class="custom-footer__menu">
+            <details class="custom-footer__menu-details">
+              <summary class="custom-footer__menu-heading">
+                {{- section.settings.menu_2_heading | escape -}}
+                <span class="custom-footer__menu-chevron" aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 4.5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </summary>
+              {%- if menu_2 != blank and menu_2.links.size > 0 -%}
+                <ul class="custom-footer__menu-list">
+                  {%- for link in menu_2.links -%}
+                    <li class="custom-footer__menu-item">
+                      <a class="custom-footer__menu-link" href="{{ link.url }}">
+                        {{- link.title | escape -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </details>
+          </nav>
+
+          {%- comment -%} Spacer {%- endcomment -%}
+          <div class="custom-footer__spacer"></div>
+
+          {%- comment -%} Contact group {%- endcomment -%}
+          <div class="custom-footer__contact">
+            {%- if section.settings.contact_heading != blank -%}
+              <p class="custom-footer__contact-heading">
+                {{- section.settings.contact_heading | escape -}}
+              </p>
+            {%- endif -%}
+
+            {%- liquid
+              assign has_social = false
+              if section.settings.instagram_url != blank or section.settings.youtube_url != blank or section.settings.tiktok_url != blank or section.settings.twitter_url != blank or section.settings.linkedin_url != blank
+                assign has_social = true
+              endif
+            -%}
+
+            {%- if has_social -%}
+              <div class="custom-footer__social-icons" aria-label="{{ 'accessibility.footer_social_label' | t }}">
+                {%- if section.settings.instagram_url != blank -%}
+                  <a class="custom-footer__social-link" href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      {%- render 'icon', icon: 'instagram' -%}
+                    </svg>
+                  </a>
+                {%- endif -%}
+
+                {%- if section.settings.youtube_url != blank -%}
+                  <a class="custom-footer__social-link" href="{{ section.settings.youtube_url }}" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      {%- render 'icon', icon: 'youtube' -%}
+                    </svg>
+                  </a>
+                {%- endif -%}
+
+                {%- if section.settings.tiktok_url != blank -%}
+                  <a class="custom-footer__social-link" href="{{ section.settings.tiktok_url }}" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      {%- render 'icon', icon: 'tiktok' -%}
+                    </svg>
+                  </a>
+                {%- endif -%}
+
+                {%- if section.settings.twitter_url != blank -%}
+                  <a class="custom-footer__social-link" href="{{ section.settings.twitter_url }}" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      {%- render 'icon', icon: 'twitter' -%}
+                    </svg>
+                  </a>
+                {%- endif -%}
+
+                {%- if section.settings.linkedin_url != blank -%}
+                  <a class="custom-footer__social-link" href="{{ section.settings.linkedin_url }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      {%- render 'icon', icon: 'linkedin' -%}
+                    </svg>
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+
+            <div class="custom-footer__divider"></div>
+
+            {%- if section.settings.email_address != blank -%}
+              <a class="custom-footer__email" href="mailto:{{ section.settings.email_address | escape }}">
+                {{- section.settings.email_address | escape -}}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- comment -%} Disclaimer row {%- endcomment -%}
+        {%- if section.settings.disclaimer_text != blank -%}
+          <div class="custom-footer__disclaimer">
+            <span class="custom-footer__disclaimer-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
+                <path d="M5 0C2.24 0 0 2.24 0 5s2.24 5 5 5 5-2.24 5-5S7.76 0 5 0Zm.5 7.5h-1v-1h1v1Zm0-2h-1v-3h1v3Z" />
+              </svg>
+            </span>
+            <span class="custom-footer__disclaimer-text">
+              {{- section.settings.disclaimer_text | escape -}}
+            </span>
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Footer logo image {%- endcomment -%}
+        {%- if section.settings.footer_logo_image != blank -%}
+          <div class="custom-footer__logos">
+            {{
+              section.settings.footer_logo_image
+              | image_url: width: section.settings.footer_logo_image.width
+              | image_tag:
+                loading: 'lazy',
+                alt: section.settings.footer_logo_image.alt | default: '',
+                class: 'custom-footer__logos-image'
+            }}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Bottom row: Legal + Copyright {%- endcomment -%}
+        <div class="custom-footer__bottom">
+          {%- if legal_menu != blank and legal_menu.links.size > 0 -%}
+            <nav class="custom-footer__legal" aria-label="{{ 'accessibility.footer_legal_navigation_label' | t }}">
+              <ul class="custom-footer__legal-list">
+                {%- for link in legal_menu.links -%}
+                  <li class="custom-footer__legal-item">
+                    <a class="custom-footer__legal-link" href="{{ link.url }}">
+                      {{- link.title | escape -}}
+                    </a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </nav>
+          {%- endif -%}
+
+          <p class="custom-footer__copyright">
+            &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}.
+            {%- if section.settings.copyright_text != blank -%}
+              {{ section.settings.copyright_text | escape }}
+            {%- endif -%}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:names.custom_footer",
+  "tag": "footer",
+  "class": "custom-footer-section",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.background_image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:settings.background_image_mobile"
+    },
+    {
+      "type": "header",
+      "content": "t:content.menus"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "t:settings.menu_1",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "menu_1_heading",
+      "label": "t:settings.menu_1_heading",
+      "default": "Explore products"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "t:settings.menu_2",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "menu_2_heading",
+      "label": "t:settings.menu_2_heading",
+      "default": "Company"
+    },
+    {
+      "type": "header",
+      "content": "t:content.contact"
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "t:settings.contact_heading",
+      "default": "Connect with us"
+    },
+    {
+      "type": "text",
+      "id": "email_address",
+      "label": "t:settings.email_address",
+      "default": "action@enhanced.org"
+    },
+    {
+      "type": "header",
+      "content": "t:content.social_media"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "t:settings.instagram_url"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "t:settings.youtube_url"
+    },
+    {
+      "type": "url",
+      "id": "tiktok_url",
+      "label": "t:settings.tiktok_url"
+    },
+    {
+      "type": "url",
+      "id": "twitter_url",
+      "label": "t:settings.twitter_url"
+    },
+    {
+      "type": "url",
+      "id": "linkedin_url",
+      "label": "t:settings.linkedin_url"
+    },
+    {
+      "type": "header",
+      "content": "t:content.disclaimer"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer_text",
+      "label": "t:settings.disclaimer_text",
+      "default": "These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo_image",
+      "label": "t:settings.footer_logo_image"
+    },
+    {
+      "type": "header",
+      "content": "t:content.legal"
+    },
+    {
+      "type": "link_list",
+      "id": "legal_menu",
+      "label": "t:settings.legal_menu"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "t:settings.copyright_text",
+      "default": "All Rights Reserved."
+    },
+    {
+      "type": "header",
+      "content": "t:content.colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-6"
+    }
+  ]
+}
+{% endschema %}
