@@ -12,11 +12,17 @@
 
       {%- comment -%} Left — Logo {%- endcomment -%}
       <div class="custom-header__left">
-        <a class="custom-header__logo" href="{{ routes.root_url }}">
+        <a class="custom-header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
           {%- if settings.logo != blank -%}
             {% render 'image', image: settings.logo, height: 16, class: 'custom-header__logo-img' %}
           {%- else -%}
-            <span class="custom-header__logo-text">{{ shop.name }}</span>
+            <img
+              src="{{ 'enhanced-games-logo.svg' | asset_url }}"
+              alt="{{ shop.name }}"
+              width="150"
+              height="16"
+              loading="eager"
+            >
           {%- endif -%}
         </a>
       </div>
