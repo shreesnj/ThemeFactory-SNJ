@@ -1,0 +1,272 @@
+{{ 'ep-our-products.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign product_1 = section.settings.product_1
+  assign product_2 = section.settings.product_2
+  assign apparel_collection = section.settings.apparel_collection
+  assign apparel_count = section.settings.apparel_products_count
+-%}
+
+<div
+  class="ep-our-products"
+  data-section-id="{{ section.id }}"
+  style="--ep-pt: {{ section.settings.padding_block_start }}px; --ep-pb: {{ section.settings.padding_block_end }}px;"
+>
+  <div class="ep-our-products__inner page-width">
+
+    {%- comment -%} Section header {%- endcomment -%}
+    <div class="ep-our-products__header">
+      {%- if section.settings.label_text != blank -%}
+        <p class="ep-our-products__label">{{ section.settings.label_text | escape }}</p>
+      {%- endif -%}
+      <h2 class="ep-our-products__heading">
+        <span style="color: {{ section.settings.heading_part1_color }};">{{- section.settings.heading_part1 | escape -}}</span>
+        <span style="color: {{ section.settings.heading_part2_color }};">{{ section.settings.heading_part2 | escape }}</span>
+      </h2>
+    </div>
+
+    {%- comment -%} Two product cards {%- endcomment -%}
+    <div class="ep-our-products__cards">
+      {%- for i in (1..2) -%}
+        {%- liquid
+          if i == 1
+            assign card_product = product_1
+          else
+            assign card_product = product_2
+          endif
+        -%}
+        {%- if card_product != blank -%}
+          {%- liquid
+            assign variant = card_product.selected_or_first_available_variant
+            assign sale_price = variant.price
+            assign compare_price = variant.compare_at_price
+            assign has_compare = false
+            if compare_price > sale_price
+              assign has_compare = true
+              assign savings = compare_price | minus: sale_price
+              assign pct_off = savings | times: 100 | divided_by: compare_price
+            endif
+          -%}
+          <div class="ep-our-products__card">
+            <a href="{{ card_product.url }}" class="ep-our-products__card-image-wrap" tabindex="-1" aria-hidden="true">
+              {%- if card_product.featured_image != blank -%}
+                {%- liquid
+                  assign img = card_product.featured_image
+                  assign img_sizes = '(min-width: 960px) calc((min(1080px, 100vw - 80px) - 12px) / 2), calc(100vw - 40px)'
+                -%}
+                {{
+                  img
+                  | image_url: width: img.width
+                  | image_tag:
+                    sizes: img_sizes,
+                    widths: '400,600,800,1000',
+                    loading: 'lazy',
+                    alt: img.alt | default: card_product.title,
+                    class: 'ep-our-products__card-image'
+                }}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'ep-our-products__card-image ep-our-products__card-image--placeholder' }}
+              {%- endif -%}
+            </a>
+
+            <div class="ep-our-products__card-body">
+              <h3 class="ep-our-products__card-title">
+                <a href="{{ card_product.url }}">{{ card_product.title | escape }}</a>
+              </h3>
+
+              {%- if card_product.description != blank -%}
+                <p class="ep-our-products__card-desc">{{ card_product.description | strip_html | truncate: 120 }}</p>
+              {%- endif -%}
+
+              <div class="ep-our-products__card-price-row">
+                {%- if has_compare -%}
+                  <s class="ep-our-products__card-compare">{{ compare_price | money }}</s>
+                {%- endif -%}
+                <span class="ep-our-products__card-price">{{ sale_price | money }}</span>
+                {%- if has_compare -%}
+                  <span class="ep-our-products__card-badge">{{ pct_off }}% OFF</span>
+                {%- endif -%}
+              </div>
+
+              <a href="{{ card_product.url }}" class="ep-our-products__card-cta">
+                {{- section.settings.cta_label | escape -}}
+              </a>
+            </div>
+          </div>
+        {%- else -%}
+          <div class="ep-our-products__card ep-our-products__card--empty">
+            <p>Select a product in the theme editor</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} Apparel grid {%- endcomment -%}
+    {%- if apparel_collection != blank -%}
+      <div class="ep-our-products__apparel">
+        {%- if section.settings.apparel_heading != blank -%}
+          <div class="ep-our-products__apparel-header">
+            <h3 class="ep-our-products__apparel-heading">{{ section.settings.apparel_heading | escape }}</h3>
+            {%- if section.settings.apparel_cta_text != blank -%}
+              {%- liquid
+                if section.settings.apparel_cta_url != blank
+                  assign apparel_link = section.settings.apparel_cta_url
+                else
+                  assign apparel_link = apparel_collection.url
+                endif
+              -%}
+              <a href="{{ apparel_link }}" class="ep-our-products__apparel-view-all">
+                {{ section.settings.apparel_cta_text | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        <div class="ep-our-products__apparel-grid">
+          {%- for product in apparel_collection.products limit: apparel_count -%}
+            <a href="{{ product.url }}" class="ep-our-products__apparel-card">
+              {%- if product.featured_image != blank -%}
+                {%- liquid
+                  assign aimg = product.featured_image
+                  assign aimg_sizes = '(min-width: 960px) calc((min(1080px, 100vw - 80px) - 72px) / 4), calc(50vw - 28px)'
+                -%}
+                {{
+                  aimg
+                  | image_url: width: aimg.width
+                  | image_tag:
+                    sizes: aimg_sizes,
+                    widths: '300,400,600,800',
+                    loading: 'lazy',
+                    alt: aimg.alt | default: product.title,
+                    class: 'ep-our-products__apparel-image'
+                }}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'ep-our-products__apparel-image ep-our-products__apparel-image--placeholder' }}
+              {%- endif -%}
+              <div class="ep-our-products__apparel-info">
+                <p class="ep-our-products__apparel-title">{{ product.title | escape }}</p>
+                <p class="ep-our-products__apparel-price">{{ product.price | money }}</p>
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:names.ep_our_products",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "label_text",
+      "label": "Label",
+      "default": "OUR PRODUCTS"
+    },
+    {
+      "type": "text",
+      "id": "heading_part1",
+      "label": "Heading part 1",
+      "default": "Performance Essentials,"
+    },
+    {
+      "type": "color",
+      "id": "heading_part1_color",
+      "label": "Heading part 1 color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "heading_part2",
+      "label": "Heading part 2",
+      "default": "Engineered For Results"
+    },
+    {
+      "type": "color",
+      "id": "heading_part2_color",
+      "label": "Heading part 2 color",
+      "default": "#0033FF"
+    },
+    {
+      "type": "header",
+      "content": "Product Cards"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product 1"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product 2"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Card button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "header",
+      "content": "Apparel Grid"
+    },
+    {
+      "type": "text",
+      "id": "apparel_heading",
+      "label": "Apparel heading",
+      "default": "Performance Apparel"
+    },
+    {
+      "type": "collection",
+      "id": "apparel_collection",
+      "label": "Apparel collection"
+    },
+    {
+      "type": "number",
+      "id": "apparel_products_count",
+      "label": "Products to show",
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "apparel_cta_text",
+      "label": "View all text",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "apparel_cta_url",
+      "label": "View all link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "number",
+      "id": "padding_block_start",
+      "label": "Top padding",
+      "default": 40
+    },
+    {
+      "type": "number",
+      "id": "padding_block_end",
+      "label": "Bottom padding",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.ep_our_products"
+    }
+  ]
+}
+{% endschema %}

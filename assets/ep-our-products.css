@@ -1,0 +1,317 @@
+/* ==========================================================================
+   EP Our Products — matching shop.enhanced.com OUR PRODUCTS section
+   ========================================================================== */
+
+.ep-our-products {
+  padding-block-start: var(--ep-pt, 40px);
+  padding-block-end: var(--ep-pb, 40px);
+  background-color: rgb(255, 255, 255);
+}
+
+/* --------------------------------------------------------------------------
+   Section header
+   -------------------------------------------------------------------------- */
+
+.ep-our-products__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-block-end: 24px;
+}
+
+.ep-our-products__label {
+  margin: 0;
+  font-family: var(--font-body--family);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgb(102, 102, 102);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+}
+
+.ep-our-products__heading {
+  margin: 0;
+  font-family: var(--font-body--family);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.ep-our-products__heading span + span::before {
+  content: ' ';
+}
+
+/* --------------------------------------------------------------------------
+   Product cards row
+   -------------------------------------------------------------------------- */
+
+.ep-our-products__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-block-end: 40px;
+}
+
+@media screen and (min-width: 750px) {
+  .ep-our-products__cards {
+    flex-direction: row;
+  }
+}
+
+.ep-our-products__card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 8px;
+  padding: 16px;
+  background-color: rgb(255, 255, 255);
+}
+
+.ep-our-products__card--empty {
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: rgb(153, 153, 153);
+  font-size: 0.875rem;
+}
+
+/* --------------------------------------------------------------------------
+   Card image
+   -------------------------------------------------------------------------- */
+
+.ep-our-products__card-image-wrap {
+  display: block;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 4px;
+  background-color: rgb(245, 245, 245);
+}
+
+.ep-our-products__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.ep-our-products__card-image-wrap:hover .ep-our-products__card-image {
+  transform: scale(1.03);
+}
+
+.ep-our-products__card-image--placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   Card body
+   -------------------------------------------------------------------------- */
+
+.ep-our-products__card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-block-start: 12px;
+}
+
+.ep-our-products__card-title {
+  margin: 0 0 6px;
+  font-family: var(--font-body--family);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.ep-our-products__card-title a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.ep-our-products__card-title a:hover {
+  opacity: 0.7;
+}
+
+.ep-our-products__card-desc {
+  margin: 0 0 12px;
+  font-family: var(--font-body--family);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgb(77, 77, 77);
+}
+
+/* --------------------------------------------------------------------------
+   Price row
+   -------------------------------------------------------------------------- */
+
+.ep-our-products__card-price-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-block-end: 12px;
+}
+
+.ep-our-products__card-compare {
+  font-family: var(--font-body--family);
+  font-size: 0.875rem;
+  color: rgb(136, 136, 136);
+  text-decoration: line-through;
+}
+
+.ep-our-products__card-price {
+  font-family: var(--font-body--family);
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+}
+
+.ep-our-products__card-badge {
+  display: inline-block;
+  background-color: rgb(0, 51, 255);
+  color: rgb(255, 255, 255);
+  font-family: var(--font-body--family);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   Card CTA button
+   -------------------------------------------------------------------------- */
+
+.ep-our-products__card-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  font-family: var(--font-body--family);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 13px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  margin-block-start: auto;
+}
+
+.ep-our-products__card-cta:hover {
+  opacity: 0.8;
+}
+
+.ep-our-products__card-cta:focus-visible {
+  outline: 2px solid rgb(0, 0, 0);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Apparel grid
+   -------------------------------------------------------------------------- */
+
+.ep-our-products__apparel {
+  margin-block-start: 8px;
+}
+
+.ep-our-products__apparel-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-block-end: 20px;
+}
+
+.ep-our-products__apparel-heading {
+  margin: 0;
+  font-family: var(--font-body--family);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: rgb(0, 0, 0);
+}
+
+.ep-our-products__apparel-view-all {
+  font-family: var(--font-body--family);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  text-decoration: underline;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+
+.ep-our-products__apparel-view-all:hover {
+  opacity: 0.6;
+}
+
+.ep-our-products__apparel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media screen and (min-width: 750px) {
+  .ep-our-products__apparel-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+}
+
+.ep-our-products__apparel-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ep-our-products__apparel-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 12px;
+  background-color: rgb(245, 245, 245);
+  transition: opacity 0.2s;
+}
+
+.ep-our-products__apparel-image--placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 12px;
+}
+
+.ep-our-products__apparel-card:hover .ep-our-products__apparel-image {
+  opacity: 0.85;
+}
+
+.ep-our-products__apparel-info {
+  padding-block-start: 10px;
+}
+
+.ep-our-products__apparel-title {
+  margin: 0 0 4px;
+  font-family: var(--font-body--family);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  line-height: 1.3;
+}
+
+.ep-our-products__apparel-price {
+  margin: 0;
+  font-family: var(--font-body--family);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: rgb(102, 102, 102);
+}
