@@ -1,0 +1,143 @@
+{{ 'custom-header.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+  assign cta_text = section.settings.cta_text
+  assign cta_url = section.settings.cta_url
+-%}
+
+<div class="custom-header" data-section-id="{{ section.id }}">
+  <div class="custom-header__width">
+    <div class="custom-header__box">
+
+      {%- comment -%} Left — Logo {%- endcomment -%}
+      <div class="custom-header__left">
+        <a class="custom-header__logo" href="{{ routes.root_url }}">
+          {%- if settings.logo != blank -%}
+            {% render 'image', image: settings.logo, height: 16, class: 'custom-header__logo-img' %}
+          {%- else -%}
+            <span class="custom-header__logo-text">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+      </div>
+
+      {%- comment -%} Right — Cart + Hamburger + CTA {%- endcomment -%}
+      <div class="custom-header__right">
+        <a href="{{ routes.cart_url }}" class="custom-header-cart-icon" aria-label="{{ 'accessibility.cart' | t }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.2 6.80001L3 20.8C3 21.3304 3.21071 21.8392 3.58579 22.2142C3.96086 22.5893 4.46957 22.8 5 22.8H19C19.5304 22.8 20.0391 22.5893 20.4142 22.2142C20.7893 21.8392 21 21.3304 21 20.8L19.8 6.80001H4.2Z" stroke="#7E687D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M16.001 8.00001L16.001 5.19996C16.001 4.13909 15.5795 3.12168 14.8294 2.37153C14.0793 1.62139 13.0618 1.19996 12.001 1.19996C10.9401 1.19996 9.9227 1.62139 9.17255 2.37153C8.4224 3.12168 8.00098 4.13909 8.00098 5.19996L8.00098 8.00001" stroke="#7E687D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span class="custom-header-cart-icon__count">{{ cart.item_count }}</span>
+        </a>
+
+        <button
+          class="custom-header__hamburger"
+          aria-expanded="false"
+          aria-label="{{ 'accessibility.menu' | t }}"
+          type="button"
+        >
+          <span class="custom-header__hamburger-bar"></span>
+          <span class="custom-header__hamburger-bar"></span>
+        </button>
+
+        {%- if cta_text != blank and cta_url != blank -%}
+          <div class="custom-header__action-desktop">
+            <a class="custom-header__button" href="{{ cta_url }}">{{- cta_text | escape -}}</a>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Navigation + Mobile CTA {%- endcomment -%}
+      <nav aria-label="{{ 'accessibility.header_navigation_label' | t }}">
+        <ul class="custom-header-nav">
+          {%- for link in menu.links -%}
+            <li class="custom-header-nav__item{% if link.links.size > 0 %} custom-header-nav__item--has-submenu{% endif %}{% if link.active %} custom-header-nav__item--active{% endif %}">
+              {%- if link.links.size > 0 -%}
+                <a
+                  class="custom-header-nav__anchor custom-header-nav__submenu-toggle"
+                  href="{{ link.url }}"
+                  aria-expanded="false"
+                  aria-controls="submenu-{{ forloop.index }}"
+                  {% if link.current %}aria-current="page"{% endif %}
+                >
+                  {{- link.title | escape -}}
+                </a>
+                <ul class="custom-header-nav__submenu" id="submenu-{{ forloop.index }}">
+                  {%- for child_link in link.links -%}
+                    <li class="custom-header-nav__submenu-item">
+                      <a
+                        class="custom-header-nav__submenu-link"
+                        href="{{ child_link.url }}"
+                        {% if child_link.current %}aria-current="page"{% endif %}
+                      >
+                        {{- child_link.title | escape -}}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- else -%}
+                <a
+                  class="custom-header-nav__anchor"
+                  href="{{ link.url }}"
+                  {% if link.current %}aria-current="page"{% endif %}
+                >
+                  {{- link.title | escape -}}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+
+          {%- if cta_text != blank and cta_url != blank -%}
+            <li class="custom-header-nav__item">
+              <a class="custom-header__button custom-header__button--mobile" href="{{ cta_url }}">
+                {{- cta_text | escape -}}
+              </a>
+            </li>
+          {%- endif -%}
+        </ul>
+      </nav>
+
+    </div>
+  </div>
+</div>
+
+{%- comment -%} Spacer to offset page content below the fixed header {%- endcomment -%}
+<div class="custom-header-spacer"></div>
+
+<script src="{{ 'custom-header.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "t:names.custom_header",
+  "class": "custom-header-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:settings.menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "t:settings.cta_text",
+      "default": "Get Enhanced"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "t:settings.cta_link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}
