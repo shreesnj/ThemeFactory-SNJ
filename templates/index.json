@@ -485,7 +485,7 @@
         }
       },
       "settings": {
-        "collection": "all",
+        "collection": "supplements",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 2,
@@ -660,7 +660,7 @@
       },
       "name": "t:names.featured_collection",
       "settings": {
-        "collection": "all",
+        "collection": "apparel",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 8,
