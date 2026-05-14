@@ -1065,96 +1065,17 @@
                     "padding-inline-end": 0
                   }
                 },
-                "info_group_1": {
-                  "type": "group",
+                "athlete_info_1": {
+                  "type": "custom-liquid",
                   "settings": {
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "flex-start",
-                    "gap": 4,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "custom_liquid": "<div style='display:flex;flex-direction:column;gap:4px'><p style='font-size:1.5rem;font-weight:500;line-height:1.1;color:#fff;margin:0'>Fred Kerley</p><div style='display:flex;align-items:center;gap:5px;font-size:0.75rem;font-weight:500;text-transform:uppercase;color:#fff'><svg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><path d='M5 0L6.12257 3.87743L10 5L6.12257 6.12257L5 10L3.87743 6.12257L0 5L3.87743 3.87743L5 0Z' fill='currentColor'/></svg><span>Track</span></div></div>"
                   },
-                  "blocks": {
-                    "name_1": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Athlete Name</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "custom",
-                        "font": "var(--font-body--family)",
-                        "font_size": "0.875rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      }
-                    },
-                    "sport_1": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Sprinting</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "custom",
-                        "font": "var(--font-body--family)",
-                        "font_size": "0.875rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "name_1",
-                    "sport_1"
-                  ]
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "quote_1",
-                "info_group_1"
+                "athlete_info_1"
               ]
             },
             "card_2": {
@@ -1207,96 +1128,17 @@
                     "padding-inline-end": 0
                   }
                 },
-                "info_group_2": {
-                  "type": "group",
+                "athlete_info_2": {
+                  "type": "custom-liquid",
                   "settings": {
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "flex-start",
-                    "gap": 4,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "custom_liquid": "<div style='display:flex;flex-direction:column;gap:4px'><p style='font-size:1.5rem;font-weight:500;line-height:1.1;color:#fff;margin:0'>Megan Romano</p><div style='display:flex;align-items:center;gap:5px;font-size:0.75rem;font-weight:500;text-transform:uppercase;color:#fff'><svg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><path d='M5 0L6.12257 3.87743L10 5L6.12257 6.12257L5 10L3.87743 6.12257L0 5L3.87743 3.87743L5 0Z' fill='currentColor'/></svg><span>Swimming</span></div></div>"
                   },
-                  "blocks": {
-                    "name_2": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Megan Romano</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "custom",
-                        "font": "var(--font-body--family)",
-                        "font_size": "0.875rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      }
-                    },
-                    "sport_2": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Swimming</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "custom",
-                        "font": "var(--font-body--family)",
-                        "font_size": "0.875rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "name_2",
-                    "sport_2"
-                  ]
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "quote_2",
-                "info_group_2"
+                "athlete_info_2"
               ]
             },
             "card_3": {
@@ -1349,96 +1191,17 @@
                     "padding-inline-end": 0
                   }
                 },
-                "info_group_3": {
-                  "type": "group",
+                "athlete_info_3": {
+                  "type": "custom-liquid",
                   "settings": {
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "flex-start",
-                    "gap": 4,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
+                    "custom_liquid": "<div style='display:flex;flex-direction:column;gap:4px'><p style='font-size:1.5rem;font-weight:500;line-height:1.1;color:#fff;margin:0'>Ben Proud</p><div style='display:flex;align-items:center;gap:5px;font-size:0.75rem;font-weight:500;text-transform:uppercase;color:#fff'><svg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'><path d='M5 0L6.12257 3.87743L10 5L6.12257 6.12257L5 10L3.87743 6.12257L0 5L3.87743 3.87743L5 0Z' fill='currentColor'/></svg><span>Swimming</span></div></div>"
                   },
-                  "blocks": {
-                    "name_3": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Ben Proud</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "custom",
-                        "font": "var(--font-body--family)",
-                        "font_size": "0.875rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      }
-                    },
-                    "sport_3": {
-                      "type": "text",
-                      "settings": {
-                        "text": "<p>Swimming</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "custom",
-                        "font": "var(--font-body--family)",
-                        "font_size": "0.875rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      }
-                    }
-                  },
-                  "block_order": [
-                    "name_3",
-                    "sport_3"
-                  ]
+                  "blocks": {}
                 }
               },
               "block_order": [
                 "quote_3",
-                "info_group_3"
+                "athlete_info_3"
               ]
             }
           },
