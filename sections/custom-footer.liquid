@@ -186,31 +186,6 @@
           </div>
         {%- endif -%}
 
-        {%- comment -%} Footer logo — image picker or SVG fallback {%- endcomment -%}
-        <div class="custom-footer__logos">
-          <a href="{{ routes.root_url }}" class="custom-footer__logo-link" aria-label="{{ shop.name }}">
-            {%- if section.settings.footer_logo_image != blank -%}
-              {{
-                section.settings.footer_logo_image
-                | image_url: width: section.settings.footer_logo_image.width
-                | image_tag:
-                  loading: 'lazy',
-                  alt: section.settings.footer_logo_image.alt | default: shop.name,
-                  class: 'custom-footer__logos-image'
-              }}
-            {%- else -%}
-              <img
-                src="{{ 'enhanced-games-logo.svg' | asset_url }}"
-                alt="{{ shop.name }}"
-                class="custom-footer__logos-svg"
-                loading="lazy"
-                width="150"
-                height="16"
-              >
-            {%- endif -%}
-          </a>
-        </div>
-
         {%- comment -%} Bottom row: Legal + Copyright {%- endcomment -%}
         <div class="custom-footer__bottom">
           {%- if legal_menu != blank and legal_menu.links.size > 0 -%}
@@ -233,6 +208,29 @@
               {{ section.settings.copyright_text | escape }}
             {%- endif -%}
           </p>
+        </div>
+
+        {%- comment -%} Footer wordmark — always last element, full width {%- endcomment -%}
+        <div class="custom-footer__logos">
+          {%- if section.settings.footer_logo_image != blank -%}
+            {{
+              section.settings.footer_logo_image
+              | image_url: width: section.settings.footer_logo_image.width
+              | image_tag:
+                loading: 'lazy',
+                alt: section.settings.footer_logo_image.alt | default: shop.name,
+                class: 'custom-footer__logos-image'
+            }}
+          {%- else -%}
+            <img
+              src="{{ 'enhanced-games-logo.svg' | asset_url }}"
+              alt="{{ shop.name }}"
+              class="custom-footer__logos-svg"
+              loading="lazy"
+              width="150"
+              height="16"
+            >
+          {%- endif -%}
         </div>
       </div>
     </div>
