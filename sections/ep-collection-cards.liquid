@@ -42,6 +42,9 @@
             {%- if section.settings.tag_1_3 != blank -%}
               <span class="ep-collection-cards__tag">+ {{ section.settings.tag_1_3 | upcase | escape }}</span>
             {%- endif -%}
+            {%- if section.settings.tag_1_4 != blank -%}
+              <span class="ep-collection-cards__tag">+ {{ section.settings.tag_1_4 | upcase | escape }}</span>
+            {%- endif -%}
           </div>
 
           {%- if section.settings.description_1 != blank -%}
@@ -92,6 +95,9 @@
             {%- endif -%}
             {%- if section.settings.tag_2_3 != blank -%}
               <span class="ep-collection-cards__tag">+ {{ section.settings.tag_2_3 | upcase | escape }}</span>
+            {%- endif -%}
+            {%- if section.settings.tag_2_4 != blank -%}
+              <span class="ep-collection-cards__tag">+ {{ section.settings.tag_2_4 | upcase | escape }}</span>
             {%- endif -%}
           </div>
 
@@ -150,6 +156,12 @@
       "default": "Aging"
     },
     {
+      "type": "text",
+      "id": "tag_1_4",
+      "label": "Tag 4",
+      "default": "Vitality"
+    },
+    {
       "type": "textarea",
       "id": "description_1",
       "label": "Description",
@@ -198,6 +210,11 @@
       "id": "tag_2_3",
       "label": "Tag 3",
       "default": "Recovery"
+    },
+    {
+      "type": "text",
+      "id": "tag_2_4",
+      "label": "Tag 4"
     },
     {
       "type": "textarea",
