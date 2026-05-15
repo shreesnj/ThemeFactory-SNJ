@@ -340,6 +340,11 @@
     "blog_post_date": "Date",
     "blog_post_description": "An excerpt of your blog post's content"
   },
+  "footer": {
+    "tagline": "Science-backed supplements for cardiovascular health.",
+    "signup_heading": "Stay Connected",
+    "signup_subtext": "Get exclusive deals and early access to new products."
+  },
   "products": {
     "product": {
       "add_to_cart": "Add to cart",

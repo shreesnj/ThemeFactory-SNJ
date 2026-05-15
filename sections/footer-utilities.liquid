@@ -84,6 +84,28 @@
       text-align: right;
     }
   }
+
+  /* Social icon sizing and hover */
+  .utilities .social-icons__icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .utilities .social-icons__icon-wrapper {
+    height: 26px;
+  }
+
+  .utilities .social-icons__icon-wrapper:has(.social-icons__icon path) {
+    width: 26px;
+  }
+
+  .utilities .social-icons__icon-wrapper a {
+    transition: opacity 0.2s ease;
+  }
+
+  .utilities .social-icons__icon-wrapper a:hover {
+    opacity: 0.7;
+  }
 {% endstylesheet %}
 
 {% schema %}

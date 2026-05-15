@@ -82,6 +82,32 @@
       grid-column: 1 / -1;
     }
   }
+
+  /* Custom footer layout overrides */
+  .footer-content .logo-block__image {
+    max-height: 24px;
+    width: auto;
+  }
+
+  @media screen and (max-width: 749px) {
+    .footer-content > * + * {
+      padding-block-start: 24px;
+      border-top: 1px solid var(--color-border);
+    }
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .footer-content[style*='--grid-columns: 4'] > :first-child,
+    .footer-content[style*='--grid-columns: 4'] > :last-child {
+      grid-column: span 2;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    .footer-content[style*='--grid-columns: 4'] {
+      grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
