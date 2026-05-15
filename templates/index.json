@@ -331,177 +331,27 @@
       }
     },
     "ep_our_products": {
-      "type": "product-list",
-      "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "flex-start",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "label_liquid": {
-              "type": "custom-liquid",
-              "settings": {
-                "custom_liquid": "<p style=\"font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin:0;\">OUR PRODUCTS</p>"
-              },
-              "blocks": {}
-            },
-            "heading_liquid": {
-              "type": "custom-liquid",
-              "settings": {
-                "custom_liquid": "<h2 style=\"font-size:clamp(1.75rem,3vw,2.5rem);font-weight:500;line-height:1.1;letter-spacing:-0.048em;font-family:var(--font-body--family);margin:0;color:var(--color-foreground-heading)\">Performance Essentials, <span style=\"color:rgb(0,51,255)\">Engineered For Results</span></h2>"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": ["label_liquid", "heading_liquid"]
-        },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
-          "settings": {
-            "product_card_gap": 0,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "solid",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 8,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "gallery": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "square",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "1.25rem",
-                "line_height": "body-normal",
-                "letter_spacing": "normal",
-                "case": "uppercase",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 16,
-                "padding-block-end": 0,
-                "padding-inline-start": 16,
-                "padding-inline-end": 16
-              },
-              "blocks": {}
-            },
-            "price_block": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "0.875rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 8,
-                "padding-block-end": 0,
-                "padding-inline-start": 16,
-                "padding-inline-end": 16
-              },
-              "blocks": {}
-            },
-            "buy_buttons": {
-              "type": "buy-buttons",
-              "name": "t:names.product_buy_buttons",
-              "settings": {
-                "stacking": true,
-                "show_pickup_availability": false,
-                "gift_card_form": false,
-                "padding-block-start": 16,
-                "padding-block-end": 16,
-                "padding-inline-start": 16,
-                "padding-inline-end": 16
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": ["gallery", "product_title", "price_block", "buy_buttons"]
-        }
-      },
+      "type": "ep-supplement-cards",
       "settings": {
-        "collection": "supplements",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 2,
-        "columns": 2,
-        "mobile_columns": "1",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 24,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 32,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 64,
-        "padding-block-end": 64
+        "heading_main": "Performance Essentials, ",
+        "heading_accent": "Engineered For Results",
+        "product_1": "longer",
+        "logo_1": "shopify://shop_images/longer-logo-a4269c7b0d10.png",
+        "sub_price_1": 99,
+        "otp_price_1": 125,
+        "compare_price_1": 200,
+        "sub_discount_1": 51,
+        "otp_discount_1": 38,
+        "product_2": "stronger",
+        "logo_2": "shopify://shop_images/stronger-logo-1-87943a559b51.png",
+        "sub_price_2": 99,
+        "otp_price_2": 125,
+        "compare_price_2": 200,
+        "sub_discount_2": 51,
+        "otp_discount_2": 38,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "color_scheme": "scheme-1"
       }
     },
     "product_list_fa6P9H": {

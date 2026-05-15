@@ -1,0 +1,312 @@
+<div
+  class="faq-accordion-section spacing-style color-{{ section.settings.color_scheme }}{% if section.settings.section_width == 'page-width' %} page-width{% endif %}"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  <div class="faq-accordion-section__inner">
+    <div class="faq-accordion-section__heading">
+      <span style="color: {{ section.settings.heading_color_1 }};">{{ section.settings.heading_text_1 | escape }}</span><span style="color: {{ section.settings.heading_color_2 }};"> {{ section.settings.heading_text_2 | escape }}</span>
+    </div>
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .faq-accordion-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .faq-accordion-section__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 804px;
+    width: 100%;
+    padding-block-start: 64px;
+    margin-inline: auto;
+  }
+
+  .faq-accordion-section__heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  /* Override accordion summary typography */
+  .section-faq-accordion .accordion .details__header {
+    font-size: 1.5rem;
+    line-height: 1.1;
+    text-transform: capitalize;
+  }
+
+  /* Override accordion borders and spacing */
+  .section-faq-accordion .accordion.accordion--dividers accordion-custom .details {
+    border-block-start: none;
+    border-block-end: none;
+    border-bottom: 2px solid #EAECF0;
+    padding-block: 30px;
+    padding-inline: 0;
+  }
+
+  .section-faq-accordion .accordion.accordion--dividers accordion-custom:first-child .details {
+    border-block-start: none;
+    padding-block-start: 0;
+  }
+
+  .section-faq-accordion .accordion.accordion--dividers accordion-custom:last-child .details {
+    border-block-end: none;
+  }
+
+  /* Accordion flex fill */
+  .section-faq-accordion .accordion {
+    flex: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    .faq-accordion-section__inner {
+      padding-block-start: 32px;
+      padding-inline: 16px;
+    }
+
+    .faq-accordion-section__heading {
+      font-size: 2rem;
+    }
+
+    .section-faq-accordion .accordion .details__header {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .section-faq-accordion .accordion.accordion--dividers accordion-custom .details {
+      padding-block: 12px;
+      padding-inline: 0;
+    }
+
+    .section-faq-accordion .accordion.accordion--dividers accordion-custom:first-child .details {
+      padding-block-start: 0;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.faq_accordion",
+  "tag": "section",
+  "class": "section-faq-accordion",
+  "blocks": [
+    { "type": "@theme" },
+    { "type": "@app" }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_text_1",
+      "label": "Heading text 1",
+      "default": "Your Questions,"
+    },
+    {
+      "type": "color",
+      "id": "heading_color_1",
+      "label": "Heading color 1",
+      "default": "#0B0B0B"
+    },
+    {
+      "type": "text",
+      "id": "heading_text_2",
+      "label": "Heading text 2",
+      "default": "Answered."
+    },
+    {
+      "type": "color",
+      "id": "heading_color_2",
+      "label": "Heading color 2",
+      "default": "#0033FF"
+    },
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page_width" },
+        { "value": "full-width", "label": "t:options.full_width" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.faq_accordion",
+      "category": "t:categories.text",
+      "blocks": {
+        "accordion_block": {
+          "type": "accordion",
+          "settings": {
+            "icon": "plus",
+            "dividers": true,
+            "type_preset": "h4",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "row_1": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Is It Safe To Take Every Day?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_1": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Yes. Both LONGER+ and STRONGER+ are third-party tested, non-GMO, and free of unnecessary fillers. Every ingredient is chosen for its clinical evidence and safety profile. As always, consult your doctor before beginning any supplement regimen.</p>",
+                    "width": "100%",
+                    "type_preset": "custom",
+                    "font_size": "0.875rem",
+                    "line_height": "normal"
+                  }
+                }
+              },
+              "block_order": ["text_1"]
+            },
+            "row_2": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "How Long Does It Take To Notice Results?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_2": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>It depends on the formula. STRONGER+ is designed for immediate physical output: many users feel improved energy, focus, and endurance within the first week. LONGER+ targets deeper cellular processes, so meaningful results typically develop over 4–8 weeks of consistent use.</p>",
+                    "width": "100%",
+                    "type_preset": "custom",
+                    "font_size": "0.875rem",
+                    "line_height": "normal"
+                  }
+                }
+              },
+              "block_order": ["text_2"]
+            },
+            "row_3": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "How Is It Personalized For Me?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_3": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We offer two precision-formulated products targeting different goals. LONGER+ is built for cellular repair, resilience, and longevity. STRONGER+ is designed for daily performance, energy, and recovery. Choose the one that fits your goal — or stack both for full-spectrum support.</p>",
+                    "width": "100%",
+                    "type_preset": "custom",
+                    "font_size": "0.875rem",
+                    "line_height": "normal"
+                  }
+                }
+              },
+              "block_order": ["text_3"]
+            },
+            "row_4": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Can My Formula Change As My Goals Evolve?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_4": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Absolutely. You can switch between LONGER+ and STRONGER+, stack both, or adjust your subscription at any time. Your formula should evolve as you do.</p>",
+                    "width": "100%",
+                    "type_preset": "custom",
+                    "font_size": "0.875rem",
+                    "line_height": "normal"
+                  }
+                }
+              },
+              "block_order": ["text_4"]
+            },
+            "row_5": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Can I Take It With Other Supplements?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_5": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Yes. LONGER+ and STRONGER+ are designed to complement a healthy lifestyle and can generally be taken alongside other supplements. If you’re on prescription medication or have specific health concerns, we recommend consulting your healthcare provider.</p>",
+                    "width": "100%",
+                    "type_preset": "custom",
+                    "font_size": "0.875rem",
+                    "line_height": "normal"
+                  }
+                }
+              },
+              "block_order": ["text_5"]
+            }
+          },
+          "block_order": ["row_1", "row_2", "row_3", "row_4", "row_5"]
+        }
+      },
+      "block_order": ["accordion_block"]
+    }
+  ]
+}
+{% endschema %}

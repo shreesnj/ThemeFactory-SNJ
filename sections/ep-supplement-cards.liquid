@@ -1,0 +1,304 @@
+{{ 'ep-supplement-cards.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign product_1 = section.settings.product_1
+  assign product_2 = section.settings.product_2
+-%}
+
+<div class="ep-supplement-cards color-{{ section.settings.color_scheme }}"
+  style="--ep-sc-padding-top: {{ section.settings.padding_top }}px; --ep-sc-padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="section section--page-width">
+
+    <div class="ep-supplement-cards__header">
+      <p class="ep-supplement-cards__label">OUR PRODUCTS</p>
+      <h2 class="ep-supplement-cards__heading">
+        {{- section.settings.heading_main | escape }}
+        <span class="ep-supplement-cards__heading-accent">{{ section.settings.heading_accent | escape }}</span>
+      </h2>
+    </div>
+
+    <div class="ep-supplement-cards__grid">
+
+      {%- for i in (1..2) -%}
+        {%- liquid
+          if i == 1
+            assign product = product_1
+            assign logo_img = section.settings.logo_1
+            assign sub_price = section.settings.sub_price_1
+            assign otp_price = section.settings.otp_price_1
+            assign compare_price = section.settings.compare_price_1
+            assign sub_discount = section.settings.sub_discount_1
+            assign otp_discount = section.settings.otp_discount_1
+          else
+            assign product = product_2
+            assign logo_img = section.settings.logo_2
+            assign sub_price = section.settings.sub_price_2
+            assign otp_price = section.settings.otp_price_2
+            assign compare_price = section.settings.compare_price_2
+            assign sub_discount = section.settings.sub_discount_2
+            assign otp_discount = section.settings.otp_discount_2
+          endif
+        -%}
+
+        {%- if product != blank -%}
+          <div class="ep-supplement-cards__card ep-sc-card" data-card>
+            {%- if product.featured_image != blank -%}
+              <a href="{{ product.url }}" class="ep-supplement-cards__image-link">
+                <div class="ep-supplement-cards__image-wrapper">
+                  {%- liquid
+                    assign sizes_val = '(min-width: 750px) 45vw, 100vw'
+                  -%}
+                  {{
+                    product.featured_image
+                    | image_url: width: 1200
+                    | image_tag:
+                      sizes: sizes_val,
+                      widths: '400,600,800,1000,1200',
+                      loading: 'lazy',
+                      class: 'ep-supplement-cards__image',
+                      alt: product.featured_image.alt | default: product.title
+                  }}
+                </div>
+              </a>
+            {%- endif -%}
+
+            <div class="ep-supplement-cards__body">
+
+              {%- comment -%} Subscription toggle tabs {%- endcomment -%}
+              <div class="ep-sc-tabs" role="tablist">
+                <button
+                  class="ep-sc-tabs__tab ep-sc-tabs__tab--active"
+                  role="tab"
+                  aria-selected="true"
+                  data-tab="sub"
+                  data-sub-price="{{ sub_price }}"
+                  data-sub-discount="{{ sub_discount }}"
+                  data-otp-price="{{ otp_price }}"
+                  data-otp-discount="{{ otp_discount }}"
+                  data-compare="{{ compare_price }}">
+                  Subscribe &amp; Save
+                </button>
+                <button
+                  class="ep-sc-tabs__tab"
+                  role="tab"
+                  aria-selected="false"
+                  data-tab="otp">
+                  One-Time
+                </button>
+              </div>
+
+              {%- comment -%} Product logo wordmark {%- endcomment -%}
+              <div class="ep-supplement-cards__logo-row">
+                {%- if logo_img != blank -%}
+                  <img
+                    src="{{ logo_img | image_url: width: 420 }}"
+                    alt="{{ product.title }}"
+                    class="ep-supplement-cards__logo"
+                    loading="lazy"
+                    width="{{ logo_img.width }}"
+                    height="{{ logo_img.height }}">
+                {%- else -%}
+                  <p class="ep-supplement-cards__product-title">{{ product.title | upcase }}</p>
+                {%- endif -%}
+              </div>
+
+              {%- comment -%} Pricing display {%- endcomment -%}
+              <div class="ep-supplement-cards__price-row">
+                <span class="ep-sc-price">${{ sub_price }}</span>
+                <span class="ep-sc-price-suffix ep-sc-price-suffix--sub">/mo</span>
+                <span class="ep-sc-compare">${{ compare_price }}</span>
+                <span class="ep-sc-badge ep-sc-badge--sub">{{ sub_discount }}% OFF</span>
+                <span class="ep-sc-badge ep-sc-badge--otp" aria-hidden="true">{{ otp_discount }}% OFF</span>
+              </div>
+
+              {%- comment -%} Add to cart CTA {%- endcomment -%}
+              <a href="{{ product.url }}" class="ep-supplement-cards__btn">
+                Add to Cart
+              </a>
+
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  document.querySelectorAll('[data-card]').forEach(function(card) {
+    var tabs = card.querySelectorAll('[data-tab]');
+    var priceEl = card.querySelector('.ep-sc-price');
+    var suffixSub = card.querySelector('.ep-sc-price-suffix--sub');
+    var badgeSub = card.querySelector('.ep-sc-badge--sub');
+    var badgeOtp = card.querySelector('.ep-sc-badge--otp');
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        tabs.forEach(function(t) {
+          t.classList.remove('ep-sc-tabs__tab--active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('ep-sc-tabs__tab--active');
+        tab.setAttribute('aria-selected', 'true');
+
+        var plan = tab.dataset.tab;
+        var activeTrigger = card.querySelector('[data-tab="sub"]');
+
+        if (plan === 'sub') {
+          priceEl.textContent = '$' + activeTrigger.dataset.subPrice;
+          suffixSub.style.display = '';
+          badgeSub.style.display = '';
+          badgeOtp.style.display = 'none';
+        } else {
+          priceEl.textContent = '$' + activeTrigger.dataset.otpPrice;
+          suffixSub.style.display = 'none';
+          badgeSub.style.display = 'none';
+          badgeOtp.style.display = '';
+        }
+      });
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "t:names.ep_supplement_cards",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_main",
+      "label": "Heading main",
+      "default": "Performance Essentials, "
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading accent (blue)",
+      "default": "Engineered For Results"
+    },
+    {
+      "type": "header",
+      "content": "Product 1 (Longer)"
+    },
+    {
+      "type": "product",
+      "id": "product_1",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_1",
+      "label": "Logo wordmark"
+    },
+    {
+      "type": "number",
+      "id": "sub_price_1",
+      "label": "Subscription price",
+      "default": 99
+    },
+    {
+      "type": "number",
+      "id": "otp_price_1",
+      "label": "One-time price",
+      "default": 125
+    },
+    {
+      "type": "number",
+      "id": "compare_price_1",
+      "label": "Compare-at price",
+      "default": 200
+    },
+    {
+      "type": "number",
+      "id": "sub_discount_1",
+      "label": "Subscription discount %",
+      "default": 51
+    },
+    {
+      "type": "number",
+      "id": "otp_discount_1",
+      "label": "One-time discount %",
+      "default": 38
+    },
+    {
+      "type": "header",
+      "content": "Product 2 (Stronger)"
+    },
+    {
+      "type": "product",
+      "id": "product_2",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_2",
+      "label": "Logo wordmark"
+    },
+    {
+      "type": "number",
+      "id": "sub_price_2",
+      "label": "Subscription price",
+      "default": 99
+    },
+    {
+      "type": "number",
+      "id": "otp_price_2",
+      "label": "One-time price",
+      "default": 125
+    },
+    {
+      "type": "number",
+      "id": "compare_price_2",
+      "label": "Compare-at price",
+      "default": 200
+    },
+    {
+      "type": "number",
+      "id": "sub_discount_2",
+      "label": "Subscription discount %",
+      "default": 51
+    },
+    {
+      "type": "number",
+      "id": "otp_discount_2",
+      "label": "One-time discount %",
+      "default": 38
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "number",
+      "id": "padding_top",
+      "label": "Padding top",
+      "default": 64
+    },
+    {
+      "type": "number",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.ep_supplement_cards"
+    }
+  ]
+}
+{% endschema %}
