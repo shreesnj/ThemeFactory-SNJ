@@ -549,6 +549,33 @@
     --hero-height-offset: var(--header-group-height, 0);
   }
 
+  /* Full image height — remove fixed min-height, let image drive container height */
+  .hero-wrapper .hero {
+    min-height: unset;
+  }
+
+  .hero-wrapper .hero__container {
+    display: grid;
+    grid-template-columns: var(--full-page-grid-with-margins);
+    grid-template-rows: auto;
+  }
+
+  .hero-wrapper .hero__media-grid {
+    position: relative;
+    inset: auto;
+    grid-row: 1;
+    grid-column: 1 / -1;
+  }
+
+  .hero-wrapper .hero__media {
+    height: auto;
+  }
+
+  .hero-wrapper .hero__content-wrapper {
+    grid-row: 1;
+    align-self: end;
+  }
+
   .hero {
     position: relative;
     min-height: calc(var(--hero-min-height) - var(--hero-height-offset));
