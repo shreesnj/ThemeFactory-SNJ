@@ -544,36 +544,14 @@
     margin-top: -90px;
   }
 
+  /* Bottom padding override: schema max is 100px but live site uses 186px */
+  .hero-wrapper .hero__container {
+    padding-block-end: max(20px, calc(var(--spacing-scale, 1) * 186px)) !important;
+  }
+
   /* Being extra specific in the selector for performance reasons */
   body:has(> #header-group > .header-section > #header-component) .hero-wrapper:first-child {
     --hero-height-offset: var(--header-group-height, 0);
-  }
-
-  /* Full image height — remove fixed min-height, let image drive container height */
-  .hero-wrapper .hero {
-    min-height: unset;
-  }
-
-  .hero-wrapper .hero__container {
-    display: grid;
-    grid-template-columns: var(--full-page-grid-with-margins);
-    grid-template-rows: auto;
-  }
-
-  .hero-wrapper .hero__media-grid {
-    position: relative;
-    inset: auto;
-    grid-row: 1;
-    grid-column: 1 / -1;
-  }
-
-  .hero-wrapper .hero__media {
-    height: auto;
-  }
-
-  .hero-wrapper .hero__content-wrapper {
-    grid-row: 1;
-    align-self: end;
   }
 
   .hero {
