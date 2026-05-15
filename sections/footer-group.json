@@ -15,7 +15,9 @@
       "type": "custom-footer",
       "settings": {
         "background_image": "shopify://shop_images/footer-bg-desktop-a6e94ab50657.png",
+        "menu_1": "footer-first-column",
         "menu_1_heading": "Explore products",
+        "menu_2": "footer-second-column",
         "menu_2_heading": "Company",
         "contact_heading": "Connect with us",
         "email_address": "action@enhanced.org",
