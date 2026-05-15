@@ -665,6 +665,25 @@
     /* preserves the inherited grid layout when this submenu wrapper is used */
     display: contents;
   }
+
+  /* Desktop nav link spacing override to match Figma design */
+  @media screen and (min-width: 750px) {
+    .menu-list {
+      --menu-horizontal-gap: var(--gap-2xl, 32px);
+    }
+  }
+
+  /* Hide the default header drawer hamburger on mobile when bottom nav is active */
+  @media screen and (max-width: 749px) {
+    .header__drawer {
+      display: none;
+    }
+
+    /* Hide the default mobile navigation bar to avoid dual bottom bars */
+    .menu-list--mobile {
+      display: none;
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
