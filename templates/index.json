@@ -559,7 +559,7 @@
     "ep_collection_cards": {
       "type": "ep-collection-cards",
       "settings": {
-        "image_1": "shopify://shop_images/enhanced-longer-product.png",
+        "image_1": "shopify://shop_images/longer_image.jpg",
         "title_1": "LONGER",
         "tag_1_1": "Cellular",
         "tag_1_2": "Metabolic",
@@ -568,7 +568,7 @@
         "description_1": "A longevity formula designed to support healthy aging and cellular function.",
         "button_label_1": "Shop Longer",
         "button_link_1": "/products/longer",
-        "image_2": "shopify://shop_images/enhanced-stronger-product.png",
+        "image_2": "shopify://shop_images/stronger_image.jpg",
         "title_2": "STRONGER",
         "tag_2_1": "Strength",
         "tag_2_2": "Endurance",
