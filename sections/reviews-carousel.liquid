@@ -1,0 +1,387 @@
+<div
+  class="reviews-carousel section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+  "
+>
+  <div class="reviews-carousel__header">
+    {% if section.settings.heading != blank %}
+      <h2 class="reviews-carousel__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.show_stars %}
+      <div class="reviews-carousel__reviews-bar">
+        <div class="reviews-carousel__stars">
+          <img src="{{ 'star-solid-4.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+          <img src="{{ 'star-solid-4.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+          <img src="{{ 'star-solid-4.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+          <img src="{{ 'star-solid-4.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+          <img src="{{ 'star-half-solid.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+        </div>
+        {% if section.settings.review_count_text != blank %}
+          <span class="reviews-carousel__review-count">{{ section.settings.review_count_text }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="reviews-carousel__track">
+    {% for block in section.blocks %}
+      {% if block.settings.card_type == 'image' %}
+        <div class="reviews-carousel__card reviews-carousel__card--image" {{ block.shopify_attributes }}>
+          {% if block.settings.background_image != blank %}
+            {{
+              block.settings.background_image
+              | image_url: width: block.settings.background_image.width
+              | image_tag:
+                sizes: '(min-width: 750px) 280px, 260px',
+                widths: '260,280,420,560',
+                loading: 'lazy',
+                class: 'reviews-carousel__card-bg',
+                alt: block.settings.background_image.alt
+            }}
+          {% endif %}
+          {% if block.settings.quote_text != blank %}
+            <p class="reviews-carousel__image-quote">{{ block.settings.quote_text }}</p>
+          {% endif %}
+        </div>
+      {% else %}
+        <div class="reviews-carousel__card reviews-carousel__card--text" {{ block.shopify_attributes }}>
+          <div class="reviews-carousel__card-inner">
+            <div class="reviews-carousel__card-stars">
+              {% assign full_stars = block.settings.star_count | minus: 1 %}
+              {% for i in (1..full_stars) %}
+                <img src="{{ 'star-solid-4.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+              {% endfor %}
+              <img src="{{ 'star-half-alt-solid.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+            </div>
+            {% if block.settings.review_title != blank %}
+              <h3 class="reviews-carousel__card-title">{{ block.settings.review_title }}</h3>
+            {% endif %}
+            {% if block.settings.review_body != blank %}
+              <p class="reviews-carousel__card-body">{{ block.settings.review_body }}</p>
+            {% endif %}
+            {% if block.settings.reviewer_name != blank %}
+              <p class="reviews-carousel__card-author">{{ block.settings.reviewer_name }}</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+.reviews-carousel {
+  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  background-color: var(--color-background);
+}
+
+.reviews-carousel__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  padding-inline: 32px;
+  text-align: center;
+}
+
+.reviews-carousel__heading {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 52px;
+  color: #767676;
+  margin: 0;
+  text-align: center;
+}
+
+.reviews-carousel__reviews-bar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.reviews-carousel__stars {
+  display: flex;
+  gap: 0;
+  align-items: center;
+}
+
+.reviews-carousel__review-count {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  color: #767676;
+}
+
+.reviews-carousel__track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  width: 100%;
+  max-width: 1200px;
+  align-items: stretch;
+}
+
+.reviews-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.reviews-carousel__card {
+  flex: 0 0 280px;
+  min-height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+.reviews-carousel__card--image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reviews-carousel__card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reviews-carousel__image-quote {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 40px;
+  letter-spacing: -1px;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0;
+  padding: 40px 32px;
+  max-width: 215px;
+}
+
+.reviews-carousel__card--text {
+  background-color: #FFFFFF;
+  display: flex;
+}
+
+.reviews-carousel__card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.reviews-carousel__card-stars {
+  display: flex;
+  gap: 0;
+  align-items: center;
+}
+
+.reviews-carousel__card-title {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 32px;
+  letter-spacing: -1px;
+  color: #414141;
+  margin: 0;
+  text-align: center;
+}
+
+.reviews-carousel__card-body {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  color: #767676;
+  margin: 0;
+  text-align: center;
+}
+
+.reviews-carousel__card-author {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  color: #767676;
+  margin: 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 749px) {
+  .reviews-carousel {
+    padding-inline: 16px;
+  }
+
+  .reviews-carousel__heading {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .reviews-carousel__card {
+    flex: 0 0 260px;
+    min-height: 380px;
+  }
+
+  .reviews-carousel__image-quote {
+    font-size: 22px;
+    line-height: 32px;
+    padding: 32px 24px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.reviews_carousel",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "Join millions of people prioritizing their cardiovascular health"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stars",
+      "label": "t:settings.show_stars",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_count_text",
+      "label": "t:settings.review_count_text",
+      "default": "100K+ verified reviews"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "t:names.review_card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "card_type",
+          "label": "t:settings.card_type",
+          "options": [
+            { "value": "image", "label": "Image" },
+            { "value": "text", "label": "Text" }
+          ],
+          "default": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "t:settings.background_image"
+        },
+        {
+          "type": "text",
+          "id": "quote_text",
+          "label": "t:settings.quote_text"
+        },
+        {
+          "type": "text",
+          "id": "review_title",
+          "label": "t:settings.review_title"
+        },
+        {
+          "type": "textarea",
+          "id": "review_body",
+          "label": "t:settings.review_body"
+        },
+        {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "t:settings.reviewer_name"
+        },
+        {
+          "type": "range",
+          "id": "star_count",
+          "label": "t:settings.star_count",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.reviews_carousel",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "card_type": "image"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

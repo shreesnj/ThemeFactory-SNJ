@@ -9,280 +9,266 @@
  */
  {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "hero": {
+      "type": "hero-carousel",
+      "settings": {
+        "section_width": "full-width",
+        "color_scheme": "scheme-1",
+        "padding_block_start": 8,
+        "padding_block_end": 8
+      },
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "slide_1": {
+          "type": "slide",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "layout_mode": "split",
+            "background_type": "gradient",
+            "gradient_color_1": "#F0F0F0",
+            "gradient_color_2": "#E3E3E3",
+            "gradient_angle": 170,
+            "blur_amount": 0,
+            "heading": "<p>SuperBeets®, The Cardiovascular  Health Original</p>",
+            "heading_color": "#BC0F0F",
+            "subtitle": "Combines category-leading trust with clinically researched cardiovascular support.",
+            "subtitle_color": "#BC0F0F",
+            "button_text": "SHOP SUPERBEETS",
+            "button_color": "#000000",
+            "button_text_color": "#FFFFFF",
+            "hero_image": "shopify://shop_images/hero-mobile-header-31301281.png",
+            "footer_image": "shopify://shop_images/screenshot-2026-04-07-at-11-03-03-1-mobile-header-31301290.png",
+            "corner_radius": 16
+          }
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "slide_2": {
+          "type": "slide",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
+            "layout_mode": "overlay",
+            "background_type": "image",
+            "background_image": "shopify://shop_images/hero-mobile-header-I31301882211761.png",
+            "blur_amount": 4,
+            "heading": "<p>Cardiovascular health is everything health.</p>",
+            "heading_color": "#414141",
+            "subtitle": "Inspired by Nobel-Prize winning science, born out of research from The University of Texas.",
+            "subtitle_color": "#FFFFFF",
+            "button_text": "EXPLORE THE SCIENCE",
+            "button_color": "#000000",
+            "button_text_color": "#FFFFFF",
+            "corner_radius": 12
+          }
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
-      ],
-      "name": "t:names.hero",
+        "slide_1",
+        "slide_2"
+      ]
+    },
+    "search": {
+      "type": "search-prompt",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "heading": "Ask me anything about cardiovascular health",
+        "placeholder_text": "How does blood flow support energy?",
+        "button_text": "GO",
+        "expert_image": "shopify://shop_images/ellipse-228-mobile-header-31301311.jpg",
+        "expert_name": "Approved by experts",
+        "expert_description": "Get answers backed by research from Humann's Chief Cardiologist.",
+        "color_scheme": "scheme-7",
+        "section_width": "full-width",
+        "padding_block_start": 8,
+        "padding_block_end": 16,
+        "corner_radius": 16
       }
     },
-    "product_list_fa6P9H": {
-      "type": "product-list",
+    "reviews": {
+      "type": "reviews-carousel",
+      "settings": {
+        "heading": "Join millions of people prioritizing their cardiovascular health",
+        "show_stars": true,
+        "review_count_text": "100K+ verified reviews",
+        "color_scheme": "scheme-2",
+        "section_width": "full-width",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      },
       "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
+        "review_1": {
+          "type": "review",
           "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
-              "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
+            "card_type": "image",
+            "background_image": "shopify://shop_images/card-mobile-31613818.jpg",
+            "quote_text": "“A product that is heart healthy AND tastes amazing.”  – Chris D.",
+            "reviewer_name": "Chris D.",
+            "star_count": 5
+          }
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "review_2": {
+          "type": "review",
           "settings": {
-            "product_card_gap": 4,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+            "card_type": "text",
+            "review_title": "“I actually feel better.”",
+            "review_body": "I never notice things like supplements and I didn’t expect to with this either....I’ve been sleeping better, breathing better and feeling better overall and it’s only been a month so far.”",
+            "reviewer_name": "– Matt Z.",
+            "star_count": 5
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "card_type": "image",
+            "background_image": "shopify://shop_images/card-desktop-31731695.jpg",
+            "quote_text": "“Humann fits so easily into my routine.  I love it.”  – Leonna M.",
+            "reviewer_name": "Leonna M.",
+            "star_count": 5
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "card_type": "text",
+            "review_title": "“My doctor is very happy.”",
+            "review_body": "Ever since I started taking SuperBeets my doctor is very satisfied with my BP readings.”",
+            "reviewer_name": "– Everett",
+            "star_count": 5
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "card_type": "image",
+            "background_image": "shopify://shop_images/card-mobile-31613853.jpg",
+            "quote_text": "“I like that it feels practical, not complicated.””  – Kim K.",
+            "reviewer_name": "Kim K.",
+            "star_count": 5
+          }
         }
       },
-      "name": "t:names.featured_collection",
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5"
+      ]
+    },
+    "health-keys": {
+      "type": "health-keys",
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
+        "heading": "There's nothing more fundamental to longevity than Cardiovascular Health.",
+        "subtitle": "Powered through nitric oxide and  better blood flow.",
+        "subheading": "The 3 Keys to Cardiovascular Health",
         "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      }
+        "section_width": "full-width",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      },
+      "blocks": {
+        "key_1": {
+          "type": "key-card",
+          "settings": {
+            "card_color": "#8C0132",
+            "number": "1",
+            "title": "Blood Pressure",
+            "description": "Healthy blood pressure starts with blood flow, and blood flow starts with nitric oxide.",
+            "stat_value": "2x",
+            "stat_description": "more effective blood pressure support when compared to diet and exercise alone.¹",
+            "button_text": "SHOP Blood Pressure"
+          }
+        },
+        "key_2": {
+          "type": "key-card",
+          "settings": {
+            "card_color": "#E6305E",
+            "number": "2",
+            "title": "Metabolic",
+            "description": "Help your body use energy more smoothly and steadily.",
+            "stat_value": "78%",
+            "stat_description": "of customers report improved energy levels, after completing their first 90-day routine.",
+            "button_text": "SHOP Metabolic"
+          }
+        },
+        "key_3": {
+          "type": "key-card",
+          "settings": {
+            "card_color": "#D54427",
+            "number": "3",
+            "title": "CHOLESTEROL",
+            "description": "Help your body keep cholesterol levels in a healthy range.",
+            "stat_value": "29%",
+            "stat_description": "reduction in LDL (bad cholesterol) and a 11% reduction in total cholesterol.",
+            "button_text": "SHOP CHOLESTEROL"
+          }
+        }
+      },
+      "block_order": [
+        "key_1",
+        "key_2",
+        "key_3"
+      ]
+    },
+    "recommended": {
+      "type": "doctor-recommended",
+      "settings": {
+        "subtitle": "Cardiologist recommended",
+        "heading": "Heart health made easy with one routine.",
+        "doctor_image": "shopify://shop_images/ellipse-228-mobile-header-31301311.jpg",
+        "doctor_text": "Our Chief Cardiologist, Dr. Christopher Davis, MD recommends this for daily heart support.",
+        "main_image": "shopify://shop_images/image-883-desktop-31733365.png",
+        "color_scheme": "scheme-1",
+        "section_width": "full-width",
+        "padding_block_start": 80,
+        "padding_block_end": 80,
+        "gap": 24
+      },
+      "blocks": {
+        "product_1": {
+          "type": "product-item",
+          "settings": {
+            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499357513830.png",
+            "product_title": "SuperBeets® Heart Chews",
+            "product_description": "Clinically studied beetroot + grape seed for healthy blood pressure support.",
+            "show_plus_icon": true
+          }
+        },
+        "product_2": {
+          "type": "product-item",
+          "settings": {
+            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499367513830.png",
+            "product_title": "Cholesterol Health Daily",
+            "product_description": "A plant-based blend of aged black garlic and citrus bergamot for cholesterol support.",
+            "show_plus_icon": true
+          }
+        },
+        "product_3": {
+          "type": "product-item",
+          "settings": {
+            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499377513830.png",
+            "product_title": "Metabolic Health Daily",
+            "product_description": "Triple-action support for blood sugar balance, insulin function, and energy metabolism.",
+            "show_plus_icon": true
+          }
+        },
+        "product_4": {
+          "type": "product-item",
+          "settings": {
+            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499357513830.png",
+            "product_title": "FREE CoQ10 sample",
+            "product_description": "A bonus CoQ10 supplement included with your heart health routine.",
+            "show_plus_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "product_1",
+        "product_2",
+        "product_3",
+        "product_4"
+      ]
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "hero",
+    "search",
+    "reviews",
+    "health-keys",
+    "recommended"
   ]
 }

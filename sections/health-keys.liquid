@@ -1,0 +1,451 @@
+<div
+  class="health-keys section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+  "
+>
+  <div class="health-keys__header">
+    {% if section.settings.heading != blank %}
+      <h2 class="health-keys__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="health-keys__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p class="health-keys__subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+  </div>
+  <div class="health-keys__grid">
+    {% for block in section.blocks %}
+      <div
+        class="health-keys__card"
+        style="--card-bg: {{ block.settings.card_color }};"
+        {{ block.shopify_attributes }}
+      >
+        <div class="health-keys__card-title-row">
+          <div class="health-keys__card-number">
+            <span>{{ block.settings.number }}</span>
+          </div>
+          <span class="health-keys__card-label">{{ block.settings.title }}</span>
+        </div>
+        <div class="health-keys__card-body">
+          {% if block.settings.description != blank %}
+            <div class="health-keys__card-intro">
+              <p class="health-keys__card-desc">{{ block.settings.description }}</p>
+            </div>
+          {% endif %}
+          <div class="health-keys__stat-card">
+            <div class="health-keys__stat-content">
+              {% if block.settings.stat_value != blank %}
+                <div class="health-keys__stat-value">{{ block.settings.stat_value }}</div>
+              {% endif %}
+              {% if block.settings.stat_description != blank %}
+                <p class="health-keys__stat-desc">{{ block.settings.stat_description }}</p>
+              {% endif %}
+            </div>
+            {% if block.settings.stat_icon != blank %}
+              <div class="health-keys__stat-icon">
+                {{
+                  block.settings.stat_icon
+                  | image_url: width: 96
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: block.settings.title
+                }}
+              </div>
+            {% endif %}
+          </div>
+          {% if block.settings.button_text != blank %}
+            <div class="health-keys__card-cta">
+              <a
+                {% if block.settings.button_url != blank %}href="{{ block.settings.button_url }}"{% endif %}
+                class="health-keys__btn"
+              >
+                {{ block.settings.button_text }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+.health-keys {
+  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  background-color: var(--color-background);
+}
+
+.health-keys__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.health-keys__heading {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 52px;
+  color: #767676;
+  margin: 0;
+}
+
+.health-keys__subtitle {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #767676;
+  margin: 0;
+}
+
+.health-keys__subheading {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #767676;
+  margin: 0;
+}
+
+.health-keys__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  padding-block: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.health-keys__card {
+  background-color: var(--card-bg, #8C0132);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.health-keys__card-title-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.health-keys__card-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 20px;
+  border: 1px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.health-keys__card-number span {
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.health-keys__card-label {
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.health-keys__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block-start: 20px;
+}
+
+.health-keys__card-intro {
+  padding-inline: 8px;
+}
+
+.health-keys__card-desc {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -1px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.health-keys__stat-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+}
+
+.health-keys__stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.health-keys__stat-value {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 52px;
+  color: var(--card-bg, #8C0132);
+}
+
+.health-keys__stat-desc {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  color: #414141;
+  margin: 0;
+}
+
+.health-keys__stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.health-keys__stat-icon img {
+  max-width: 48px;
+  height: auto;
+}
+
+.health-keys__card-cta {
+  display: flex;
+}
+
+.health-keys__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 28px;
+  border: 1px solid #FFFFFF;
+  background-color: transparent;
+  color: #FFFFFF;
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.health-keys__btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+@media screen and (max-width: 749px) {
+  .health-keys {
+    padding-inline: 16px;
+  }
+
+  .health-keys__heading {
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  .health-keys__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-keys__stat-value {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.health_keys",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "There's nothing more fundamental to longevity than Cardiovascular Health."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "t:settings.subtitle",
+      "default": "Powered through nitric oxide and better blood flow."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:settings.subheading",
+      "default": "The 3 Keys to Cardiovascular Health"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "key-card",
+      "name": "t:names.key_card",
+      "settings": [
+        {
+          "type": "color",
+          "id": "card_color",
+          "label": "t:settings.card_color",
+          "default": "#8C0132"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "t:settings.number",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:settings.product_title",
+          "default": "Blood Pressure"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "t:settings.product_description",
+          "default": "Healthy blood pressure starts with blood flow, and blood flow starts with nitric oxide."
+        },
+        {
+          "type": "text",
+          "id": "stat_value",
+          "label": "t:settings.stat_value",
+          "default": "2x"
+        },
+        {
+          "type": "textarea",
+          "id": "stat_description",
+          "label": "t:settings.stat_description",
+          "default": "more effective blood pressure support when compared to diet and exercise alone."
+        },
+        {
+          "type": "image_picker",
+          "id": "stat_icon",
+          "label": "t:settings.stat_icon"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:settings.button_text",
+          "default": "SHOP Blood Pressure"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "t:settings.button_url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.health_keys",
+      "blocks": [
+        {
+          "type": "key-card",
+          "settings": {
+            "card_color": "#8C0132",
+            "number": "1",
+            "title": "Blood Pressure"
+          }
+        },
+        {
+          "type": "key-card",
+          "settings": {
+            "card_color": "#E6305E",
+            "number": "2",
+            "title": "Metabolic"
+          }
+        },
+        {
+          "type": "key-card",
+          "settings": {
+            "card_color": "#D54427",
+            "number": "3",
+            "title": "Cholesterol"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,631 @@
+<div
+  class="hero-carousel section--{{ section.settings.section_width }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+  "
+>
+  <div class="hero-carousel__track" id="hero-carousel-track-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div
+        class="hero-carousel__slide hero-carousel__slide--{{ block.settings.layout_mode }}"
+        style="
+          --slide-radius: {{ block.settings.corner_radius }}px;
+          {% if block.settings.background_type == 'gradient' %}
+            --slide-bg: linear-gradient({{ block.settings.gradient_angle }}deg, {{ block.settings.gradient_color_1 }}, {{ block.settings.gradient_color_2 }});
+          {% endif %}
+          {% if block.settings.heading_color != blank %}--slide-heading-color: {{ block.settings.heading_color }};{% endif %}
+          {% if block.settings.subtitle_color != blank %}--slide-subtitle-color: {{ block.settings.subtitle_color }};{% endif %}
+        "
+        {{ block.shopify_attributes }}
+      >
+        {% if block.settings.background_type == 'image' and block.settings.background_image != blank %}
+          <div class="hero-carousel__bg-image" style="{% if block.settings.blur_amount > 0 %}filter: blur({{ block.settings.blur_amount }}px);{% endif %}">
+            {{
+              block.settings.background_image
+              | image_url: width: block.settings.background_image.width
+              | image_tag:
+                sizes: '100vw',
+                widths: '375,750,1100,1500,1800,2000',
+                loading: 'eager',
+                fetchpriority: 'high',
+                class: 'hero-carousel__bg-img',
+                alt: block.settings.background_image.alt
+            }}
+          </div>
+        {% endif %}
+
+        <div class="hero-carousel__content">
+          {% if block.settings.layout_mode == 'split' %}
+            <div class="hero-carousel__split-layout">
+              <div class="hero-carousel__text-col">
+                <div class="hero-carousel__text-group">
+                  {% if block.settings.heading != blank %}
+                    <div class="hero-carousel__heading">{{ block.settings.heading }}</div>
+                  {% endif %}
+                  {% if block.settings.subtitle != blank %}
+                    <p class="hero-carousel__subtitle">{{ block.settings.subtitle }}</p>
+                  {% endif %}
+                </div>
+                {% if block.settings.button_text != blank %}
+                  <div class="hero-carousel__btn-row">
+                    <a
+                      {% if block.settings.button_url != blank %}href="{{ block.settings.button_url }}"{% endif %}
+                      class="hero-carousel__btn"
+                      style="
+                        --btn-bg: {{ block.settings.button_color }};
+                        --btn-text: {{ block.settings.button_text_color }};
+                      "
+                    >
+                      {{ block.settings.button_text }}
+                    </a>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="hero-carousel__image-col">
+                {% if block.settings.hero_image != blank %}
+                  {{
+                    block.settings.hero_image
+                    | image_url: width: block.settings.hero_image.width
+                    | image_tag:
+                      sizes: '(min-width: 750px) 50vw, 100vw',
+                      widths: '375,550,750,1000,1300',
+                      loading: 'eager',
+                      fetchpriority: 'high',
+                      class: 'hero-carousel__hero-img',
+                      alt: block.settings.hero_image.alt
+                  }}
+                {% endif %}
+              </div>
+            </div>
+          {% else %}
+            <div class="hero-carousel__overlay-layout">
+              <div class="hero-carousel__overlay-text">
+                {% if block.settings.heading != blank %}
+                  <div class="hero-carousel__heading">{{ block.settings.heading }}</div>
+                {% endif %}
+                {% if block.settings.subtitle != blank %}
+                  <p class="hero-carousel__subtitle">{{ block.settings.subtitle }}</p>
+                {% endif %}
+              </div>
+              {% if block.settings.button_text != blank %}
+                <div class="hero-carousel__btn-row">
+                  <a
+                    {% if block.settings.button_url != blank %}href="{{ block.settings.button_url }}"{% endif %}
+                    class="hero-carousel__btn"
+                    style="
+                      --btn-bg: {{ block.settings.button_color }};
+                      --btn-text: {{ block.settings.button_text_color }};
+                    "
+                  >
+                    {{ block.settings.button_text }}
+                  </a>
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="hero-carousel__footer">
+          <div class="hero-carousel__footer-left">
+            {% if block.settings.footer_image != blank %}
+              {{
+                block.settings.footer_image
+                | image_url: width: 400
+                | image_tag:
+                  loading: 'eager',
+                  class: 'hero-carousel__footer-img',
+                  alt: block.settings.footer_image.alt
+              }}
+            {% endif %}
+          </div>
+          <div class="hero-carousel__footer-right">
+            <button
+              type="button"
+              class="hero-carousel__arrow hero-carousel__arrow--prev"
+              aria-label="{{ 'accessibility.scroll_to' | t: title: 'previous' }}"
+              data-direction="prev"
+              data-section="{{ section.id }}"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="hero-carousel__arrow hero-carousel__arrow--next"
+              aria-label="{{ 'accessibility.scroll_to' | t: title: 'next' }}"
+              data-direction="next"
+              data-section="{{ section.id }}"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    const section = document.getElementById('hero-carousel-track-{{ section.id }}');
+    if (!section) return;
+    section.addEventListener('click', function(e) {
+      const btn = e.target.closest('.hero-carousel__arrow');
+      if (!btn) return;
+      const dir = btn.dataset.direction;
+      const slideWidth = section.querySelector('.hero-carousel__slide')?.offsetWidth || 0;
+      section.scrollBy({ left: dir === 'next' ? slideWidth : -slideWidth, behavior: 'smooth' });
+    });
+  })();
+</script>
+
+{% stylesheet %}
+.hero-carousel {
+  padding-block-start: calc(var(--section-padding-top, 8) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 8) * 1px);
+  padding-inline: 16px;
+}
+
+.hero-carousel__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.hero-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.hero-carousel__slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-height: 704px;
+  border-radius: var(--slide-radius, 16px);
+  overflow: hidden;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 48px;
+  background: var(--slide-bg, transparent);
+}
+
+.hero-carousel__bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-carousel__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-carousel__content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.hero-carousel__split-layout {
+  display: flex;
+  gap: 0;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-carousel__text-col {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+}
+
+.hero-carousel__text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.hero-carousel__heading {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 60px;
+  color: var(--slide-heading-color, #BC0F0F);
+}
+
+.hero-carousel__heading p {
+  margin: 0;
+}
+
+.hero-carousel__subtitle {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  color: var(--slide-subtitle-color, #BC0F0F);
+  margin: 0;
+}
+
+.hero-carousel__image-col {
+  flex: 0 0 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-carousel__hero-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero-carousel__overlay-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  width: 100%;
+  max-width: 661px;
+}
+
+.hero-carousel__overlay-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.hero-carousel__slide--overlay .hero-carousel__heading {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 60px;
+  letter-spacing: -1px;
+  color: var(--slide-heading-color, #414141);
+}
+
+.hero-carousel__slide--overlay .hero-carousel__subtitle {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: var(--slide-subtitle-color, #FFFFFF);
+}
+
+.hero-carousel__btn-row {
+  display: flex;
+  gap: 16px;
+  padding-block: 16px;
+}
+
+.hero-carousel__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 28px;
+  border-radius: 28px;
+  background-color: var(--btn-bg, #000000);
+  color: var(--btn-text, #FFFFFF);
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hero-carousel__btn:hover {
+  opacity: 0.85;
+}
+
+.hero-carousel__footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  height: 48px;
+}
+
+.hero-carousel__footer-left {
+  flex: 1;
+}
+
+.hero-carousel__footer-img {
+  max-height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+.hero-carousel__footer-right {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.hero-carousel__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 48px;
+  border-radius: 28px;
+  background-color: #F5F5F5;
+  border: none;
+  cursor: pointer;
+  padding: 12px 20px;
+  color: #000000;
+}
+
+.hero-carousel__arrow:hover {
+  background-color: #eaeaea;
+}
+
+.hero-carousel__arrow:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 749px) {
+  .hero-carousel {
+    padding-inline: 8px;
+  }
+
+  .hero-carousel__slide {
+    min-height: 500px;
+    padding: 24px 16px;
+  }
+
+  .hero-carousel__split-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .hero-carousel__text-col,
+  .hero-carousel__image-col {
+    flex: none;
+    width: 100%;
+  }
+
+  .hero-carousel__heading {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .hero-carousel__slide--overlay .hero-carousel__heading {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .hero-carousel__subtitle {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .hero-carousel__btn {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+
+  .hero-carousel__footer {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero-carousel__arrow {
+    width: 48px;
+    height: 40px;
+    padding: 8px 12px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.hero_carousel",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 8,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "t:names.slide",
+      "settings": [
+        {
+          "type": "select",
+          "id": "layout_mode",
+          "label": "t:settings.layout_mode",
+          "options": [
+            { "value": "split", "label": "Split" },
+            { "value": "overlay", "label": "Overlay" }
+          ],
+          "default": "split"
+        },
+        {
+          "type": "select",
+          "id": "background_type",
+          "label": "t:settings.background_type",
+          "options": [
+            { "value": "gradient", "label": "Gradient" },
+            { "value": "image", "label": "Image" }
+          ],
+          "default": "gradient"
+        },
+        {
+          "type": "color",
+          "id": "gradient_color_1",
+          "label": "t:settings.gradient_color_1",
+          "default": "#F0F0F0"
+        },
+        {
+          "type": "color",
+          "id": "gradient_color_2",
+          "label": "t:settings.gradient_color_2",
+          "default": "#E3E3E3"
+        },
+        {
+          "type": "number",
+          "id": "gradient_angle",
+          "label": "t:settings.gradient_angle",
+          "default": 170
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "t:settings.background_image"
+        },
+        {
+          "type": "range",
+          "id": "blur_amount",
+          "label": "t:settings.blur_amount",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "t:settings.heading"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "label": "t:settings.heading_color",
+          "default": "#BC0F0F"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "t:settings.subtitle"
+        },
+        {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "t:settings.subtitle_color",
+          "default": "#BC0F0F"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "t:settings.button_text",
+          "default": "SHOP SUPERBEETS"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "t:settings.button_url"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "t:settings.button_color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "button_text_color",
+          "label": "t:settings.button_text_color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "image_picker",
+          "id": "hero_image",
+          "label": "t:settings.hero_image"
+        },
+        {
+          "type": "image_picker",
+          "id": "footer_image",
+          "label": "t:settings.footer_image"
+        },
+        {
+          "type": "number",
+          "id": "corner_radius",
+          "label": "t:settings.corner_radius",
+          "default": 16
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.hero_carousel",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "layout_mode": "split",
+            "background_type": "gradient",
+            "gradient_color_1": "#F0F0F0",
+            "gradient_color_2": "#E3E3E3"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

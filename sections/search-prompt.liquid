@@ -1,0 +1,346 @@
+<div
+  class="search-prompt section--{{ section.settings.section_width }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+    --search-radius: {{ section.settings.corner_radius }}px;
+  "
+>
+  <div class="search-prompt__inner color-{{ section.settings.color_scheme }}">
+    <div class="search-prompt__grid">
+      <div class="search-prompt__left">
+        {% if section.settings.heading != blank %}
+          <h2 class="search-prompt__heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+        <form
+          class="search-prompt__form"
+          action="{{ section.settings.search_url | default: routes.search_url }}"
+          method="get"
+          role="search"
+        >
+          <div class="search-prompt__field">
+            <div class="search-prompt__field-inner">
+              <img
+                src="{{ 'book-open-solid.svg' | asset_url }}"
+                alt=""
+                width="28"
+                height="28"
+                class="search-prompt__icon"
+                loading="lazy"
+              >
+              <input
+                type="search"
+                name="q"
+                class="search-prompt__input"
+                placeholder="{{ section.settings.placeholder_text }}"
+                aria-label="{{ section.settings.placeholder_text }}"
+              >
+            </div>
+            <button type="submit" class="search-prompt__submit">
+              {{ section.settings.button_text }}
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="search-prompt__right">
+        {% if section.settings.expert_image != blank %}
+          <div class="search-prompt__avatar">
+            {{
+              section.settings.expert_image
+              | image_url: width: 144
+              | image_tag:
+                loading: 'lazy',
+                class: 'search-prompt__avatar-img',
+                alt: section.settings.expert_name
+            }}
+          </div>
+        {% endif %}
+        <div class="search-prompt__expert-text">
+          {% if section.settings.expert_name != blank %}
+            <p class="search-prompt__expert-name">{{ section.settings.expert_name }}</p>
+          {% endif %}
+          {% if section.settings.expert_description != blank %}
+            <p class="search-prompt__expert-desc">{{ section.settings.expert_description }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.search-prompt {
+  padding-block-start: calc(var(--section-padding-top, 8) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 16) * 1px);
+  padding-inline: 16px;
+}
+
+.search-prompt__inner {
+  border-radius: var(--search-radius, 16px);
+  overflow: hidden;
+  background-color: var(--color-background);
+}
+
+.search-prompt__grid {
+  display: grid;
+  grid-template-columns: 1fr 445px;
+}
+
+.search-prompt__left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 28px 40px 32px 40px;
+}
+
+.search-prompt__heading {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  color: var(--color-foreground-heading);
+  margin: 0;
+}
+
+.search-prompt__form {
+  width: 100%;
+}
+
+.search-prompt__field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 32px;
+  background-color: #FFFFFF;
+  border: 2px solid #F5F5F5;
+}
+
+.search-prompt__field-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  padding: 0 8px;
+}
+
+.search-prompt__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+}
+
+.search-prompt__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #414141;
+}
+
+.search-prompt__input::placeholder {
+  color: #414141;
+}
+
+.search-prompt__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 28px;
+  background-color: #000000;
+  color: #FFFFFF;
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-prompt__submit:hover {
+  background-color: #333333;
+}
+
+.search-prompt__right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 32px;
+  background-color: #FFFFFF;
+  border-radius: 0 16px 16px 0;
+}
+
+.search-prompt__avatar {
+  flex-shrink: 0;
+}
+
+.search-prompt__avatar-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.search-prompt__expert-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  justify-content: center;
+}
+
+.search-prompt__expert-name {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  margin: 0;
+}
+
+.search-prompt__expert-desc {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #414141;
+  margin: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .search-prompt {
+    padding-inline: 8px;
+  }
+
+  .search-prompt__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-prompt__left {
+    padding: 24px 16px;
+  }
+
+  .search-prompt__heading {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .search-prompt__right {
+    border-radius: 0 0 16px 16px;
+    padding: 16px;
+  }
+
+  .search-prompt__avatar-img {
+    width: 48px;
+    height: 48px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.search_prompt",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "Ask me anything about cardiovascular health"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_text",
+      "label": "t:settings.placeholder_text",
+      "default": "How does blood flow support energy?"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:settings.button_text",
+      "default": "GO"
+    },
+    {
+      "type": "url",
+      "id": "search_url",
+      "label": "t:settings.search_url"
+    },
+    {
+      "type": "image_picker",
+      "id": "expert_image",
+      "label": "t:settings.expert_image"
+    },
+    {
+      "type": "text",
+      "id": "expert_name",
+      "label": "t:settings.expert_name",
+      "default": "Approved by experts"
+    },
+    {
+      "type": "text",
+      "id": "expert_description",
+      "label": "t:settings.expert_description",
+      "default": "Get answers backed by research from Humann's Chief Cardiologist."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-7"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 8,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "number",
+      "id": "corner_radius",
+      "label": "t:settings.corner_radius",
+      "default": 16
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "t:names.search_prompt"
+    }
+  ]
+}
+{% endschema %}
