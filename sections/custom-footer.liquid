@@ -186,19 +186,30 @@
           </div>
         {%- endif -%}
 
-        {%- comment -%} Footer logo image {%- endcomment -%}
-        {%- if section.settings.footer_logo_image != blank -%}
-          <div class="custom-footer__logos">
-            {{
-              section.settings.footer_logo_image
-              | image_url: width: section.settings.footer_logo_image.width
-              | image_tag:
-                loading: 'lazy',
-                alt: section.settings.footer_logo_image.alt | default: '',
-                class: 'custom-footer__logos-image'
-            }}
-          </div>
-        {%- endif -%}
+        {%- comment -%} Footer logo — image picker or SVG fallback {%- endcomment -%}
+        <div class="custom-footer__logos">
+          <a href="{{ routes.root_url }}" class="custom-footer__logo-link" aria-label="{{ shop.name }}">
+            {%- if section.settings.footer_logo_image != blank -%}
+              {{
+                section.settings.footer_logo_image
+                | image_url: width: section.settings.footer_logo_image.width
+                | image_tag:
+                  loading: 'lazy',
+                  alt: section.settings.footer_logo_image.alt | default: shop.name,
+                  class: 'custom-footer__logos-image'
+              }}
+            {%- else -%}
+              <img
+                src="{{ 'enhanced-games-logo.svg' | asset_url }}"
+                alt="{{ shop.name }}"
+                class="custom-footer__logos-svg"
+                loading="lazy"
+                width="150"
+                height="16"
+              >
+            {%- endif -%}
+          </a>
+        </div>
 
         {%- comment -%} Bottom row: Legal + Copyright {%- endcomment -%}
         <div class="custom-footer__bottom">

@@ -196,10 +196,32 @@
   align-items: center;
 }
 
+.custom-footer__logo-link {
+  display: inline-flex;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.custom-footer__logo-link:hover {
+  opacity: 0.7;
+}
+
+.custom-footer__logo-link:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 4px;
+}
+
 .custom-footer__logos-image {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+.custom-footer__logos-svg {
+  display: block;
+  height: 28px;
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 
 .custom-footer__bottom {
