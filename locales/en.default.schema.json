@@ -629,6 +629,7 @@
     "one_third": "1/3",
     // Star rating style showing empty star outlines
     "outline": "Outline",
+    "overlay": "Overlay",
     "page": "Page",
     "page_center_aligned": "Page, center aligned",
     "page_left_aligned": "Page, left aligned",
@@ -707,6 +708,7 @@
     "solid": "Solid",
     "space_between": "Space between",
     "spotify": "Spotify",
+    "split": "Split",
     "spotlight": "Spotlight",
     "square": "Square",
     // Layout option to arrange elements vertically

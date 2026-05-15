@@ -1,3 +1,18 @@
+{% comment %}
+  Custom font declarations for branded homepage sections.
+
+  IMPORTANT: The following commercial font files MUST be uploaded to the theme's assets/ directory:
+    - stabil-grotesk-500.woff2 (Stabil Grotesk Medium)
+    - stabil-grotesk-700.woff2 (Stabil Grotesk Bold)
+    - moderat-serif-400.woff2 (Moderat Serif Regular)
+    - uniforma-400.woff2 ((K) Uniforma Regular)
+
+  Until these files are uploaded, text will fall back to system fonts:
+    - Stabil Grotesk → system-ui, -apple-system, sans-serif
+    - Moderat Serif → Georgia, 'Times New Roman', serif
+    - (K) Uniforma → system-ui, -apple-system, sans-serif
+{% endcomment %}
+
 <style>
   @font-face {
     font-family: 'Stabil Grotesk';
@@ -32,11 +47,11 @@
   }
 
   :root {
-    --font-custom-heading: 'Stabil Grotesk', sans-serif;
-    --font-custom-serif: 'Moderat Serif', serif;
-    --font-custom-cta: '(K) Uniforma', sans-serif;
-    --font-heading--family: 'Stabil Grotesk', sans-serif;
-    --font-body--family: 'Stabil Grotesk', sans-serif;
-    --font-accent--family: 'Moderat Serif', serif;
+    --font-custom-heading: 'Stabil Grotesk', system-ui, -apple-system, sans-serif;
+    --font-custom-serif: 'Moderat Serif', Georgia, 'Times New Roman', serif;
+    --font-custom-cta: '(K) Uniforma', system-ui, -apple-system, sans-serif;
+    --font-heading--family: 'Stabil Grotesk', system-ui, -apple-system, sans-serif;
+    --font-body--family: 'Stabil Grotesk', system-ui, -apple-system, sans-serif;
+    --font-accent--family: 'Moderat Serif', Georgia, 'Times New Roman', serif;
   }
 </style>
