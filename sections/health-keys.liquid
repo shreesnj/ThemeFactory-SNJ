@@ -44,7 +44,11 @@
                 <p class="health-keys__stat-desc">{{ block.settings.stat_description }}</p>
               {% endif %}
             </div>
-            {% if block.settings.stat_icon != blank %}
+            {% if block.settings.stat_icon_asset != blank %}
+              <div class="health-keys__stat-icon">
+                <img src="{{ block.settings.stat_icon_asset | asset_url }}" alt="" width="48" height="44" loading="lazy">
+              </div>
+            {% elsif block.settings.stat_icon != blank %}
               <div class="health-keys__stat-icon">
                 {{
                   block.settings.stat_icon
@@ -401,6 +405,11 @@
           "type": "image_picker",
           "id": "stat_icon",
           "label": "t:settings.stat_icon"
+        },
+        {
+          "type": "text",
+          "id": "stat_icon_asset",
+          "label": "t:settings.stat_icon_asset"
         },
         {
           "type": "text",

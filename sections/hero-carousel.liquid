@@ -108,7 +108,9 @@
 
         <div class="hero-carousel__footer">
           <div class="hero-carousel__footer-left">
-            {% if block.settings.footer_image != blank %}
+            {% if block.settings.footer_logo_asset != blank %}
+              <img src="{{ block.settings.footer_logo_asset | asset_url }}" alt="" class="hero-carousel__footer-img" loading="eager">
+            {% elsif block.settings.footer_image != blank %}
               {{
                 block.settings.footer_image
                 | image_url: width: 400
@@ -601,6 +603,11 @@
           "type": "image_picker",
           "id": "footer_image",
           "label": "t:settings.footer_image"
+        },
+        {
+          "type": "text",
+          "id": "footer_logo_asset",
+          "label": "t:settings.footer_logo_asset"
         },
         {
           "type": "number",

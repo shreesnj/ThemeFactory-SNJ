@@ -53,6 +53,7 @@
             "button_text": "EXPLORE THE SCIENCE",
             "button_color": "#000000",
             "button_text_color": "#FFFFFF",
+            "footer_logo_asset": "ut.svg",
             "corner_radius": 12
           }
         }
@@ -170,6 +171,7 @@
             "description": "Healthy blood pressure starts with blood flow, and blood flow starts with nitric oxide.",
             "stat_value": "2x",
             "stat_description": "more effective blood pressure support when compared to diet and exercise alone.¹",
+            "stat_icon_asset": "icon.svg",
             "button_text": "SHOP Blood Pressure"
           }
         },
@@ -182,6 +184,7 @@
             "description": "Help your body use energy more smoothly and steadily.",
             "stat_value": "78%",
             "stat_description": "of customers report improved energy levels, after completing their first 90-day routine.",
+            "stat_icon_asset": "icon-2.svg",
             "button_text": "SHOP Metabolic"
           }
         },
@@ -194,6 +197,7 @@
             "description": "Help your body keep cholesterol levels in a healthy range.",
             "stat_value": "29%",
             "stat_description": "reduction in LDL (bad cholesterol) and a 11% reduction in total cholesterol.",
+            "stat_icon_asset": "icon-3.svg",
             "button_text": "SHOP CHOLESTEROL"
           }
         }

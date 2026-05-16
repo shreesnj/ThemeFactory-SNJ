@@ -1225,7 +1225,9 @@
     "hero_image": "Hero image",
     "footer_image": "Footer image",
     "button_url": "Button URL",
-    "background_image": "Background image"
+    "background_image": "Background image",
+    "stat_icon_asset": "Stat icon asset",
+    "footer_logo_asset": "Footer logo asset"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",
