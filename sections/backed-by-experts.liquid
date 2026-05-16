@@ -1,0 +1,500 @@
+<div
+  class="backed-by section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+    --name-color: {{ section.settings.name_color }};
+  "
+>
+  <div class="backed-by__header">
+    {% if section.settings.heading != blank %}
+      <div class="backed-by__heading">{{ section.settings.heading }}</div>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="backed-by__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  {% if section.settings.show_divider %}
+    <div class="backed-by__divider"></div>
+  {% endif %}
+
+  <div class="backed-by__grid" id="backed-by-track-{{ section.id }}">
+    {% for block in section.blocks %}
+      <div class="backed-by__card" {{ block.shopify_attributes }}>
+        <div class="backed-by__card-image">
+          {% if block.settings.expert_image != blank %}
+            {{
+              block.settings.expert_image
+              | image_url: width: block.settings.expert_image.width
+              | image_tag:
+                sizes: '(min-width: 990px) 384px, calc(100vw - 24px)',
+                widths: '375,550,750,800',
+                loading: 'lazy',
+                class: 'backed-by__img',
+                alt: block.settings.expert_name
+            }}
+          {% endif %}
+          <button
+            class="backed-by__play-btn"
+            type="button"
+            aria-label="Play video"
+            {% if block.settings.video_url != blank %}
+              data-video-url="{{ block.settings.video_url }}"
+            {% endif %}
+          >
+            <img src="{{ 'frame-308.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+          </button>
+          <img
+            class="backed-by__mute-icon"
+            src="{{ 'volume-mute-solid.svg' | asset_url }}"
+            alt=""
+            width="24"
+            height="24"
+            loading="lazy"
+          >
+        </div>
+        {% if block.settings.quote_text != blank %}
+          <div class="backed-by__quote">
+            <p>{{ block.settings.quote_text }}</p>
+          </div>
+        {% endif %}
+        <div class="backed-by__name-group">
+          {% if block.settings.expert_name != blank %}
+            <p class="backed-by__expert-name">{{ block.settings.expert_name }}</p>
+          {% endif %}
+          {% if block.settings.expert_credentials != blank %}
+            <p class="backed-by__expert-creds">{{ block.settings.expert_credentials }}</p>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.settings.show_divider %}
+    <div class="backed-by__divider"></div>
+  {% endif %}
+
+  <div class="backed-by__footer">
+    <div class="backed-by__footer-nav">
+      <button
+        class="backed-by__arrow backed-by__arrow--prev"
+        type="button"
+        aria-label="Previous expert"
+        id="backed-by-prev-{{ section.id }}"
+      >
+        <img src="{{ 'icon-button.svg' | asset_url }}" alt="" width="44" height="32" loading="lazy">
+      </button>
+      <button
+        class="backed-by__arrow backed-by__arrow--next"
+        type="button"
+        aria-label="Next expert"
+        id="backed-by-next-{{ section.id }}"
+      >
+        <img src="{{ 'icon-button-2.svg' | asset_url }}" alt="" width="44" height="32" loading="lazy">
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var sectionId = '{{ section.id }}';
+    var track = document.getElementById('backed-by-track-' + sectionId);
+    var prevBtn = document.getElementById('backed-by-prev-' + sectionId);
+    var nextBtn = document.getElementById('backed-by-next-' + sectionId);
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    prevBtn.addEventListener('click', function() {
+      var card = track.querySelector('.backed-by__card');
+      if (!card) return;
+      var cardWidth = card.offsetWidth;
+      track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', function() {
+      var card = track.querySelector('.backed-by__card');
+      if (!card) return;
+      var cardWidth = card.offsetWidth;
+      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    var playBtns = track.querySelectorAll('.backed-by__play-btn[data-video-url]');
+    for (var i = 0; i < playBtns.length; i++) {
+      playBtns[i].addEventListener('click', function() {
+        var url = this.getAttribute('data-video-url');
+        if (url) {
+          window.open(url, '_blank');
+        }
+      });
+    }
+  })();
+</script>
+
+{% stylesheet %}
+.backed-by {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by {
+    gap: 20px;
+    padding-inline: 12px;
+  }
+}
+
+.backed-by__header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  text-align: center;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__header {
+    gap: 20px;
+    text-align: start;
+  }
+}
+
+.backed-by__heading {
+  font-family: var(--font-custom-serif);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 52px;
+  letter-spacing: -1px;
+  color: #767676;
+}
+
+.backed-by__heading p {
+  margin: 0;
+}
+
+.backed-by__heading strong {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__heading {
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+.backed-by__subtitle {
+  font-family: var(--font-custom-heading);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #767676;
+  margin: 0;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__subtitle {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+.backed-by__divider {
+  height: 1px;
+  background-color: #D9D9DB;
+}
+
+.backed-by__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .backed-by__grid::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.backed-by__card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__card {
+    min-width: calc(100vw - 24px);
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}
+
+.backed-by__card-image {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 384 / 364;
+}
+
+.backed-by__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.backed-by__play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 35px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.backed-by__play-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.backed-by__mute-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  display: none;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__mute-icon {
+    display: block;
+  }
+}
+
+.backed-by__quote {
+  padding-inline: 8px;
+}
+
+.backed-by__quote p {
+  font-family: var(--font-custom-serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 32px;
+  letter-spacing: -1px;
+  color: #414141;
+  margin: 0;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__quote p {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.backed-by__name-group {
+  padding-inline: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.backed-by__expert-name {
+  font-family: var(--font-custom-heading);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--name-color, #BC0F0F);
+  margin: 0;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__expert-name {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+.backed-by__expert-creds {
+  font-family: var(--font-custom-heading);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  color: #767676;
+  margin: 0;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__expert-creds {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+.backed-by__footer {
+  display: none;
+}
+
+@media screen and (max-width: 989px) {
+  .backed-by__footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+.backed-by__footer-nav {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.backed-by__arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.backed-by__arrow img {
+  width: 44px;
+  height: 32px;
+  display: block;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.backed_by_experts",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "<p>Backed by <strong>6000+</strong> cardiologists and scientists</p>"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "t:settings.subtitle",
+      "default": "Founded on Nobel Prize-Winning Science. Validated in Real Life."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "t:settings.show_divider",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "name_color",
+      "label": "t:settings.name_color",
+      "default": "#BC0F0F"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page_width" },
+        { "value": "full-width", "label": "t:options.full_width" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "expert-card",
+      "name": "t:names.expert_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "expert_image",
+          "label": "t:settings.expert_image"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "t:settings.video_url"
+        },
+        {
+          "type": "textarea",
+          "id": "quote_text",
+          "label": "t:settings.quote_text"
+        },
+        {
+          "type": "text",
+          "id": "expert_name",
+          "label": "t:settings.expert_name"
+        },
+        {
+          "type": "textarea",
+          "id": "expert_credentials",
+          "label": "t:settings.expert_credentials"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.backed_by_experts"
+    }
+  ]
+}
+{% endschema %}

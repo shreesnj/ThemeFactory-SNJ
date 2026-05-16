@@ -442,7 +442,9 @@
     "doctor_recommended": "Doctor recommended",
     "review_card": "Review card",
     "key_card": "Key card",
-    "product_item": "Product item"
+    "product_item": "Product item",
+    "backed_by_experts": "Backed by experts",
+    "expert_card": "Expert card"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1227,7 +1229,11 @@
     "button_url": "Button URL",
     "background_image": "Background image",
     "stat_icon_asset": "Stat icon asset",
-    "footer_logo_asset": "Footer logo asset"
+    "footer_logo_asset": "Footer logo asset",
+    "video_url": "Video URL",
+    "expert_credentials": "Expert credentials",
+    "name_color": "Name color",
+    "show_divider": "Show divider"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",
