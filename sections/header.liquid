@@ -57,7 +57,15 @@
     content_for 'block', type: '_header-menu', id: 'header-menu', variant: 'navigation_bar', transparent: transparent
   endcapture
 
+  # Build professional link HTML if URL is set
+  assign professional_html = ''
+  if section.settings.professional_link_url != blank
+    assign pro_label = section.settings.professional_link_label | default: 'PROFESSIONAL'
+    assign professional_html = '<a href="' | append: section.settings.professional_link_url | append: '" class="header-actions__action professional-link">' | append: pro_label | append: '</a>'
+  endif
+
   capture actions
+    echo professional_html
     render 'header-actions', customer_account_menu: section.settings.customer_account_menu, display_style: section.settings.actions_display_style, section: section
   endcapture
 
@@ -1106,6 +1114,94 @@
     font-family: var(--menu-localization-font);
     font-size: var(--menu-localization-font-size);
   }
+
+  /* ================================
+     * Humann Brand Header Overrides
+     * ================================ */
+
+  /* Desktop: enforce 66px main header height (16px padding × 2 + 34px content) */
+  @media screen and (min-width: 750px) {
+    #header-component .header__row--top .header__columns {
+      --padding-block-start: 16px;
+      --padding-block-end: 16px;
+    }
+
+    /* Logo-to-menu gap: 36px */
+    .header__column--left {
+      gap: 36px;
+    }
+
+    /* Nav link gap: 28px between items */
+    .header-menu .overflow-menu::part(list) {
+      gap: 28px;
+    }
+
+    /* Nav link font: Stabil Grotesk 500 18px #414141 */
+    .header-menu .menu-list__link {
+      font-family: var(--font-heading--family);
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #414141;
+    }
+
+    /* Left-right columns spacing */
+    .header__columns .header__column--right {
+      gap: 20px;
+    }
+  }
+
+  /* Actions font: Uniforma 14px uppercase (SEARCH / LOGIN / CART) */
+  #header-component header-actions .header-actions__action,
+  #header-component header-actions cart-icon,
+  #header-component header-actions .account-button {
+    font-family: var(--font-custom-cta, '(K) Uniforma', system-ui, sans-serif);
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    color: #414141;
+  }
+
+  /* PROFESSIONAL link — text button in right area */
+  .professional-link {
+    font-family: var(--font-custom-cta, '(K) Uniforma', system-ui, sans-serif);
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.06em;
+    font-weight: 400;
+    color: #414141;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+
+    &:hover {
+      color: #000000;
+    }
+  }
+
+  /* Mobile: dark (#414141) header background */
+  @media screen and (max-width: 749px) {
+    #header-component .header__row--top {
+      background-color: #414141;
+      --color-foreground: #ffffff;
+      --color-foreground-rgb: 255, 255, 255;
+      --color-account-icon: #ffffff;
+    }
+
+    /* Force white icons/text on mobile dark header */
+    #header-component .header__row--top .header-actions__action,
+    #header-component .header__row--top .header__icon--menu svg,
+    #header-component .header__row--top .header-logo__image {
+      color: #ffffff;
+      fill: #ffffff;
+    }
+
+    /* Humann logo: use the white variant on dark mobile background */
+    #header-component .header__row--top .header-logo__image-container--original .header-logo__image {
+      filter: brightness(0) invert(1);
+    }
+  }
 {% endstylesheet %}
 
 {% unless request.design_mode %}
@@ -1448,6 +1544,21 @@
       "step": 0.5,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Professional Link"
+    },
+    {
+      "type": "url",
+      "id": "professional_link_url",
+      "label": "URL"
+    },
+    {
+      "type": "text",
+      "id": "professional_link_label",
+      "label": "Link Label",
+      "default": "PROFESSIONAL"
     },
     {
       "type": "header",
