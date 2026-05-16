@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Free Shipping on SuperBeets Advanced Heart Chews with CoQ10 &nbsp;&nbsp;<span style=\"font-family: var(--font-custom-cta); font-size: 0.75rem; letter-spacing: 0.1em; font-weight: 400;\">SHOP NOW →<\/span>",
+            "text": "Free Shipping on SuperBeets Advanced Heart Chews with CoQ10 &nbsp;&nbsp;<em>SHOP NOW →<\/em>",
             "link": "/collections/all",
             "font": "var(--font-heading--family)",
             "font_size": "1rem",
