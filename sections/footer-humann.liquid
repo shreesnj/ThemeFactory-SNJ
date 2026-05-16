@@ -185,7 +185,7 @@
             <img src="{{ 'made-in-usa-1.svg' | asset_url }}" alt="Made in USA with globally sourced ingredients" width="105" height="64" loading="lazy">
           {%- endif -%}
           {%- if section.settings.nsf_badge != blank -%}
-            {{- section.settings.nsf_badge | image_url: width: 80 | image_tag: alt: 'NSF Certified Sport', loading: 'lazy', width: 42, height: 64 -}}
+            {{- section.settings.nsf_badge | image_url: width: 80 | image_tag: alt: 'NSF Certified Sport', loading: 'lazy', class: 'footer-humann__nsf-badge' -}}
           {%- endif -%}
         </div>
       </div>
@@ -455,6 +455,13 @@
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+  }
+
+  .footer-humann__nsf-badge {
+    width: 41.549px;
+    height: 63.622px;
+    aspect-ratio: 32/49;
+    object-fit: contain;
   }
 
   /* ── Responsive ── */
