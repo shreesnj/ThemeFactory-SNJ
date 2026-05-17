@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="169" height="169" viewBox="0 0 169 169" fill="none">
+  <!-- Outer circle -->
+  <circle cx="84.5" cy="84.5" r="84" stroke="#FFFFFF" stroke-width="0.5"/>
+  <!-- Inner circle -->
+  <circle cx="84.5" cy="84.5" r="62.5" stroke="#FFFFFF" stroke-width="1"/>
+  <!-- Radiating lines from inner circle to outer circle -->
+  <line x1="84.5" y1="22" x2="84.5" y2="0.5" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="84.5" y1="147" x2="84.5" y2="168.5" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="22" y1="84.5" x2="0.5" y2="84.5" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="147" y1="84.5" x2="168.5" y2="84.5" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="40.3" y1="40.3" x2="24.8" y2="24.8" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="128.7" y1="128.7" x2="144.2" y2="144.2" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="40.3" y1="128.7" x2="24.8" y2="144.2" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="128.7" y1="40.3" x2="144.2" y2="24.8" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="55" y1="27" x2="47" y2="8" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="114" y1="142" x2="122" y2="161" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="27" y1="114" x2="8" y2="122" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <line x1="142" y1="55" x2="161" y2="47" stroke="#FFFFFF" stroke-width="1" stroke-dasharray="3 2"/>
+  <!-- Arrow heads at outer ends -->
+  <polygon points="81.5,0.5 84.5,0 87.5,0.5 84.5,5" fill="#FFFFFF" opacity="0.8"/>
+  <polygon points="81.5,168.5 84.5,169 87.5,168.5 84.5,164" fill="#FFFFFF" opacity="0.8"/>
+  <polygon points="0.5,81.5 0,84.5 0.5,87.5 5,84.5" fill="#FFFFFF" opacity="0.8"/>
+  <polygon points="168.5,81.5 169,84.5 168.5,87.5 164,84.5" fill="#FFFFFF" opacity="0.8"/>
+  <!-- Filled dots inside inner circle -->
+  <circle cx="70" cy="70" r="5" fill="#FFFFFF"/>
+  <circle cx="100" cy="75" r="5" fill="#FFFFFF"/>
+  <circle cx="84" cy="100" r="5" fill="#FFFFFF"/>
+  <circle cx="75" cy="88" r="3" fill="#FFFFFF"/>
+  <circle cx="95" cy="92" r="3" fill="#FFFFFF"/>
+  <circle cx="88" cy="65" r="3" fill="#FFFFFF"/>
+</svg>

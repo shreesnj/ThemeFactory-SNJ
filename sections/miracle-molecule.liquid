@@ -1,0 +1,404 @@
+<div
+  class="miracle-molecule section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+  "
+>
+  <div class="miracle-molecule__inner">
+    <div class="miracle-molecule__header">
+      {% if section.settings.heading != blank %}
+        <div class="miracle-molecule__heading">{{ section.settings.heading }}</div>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <div class="miracle-molecule__subtitle">{{ section.settings.subtitle }}</div>
+      {% endif %}
+      <hr class="miracle-molecule__divider">
+    </div>
+
+    <div class="miracle-molecule__carousel">
+      {% for block in section.blocks %}
+        <div class="miracle-molecule__card" {{ block.shopify_attributes }}>
+          {% if block.settings.image != blank %}
+            {{
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag:
+                sizes: '(min-width: 750px) 389px, 320px',
+                widths: '320,389,640,778',
+                loading: 'lazy',
+                class: 'miracle-molecule__card-bg',
+                alt: block.settings.image.alt
+            }}
+          {% endif %}
+          <div class="miracle-molecule__card-content">
+            {% if block.settings.molecule_icon != blank %}
+              <div class="miracle-molecule__icon">
+                <img
+                  src="{{ block.settings.molecule_icon | asset_url }}"
+                  alt=""
+                  width="169"
+                  height="169"
+                  loading="lazy"
+                >
+              </div>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <div class="miracle-molecule__card-text">{{ block.settings.text }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.button_text != blank %}
+      <div class="miracle-molecule__cta-wrap">
+        <a
+          {% if section.settings.button_url != blank %}href="{{ section.settings.button_url }}"{% endif %}
+          class="miracle-molecule__cta"
+        >
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+.miracle-molecule {
+  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.miracle-molecule__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.miracle-molecule__header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.miracle-molecule__heading {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 52px;
+  letter-spacing: 0;
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+.miracle-molecule__heading strong {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+}
+
+.miracle-molecule__heading p {
+  margin: 0;
+}
+
+.miracle-molecule__subtitle {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+.miracle-molecule__subtitle p {
+  margin: 0;
+}
+
+.miracle-molecule__subtitle strong {
+  font-weight: 700;
+}
+
+.miracle-molecule__divider {
+  border: none;
+  border-top: 1px solid currentColor;
+  opacity: 0.3;
+  margin: 8px 0 0;
+  width: 100%;
+}
+
+.miracle-molecule__carousel {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.miracle-molecule__card {
+  position: relative;
+  flex: 1 1 0;
+  height: 480px;
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.miracle-molecule__card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.miracle-molecule__card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 24px;
+  width: 100%;
+}
+
+.miracle-molecule__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 169px;
+  height: 169px;
+  flex-shrink: 0;
+}
+
+.miracle-molecule__icon img {
+  width: 100%;
+  height: 100%;
+}
+
+.miracle-molecule__card-text {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 32px;
+  letter-spacing: -1px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.miracle-molecule__card-text p {
+  margin: 0;
+}
+
+.miracle-molecule__card-text strong {
+  font-weight: 700;
+}
+
+.miracle-molecule__cta-wrap {
+  display: flex;
+  align-items: center;
+  padding-block: 8px;
+}
+
+.miracle-molecule__cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  border: 2px solid currentColor;
+  border-radius: 28px;
+  padding: 12px 20px;
+  background: transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.miracle-molecule__cta:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 749px) {
+  .miracle-molecule {
+    padding-inline: 0;
+    padding-block-start: calc(var(--section-padding-top, 40) * var(--spacing-scale, 1) * 1px);
+    padding-block-end: calc(var(--section-padding-bottom, 40) * var(--spacing-scale, 1) * 1px);
+  }
+
+  .miracle-molecule__inner {
+    gap: 16px;
+    padding-inline: 16px;
+  }
+
+  .miracle-molecule__heading {
+    font-family: var(--font-custom-serif), serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 36px;
+    letter-spacing: -1px;
+  }
+
+  .miracle-molecule__subtitle {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .miracle-molecule__carousel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-inline: -16px;
+    padding-inline: 16px;
+  }
+
+  .miracle-molecule__carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .miracle-molecule__card {
+    flex: 0 0 auto;
+    min-width: 320px;
+    width: 320px;
+    scroll-snap-align: start;
+  }
+
+  .miracle-molecule__card-text {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .miracle-molecule__cta-wrap {
+    justify-content: flex-start;
+  }
+
+  .miracle-molecule__cta {
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.miracle_molecule",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "<p>Learn about the<br><strong>Miracle Molecule</strong></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "t:settings.subtitle",
+      "default": "<p><strong>Did you know</strong> that Nitric Oxide is one of the most important molecules produced in your body?</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:settings.button_text",
+      "default": "EXPLORE OUR SCIENCE"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:settings.button_url"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page_width" },
+        { "value": "full-width", "label": "t:options.full_width" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-7"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "molecule-card",
+      "name": "t:names.molecule_card",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:settings.text",
+          "default": "<p>Card text goes here.</p>"
+        },
+        {
+          "type": "select",
+          "id": "molecule_icon",
+          "label": "t:settings.molecule_icon",
+          "options": [
+            { "value": "molecule-icon-1.svg", "label": "Style 1" },
+            { "value": "molecule-icon-2.svg", "label": "Style 2" },
+            { "value": "molecule-icon-3.svg", "label": "Style 3" }
+          ],
+          "default": "molecule-icon-1.svg"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.miracle_molecule"
+    }
+  ]
+}
+{% endschema %}

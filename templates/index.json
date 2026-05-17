@@ -208,6 +208,46 @@
         "key_3"
       ]
     },
+    "miracle-molecule": {
+      "type": "miracle-molecule",
+      "settings": {
+        "section_width": "full-width",
+        "color_scheme": "scheme-7",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      },
+      "blocks": {
+        "card_1": {
+          "type": "molecule-card",
+          "settings": {
+            "image": "shopify://shop_images/1-mobile-31613935.jpg",
+            "text": "<p>By age 40, Humans naturally produce <strong>50% less Nitric Oxide</strong> than they did at age 20.</p>",
+            "molecule_icon": "molecule-icon-1.svg"
+          }
+        },
+        "card_2": {
+          "type": "molecule-card",
+          "settings": {
+            "image": "shopify://shop_images/2-mobile-31613943.jpg",
+            "text": "<p>Nitric Oxide helps circulate more oxygen and nutrients to your <strong>36 trillion cells.</strong></p>",
+            "molecule_icon": "molecule-icon-2.svg"
+          }
+        },
+        "card_3": {
+          "type": "molecule-card",
+          "settings": {
+            "image": "shopify://shop_images/3-mobile-31613972.jpg",
+            "text": "<p>More oxygen and nutrients means <strong>more healthy energy support.</strong></p>",
+            "molecule_icon": "molecule-icon-3.svg"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ]
+    },
     "recommended": {
       "type": "doctor-recommended",
       "settings": {
@@ -316,6 +356,7 @@
     "search",
     "reviews",
     "health-keys",
+    "miracle-molecule",
     "recommended",
     "backed-by"
   ]
