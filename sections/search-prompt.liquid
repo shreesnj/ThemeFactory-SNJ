@@ -70,8 +70,8 @@
 
 {% stylesheet %}
 .search-prompt {
-  padding-block-start: calc(var(--section-padding-top, 8) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 16) * 1px);
+  padding-block-start: var(--section-padding-top, 8px);
+  padding-block-end: var(--section-padding-bottom, 16px);
   padding-inline: 16px;
 }
 
@@ -84,6 +84,7 @@
 .search-prompt__grid {
   display: grid;
   grid-template-columns: 1fr 445px;
+  gap: 8px;
 }
 
 .search-prompt__left {
@@ -175,7 +176,7 @@
   align-items: center;
   gap: 16px;
   padding: 0 32px;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 0 16px 16px 0;
 }
 
@@ -202,7 +203,7 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
-  color: #000000;
+  color: var(--color-foreground);
   margin: 0;
 }
 
@@ -211,36 +212,80 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-  color: #414141;
+  color: var(--color-foreground);
   margin: 0;
 }
 
 @media screen and (max-width: 749px) {
   .search-prompt {
-    padding-inline: 8px;
+    padding-inline: 12px;
+    padding-block-start: 16px;
+    padding-block-end: 16px;
   }
 
   .search-prompt__grid {
     grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .search-prompt__left {
-    padding: 24px 16px;
+    padding: 24px 20px;
   }
 
   .search-prompt__heading {
     font-size: 24px;
     line-height: 32px;
+    text-align: center;
+  }
+
+  .search-prompt__field {
+    padding: 12px 16px;
+    border-radius: 24px;
+  }
+
+  .search-prompt__field-inner {
+    padding: 0;
+  }
+
+  .search-prompt__icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .search-prompt__input {
+    font-size: 14px;
+    line-height: 18px;
+    color: #767676;
+  }
+
+  .search-prompt__input::placeholder {
+    color: #767676;
+  }
+
+  .search-prompt__submit {
+    display: none;
   }
 
   .search-prompt__right {
     border-radius: 0 0 16px 16px;
     padding: 16px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
   }
 
   .search-prompt__avatar-img {
     width: 48px;
     height: 48px;
+  }
+
+  .search-prompt__expert-name {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .search-prompt__expert-desc {
+    font-size: 14px;
+    line-height: 18px;
   }
 }
 {% endstylesheet %}
