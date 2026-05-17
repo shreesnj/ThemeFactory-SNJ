@@ -1,0 +1,422 @@
+<div
+  class="community section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+  "
+>
+  <div class="community__header">
+    {% if section.settings.heading != blank %}
+      <div class="community__heading">{{ section.settings.heading }}</div>
+    {% endif %}
+
+    {% if section.settings.show_divider %}
+      <div class="community__divider"></div>
+    {% endif %}
+
+    {% if section.settings.subtitle != blank %}
+      <p class="community__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    {% if section.settings.stat_number != blank or section.settings.stat_label != blank %}
+      <div class="community__stat community__stat--desktop">
+        {% if section.settings.stat_number != blank %}
+          <span class="community__stat-number">{{ section.settings.stat_number }}</span>
+        {% endif %}
+        {% if section.settings.stat_label != blank %}
+          <span class="community__stat-label">{{ section.settings.stat_label }}</span>
+        {% endif %}
+      </div>
+
+      <div class="community__stat community__stat--mobile">
+        {% if section.settings.stat_number != blank %}
+          <span class="community__stat-number">{{ section.settings.stat_number }}</span>
+        {% endif %}
+        {% if section.settings.stat_label != blank %}
+          <span class="community__stat-label">{{ section.settings.stat_label }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="community__grid">
+    {% for block in section.blocks %}
+      <div class="community__card" {{ block.shopify_attributes }}>
+        <div class="community__card-image">
+          {% if block.settings.image != blank %}
+            {{
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag:
+                sizes: '(min-width: 750px) 280px, calc(50vw - 22px)',
+                widths: '175,280,375,550',
+                loading: 'lazy',
+                class: 'community__img',
+                alt: block.settings.username
+            }}
+          {% endif %}
+          {% if block.settings.video_url != blank %}
+            <a
+              class="community__play-btn"
+              href="{{ block.settings.video_url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Play video for {{ block.settings.username }}"
+            >
+              <img src="{{ 'frame-308-5.svg' | asset_url }}" alt="" width="10" height="13" loading="lazy">
+            </a>
+          {% else %}
+            <div class="community__play-btn" aria-hidden="true">
+              <img src="{{ 'frame-308-5.svg' | asset_url }}" alt="" width="10" height="13" loading="lazy">
+            </div>
+          {% endif %}
+        </div>
+        {% if block.settings.username != blank %}
+          <p class="community__username">{{ block.settings.username }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+.community {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+}
+
+@media screen and (max-width: 749px) {
+  .community {
+    padding-inline: 16px;
+    gap: 20px;
+  }
+}
+
+.community__header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.community__heading {
+  font-family: var(--font-custom-serif);
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 52px;
+  letter-spacing: -1px;
+  color: #767676;
+  order: 1;
+}
+
+.community__heading p {
+  margin: 0;
+}
+
+.community__heading strong {
+  font-weight: 700;
+}
+
+@media screen and (max-width: 749px) {
+  .community__heading {
+    font-size: 32px;
+    line-height: 36px;
+  }
+}
+
+.community__subtitle {
+  font-family: var(--font-custom-heading);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #767676;
+  margin: 0;
+  order: 2;
+}
+
+@media screen and (max-width: 749px) {
+  .community__subtitle {
+    font-size: 18px;
+    line-height: 20px;
+    order: 3;
+  }
+}
+
+.community__divider {
+  height: 1px;
+  background-color: #D9D9DB;
+  order: 3;
+}
+
+@media screen and (max-width: 749px) {
+  .community__divider {
+    order: 2;
+  }
+}
+
+.community__stat--desktop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  text-align: center;
+}
+
+.community__stat--mobile {
+  display: none;
+  order: 4;
+}
+
+@media screen and (max-width: 749px) {
+  .community__stat--desktop {
+    display: none;
+  }
+
+  .community__stat--mobile {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+}
+
+.community__stat-number {
+  font-family: var(--font-custom-heading);
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 52px;
+  color: #BC0F0F;
+}
+
+@media screen and (max-width: 749px) {
+  .community__stat-number {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.community__stat-label {
+  font-family: var(--font-custom-heading);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #BC0F0F;
+}
+
+@media screen and (max-width: 749px) {
+  .community__stat-label {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+  }
+}
+
+.community__grid {
+  display: flex;
+  gap: 24px;
+  max-width: 1200px;
+}
+
+@media screen and (max-width: 749px) {
+  .community__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: none;
+  }
+}
+
+.community__card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  flex: 1;
+}
+
+@media screen and (max-width: 749px) {
+  .community__card {
+    gap: 4px;
+  }
+}
+
+.community__card-image {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 280 / 502;
+}
+
+@media screen and (max-width: 749px) {
+  .community__card-image {
+    aspect-ratio: 175 / 265;
+  }
+}
+
+.community__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.community__play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 749px) {
+  .community__play-btn {
+    width: 46px;
+    height: 45px;
+    border-radius: 22px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+.community__play-btn img {
+  width: 10px;
+  height: 13px;
+  display: block;
+}
+
+.community__username {
+  font-family: var(--font-custom-serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  color: #767676;
+  text-align: center;
+  margin: 0;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.community",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "<p>The <strong>Humann community</strong>, in motion.</p>"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "t:settings.subtitle",
+      "default": "More than a product. A community of people focused on feeling better."
+    },
+    {
+      "type": "text",
+      "id": "stat_number",
+      "label": "t:settings.stat_number",
+      "default": "6.5K"
+    },
+    {
+      "type": "text",
+      "id": "stat_label",
+      "label": "t:settings.stat_label",
+      "default": "Active monthly subscribers"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "t:settings.show_divider",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "community-card",
+      "name": "t:names.community_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.image"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "t:settings.video_url"
+        },
+        {
+          "type": "text",
+          "id": "username",
+          "label": "t:settings.username"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "t:names.community"
+    }
+  ]
+}
+{% endschema %}

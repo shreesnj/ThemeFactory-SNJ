@@ -455,7 +455,9 @@
     "cardiovascular": "Cardiovascular",
     "video_card": "Video card",
     "article_card": "Article card",
-    "documentary": "Documentary"
+    "documentary": "Documentary",
+    "community": "Community",
+    "community_card": "Community card"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1265,7 +1267,10 @@
     "category": "Category",
     "logo_image": "Logo",
     "background_image_mobile": "Mobile image",
-    "overlay_opacity": "Overlay opacity"
+    "overlay_opacity": "Overlay opacity",
+    "stat_number": "Stat number",
+    "stat_label": "Stat label",
+    "username": "Username"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",

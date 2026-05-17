@@ -518,6 +518,56 @@
       },
       "block_order": ["expert_1", "expert_2", "expert_3"]
     },
+    "community": {
+      "type": "community",
+      "settings": {
+        "heading": "<p>The <strong>Humann community</strong>, in motion.</p>",
+        "subtitle": "More than a product. A community of people focused on feeling better.",
+        "stat_number": "6.5K",
+        "stat_label": "Active monthly subscribers",
+        "show_divider": true,
+        "section_width": "full-width",
+        "color_scheme": "scheme-2",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      },
+      "blocks": {
+        "card_1": {
+          "type": "community-card",
+          "settings": {
+            "image": "shopify://shop_images/card-mobile-31614241.png",
+            "username": "@velmacan"
+          }
+        },
+        "card_2": {
+          "type": "community-card",
+          "settings": {
+            "image": "shopify://shop_images/card-mobile-31614234.png",
+            "username": "@reillytris"
+          }
+        },
+        "card_3": {
+          "type": "community-card",
+          "settings": {
+            "image": "shopify://shop_images/card-mobile-31614227.png",
+            "username": "@_cmfree"
+          }
+        },
+        "card_4": {
+          "type": "community-card",
+          "settings": {
+            "image": "shopify://shop_images/card-mobile-31614234.png",
+            "username": "@tha_one08"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ]
+    },
     "one-routine": {
       "type": "one-routine",
       "settings": {
@@ -588,6 +638,7 @@
     "recommended",
     "ingredients",
     "backed-by",
+    "community",
     "one-routine",
     "documentary"
   ]
