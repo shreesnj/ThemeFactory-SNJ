@@ -1,0 +1,669 @@
+<div
+  class="cardiovascular section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+  "
+>
+  <div class="cardiovascular__inner">
+    {% if section.settings.heading != blank %}
+      <div class="cardiovascular__heading">{{ section.settings.heading }}</div>
+    {% endif %}
+
+    {% if section.settings.subtitle != blank %}
+      <p class="cardiovascular__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    <div class="cardiovascular__divider"></div>
+
+    {%- assign video_blocks = section.blocks | where: 'type', 'video-card' -%}
+    {%- assign article_blocks = section.blocks | where: 'type', 'article-card' -%}
+
+    {% if video_blocks.size > 0 %}
+      <div class="cardiovascular__group">
+        {% if section.settings.watch_title != blank %}
+          <div class="cardiovascular__group-title">{{ section.settings.watch_title }}</div>
+        {% endif %}
+        <div class="cardiovascular__track">
+          {% for block in video_blocks %}
+            <div class="cardiovascular__video-card" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                <div class="cardiovascular__video-image">
+                  {{
+                    block.settings.image
+                    | image_url: width: block.settings.image.width
+                    | image_tag:
+                      sizes: '(min-width: 750px) 280px, 280px',
+                      widths: '280,560',
+                      loading: 'lazy',
+                      alt: block.settings.title
+                  }}
+                </div>
+              {% endif %}
+              <div class="cardiovascular__video-mute">
+                <img src="{{ 'volume-mute-solid.svg' | asset_url }}" alt="" width="24" height="24" loading="lazy">
+              </div>
+              <div class="cardiovascular__video-overlay">
+                <span class="cardiovascular__video-title">{{ block.settings.title }}</span>
+                <div class="cardiovascular__video-play">
+                  <img src="{{ 'frame-308.svg' | asset_url }}" alt="" width="20" height="20" loading="lazy">
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if article_blocks.size > 0 %}
+      <div class="cardiovascular__group">
+        {% if section.settings.read_title != blank %}
+          <div class="cardiovascular__group-title">{{ section.settings.read_title }}</div>
+        {% endif %}
+        <div class="cardiovascular__track">
+          {% for block in article_blocks %}
+            <a
+              class="cardiovascular__article-card"
+              {% if block.settings.url != blank %}href="{{ block.settings.url }}"{% endif %}
+              {{ block.shopify_attributes }}
+            >
+              {% if block.settings.image != blank %}
+                <div class="cardiovascular__article-image">
+                  {{
+                    block.settings.image
+                    | image_url: width: block.settings.image.width
+                    | image_tag:
+                      sizes: '(min-width: 750px) 280px, 280px',
+                      widths: '280,560',
+                      loading: 'lazy',
+                      alt: block.settings.title
+                  }}
+                </div>
+              {% endif %}
+              <div class="cardiovascular__article-content">
+                <div class="cardiovascular__article-meta">
+                  {% if block.settings.category != blank %}
+                    <span class="cardiovascular__article-category">{{ block.settings.category }}</span>
+                  {% endif %}
+                  {% if block.settings.read_time != blank %}
+                    <span class="cardiovascular__article-time">{{ block.settings.read_time }}</span>
+                  {% endif %}
+                </div>
+                {% if block.settings.title != blank %}
+                  <h3 class="cardiovascular__article-title">{{ block.settings.title }}</h3>
+                {% endif %}
+                {% if block.settings.cta_text != blank %}
+                  <div class="cardiovascular__article-cta-wrap">
+                    <span class="cardiovascular__article-cta">{{ block.settings.cta_text }}</span>
+                  </div>
+                {% endif %}
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings.button_text != blank %}
+      <div class="cardiovascular__cta">
+        <a
+          class="cardiovascular__cta-button"
+          {% if section.settings.button_url != blank %}href="{{ section.settings.button_url }}"{% endif %}
+        >
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+.cardiovascular {
+  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardiovascular__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.cardiovascular__heading {
+  font-family: var(--font-custom-heading), system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 52px;
+  color: #767676;
+  margin: 0;
+}
+
+.cardiovascular__heading strong {
+  font-weight: 700;
+  color: #414141;
+}
+
+.cardiovascular__heading p {
+  margin: 0;
+}
+
+.cardiovascular__subtitle {
+  display: none;
+  font-family: var(--font-custom-heading), system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.5px;
+  color: #767676;
+  margin: 0;
+}
+
+.cardiovascular__divider {
+  width: 100%;
+  height: 0;
+  border-top: 1px solid #E0E0E0;
+}
+
+.cardiovascular__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cardiovascular__group-title {
+  font-family: var(--font-custom-cta), system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  color: #767676;
+  padding-block: 16px;
+}
+
+.cardiovascular__track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Video Card */
+.cardiovascular__video-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 280 / 380;
+}
+
+.cardiovascular__video-image {
+  position: absolute;
+  inset: 0;
+}
+
+.cardiovascular__video-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardiovascular__video-mute {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardiovascular__video-mute img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.cardiovascular__video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 20px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  z-index: 1;
+}
+
+.cardiovascular__video-title {
+  font-family: var(--font-custom-heading), system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  flex: 1;
+}
+
+.cardiovascular__video-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cardiovascular__video-play img {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* Article Card */
+.cardiovascular__article-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+}
+
+.cardiovascular__article-image {
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 280 / 200;
+}
+
+.cardiovascular__article-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cardiovascular__article-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 4px 8px 4px;
+}
+
+.cardiovascular__article-meta {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.cardiovascular__article-category {
+  font-family: var(--font-custom-heading), system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #414141;
+}
+
+.cardiovascular__article-time {
+  font-family: var(--font-custom-heading), system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #A0A0A0;
+}
+
+.cardiovascular__article-title {
+  font-family: var(--font-custom-heading), system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #414141;
+  margin: 0;
+}
+
+.cardiovascular__article-cta-wrap {
+  padding: 4px 0;
+}
+
+.cardiovascular__article-cta {
+  font-family: var(--font-custom-cta), system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  color: #414141;
+}
+
+/* CTA Button - Mobile Only */
+.cardiovascular__cta {
+  display: none;
+}
+
+.cardiovascular__cta-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 28px;
+  border: 2px solid #000000;
+  background-color: transparent;
+  color: #000000;
+  font-family: var(--font-custom-cta), system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cardiovascular__cta-button:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 749px) {
+  .cardiovascular {
+    padding-inline: 12px;
+  }
+
+  .cardiovascular__inner {
+    gap: 16px;
+  }
+
+  .cardiovascular__heading {
+    font-size: 48px;
+    line-height: 36px;
+  }
+
+  .cardiovascular__subtitle {
+    display: block;
+  }
+
+  .cardiovascular__group-title {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .cardiovascular__track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 8px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .cardiovascular__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cardiovascular__video-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+  }
+
+  .cardiovascular__video-title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .cardiovascular__article-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+  }
+
+  .cardiovascular__article-category {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .cardiovascular__article-time {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .cardiovascular__article-title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .cardiovascular__article-cta {
+    font-family: var(--font-custom-heading), system-ui, -apple-system, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .cardiovascular__cta {
+    display: flex;
+    padding-block-start: 8px;
+    border-top: 1px solid #E0E0E0;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.cardiovascular",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "t:settings.subtitle"
+    },
+    {
+      "type": "text",
+      "id": "watch_title",
+      "label": "t:settings.watch_title",
+      "default": "WATCH"
+    },
+    {
+      "type": "text",
+      "id": "read_title",
+      "label": "t:settings.read_title",
+      "default": "POPULAR"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:settings.button_text",
+      "default": "EXPLORE MORE"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:settings.button_url"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video-card",
+      "name": "t:names.video_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:settings.title",
+          "default": "How can we get the body to make more nitric oxide?"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "t:settings.video_url"
+        }
+      ]
+    },
+    {
+      "type": "article-card",
+      "name": "t:names.article_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.image"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "t:settings.category",
+          "default": "Nutrition"
+        },
+        {
+          "type": "text",
+          "id": "read_time",
+          "label": "t:settings.read_time",
+          "default": "3 min"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:settings.title",
+          "default": "How can we get the body to make more nitric oxide?"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "t:settings.link"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "t:settings.cta_text",
+          "default": "READ MORE"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.cardiovascular",
+      "blocks": [
+        {
+          "type": "video-card",
+          "settings": {
+            "title": "How can we get the body to make more nitric oxide?"
+          }
+        },
+        {
+          "type": "video-card",
+          "settings": {
+            "title": "How can we get the body to make more nitric oxide?"
+          }
+        },
+        {
+          "type": "video-card",
+          "settings": {
+            "title": "How can we get the body to make more nitric oxide?"
+          }
+        },
+        {
+          "type": "video-card",
+          "settings": {
+            "title": "How can we get the body to make more nitric oxide?"
+          }
+        },
+        {
+          "type": "article-card",
+          "settings": {
+            "category": "Nutrition",
+            "read_time": "3 min",
+            "title": "How can we get the body to make more nitric oxide?",
+            "cta_text": "READ MORE"
+          }
+        },
+        {
+          "type": "article-card",
+          "settings": {
+            "category": "Nutrition",
+            "read_time": "3 min",
+            "title": "Why does cardiovascular health matter?",
+            "cta_text": "READ MORE"
+          }
+        },
+        {
+          "type": "article-card",
+          "settings": {
+            "category": "Nutrition",
+            "read_time": "3 min",
+            "title": "What does healthy blood pressure mean?",
+            "cta_text": "READ MORE"
+          }
+        },
+        {
+          "type": "article-card",
+          "settings": {
+            "category": "Nutrition",
+            "read_time": "3 min",
+            "title": "What's inside Humann products?",
+            "cta_text": "READ MORE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

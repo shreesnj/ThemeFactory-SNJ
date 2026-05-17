@@ -451,7 +451,10 @@
     "one_routine": "One Routine",
     "impact_card": "Impact Card",
     "ingredients": "Ingredients",
-    "ingredient_card": "Ingredient card"
+    "ingredient_card": "Ingredient card",
+    "cardiovascular": "Cardiovascular",
+    "video_card": "Video card",
+    "article_card": "Article card"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1253,7 +1256,12 @@
     "benefit_1": "Benefit 1",
     "benefit_2": "Benefit 2",
     "badge_subtitle": "Badge subtitle",
-    "mobile_max_cards": "Mobile max cards"
+    "mobile_max_cards": "Mobile max cards",
+    "watch_title": "Watch title",
+    "read_title": "Read title",
+    "read_time": "Read time",
+    "cta_text": "CTA text",
+    "category": "Category"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",
