@@ -99,8 +99,8 @@
 
 {% stylesheet %}
 .doctor-rec {
-  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
   padding-inline: calc(120px * var(--spacing-scale, 1));
   background-color: var(--color-background);
 }
@@ -287,17 +287,34 @@
 
 @media screen and (max-width: 749px) {
   .doctor-rec {
-    padding-inline: 16px;
+    padding-inline: 12px;
+    padding-block-start: 48px;
+    padding-block-end: 48px;
   }
 
   .doctor-rec__grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 20px;
   }
 
   .doctor-rec__heading {
     font-size: 32px;
-    line-height: 38px;
+    line-height: 36px;
+  }
+
+  .doctor-rec__chip-text {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .doctor-rec__item-name {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .doctor-rec__item-desc {
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 {% endstylesheet %}
