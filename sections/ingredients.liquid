@@ -1,0 +1,472 @@
+<style>
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .ingredients__card:nth-child(n + {{ section.settings.mobile_max_cards | plus: 1 }}) {
+      display: none;
+    }
+  }
+</style>
+
+<div
+  class="ingredients section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+    --heading-color: {{ section.settings.heading_color }};
+    --card-radius: {{ section.settings.card_radius }}px;
+  "
+>
+  <div class="ingredients__content">
+    <div class="ingredients__info">
+      {% if section.settings.heading != blank %}
+        <div class="ingredients__heading">{{ section.settings.heading }}</div>
+      {% endif %}
+
+      <div class="ingredients__desktop-details">
+        <div class="ingredients__divider"></div>
+        {% if section.settings.subtitle != blank %}
+          <div class="ingredients__subtitle">{{ section.settings.subtitle }}</div>
+        {% endif %}
+        <div class="ingredients__divider"></div>
+        {% if section.settings.button_text != blank %}
+          <div class="ingredients__cta-wrap">
+            <a
+              {% if section.settings.button_url != blank %}href="{{ section.settings.button_url }}"{% endif %}
+              class="ingredients__btn"
+            >
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ingredients__badge-bar">
+      <div class="ingredients__badge-left">
+        <img
+          src="{{ 'flag.svg' | asset_url }}"
+          alt="USA flag"
+          width="27"
+          height="17"
+          loading="lazy"
+        >
+        {% if section.settings.badge_text != blank %}
+          <span class="ingredients__badge-text">{{ section.settings.badge_text }}</span>
+        {% endif %}
+      </div>
+      {% if section.settings.badge_subtitle != blank %}
+        <span class="ingredients__badge-subtitle">{{ section.settings.badge_subtitle }}</span>
+      {% endif %}
+    </div>
+
+    <div class="ingredients__grid-wrap">
+      <div class="ingredients__grid">
+        {% for block in section.blocks %}
+          <div class="ingredients__card" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              {{
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag:
+                  sizes: '(min-width: 750px) 185px, 50vw',
+                  widths: '177,185,354,370',
+                  loading: 'lazy',
+                  class: 'ingredients__card-img',
+                  alt: block.settings.label
+              }}
+            {% endif %}
+            {% if block.settings.label != blank %}
+              <div class="ingredients__card-label">
+                <span>{{ block.settings.label }}</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% if section.settings.button_text != blank %}
+    <div class="ingredients__mobile-cta">
+      <a
+        {% if section.settings.button_url != blank %}href="{{ section.settings.button_url }}"{% endif %}
+        class="ingredients__btn ingredients__btn--full"
+      >
+        {{ section.settings.button_text }}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+.ingredients {
+  padding-block-start: calc(var(--section-padding-top, 96) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 96) * var(--spacing-scale, 1) * 1px);
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+}
+
+.ingredients__content {
+  display: flex;
+  flex-direction: row;
+  gap: 60px;
+  align-items: center;
+}
+
+.ingredients__info {
+  flex: 1;
+  max-width: 570px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ingredients__heading {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 52px;
+  letter-spacing: -1px;
+  color: var(--heading-color, #767676);
+}
+
+.ingredients__heading p {
+  margin: 0;
+}
+
+.ingredients__heading strong {
+  color: var(--color-foreground, #414141);
+}
+
+.ingredients__desktop-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ingredients__divider {
+  height: 1px;
+  background-color: #D9D9DB;
+}
+
+.ingredients__subtitle {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--heading-color, #767676);
+}
+
+.ingredients__subtitle p {
+  margin: 0;
+}
+
+.ingredients__cta-wrap {
+  padding-block: 16px;
+}
+
+.ingredients__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 28px;
+  border: 2px solid #000000;
+  background-color: transparent;
+  color: #000000;
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ingredients__btn:hover {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+
+.ingredients__btn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.ingredients__badge-bar {
+  display: none;
+}
+
+.ingredients__grid-wrap {
+  flex: 1;
+  max-width: 570px;
+}
+
+.ingredients__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.ingredients__card {
+  position: relative;
+  border-radius: var(--card-radius, 24px);
+  overflow: hidden;
+  aspect-ratio: 185 / 200;
+}
+
+.ingredients__card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ingredients__card-label {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.ingredients__card-label span {
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.ingredients__mobile-cta {
+  display: none;
+}
+
+.ingredients__btn--full {
+  width: 100%;
+}
+
+@media screen and (max-width: 749px) {
+  .ingredients {
+    padding-inline: 12px;
+  }
+
+  .ingredients__content {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .ingredients__info {
+    max-width: none;
+  }
+
+  .ingredients__heading {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .ingredients__desktop-details {
+    display: none;
+  }
+
+  .ingredients__badge-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 12px;
+    border-top: 1px solid #D9D9DB;
+    border-bottom: 1px solid #D9D9DB;
+  }
+
+  .ingredients__badge-left {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding-inline: 8px;
+  }
+
+  .ingredients__badge-text {
+    font-family: var(--font-custom-cta), sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    color: var(--heading-color, #767676);
+  }
+
+  .ingredients__badge-subtitle {
+    font-family: var(--font-custom-heading), sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: var(--heading-color, #767676);
+  }
+
+  .ingredients__grid-wrap {
+    max-width: none;
+  }
+
+  .ingredients__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .ingredients__card {
+    aspect-ratio: 177 / 200;
+  }
+
+  .ingredients__card-label span {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .ingredients__btn {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .ingredients__mobile-cta {
+    display: block;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.ingredients",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "<p>Made from clinically researched and <strong>sustainably sourced ingredients.</strong></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "t:settings.subtitle",
+      "default": "<p>Made in the USA with carefully sourced ingredients from around the world. From source to formula, each ingredient is chosen with purpose. About ingredients.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:settings.button_text",
+      "default": "SHOW ALL INGREDIENTS"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:settings.button_url"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "t:settings.heading_color",
+      "default": "#767676"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "t:settings.badge_text",
+      "default": "Made in USA"
+    },
+    {
+      "type": "text",
+      "id": "badge_subtitle",
+      "label": "t:settings.badge_subtitle",
+      "default": "with globally sourced  ingredients"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "t:settings.corner_radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "mobile_max_cards",
+      "label": "t:settings.mobile_max_cards",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 96,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 96,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient-card",
+      "name": "t:names.ingredient_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:settings.image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:settings.label",
+          "default": "Ingredient"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.ingredients"
+    }
+  ]
+}
+{% endschema %}

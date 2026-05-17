@@ -449,7 +449,9 @@
     "molecule_card": "Molecule card",
     "bestsellers": "Bestsellers",
     "one_routine": "One Routine",
-    "impact_card": "Impact Card"
+    "impact_card": "Impact Card",
+    "ingredients": "Ingredients",
+    "ingredient_card": "Ingredient card"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1249,7 +1251,9 @@
     "stat_text": "Stat text",
     "duration": "Duration",
     "benefit_1": "Benefit 1",
-    "benefit_2": "Benefit 2"
+    "benefit_2": "Benefit 2",
+    "badge_subtitle": "Badge subtitle",
+    "mobile_max_cards": "Mobile max cards"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",
