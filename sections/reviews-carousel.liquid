@@ -72,8 +72,8 @@
 
 {% stylesheet %}
 .reviews-carousel {
-  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
   padding-inline: calc(120px * var(--spacing-scale, 1));
   display: flex;
   flex-direction: column;
@@ -234,23 +234,54 @@
 
 @media screen and (max-width: 749px) {
   .reviews-carousel {
-    padding-inline: 16px;
+    padding-inline: 0;
+    padding-block-start: 48px;
+    padding-block-end: 48px;
+    gap: 16px;
+  }
+
+  .reviews-carousel__header {
+    padding: 16px 32px;
   }
 
   .reviews-carousel__heading {
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 48px;
+    line-height: 36px;
+  }
+
+  .reviews-carousel__review-count {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .reviews-carousel__track {
+    padding-inline: 12px;
+    gap: 16px;
   }
 
   .reviews-carousel__card {
-    flex: 0 0 260px;
+    flex: 0 0 280px;
     min-height: 380px;
   }
 
   .reviews-carousel__image-quote {
-    font-size: 22px;
+    font-size: 24px;
     line-height: 32px;
     padding: 32px 24px;
+  }
+
+  .reviews-carousel__card--text {
+    background-color: #F5F5F5;
+  }
+
+  .reviews-carousel__card-body {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .reviews-carousel__card-author {
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 {% endstylesheet %}
