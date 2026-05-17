@@ -1,0 +1,401 @@
+<div
+  class="documentary section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+    --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  "
+>
+  {% if section.settings.video_url != blank %}
+    {% if section.settings.background_image != blank %}
+      {% assign poster_url = section.settings.background_image | image_url: width: 1440 %}
+    {% endif %}
+    <video
+      class="documentary__bg-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      {% if poster_url %}poster="{{ poster_url }}"{% endif %}
+    >
+      <source src="{{ section.settings.video_url }}" type="video/mp4">
+    </video>
+  {% else %}
+    {% if section.settings.background_image != blank %}
+      <picture>
+        {% if section.settings.background_image_mobile != blank %}
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ section.settings.background_image_mobile | image_url: width: section.settings.background_image_mobile.width }}"
+          >
+        {% endif %}
+        {{
+          section.settings.background_image
+          | image_url: width: section.settings.background_image.width
+          | image_tag:
+            sizes: '100vw',
+            widths: '375,550,750,1100,1440,1780,2000',
+            loading: 'lazy',
+            class: 'documentary__bg-image',
+            alt: section.settings.background_image.alt
+        }}
+      </picture>
+    {% endif %}
+  {% endif %}
+
+  <div class="documentary__overlay"></div>
+
+  <div class="documentary__content">
+    <div class="documentary__logo">
+      {% if section.settings.logo_image != blank %}
+        {{
+          section.settings.logo_image
+          | image_url: width: section.settings.logo_image.width
+          | image_tag:
+            widths: '132,180,264,528',
+            sizes: '(max-width: 749px) 180px, 264px',
+            loading: 'lazy',
+            class: 'documentary__logo-img',
+            alt: section.settings.logo_image.alt
+        }}
+      {% else %}
+        <img
+          src="{{ 'humann-ut-logo-white-1.svg' | asset_url }}"
+          alt="Humann partnership logo"
+          class="documentary__logo-img"
+          width="264"
+          height="47"
+          loading="lazy"
+        >
+      {% endif %}
+    </div>
+
+    {% if section.settings.heading != blank %}
+      <div class="documentary__heading">
+        {{ section.settings.heading }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.button_text != blank %}
+      <a
+        {% if section.settings.button_url != blank %}
+          href="{{ section.settings.button_url }}"
+        {% endif %}
+        class="documentary__btn"
+        {% if section.settings.button_url == blank %}aria-disabled="true"{% endif %}
+      >
+        {{ section.settings.button_text | escape }}
+      </a>
+    {% endif %}
+  </div>
+
+  {% if section.settings.video_url != blank %}
+    <button
+      type="button"
+      class="documentary__pause"
+      aria-label="Pause video"
+      data-section-id="{{ section.id }}"
+    >
+      <svg class="documentary__pause-icon" width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="0" y="0" width="2.5" height="13" fill="currentColor"/>
+        <rect x="5.5" y="0" width="2.5" height="13" fill="currentColor"/>
+      </svg>
+      <svg class="documentary__play-icon" width="10" height="13" viewBox="0 0 10 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:none;">
+        <polygon points="0,0 10,6.5 0,13" fill="currentColor"/>
+      </svg>
+    </button>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+.documentary {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 700px;
+  overflow: hidden;
+  padding-block-start: calc(var(--section-padding-top, 40) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 40) * var(--spacing-scale, 1) * 1px);
+}
+
+.documentary__bg-image,
+.documentary__bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.documentary__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--overlay-opacity, 0.4));
+  z-index: 1;
+}
+
+.documentary__content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 72px;
+  width: 100%;
+  padding-inline: 160px;
+}
+
+.documentary__logo-img {
+  display: block;
+  width: 264px;
+  height: 47px;
+  object-fit: contain;
+}
+
+.documentary__heading {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 52px;
+  letter-spacing: -1px;
+  text-align: center;
+  color: #FFFFFF;
+  max-width: 1120px;
+}
+
+.documentary__heading p {
+  margin: 0;
+}
+
+.documentary__heading strong {
+  font-weight: 700;
+}
+
+.documentary__btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  border: 2px solid #FFFFFF;
+  border-radius: 28px;
+  background: transparent;
+  color: #FFFFFF;
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.documentary__btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.documentary__pause {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 3;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 28px;
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  color: #FFFFFF;
+  cursor: pointer;
+  padding: 6px;
+  min-width: 44px;
+  min-height: 44px;
+  transition: background-color 0.2s ease;
+}
+
+.documentary__pause:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.documentary__pause:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 749px) {
+  .documentary {
+    min-height: 500px;
+  }
+
+  .documentary__content {
+    gap: 40px;
+    padding-inline: 24px;
+  }
+
+  .documentary__logo-img {
+    width: 180px;
+    height: auto;
+  }
+
+  .documentary__heading {
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.5px;
+  }
+
+  .documentary__btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+{% endstylesheet %}
+
+<script>
+  (function () {
+    var section = document.getElementById('shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    var pauseBtn = section.querySelector('.documentary__pause');
+    if (!pauseBtn) return;
+
+    var video = section.querySelector('.documentary__bg-video');
+    if (!video) return;
+
+    var pauseIcon = pauseBtn.querySelector('.documentary__pause-icon');
+    var playIcon = pauseBtn.querySelector('.documentary__play-icon');
+
+    pauseBtn.addEventListener('click', function () {
+      if (video.paused) {
+        video.play();
+        pauseIcon.style.display = '';
+        playIcon.style.display = 'none';
+        pauseBtn.setAttribute('aria-label', 'Pause video');
+      } else {
+        video.pause();
+        pauseIcon.style.display = 'none';
+        playIcon.style.display = '';
+        pauseBtn.setAttribute('aria-label', 'Play video');
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "t:names.documentary",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.media"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "t:settings.background_image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "t:settings.background_image_mobile"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "t:settings.video_url"
+    },
+    {
+      "type": "header",
+      "content": "t:content.content_layout"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "t:settings.logo_image"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "<p>Founded in partnership with<br><strong>The University of Texas</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:settings.button_text",
+      "default": "WATCH DOCUMENTARY"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:settings.button_url"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "t:settings.overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "t:content.section_layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page_width" },
+        { "value": "full-width", "label": "t:options.full_width" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.documentary"
+    }
+  ]
+}
+{% endschema %}

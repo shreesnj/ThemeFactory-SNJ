@@ -454,7 +454,8 @@
     "ingredient_card": "Ingredient card",
     "cardiovascular": "Cardiovascular",
     "video_card": "Video card",
-    "article_card": "Article card"
+    "article_card": "Article card",
+    "documentary": "Documentary"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1261,7 +1262,10 @@
     "read_title": "Read title",
     "read_time": "Read time",
     "cta_text": "CTA text",
-    "category": "Category"
+    "category": "Category",
+    "logo_image": "Logo",
+    "background_image_mobile": "Mobile image",
+    "overlay_opacity": "Overlay opacity"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",

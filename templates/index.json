@@ -563,6 +563,19 @@
         "card_60",
         "card_90"
       ]
+    },
+    "documentary": {
+      "type": "documentary",
+      "settings": {
+        "background_image": "shopify://shop_images/screenshot-2026-04-21-at-14-05-42-1-mobile-31614205.png",
+        "background_image_mobile": "shopify://shop_images/screenshot-2026-04-21-at-14-05-42-1-mobile-31614205.png",
+        "heading": "<p>Founded in partnership with<br><strong>The University of Texas<\/strong><\/p>",
+        "button_text": "WATCH DOCUMENTARY",
+        "overlay_opacity": 40,
+        "section_width": "full-width",
+        "padding_block_start": 40,
+        "padding_block_end": 40
+      }
     }
   },
   "order": [
@@ -575,6 +588,7 @@
     "recommended",
     "ingredients",
     "backed-by",
-    "one-routine"
+    "one-routine",
+    "documentary"
   ]
 }
