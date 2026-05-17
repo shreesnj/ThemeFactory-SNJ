@@ -424,6 +424,52 @@
         }
       },
       "block_order": ["expert_1", "expert_2", "expert_3"]
+    },
+    "one-routine": {
+      "type": "one-routine",
+      "settings": {
+        "heading": "One routine. Big impact.",
+        "stat_text": "35K daily active users",
+        "background_image": "shopify://shop_images/stat-mobile-31614101.jpg",
+        "section_width": "full-width",
+        "color_scheme": "scheme-1",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      },
+      "blocks": {
+        "card_30": {
+          "type": "impact-card",
+          "settings": {
+            "duration": "30 days",
+            "description": "You start building consistency as your routine becomes a part of your daily cardiovascular support.",
+            "benefit_1": "Supports nitric oxide levels",
+            "benefit_2": "Promotes healthy blood flow"
+          }
+        },
+        "card_60": {
+          "type": "impact-card",
+          "settings": {
+            "duration": "60 days",
+            "description": "You feel the routine take hold as you continue supporting nitric oxide, blood flow, and overall cardiovascular health.",
+            "benefit_1": "Enhanced daily energy",
+            "benefit_2": "Supports cardiovascular vitality"
+          }
+        },
+        "card_90": {
+          "type": "impact-card",
+          "settings": {
+            "duration": "90 days",
+            "description": "Support becomes part of your daily rhythm, with habits and benefits working together over time",
+            "benefit_1": "Optimized blood pressure",
+            "benefit_2": "Long-term cardiovascular support"
+          }
+        }
+      },
+      "block_order": [
+        "card_30",
+        "card_60",
+        "card_90"
+      ]
     }
   },
   "order": [
@@ -434,6 +480,7 @@
     "health-keys",
     "miracle-molecule",
     "recommended",
-    "backed-by"
+    "backed-by",
+    "one-routine"
   ]
 }

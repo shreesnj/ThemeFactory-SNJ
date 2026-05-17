@@ -447,7 +447,9 @@
     "expert_card": "Expert card",
     "miracle_molecule": "Miracle molecule",
     "molecule_card": "Molecule card",
-    "bestsellers": "Bestsellers"
+    "bestsellers": "Bestsellers",
+    "one_routine": "One Routine",
+    "impact_card": "Impact Card"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1243,7 +1245,11 @@
     "badge_text": "Badge text",
     "badge_type": "Badge type",
     "shop_all_text": "Shop all text",
-    "shop_all_url": "Shop all URL"
+    "shop_all_url": "Shop all URL",
+    "stat_text": "Stat text",
+    "duration": "Duration",
+    "benefit_1": "Benefit 1",
+    "benefit_2": "Benefit 2"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",
