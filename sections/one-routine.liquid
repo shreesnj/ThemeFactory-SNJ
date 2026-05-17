@@ -60,8 +60,8 @@
 .one-routine {
   position: relative;
   overflow: hidden;
-  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
   padding-inline: calc(120px * var(--spacing-scale, 1));
   display: flex;
   flex-direction: column;
@@ -101,7 +101,7 @@
 .one-routine__heading {
   font-family: var(--font-custom-serif), serif;
   font-weight: 400;
-  font-size: 48px;
+  font-size: 60px;
   line-height: 60px;
   letter-spacing: -1px;
   color: #FFFFFF;
@@ -198,8 +198,8 @@
 
 @media screen and (max-width: 749px) {
   .one-routine {
-    padding-block-start: calc(var(--section-padding-top, 40) * var(--spacing-scale, 1) * 1px);
-    padding-block-end: calc(var(--section-padding-bottom, 40) * var(--spacing-scale, 1) * 1px);
+    padding-block-start: 40px;
+    padding-block-end: 40px;
     padding-inline: 12px;
     min-height: 616px;
   }
@@ -209,7 +209,7 @@
   }
 
   .one-routine__heading {
-    font-size: 48px;
+    font-size: 42px;
     line-height: 48px;
   }
 
