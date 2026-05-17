@@ -63,6 +63,71 @@
         "slide_2"
       ]
     },
+    "retailers": {
+      "type": "retailers",
+      "settings": {
+        "heading": "Trusted by leading retailers and available in more than 30,000 retail locations.",
+        "heading_color": "#767676",
+        "button_text": "Find Retailer",
+        "button_color": "#000000",
+        "button_text_color": "#FFFFFF",
+        "logo_opacity": 60,
+        "scroll_speed": 30,
+        "section_width": "full-width",
+        "color_scheme": "scheme-1",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      },
+      "blocks": {
+        "logo_gnc": {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "gnc-2.svg",
+            "svg_mobile": "gnc.svg",
+            "alt_text": "GNC"
+          }
+        },
+        "logo_sprouts": {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "sprouts-2.svg",
+            "svg_mobile": "sprouts.svg",
+            "alt_text": "Sprouts Farmers Market"
+          }
+        },
+        "logo_walmart": {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "walmart-2.svg",
+            "svg_mobile": "walmart.svg",
+            "alt_text": "Walmart"
+          }
+        },
+        "logo_target": {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "target-2.svg",
+            "svg_mobile": "target.svg",
+            "alt_text": "Target"
+          }
+        },
+        "logo_sams": {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "sam-s-club-2.svg",
+            "svg_mobile": "sam-s-club.svg",
+            "alt_text": "Sam's Club"
+          }
+        }
+      },
+      "block_order": [
+        "logo_gnc",
+        "logo_sprouts",
+        "logo_walmart",
+        "logo_target",
+        "logo_sams"
+      ]
+    },
     "search": {
       "type": "search-prompt",
       "settings": {
@@ -648,6 +713,7 @@
   },
   "order": [
     "hero",
+    "retailers",
     "search",
     "reviews",
     "bestsellers",

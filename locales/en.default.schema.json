@@ -458,7 +458,9 @@
     "documentary": "Documentary",
     "community": "Community",
     "community_card": "Community card",
-    "deal": "Deal"
+    "deal": "Deal",
+    "retailers": "Retailers",
+    "retailer_logo": "Retailer logo"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1275,7 +1277,12 @@
     "price_label": "Price label",
     "compare_price": "Compare price",
     "sale_price": "Sale price",
-    "disclaimer": "Disclaimer"
+    "disclaimer": "Disclaimer",
+    "logo_opacity": "Logo opacity",
+    "scroll_speed": "Scroll speed",
+    "svg_desktop": "Desktop logo (SVG)",
+    "svg_mobile": "Mobile logo (SVG)",
+    "alt_text": "Alt text"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",

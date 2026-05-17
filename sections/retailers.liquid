@@ -1,0 +1,393 @@
+<div
+  class="retailers section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+    --heading-color: {{ section.settings.heading_color }};
+    --logo-opacity: {{ section.settings.logo_opacity | divided_by: 100.0 }};
+    --btn-bg: {{ section.settings.button_color }};
+    --btn-color: {{ section.settings.button_text_color }};
+    --scroll-duration: {{ section.settings.scroll_speed }}s;
+  "
+>
+  {% if section.settings.heading != blank %}
+    <p class="retailers__heading">{{ section.settings.heading }}</p>
+  {% endif %}
+
+  {% if section.blocks.size > 0 %}
+    <div class="retailers__logos-wrapper">
+      <div class="retailers__logos-track">
+        {% for block in section.blocks %}
+          <div class="retailers__logo" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 200 }}"
+                alt="{{ block.settings.alt_text | escape }}"
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            {% elsif block.settings.svg_desktop != blank %}
+              <picture>
+                {% if block.settings.svg_mobile != blank %}
+                  <source media="(max-width: 749px)" srcset="{{ block.settings.svg_mobile | asset_url }}">
+                {% endif %}
+                <img
+                  src="{{ block.settings.svg_desktop | asset_url }}"
+                  alt="{{ block.settings.alt_text | escape }}"
+                  loading="lazy"
+                >
+              </picture>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        {% for block in section.blocks %}
+          <div class="retailers__logo" aria-hidden="true">
+            {% if block.settings.image != blank %}
+              <img
+                src="{{ block.settings.image | image_url: width: 200 }}"
+                alt=""
+                loading="lazy"
+                width="{{ block.settings.image.width }}"
+                height="{{ block.settings.image.height }}"
+              >
+            {% elsif block.settings.svg_desktop != blank %}
+              <picture>
+                {% if block.settings.svg_mobile != blank %}
+                  <source media="(max-width: 749px)" srcset="{{ block.settings.svg_mobile | asset_url }}">
+                {% endif %}
+                <img
+                  src="{{ block.settings.svg_desktop | asset_url }}"
+                  alt=""
+                  loading="lazy"
+                >
+              </picture>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if section.settings.button_text != blank %}
+    <div class="retailers__cta-wrapper">
+      <a
+        class="retailers__cta"
+        {% if section.settings.button_url != blank %}
+          href="{{ section.settings.button_url }}"
+        {% else %}
+          role="link" aria-disabled="true"
+        {% endif %}
+      >
+        {{- section.settings.button_text | escape -}}
+      </a>
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+.retailers {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-inline: 0;
+  overflow: hidden;
+}
+
+.retailers__heading {
+  font-family: var(--font-custom-heading);
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  color: var(--heading-color, #767676);
+  text-align: center;
+  margin: 0;
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+}
+
+.retailers__logos-wrapper {
+  overflow: hidden;
+  width: 100%;
+  padding-block: 24px;
+}
+
+.retailers__logos-track {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  width: max-content;
+  animation: retailers-scroll var(--scroll-duration, 30s) linear infinite;
+}
+
+.retailers__logo {
+  flex-shrink: 0;
+  opacity: var(--logo-opacity, 0.6);
+}
+
+.retailers__logo img {
+  display: block;
+  height: auto;
+}
+
+@keyframes retailers-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retailers__logos-track {
+    animation-play-state: paused;
+  }
+}
+
+.retailers__cta-wrapper {
+  padding-block: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.retailers__cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--btn-bg, #000000);
+  color: var(--btn-color, #FFFFFF);
+  border-radius: 28px;
+  padding: 12px 20px;
+  font-family: var(--font-custom-cta);
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-decoration: none;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.retailers__cta:hover {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 749px) {
+  .retailers {
+    padding-inline: 24px;
+  }
+
+  .retailers__heading {
+    font-size: 24px;
+    line-height: 32px;
+    text-align: start;
+    padding-inline: 0;
+  }
+
+  .retailers__logos-track {
+    gap: 32px;
+  }
+
+  .retailers__cta {
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.retailers",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:settings.heading",
+      "default": "Trusted by leading retailers and available in more than 30,000 retail locations."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "t:settings.heading_color",
+      "default": "#767676"
+    },
+    {
+      "type": "header",
+      "content": "t:content.buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:settings.button_text",
+      "default": "Find Retailer"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:settings.button_url"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "t:settings.button_color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "t:settings.button_text_color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "t:content.carousel"
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "label": "t:settings.logo_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 60,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "t:settings.scroll_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 30,
+      "unit": "s"
+    },
+    {
+      "type": "header",
+      "content": "t:content.section_layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "t:names.retailer_logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:content.image"
+        },
+        {
+          "type": "text",
+          "id": "svg_desktop",
+          "label": "t:settings.svg_desktop"
+        },
+        {
+          "type": "text",
+          "id": "svg_mobile",
+          "label": "t:settings.svg_mobile"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "t:settings.alt_text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.retailers",
+      "blocks": [
+        {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "gnc-2.svg",
+            "svg_mobile": "gnc.svg",
+            "alt_text": "GNC"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "sprouts-2.svg",
+            "svg_mobile": "sprouts.svg",
+            "alt_text": "Sprouts Farmers Market"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "walmart-2.svg",
+            "svg_mobile": "walmart.svg",
+            "alt_text": "Walmart"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "target-2.svg",
+            "svg_mobile": "target.svg",
+            "alt_text": "Target"
+          }
+        },
+        {
+          "type": "logo",
+          "settings": {
+            "svg_desktop": "sam-s-club-2.svg",
+            "svg_mobile": "sam-s-club.svg",
+            "alt_text": "Sam's Club"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
