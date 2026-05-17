@@ -446,7 +446,8 @@
     "backed_by_experts": "Backed by experts",
     "expert_card": "Expert card",
     "miracle_molecule": "Miracle molecule",
-    "molecule_card": "Molecule card"
+    "molecule_card": "Molecule card",
+    "bestsellers": "Bestsellers"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -534,6 +535,7 @@
     "featured_collections": "Featured collections",
     "featured_products": "Featured products",
     "fill": "Fill",
+    "filled": "Filled",
     "fire": "Fire",
     // Layout option for content sizing behavior
     "fit": "Fit",
@@ -1236,7 +1238,12 @@
     "expert_credentials": "Expert credentials",
     "name_color": "Name color",
     "show_divider": "Show divider",
-    "molecule_icon": "Molecule icon"
+    "molecule_icon": "Molecule icon",
+    "rating_score": "Rating score",
+    "badge_text": "Badge text",
+    "badge_type": "Badge type",
+    "shop_all_text": "Shop all text",
+    "shop_all_url": "Shop all URL"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",
