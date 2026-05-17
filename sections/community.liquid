@@ -84,14 +84,16 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
   padding-inline: calc(120px * var(--spacing-scale, 1));
 }
 
 @media screen and (max-width: 749px) {
   .community {
     padding-inline: 16px;
+    padding-block-start: 48px;
+    padding-block-end: 48px;
     gap: 20px;
   }
 }
