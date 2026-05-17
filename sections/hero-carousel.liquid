@@ -33,6 +33,9 @@
                 alt: block.settings.background_image.alt
             }}
           </div>
+          {% if block.settings.overlay_opacity > 0 %}
+            <div class="hero-carousel__bg-overlay" style="--overlay-opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};"></div>
+          {% endif %}
         {% endif %}
 
         <div class="hero-carousel__content">
@@ -100,6 +103,14 @@
                   >
                     {{ block.settings.button_text }}
                   </a>
+                  {% if block.settings.button_2_text != blank %}
+                    <a
+                      {% if block.settings.button_2_url != blank %}href="{{ block.settings.button_2_url }}"{% endif %}
+                      class="hero-carousel__btn hero-carousel__btn--ghost"
+                    >
+                      {{ block.settings.button_2_text }}
+                    </a>
+                  {% endif %}
                 </div>
               {% endif %}
             </div>
@@ -213,6 +224,14 @@
   object-fit: cover;
 }
 
+.hero-carousel__bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(0, 0, 0, var(--overlay-opacity, 0));
+  pointer-events: none;
+}
+
 .hero-carousel__content {
   position: relative;
   z-index: 1;
@@ -317,6 +336,7 @@
   display: flex;
   gap: 16px;
   padding-block: 16px;
+  align-items: center;
 }
 
 .hero-carousel__btn {
@@ -341,6 +361,13 @@
 
 .hero-carousel__btn:hover {
   opacity: 0.85;
+}
+
+.hero-carousel__btn--ghost {
+  background-color: transparent;
+  color: #FFFFFF;
+  padding-inline: 0;
+  padding-block: 12px;
 }
 
 .hero-carousel__footer {
@@ -394,54 +421,97 @@
 
 @media screen and (max-width: 749px) {
   .hero-carousel {
-    padding-inline: 8px;
+    padding-inline: 12px;
+    padding-block-start: 4px;
+    padding-block-end: 12px;
   }
 
   .hero-carousel__slide {
-    min-height: 500px;
-    padding: 24px 16px;
+    min-height: 620px;
+    padding: 32px 12px 20px;
   }
 
   .hero-carousel__split-layout {
     flex-direction: column;
-    gap: 24px;
   }
 
-  .hero-carousel__text-col,
-  .hero-carousel__image-col {
+  .hero-carousel__text-col {
     flex: none;
     width: 100%;
+    align-items: center;
+  }
+
+  .hero-carousel__text-group {
+    align-items: center;
+  }
+
+  .hero-carousel__image-col {
+    display: none;
   }
 
   .hero-carousel__heading {
-    font-size: 36px;
-    line-height: 40px;
-  }
-
-  .hero-carousel__slide--overlay .hero-carousel__heading {
-    font-size: 36px;
-    line-height: 40px;
+    font-size: 60px;
+    line-height: 48px;
+    text-align: center;
   }
 
   .hero-carousel__subtitle {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
+    text-align: center;
+  }
+
+  .hero-carousel__btn-row {
+    justify-content: center;
+    padding-block: 0;
   }
 
   .hero-carousel__btn {
     font-size: 14px;
-    padding: 12px 24px;
+    line-height: 14px;
+    padding: 12px 20px;
+  }
+
+  .hero-carousel__slide--overlay .hero-carousel__heading {
+    font-size: 42px;
+    line-height: 48px;
+    text-align: center;
+    color: #FFFFFF;
+  }
+
+  .hero-carousel__slide--overlay .hero-carousel__subtitle {
+    font-size: 18px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  .hero-carousel__slide--overlay .hero-carousel__btn-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-carousel__overlay-layout {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .hero-carousel__overlay-text {
+    align-items: center;
   }
 
   .hero-carousel__footer {
-    flex-wrap: wrap;
+    height: 32px;
     gap: 12px;
   }
 
+  .hero-carousel__footer-img {
+    max-height: 28px;
+  }
+
   .hero-carousel__arrow {
-    width: 48px;
-    height: 40px;
-    padding: 8px 12px;
+    width: 44px;
+    height: 32px;
+    padding: 6px 12px;
   }
 }
 {% endstylesheet %}
@@ -550,6 +620,16 @@
           "unit": "px"
         },
         {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "t:settings.overlay_opacity",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "default": 0,
+          "unit": "%"
+        },
+        {
           "type": "richtext",
           "id": "heading",
           "label": "t:settings.heading"
@@ -593,6 +673,16 @@
           "id": "button_text_color",
           "label": "t:settings.button_text_color",
           "default": "#FFFFFF"
+        },
+        {
+          "type": "text",
+          "id": "button_2_text",
+          "label": "t:settings.button_2_text"
+        },
+        {
+          "type": "url",
+          "id": "button_2_url",
+          "label": "t:settings.button_2_url"
         },
         {
           "type": "image_picker",
