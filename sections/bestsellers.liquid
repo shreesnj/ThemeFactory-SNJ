@@ -103,8 +103,8 @@
 
 {% stylesheet %}
 .bestsellers {
-  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
   padding-inline: calc(120px * var(--spacing-scale, 1));
   background-color: #FFFFFF;
 }
@@ -124,16 +124,13 @@
 }
 
 .bestsellers__heading {
-  font-family: var(--font-custom-heading), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
   font-size: 48px;
   line-height: 52px;
+  letter-spacing: -1px;
   color: #767676;
   margin: 0;
-}
-
-.bestsellers__heading strong {
-  color: #414141;
 }
 
 .bestsellers__heading p {
@@ -381,7 +378,7 @@
   }
 
   .bestsellers__heading {
-    font-size: 48px;
+    font-size: 32px;
     line-height: 36px;
   }
 
