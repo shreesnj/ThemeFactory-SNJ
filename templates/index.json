@@ -7,35 +7,31 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "hero": {
       "type": "hero-carousel",
-      "settings": {
-        "section_width": "full-width",
-        "color_scheme": "scheme-1",
-        "padding_block_start": 8,
-        "padding_block_end": 8
-      },
       "blocks": {
         "slide_1": {
           "type": "slide",
           "settings": {
             "layout_mode": "split",
             "background_type": "gradient",
-            "gradient_color_1": "#F0F0F0",
-            "gradient_color_2": "#E3E3E3",
+            "gradient_color_1": "#f0f0f0",
+            "gradient_color_2": "#e3e3e3",
             "gradient_angle": 170,
             "blur_amount": 0,
             "heading": "<p>SuperBeets®, The Cardiovascular  Health Original</p>",
-            "heading_color": "#BC0F0F",
+            "heading_color": "#bc0f0f",
             "subtitle": "Combines category-leading trust with clinically researched cardiovascular support.",
-            "subtitle_color": "#BC0F0F",
+            "subtitle_color": "#bc0f0f",
             "button_text": "SHOP SUPERBEETS",
+            "button_url": "",
             "button_color": "#000000",
-            "button_text_color": "#FFFFFF",
+            "button_text_color": "#ffffff",
             "hero_image": "shopify://shop_images/hero-mobile-header-31301281.png",
             "footer_image": "shopify://shop_images/screenshot-2026-04-07-at-11-03-03-1-mobile-header-31301290.png",
+            "footer_logo_asset": "",
             "corner_radius": 16
           }
         },
@@ -44,15 +40,19 @@
           "settings": {
             "layout_mode": "overlay",
             "background_type": "image",
+            "gradient_color_1": "#f0f0f0",
+            "gradient_color_2": "#e3e3e3",
+            "gradient_angle": 170,
             "background_image": "shopify://shop_images/hero-mobile-header-I31301882211761.png",
             "blur_amount": 4,
             "heading": "<p>Cardiovascular health is everything health.</p>",
             "heading_color": "#414141",
             "subtitle": "Inspired by Nobel-Prize winning science, born out of research from The University of Texas.",
-            "subtitle_color": "#FFFFFF",
+            "subtitle_color": "#ffffff",
             "button_text": "EXPLORE THE SCIENCE",
+            "button_url": "",
             "button_color": "#000000",
-            "button_text_color": "#FFFFFF",
+            "button_text_color": "#ffffff",
             "footer_logo_asset": "ut.svg",
             "corner_radius": 12
           }
@@ -61,23 +61,33 @@
       "block_order": [
         "slide_1",
         "slide_2"
-      ]
+      ],
+      "settings": {
+        "section_width": "full-width",
+        "color_scheme": "scheme-1",
+        "padding_block_start": 8,
+        "padding_block_end": 8
+      }
+    },
+    "search": {
+      "type": "search-prompt",
+      "settings": {
+        "heading": "Ask me anything about cardiovascular health",
+        "placeholder_text": "How does blood flow support energy?",
+        "button_text": "GO",
+        "search_url": "",
+        "expert_image": "shopify://shop_images/ellipse-228-mobile-header-31301311.jpg",
+        "expert_name": "Approved by experts",
+        "expert_description": "Get answers backed by research from Humann's Chief Cardiologist.",
+        "color_scheme": "scheme-7",
+        "section_width": "full-width",
+        "padding_block_start": 8,
+        "padding_block_end": 16,
+        "corner_radius": 16
+      }
     },
     "retailers": {
       "type": "retailers",
-      "settings": {
-        "heading": "Trusted by leading retailers and available in more than 30,000 retail locations.",
-        "heading_color": "#767676",
-        "button_text": "Find Retailer",
-        "button_color": "#000000",
-        "button_text_color": "#FFFFFF",
-        "logo_opacity": 60,
-        "scroll_speed": 30,
-        "section_width": "full-width",
-        "color_scheme": "scheme-1",
-        "padding_block_start": 80,
-        "padding_block_end": 80
-      },
       "blocks": {
         "logo_gnc": {
           "type": "logo",
@@ -126,35 +136,24 @@
         "logo_walmart",
         "logo_target",
         "logo_sams"
-      ]
-    },
-    "search": {
-      "type": "search-prompt",
+      ],
       "settings": {
-        "heading": "Ask me anything about cardiovascular health",
-        "placeholder_text": "How does blood flow support energy?",
-        "button_text": "GO",
-        "expert_image": "shopify://shop_images/ellipse-228-mobile-header-31301311.jpg",
-        "expert_name": "Approved by experts",
-        "expert_description": "Get answers backed by research from Humann's Chief Cardiologist.",
-        "color_scheme": "scheme-7",
+        "heading": "Trusted by leading retailers and available in more than 30,000 retail locations.",
+        "heading_color": "#767676",
+        "button_text": "Find Retailer",
+        "button_url": "",
+        "button_color": "#000000",
+        "button_text_color": "#ffffff",
+        "logo_opacity": 60,
+        "scroll_speed": 30,
         "section_width": "full-width",
-        "padding_block_start": 8,
-        "padding_block_end": 16,
-        "corner_radius": 16
+        "color_scheme": "scheme-1",
+        "padding_block_start": 80,
+        "padding_block_end": 80
       }
     },
     "reviews": {
       "type": "reviews-carousel",
-      "settings": {
-        "heading": "Join millions of people prioritizing their cardiovascular health",
-        "show_stars": true,
-        "review_count_text": "100K+ verified reviews",
-        "color_scheme": "scheme-2",
-        "section_width": "full-width",
-        "padding_block_start": 80,
-        "padding_block_end": 80
-      },
       "blocks": {
         "review_1": {
           "type": "review",
@@ -162,6 +161,8 @@
             "card_type": "image",
             "background_image": "shopify://shop_images/card-mobile-31613818.jpg",
             "quote_text": "“A product that is heart healthy AND tastes amazing.”  – Chris D.",
+            "review_title": "",
+            "review_body": "",
             "reviewer_name": "Chris D.",
             "star_count": 5
           }
@@ -170,6 +171,7 @@
           "type": "review",
           "settings": {
             "card_type": "text",
+            "quote_text": "",
             "review_title": "“I actually feel better.”",
             "review_body": "I never notice things like supplements and I didn’t expect to with this either....I’ve been sleeping better, breathing better and feeling better overall and it’s only been a month so far.”",
             "reviewer_name": "– Matt Z.",
@@ -182,6 +184,8 @@
             "card_type": "image",
             "background_image": "shopify://shop_images/card-desktop-31731695.jpg",
             "quote_text": "“Humann fits so easily into my routine.  I love it.”  – Leonna M.",
+            "review_title": "",
+            "review_body": "",
             "reviewer_name": "Leonna M.",
             "star_count": 5
           }
@@ -190,6 +194,7 @@
           "type": "review",
           "settings": {
             "card_type": "text",
+            "quote_text": "",
             "review_title": "“My doctor is very happy.”",
             "review_body": "Ever since I started taking SuperBeets my doctor is very satisfied with my BP readings.”",
             "reviewer_name": "– Everett",
@@ -202,6 +207,8 @@
             "card_type": "image",
             "background_image": "shopify://shop_images/card-mobile-31613853.jpg",
             "quote_text": "“I like that it feels practical, not complicated.””  – Kim K.",
+            "review_title": "",
+            "review_body": "",
             "reviewer_name": "Kim K.",
             "star_count": 5
           }
@@ -213,18 +220,19 @@
         "review_3",
         "review_4",
         "review_5"
-      ]
+      ],
+      "settings": {
+        "heading": "Join millions of people prioritizing their cardiovascular health",
+        "show_stars": true,
+        "review_count_text": "100K+ verified reviews",
+        "color_scheme": "scheme-2",
+        "section_width": "full-width",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      }
     },
     "bestsellers": {
       "type": "bestsellers",
-      "settings": {
-        "heading": "<p><strong>Bestsellers<\/strong> for cardiovascular support.<\/p>",
-        "shop_all_text": "Shop All",
-        "section_width": "full-width",
-        "color_scheme": "scheme-1",
-        "padding_block_start": 80,
-        "padding_block_end": 80
-      },
       "blocks": {
         "card_1": {
           "type": "product-card",
@@ -237,7 +245,8 @@
             "badge_text": "#1 cardiologist recommended",
             "badge_type": "filled",
             "description": "Our signature product – supporting healthy blood pressure",
-            "button_text": "Shop Now"
+            "button_text": "Shop Now",
+            "button_url": ""
           }
         },
         "card_2": {
@@ -251,7 +260,8 @@
             "badge_text": "1.2M+ sold",
             "badge_type": "outline",
             "description": "Daily heart support, scoop by scoop.",
-            "button_text": "Shop Now"
+            "button_text": "Shop Now",
+            "button_url": ""
           }
         },
         "card_3": {
@@ -265,7 +275,8 @@
             "badge_text": "800K+ sold",
             "badge_type": "outline",
             "description": "Daily support for healthy blood flow.",
-            "button_text": "Shop Now"
+            "button_text": "Shop Now",
+            "button_url": ""
           }
         },
         "card_4": {
@@ -279,7 +290,8 @@
             "badge_text": "Athlete's choice",
             "badge_type": "outline",
             "description": "Clean energy for your next session.",
-            "button_text": "Shop Now"
+            "button_text": "Shop Now",
+            "button_url": ""
           }
         }
       },
@@ -288,10 +300,68 @@
         "card_2",
         "card_3",
         "card_4"
-      ]
+      ],
+      "settings": {
+        "heading": "<p><strong>Bestsellers</strong> for cardiovascular support.</p>",
+        "shop_all_text": "Shop All",
+        "shop_all_url": "",
+        "section_width": "full-width",
+        "color_scheme": "scheme-1",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      }
     },
     "health-keys": {
       "type": "health-keys",
+      "blocks": {
+        "key_1": {
+          "type": "key-card",
+          "settings": {
+            "card_color": "#8c0132",
+            "number": "1",
+            "title": "Blood Pressure",
+            "description": "Healthy blood pressure starts with blood flow, and blood flow starts with nitric oxide.",
+            "stat_value": "2x",
+            "stat_description": "more effective blood pressure support when compared to diet and exercise alone.¹",
+            "stat_icon_asset": "icon.svg",
+            "button_text": "SHOP Blood Pressure",
+            "button_url": ""
+          }
+        },
+        "key_2": {
+          "type": "key-card",
+          "settings": {
+            "card_color": "#e6305e",
+            "number": "2",
+            "title": "Metabolic",
+            "description": "Help your body use energy more smoothly and steadily.",
+            "stat_value": "78%",
+            "stat_description": "of customers report improved energy levels, after completing their first 90-day routine.",
+            "stat_icon_asset": "icon-2.svg",
+            "button_text": "SHOP Metabolic",
+            "button_url": ""
+          }
+        },
+        "key_3": {
+          "type": "key-card",
+          "settings": {
+            "card_color": "#d54427",
+            "number": "3",
+            "title": "CHOLESTEROL",
+            "description": "Help your body keep cholesterol levels in a healthy range.",
+            "stat_value": "29%",
+            "stat_description": "reduction in LDL (bad cholesterol) and a 11% reduction in total cholesterol.",
+            "stat_icon_asset": "icon-3.svg",
+            "button_text": "SHOP CHOLESTEROL",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "key_1",
+        "key_2",
+        "key_3"
+      ],
       "settings": {
         "heading": "There's nothing more fundamental to longevity than Cardiovascular Health.",
         "subtitle": "Powered through nitric oxide and  better blood flow.",
@@ -300,62 +370,10 @@
         "section_width": "full-width",
         "padding_block_start": 80,
         "padding_block_end": 80
-      },
-      "blocks": {
-        "key_1": {
-          "type": "key-card",
-          "settings": {
-            "card_color": "#8C0132",
-            "number": "1",
-            "title": "Blood Pressure",
-            "description": "Healthy blood pressure starts with blood flow, and blood flow starts with nitric oxide.",
-            "stat_value": "2x",
-            "stat_description": "more effective blood pressure support when compared to diet and exercise alone.¹",
-            "stat_icon_asset": "icon.svg",
-            "button_text": "SHOP Blood Pressure"
-          }
-        },
-        "key_2": {
-          "type": "key-card",
-          "settings": {
-            "card_color": "#E6305E",
-            "number": "2",
-            "title": "Metabolic",
-            "description": "Help your body use energy more smoothly and steadily.",
-            "stat_value": "78%",
-            "stat_description": "of customers report improved energy levels, after completing their first 90-day routine.",
-            "stat_icon_asset": "icon-2.svg",
-            "button_text": "SHOP Metabolic"
-          }
-        },
-        "key_3": {
-          "type": "key-card",
-          "settings": {
-            "card_color": "#D54427",
-            "number": "3",
-            "title": "CHOLESTEROL",
-            "description": "Help your body keep cholesterol levels in a healthy range.",
-            "stat_value": "29%",
-            "stat_description": "reduction in LDL (bad cholesterol) and a 11% reduction in total cholesterol.",
-            "stat_icon_asset": "icon-3.svg",
-            "button_text": "SHOP CHOLESTEROL"
-          }
-        }
-      },
-      "block_order": [
-        "key_1",
-        "key_2",
-        "key_3"
-      ]
+      }
     },
     "miracle-molecule": {
       "type": "miracle-molecule",
-      "settings": {
-        "section_width": "full-width",
-        "color_scheme": "scheme-7",
-        "padding_block_start": 80,
-        "padding_block_end": 80
-      },
       "blocks": {
         "card_1": {
           "type": "molecule-card",
@@ -386,10 +404,68 @@
         "card_1",
         "card_2",
         "card_3"
-      ]
+      ],
+      "settings": {
+        "heading": "<p>Learn about the<br><strong>Miracle Molecule</strong></p>",
+        "subtitle": "<p><strong>Did you know</strong> that Nitric Oxide is one of the most important molecules produced in your body?</p>",
+        "button_text": "EXPLORE OUR SCIENCE",
+        "button_url": "",
+        "section_width": "full-width",
+        "color_scheme": "scheme-7",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      }
     },
     "recommended": {
       "type": "doctor-recommended",
+      "blocks": {
+        "product_1": {
+          "type": "product-item",
+          "settings": {
+            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499357513830.png",
+            "product_title": "SuperBeets® Heart Chews",
+            "product_description": "Clinically studied beetroot + grape seed for healthy blood pressure support.",
+            "link": "",
+            "show_plus_icon": true
+          }
+        },
+        "product_2": {
+          "type": "product-item",
+          "settings": {
+            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499367513830.png",
+            "product_title": "Cholesterol Health Daily",
+            "product_description": "A plant-based blend of aged black garlic and citrus bergamot for cholesterol support.",
+            "link": "",
+            "show_plus_icon": true
+          }
+        },
+        "product_3": {
+          "type": "product-item",
+          "settings": {
+            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499377513830.png",
+            "product_title": "Metabolic Health Daily",
+            "product_description": "Triple-action support for blood sugar balance, insulin function, and energy metabolism.",
+            "link": "",
+            "show_plus_icon": true
+          }
+        },
+        "product_4": {
+          "type": "product-item",
+          "settings": {
+            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499357513830.png",
+            "product_title": "FREE CoQ10 sample",
+            "product_description": "A bonus CoQ10 supplement included with your heart health routine.",
+            "link": "",
+            "show_plus_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "product_1",
+        "product_2",
+        "product_3",
+        "product_4"
+      ],
       "settings": {
         "subtitle": "Cardiologist recommended",
         "heading": "Heart health made easy with one routine.",
@@ -401,68 +477,10 @@
         "padding_block_start": 80,
         "padding_block_end": 80,
         "gap": 24
-      },
-      "blocks": {
-        "product_1": {
-          "type": "product-item",
-          "settings": {
-            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499357513830.png",
-            "product_title": "SuperBeets® Heart Chews",
-            "product_description": "Clinically studied beetroot + grape seed for healthy blood pressure support.",
-            "show_plus_icon": true
-          }
-        },
-        "product_2": {
-          "type": "product-item",
-          "settings": {
-            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499367513830.png",
-            "product_title": "Cholesterol Health Daily",
-            "product_description": "A plant-based blend of aged black garlic and citrus bergamot for cholesterol support.",
-            "show_plus_icon": true
-          }
-        },
-        "product_3": {
-          "type": "product-item",
-          "settings": {
-            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499377513830.png",
-            "product_title": "Metabolic Health Daily",
-            "product_description": "Triple-action support for blood sugar balance, insulin function, and energy metabolism.",
-            "show_plus_icon": true
-          }
-        },
-        "product_4": {
-          "type": "product-item",
-          "settings": {
-            "product_image": "shopify://shop_images/sbhc-1-front-1-mobile-I338499357513830.png",
-            "product_title": "FREE CoQ10 sample",
-            "product_description": "A bonus CoQ10 supplement included with your heart health routine.",
-            "show_plus_icon": false
-          }
-        }
-      },
-      "block_order": [
-        "product_1",
-        "product_2",
-        "product_3",
-        "product_4"
-      ]
+      }
     },
     "ingredients": {
       "type": "ingredients",
-      "settings": {
-        "heading": "<p>Made from clinically researched and <strong>sustainably sourced ingredients.<\/strong><\/p>",
-        "subtitle": "<p>Made in the USA with carefully sourced ingredients from around the world. From source to formula, each ingredient is chosen with purpose. About ingredients.<\/p>",
-        "button_text": "SHOW ALL INGREDIENTS",
-        "heading_color": "#767676",
-        "badge_text": "Made in USA",
-        "badge_subtitle": "with globally sourced  ingredients",
-        "card_radius": 24,
-        "mobile_max_cards": 6,
-        "section_width": "page-width",
-        "color_scheme": "scheme-2",
-        "padding_block_start": 96,
-        "padding_block_end": 96
-      },
       "blocks": {
         "card_1": {
           "type": "ingredient-card",
@@ -538,25 +556,31 @@
         "card_7",
         "card_8",
         "card_9"
-      ]
+      ],
+      "settings": {
+        "heading": "<p>Made from clinically researched and <strong>sustainably sourced ingredients.</strong></p>",
+        "subtitle": "<p>Made in the USA with carefully sourced ingredients from around the world. From source to formula, each ingredient is chosen with purpose. About ingredients.</p>",
+        "button_text": "SHOW ALL INGREDIENTS",
+        "button_url": "",
+        "heading_color": "#767676",
+        "badge_text": "Made in USA",
+        "badge_subtitle": "with globally sourced  ingredients",
+        "card_radius": 24,
+        "mobile_max_cards": 6,
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "padding_block_start": 96,
+        "padding_block_end": 96
+      }
     },
     "backed-by": {
       "type": "backed-by-experts",
-      "settings": {
-        "heading": "<p>Backed by <strong>6000+<\/strong> cardiologists and scientists<\/p>",
-        "subtitle": "Founded on Nobel Prize-Winning Science. Validated in Real Life.",
-        "show_divider": true,
-        "name_color": "#BC0F0F",
-        "section_width": "full-width",
-        "color_scheme": "scheme-2",
-        "padding_block_start": 80,
-        "padding_block_end": 80
-      },
       "blocks": {
         "expert_1": {
           "type": "expert-card",
           "settings": {
             "expert_image": "shopify://shop_images/ellipse-228-mobile-header-31301311.jpg",
+            "video_url": "",
             "quote_text": "“No other brand would dare call a cardiologist. Humann did.”",
             "expert_name": "Dr. Christopher Davis, MD",
             "expert_credentials": "Chief Cardiologist at Humann, Triple Board-Certified Interventional Cardiologist, Fellow of the American College of Cardiology"
@@ -566,6 +590,7 @@
           "type": "expert-card",
           "settings": {
             "expert_image": "shopify://shop_images/594d441eba314bf68cd58dc1b777afca-hd-1080p-2-5mbps-23552982-13-desktop-31731836.jpg",
+            "video_url": "",
             "quote_text": "“Humann makes the science feel accessible and actionable.”",
             "expert_name": "Yousef Elyaman, MD",
             "expert_credentials": "Medical Director at Humann, Board Certified in Internal Medicine and Integrative Medicine from the American Board of Physician Specialties"
@@ -575,16 +600,71 @@
           "type": "expert-card",
           "settings": {
             "expert_image": "shopify://shop_images/img-desktop-31731847.png",
+            "video_url": "",
             "quote_text": "“It’s refreshing to see a company take science seriously.”",
             "expert_name": "Penny Kris-Etherton, PhD",
             "expert_credentials": "Science Advisory Board Member at Humann, past chair of the American Heart Association Council on Lifestyle and Cardiometabolic"
           }
         }
       },
-      "block_order": ["expert_1", "expert_2", "expert_3"]
+      "block_order": [
+        "expert_1",
+        "expert_2",
+        "expert_3"
+      ],
+      "settings": {
+        "heading": "<p>Backed by <strong>6000+</strong> cardiologists and scientists</p>",
+        "subtitle": "Founded on Nobel Prize-Winning Science. Validated in Real Life.",
+        "show_divider": true,
+        "name_color": "#bc0f0f",
+        "section_width": "full-width",
+        "color_scheme": "scheme-2",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      }
     },
     "community": {
       "type": "community",
+      "blocks": {
+        "card_1": {
+          "type": "community-card",
+          "settings": {
+            "image": "shopify://shop_images/card-mobile-31614241.png",
+            "video_url": "",
+            "username": "@velmacan"
+          }
+        },
+        "card_2": {
+          "type": "community-card",
+          "settings": {
+            "image": "shopify://shop_images/card-mobile-31614234.png",
+            "video_url": "",
+            "username": "@reillytris"
+          }
+        },
+        "card_3": {
+          "type": "community-card",
+          "settings": {
+            "image": "shopify://shop_images/card-mobile-31614227.png",
+            "video_url": "",
+            "username": "@_cmfree"
+          }
+        },
+        "card_4": {
+          "type": "community-card",
+          "settings": {
+            "image": "shopify://shop_images/card-mobile-31614234.png",
+            "video_url": "",
+            "username": "@tha_one08"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
       "settings": {
         "heading": "<p>The <strong>Humann community</strong>, in motion.</p>",
         "subtitle": "More than a product. A community of people focused on feeling better.",
@@ -595,55 +675,10 @@
         "color_scheme": "scheme-2",
         "padding_block_start": 80,
         "padding_block_end": 80
-      },
-      "blocks": {
-        "card_1": {
-          "type": "community-card",
-          "settings": {
-            "image": "shopify://shop_images/card-mobile-31614241.png",
-            "username": "@velmacan"
-          }
-        },
-        "card_2": {
-          "type": "community-card",
-          "settings": {
-            "image": "shopify://shop_images/card-mobile-31614234.png",
-            "username": "@reillytris"
-          }
-        },
-        "card_3": {
-          "type": "community-card",
-          "settings": {
-            "image": "shopify://shop_images/card-mobile-31614227.png",
-            "username": "@_cmfree"
-          }
-        },
-        "card_4": {
-          "type": "community-card",
-          "settings": {
-            "image": "shopify://shop_images/card-mobile-31614234.png",
-            "username": "@tha_one08"
-          }
-        }
-      },
-      "block_order": [
-        "card_1",
-        "card_2",
-        "card_3",
-        "card_4"
-      ]
+      }
     },
     "one-routine": {
       "type": "one-routine",
-      "settings": {
-        "heading": "One routine. Big impact.",
-        "stat_text": "35K daily active users",
-        "background_image": "shopify://shop_images/stat-mobile-31614101.jpg",
-        "section_width": "full-width",
-        "color_scheme": "scheme-1",
-        "padding_block_start": 80,
-        "padding_block_end": 80
-      },
       "blocks": {
         "card_30": {
           "type": "impact-card",
@@ -677,17 +712,29 @@
         "card_30",
         "card_60",
         "card_90"
-      ]
+      ],
+      "settings": {
+        "heading": "One routine. Big impact.",
+        "stat_text": "35K daily active users",
+        "background_image": "shopify://shop_images/stat-mobile-31614101.jpg",
+        "section_width": "full-width",
+        "color_scheme": "scheme-1",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      }
     },
     "documentary": {
       "type": "documentary",
       "settings": {
         "background_image": "shopify://shop_images/screenshot-2026-04-21-at-14-05-42-1-mobile-31614205.png",
         "background_image_mobile": "shopify://shop_images/screenshot-2026-04-21-at-14-05-42-1-mobile-31614205.png",
-        "heading": "<p>Founded in partnership with<br><strong>The University of Texas<\/strong><\/p>",
+        "video_url": "",
+        "heading": "<p>Founded in partnership with<br><strong>The University of Texas</strong></p>",
         "button_text": "WATCH DOCUMENTARY",
+        "button_url": "",
         "overlay_opacity": 40,
         "section_width": "full-width",
+        "color_scheme": "",
         "padding_block_start": 40,
         "padding_block_end": 40
       }
@@ -703,6 +750,7 @@
         "compare_price": "$239.00",
         "sale_price": "$159.00",
         "button_text": "GET THE DEAL",
+        "button_url": "",
         "disclaimer": "*Terms & Conditions apply **Limited offer",
         "section_width": "page-width",
         "color_scheme": "scheme-7",
@@ -713,18 +761,18 @@
   },
   "order": [
     "hero",
-    "retailers",
     "search",
     "reviews",
-    "bestsellers",
     "health-keys",
-    "miracle-molecule",
     "recommended",
-    "ingredients",
     "backed-by",
-    "community",
+    "miracle-molecule",
+    "bestsellers",
     "one-routine",
+    "ingredients",
     "documentary",
-    "deal"
+    "community",
+    "deal",
+    "retailers"
   ]
 }
