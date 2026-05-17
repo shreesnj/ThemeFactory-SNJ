@@ -78,8 +78,8 @@
 
 {% stylesheet %}
 .health-keys {
-  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
   padding-inline: calc(120px * var(--spacing-scale, 1));
   display: flex;
   flex-direction: column;
@@ -98,10 +98,11 @@
 }
 
 .health-keys__heading {
-  font-family: var(--font-custom-heading), sans-serif;
-  font-weight: 700;
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
   font-size: 48px;
   line-height: 52px;
+  letter-spacing: -1px;
   color: #767676;
   margin: 0;
 }
@@ -208,7 +209,7 @@
   gap: 20px;
   padding: 20px;
   border-radius: 16px;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .health-keys__stat-content {
@@ -223,7 +224,7 @@
   font-weight: 700;
   font-size: 48px;
   line-height: 52px;
-  color: var(--card-bg, #8C0132);
+  color: #FFFFFF;
 }
 
 .health-keys__stat-desc {
@@ -232,7 +233,7 @@
   font-size: 18px;
   line-height: 24px;
   letter-spacing: -0.5px;
-  color: #414141;
+  color: #FFFFFF;
   margin: 0;
 }
 
@@ -278,21 +279,55 @@
 
 @media screen and (max-width: 749px) {
   .health-keys {
-    padding-inline: 16px;
+    padding-inline: 12px;
+    padding-block-start: 48px;
+    padding-block-end: 48px;
+    gap: 20px;
   }
 
   .health-keys__heading {
     font-size: 32px;
-    line-height: 38px;
+    line-height: 36px;
+  }
+
+  .health-keys__subtitle {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .health-keys__subheading {
+    font-size: 18px;
+    line-height: 20px;
   }
 
   .health-keys__grid {
     grid-template-columns: 1fr;
   }
 
+  .health-keys__card-number span,
+  .health-keys__card-label {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .health-keys__card-desc {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
   .health-keys__stat-value {
-    font-size: 36px;
-    line-height: 42px;
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .health-keys__stat-desc {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .health-keys__btn {
+    font-size: 12px;
+    line-height: 14px;
   }
 }
 {% endstylesheet %}
