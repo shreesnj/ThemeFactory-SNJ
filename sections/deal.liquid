@@ -1,0 +1,431 @@
+<div
+  class="deal section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+  "
+>
+  <div class="deal__container">
+    {% if section.settings.image != blank %}
+      <div class="deal__image-col">
+        {{
+          section.settings.image
+          | image_url: width: section.settings.image.width
+          | image_tag:
+            sizes: '(min-width: 750px) 600px, 100vw',
+            widths: '375,550,600,750,1100,1200',
+            loading: 'lazy',
+            class: 'deal__image',
+            alt: section.settings.image.alt
+        }}
+      </div>
+    {% endif %}
+
+    <div class="deal__text-col">
+      {% if section.settings.badge_text != blank %}
+        <span class="deal__badge">{{ section.settings.badge_text | escape }}</span>
+      {% endif %}
+
+      <div class="deal__center">
+        {% if section.settings.heading != blank %}
+          <div class="deal__heading">{{ section.settings.heading }}</div>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <p class="deal__subtitle">{{ section.settings.subtitle | escape }}</p>
+        {% endif %}
+
+        {% if section.settings.price_label != blank or section.settings.compare_price != blank or section.settings.sale_price != blank %}
+          <div class="deal__price">
+            <div class="deal__price-set">
+              {% if section.settings.price_label != blank %}
+                <span class="deal__price-label">{{ section.settings.price_label | escape }}</span>
+              {% endif %}
+              {% if section.settings.compare_price != blank %}
+                <span class="deal__compare-price">{{ section.settings.compare_price | escape }}</span>
+              {% endif %}
+              {% if section.settings.sale_price != blank %}
+                <span class="deal__sale-price">{{ section.settings.sale_price | escape }}</span>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_text != blank %}
+          <div class="deal__btn-wrap">
+            <a
+              class="deal__btn"
+              {% if section.settings.button_url != blank %}
+                href="{{ section.settings.button_url }}"
+              {% else %}
+                role="link" aria-disabled="true"
+              {% endif %}
+            >
+              {{ section.settings.button_text | escape }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+
+      {% if section.settings.disclaimer != blank %}
+        <p class="deal__disclaimer">{{ section.settings.disclaimer | escape }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.deal {
+  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+}
+
+.deal.section--page-width {
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+}
+
+.deal.section--full-width {
+  padding-inline: 16px;
+}
+
+.deal__container {
+  display: flex;
+  flex-direction: row;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+.deal__image-col {
+  width: 50%;
+  flex-shrink: 0;
+}
+
+.deal__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.deal__text-col {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 48px;
+  text-align: center;
+}
+
+.deal__badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #000000;
+  color: #FFFFFF;
+  border-radius: 8px;
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+}
+
+.deal__center {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.deal__heading {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 52px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.deal__heading p {
+  margin: 0;
+}
+
+.deal__subtitle {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.deal__price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deal__price-set {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.deal__price-label {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #F5F5F5;
+}
+
+.deal__compare-price {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #F5F5F5;
+  text-decoration: line-through;
+}
+
+.deal__sale-price {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  color: #FFFFFF;
+}
+
+.deal__btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.deal__btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 28px;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-radius: 28px;
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.deal__btn:hover {
+  opacity: 0.85;
+}
+
+.deal__disclaimer {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #F5F5F5;
+  margin: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .deal.section--page-width {
+    padding-inline: 12px;
+  }
+
+  .deal__container {
+    flex-direction: column;
+  }
+
+  .deal__image-col {
+    width: 100%;
+  }
+
+  .deal__image {
+    height: auto;
+  }
+
+  .deal__text-col {
+    width: 100%;
+    padding: 24px;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .deal__badge {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .deal__center {
+    gap: 16px;
+  }
+
+  .deal__heading {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .deal__subtitle {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .deal__price-label {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .deal__compare-price {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .deal__sale-price {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .deal__btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .deal__btn-wrap {
+    padding: 0;
+  }
+
+  .deal__disclaimer {
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.deal",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "t:settings.badge_text",
+      "default": "BUY 4, Get 2 FREE"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "t:settings.heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "t:settings.subtitle"
+    },
+    {
+      "type": "text",
+      "id": "price_label",
+      "label": "t:settings.price_label",
+      "default": "Total Price:"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "t:settings.compare_price",
+      "default": "$239.00"
+    },
+    {
+      "type": "text",
+      "id": "sale_price",
+      "label": "t:settings.sale_price",
+      "default": "$159.00"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:settings.button_text",
+      "default": "GET THE DEAL"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:settings.button_url"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "t:settings.disclaimer",
+      "default": "*Terms & Conditions apply **Limited offer"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-7"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.deal"
+    }
+  ]
+}
+{% endschema %}

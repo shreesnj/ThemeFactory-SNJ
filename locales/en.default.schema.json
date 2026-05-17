@@ -457,7 +457,8 @@
     "article_card": "Article card",
     "documentary": "Documentary",
     "community": "Community",
-    "community_card": "Community card"
+    "community_card": "Community card",
+    "deal": "Deal"
   },
   "options": {
     "above_carousel": "Above carousel",
@@ -1270,7 +1271,11 @@
     "overlay_opacity": "Overlay opacity",
     "stat_number": "Stat number",
     "stat_label": "Stat label",
-    "username": "Username"
+    "username": "Username",
+    "price_label": "Price label",
+    "compare_price": "Compare price",
+    "sale_price": "Sale price",
+    "disclaimer": "Disclaimer"
   },
   "text_defaults": {
     "accordion_heading": "Accordion heading",
