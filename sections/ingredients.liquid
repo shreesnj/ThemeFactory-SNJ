@@ -99,8 +99,8 @@
 
 {% stylesheet %}
 .ingredients {
-  padding-block-start: calc(var(--section-padding-top, 96) * var(--spacing-scale, 1) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 96) * var(--spacing-scale, 1) * 1px);
+  padding-block-start: var(--section-padding-top, 96px);
+  padding-block-end: var(--section-padding-bottom, 96px);
   padding-inline: calc(120px * var(--spacing-scale, 1));
 }
 
@@ -132,9 +132,6 @@
   margin: 0;
 }
 
-.ingredients__heading strong {
-  color: var(--color-foreground, #414141);
-}
 
 .ingredients__desktop-details {
   display: flex;
@@ -254,6 +251,8 @@
 @media screen and (max-width: 749px) {
   .ingredients {
     padding-inline: 12px;
+    padding-block-start: 48px;
+    padding-block-end: 48px;
   }
 
   .ingredients__content {
