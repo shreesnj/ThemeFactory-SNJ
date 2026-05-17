@@ -724,6 +724,14 @@
         "padding_block_end": 80
       }
     },
+    "money-back-guarantee": {
+      "type": "money-back-guarantee",
+      "settings": {
+        "label": "MONEY BACK GUARANTEE",
+        "scroll_speed": 20,
+        "section_width": "full-width"
+      }
+    },
     "documentary": {
       "type": "documentary",
       "settings": {
@@ -770,6 +778,7 @@
     "miracle-molecule",
     "bestsellers",
     "one-routine",
+    "money-back-guarantee",
     "ingredients",
     "documentary",
     "community",

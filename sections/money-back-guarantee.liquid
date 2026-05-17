@@ -1,0 +1,125 @@
+<div
+  class="mbg section--{{ section.settings.section_width }}"
+  style="--scroll-duration: {{ section.settings.scroll_speed }}s;"
+>
+  <div class="mbg__track">
+    {% for i in (1..8) %}
+      <span class="mbg__text">{{ section.settings.label | escape }}</span>
+      <span class="mbg__divider" aria-hidden="true"></span>
+    {% endfor %}
+    {% for i in (1..8) %}
+      <span class="mbg__text" aria-hidden="true">{{ section.settings.label | escape }}</span>
+      <span class="mbg__divider" aria-hidden="true"></span>
+    {% endfor %}
+  </div>
+</div>
+
+{% stylesheet %}
+.mbg {
+  background-color: #414141;
+  overflow: hidden;
+  padding-block: 16px;
+}
+
+.mbg__track {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: max-content;
+  animation: mbg-scroll var(--scroll-duration, 20s) linear infinite;
+}
+
+.mbg__text {
+  font-family: var(--font-custom-cta);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mbg__divider {
+  display: block;
+  width: 72px;
+  height: 1px;
+  background-color: rgba(245, 245, 245, 0.7);
+  flex-shrink: 0;
+}
+
+@keyframes mbg-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mbg__track {
+    animation-play-state: paused;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .mbg__track {
+    gap: 16px;
+  }
+
+  .mbg__text {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .mbg__divider {
+    width: 36px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.money_back_guarantee",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:settings.label",
+      "default": "MONEY BACK GUARANTEE"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "label": "t:settings.scroll_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 20,
+      "unit": "s"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.money_back_guarantee"
+    }
+  ]
+}
+{% endschema %}
