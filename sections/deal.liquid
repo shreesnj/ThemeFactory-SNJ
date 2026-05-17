@@ -76,8 +76,8 @@
 
 {% stylesheet %}
 .deal {
-  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
 }
 
 .deal.section--page-width {
@@ -246,6 +246,11 @@
 }
 
 @media screen and (max-width: 749px) {
+  .deal {
+    padding-block-start: 24px;
+    padding-block-end: 24px;
+  }
+
   .deal.section--page-width {
     padding-inline: 12px;
   }
