@@ -66,8 +66,8 @@
 
 {% stylesheet %}
 .miracle-molecule {
-  padding-block-start: calc(var(--section-padding-top, 80) * var(--spacing-scale, 1) * 1px);
-  padding-block-end: calc(var(--section-padding-bottom, 80) * var(--spacing-scale, 1) * 1px);
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
   padding-inline: calc(120px * var(--spacing-scale, 1));
   display: flex;
   flex-direction: column;
@@ -89,8 +89,8 @@
 }
 
 .miracle-molecule__heading {
-  font-family: var(--font-custom-serif), serif;
-  font-weight: 400;
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
   font-size: 48px;
   line-height: 52px;
   letter-spacing: 0;
@@ -99,7 +99,6 @@
 }
 
 .miracle-molecule__heading strong {
-  font-family: var(--font-custom-heading), sans-serif;
   font-weight: 700;
 }
 
@@ -109,7 +108,7 @@
 
 .miracle-molecule__subtitle {
   font-family: var(--font-custom-heading), sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0;
@@ -237,8 +236,8 @@
 @media screen and (max-width: 749px) {
   .miracle-molecule {
     padding-inline: 0;
-    padding-block-start: calc(var(--section-padding-top, 40) * var(--spacing-scale, 1) * 1px);
-    padding-block-end: calc(var(--section-padding-bottom, 40) * var(--spacing-scale, 1) * 1px);
+    padding-block-start: 40px;
+    padding-block-end: 40px;
   }
 
   .miracle-molecule__inner {
@@ -247,15 +246,12 @@
   }
 
   .miracle-molecule__heading {
-    font-family: var(--font-custom-serif), serif;
-    font-weight: 400;
-    font-size: 48px;
+    font-size: 32px;
     line-height: 36px;
-    letter-spacing: -1px;
+    letter-spacing: 0;
   }
 
   .miracle-molecule__subtitle {
-    font-weight: 500;
     font-size: 18px;
     line-height: 20px;
   }
