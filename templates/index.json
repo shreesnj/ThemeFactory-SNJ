@@ -90,8 +90,8 @@
         "logo_sprouts": {
           "type": "logo",
           "settings": {
-            "svg_desktop": "sprouts-2.svg",
-            "svg_mobile": "sprouts.svg",
+            "svg_desktop": "sprouts.svg",
+            "svg_mobile": "sprouts-2.svg",
             "alt_text": "Sprouts Farmers Market"
           }
         },
@@ -99,23 +99,23 @@
           "type": "logo",
           "settings": {
             "svg_desktop": "walmart-2.svg",
-            "svg_mobile": "walmart.svg",
+            "svg_mobile": "walmart-3.svg",
             "alt_text": "Walmart"
           }
         },
         "logo_target": {
           "type": "logo",
           "settings": {
-            "svg_desktop": "target-2.svg",
-            "svg_mobile": "target.svg",
+            "svg_desktop": "target.svg",
+            "svg_mobile": "target-2.svg",
             "alt_text": "Target"
           }
         },
         "logo_sams": {
           "type": "logo",
           "settings": {
-            "svg_desktop": "sam-s-club-2.svg",
-            "svg_mobile": "sam-s-club.svg",
+            "svg_desktop": "sam-s-club.svg",
+            "svg_mobile": "sam-s-club-2.svg",
             "alt_text": "Sam's Club"
           }
         }
