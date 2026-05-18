@@ -132,12 +132,18 @@
 
   @media screen and (max-width: 749px) {
     .announcement-bar {
-      padding-block: 10px !important;
+      padding-block: 8px !important;
+      padding-inline: 16px !important;
+      background-color: #767676;
+      overflow: hidden;
     }
 
     .announcement-bar__text {
       font-size: 0.875rem !important;
       letter-spacing: 0 !important;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     .announcement-bar__text em {
