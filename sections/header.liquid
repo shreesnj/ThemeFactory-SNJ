@@ -1180,26 +1180,54 @@
     }
   }
 
-  /* Mobile: dark (#414141) header background */
+  /* Mobile: white header matching Figma — logo left, icons right */
   @media screen and (max-width: 749px) {
     #header-component .header__row--top {
-      background-color: #414141;
-      --color-foreground: #ffffff;
-      --color-foreground-rgb: 255, 255, 255;
-      --color-account-icon: #ffffff;
+      background-color: #ffffff;
+      --color-foreground: #414141;
+      --color-foreground-rgb: 65, 65, 65;
+      --color-account-icon: #767676;
     }
 
-    /* Force white icons/text on mobile dark header */
+    /* Icons: #767676 gray */
     #header-component .header__row--top .header-actions__action,
-    #header-component .header__row--top .header__icon--menu svg,
-    #header-component .header__row--top .header-logo__image {
-      color: #ffffff;
-      fill: #ffffff;
+    #header-component .header__row--top .header__icon--menu svg {
+      color: #767676;
+      fill: #767676;
     }
 
-    /* Humann logo: use the white variant on dark mobile background */
+    /* Logo: red (remove white invert filter) */
     #header-component .header__row--top .header-logo__image-container--original .header-logo__image {
-      filter: brightness(0) invert(1);
+      filter: none;
+    }
+
+    /* Layout: logo left, spacer, search, cart, hamburger */
+    #header-component .header__columns {
+      --header-template-columns: auto 1fr auto auto auto;
+      grid-template-areas: 'center . leftB rightB leftA';
+      padding-inline: 20px;
+      column-gap: 0;
+    }
+
+    /* Logo: left-aligned in column 1 */
+    #header-component .header__columns .header-logo {
+      grid-area: center;
+      justify-self: start;
+    }
+
+    /* Search: column 3 */
+    #header-component .header__columns .search-action {
+      grid-area: leftB;
+    }
+
+    /* Hamburger drawer container: column 5 (rightmost) */
+    #header-component .header__columns .header__drawer {
+      grid-area: leftA;
+    }
+
+    /* Hide professional link on mobile */
+    #header-component .professional-link {
+      display: none;
     }
   }
 {% endstylesheet %}
