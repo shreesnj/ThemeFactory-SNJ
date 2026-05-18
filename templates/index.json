@@ -32,7 +32,7 @@
             "hero_image": "shopify://shop_images/hero-mobile-header-31301281.png",
             "footer_image": "shopify://shop_images/screenshot-2026-04-07-at-11-03-03-1-mobile-header-31301290.png",
             "footer_logo_asset": "",
-            "corner_radius": 16
+            "corner_radius": 24
           }
         },
         "slide_2": {
@@ -55,7 +55,7 @@
             "button_color": "#000000",
             "button_text_color": "#ffffff",
             "footer_logo_asset": "ut.svg",
-            "corner_radius": 12
+            "corner_radius": 24
           }
         }
       },
