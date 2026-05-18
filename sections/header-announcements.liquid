@@ -144,6 +144,12 @@
       display: none;
     }
   }
+
+  /* section-background div is absolutely positioned in regular sections but
+     not in header context — hide it to prevent the extra background strip */
+  .section-background:has(+ .announcement-bar) {
+    display: none;
+  }
 {% endstylesheet %}
 
 {% schema %}

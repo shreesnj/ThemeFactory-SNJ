@@ -178,9 +178,9 @@
 
 {% stylesheet %}
 .hero-carousel {
-  padding-block-start: var(--section-padding-top, 8px);
-  padding-block-end: var(--section-padding-bottom, 8px);
-  padding-inline: 16px;
+  padding-block-start: var(--section-padding-top, 0px);
+  padding-block-end: var(--section-padding-bottom, 0px);
+  padding-inline: 0;
 }
 
 .hero-carousel__track {
@@ -421,9 +421,9 @@
 
 @media screen and (max-width: 749px) {
   .hero-carousel {
-    padding-inline: 12px;
-    padding-block-start: 4px;
-    padding-block-end: 12px;
+    padding-inline: 0;
+    padding-block-start: var(--section-padding-top, 0px);
+    padding-block-end: var(--section-padding-bottom, 0px);
   }
 
   .hero-carousel__slide {
