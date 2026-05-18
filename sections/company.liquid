@@ -1,0 +1,205 @@
+<div
+  class="company section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+  "
+>
+  <div class="company__card">
+    <div class="company__logo-wrap">
+      <img
+        class="company__logo"
+        src="{{ 'logo.svg' | asset_url }}"
+        alt="Humann"
+        width="280"
+        height="48"
+        loading="lazy"
+      >
+    </div>
+    <p class="company__tagline">
+      <span class="company__serif">A cardiovascular health company </span><img
+        class="company__product"
+        src="{{ 'chew.svg' | asset_url }}"
+        alt=""
+        width="33"
+        height="26"
+        loading="lazy"
+      ><span class="company__serif"> focused on the </span><span
+        class="company__bold">60,000 miles</span><span
+        class="company__serif"> of your cardiovascular system </span><img
+        class="company__product"
+        src="{{ 'capsule.svg' | asset_url }}"
+        alt=""
+        width="45"
+        height="26"
+        loading="lazy"
+      ><span class="company__serif"> fueling your </span><img
+        class="company__product"
+        src="{{ 'gummie.svg' | asset_url }}"
+        alt=""
+        width="28"
+        height="28"
+        loading="lazy"
+      ><span class="company__bold"> 36 trillion cells.</span>
+    </p>
+  </div>
+</div>
+
+{% stylesheet %}
+.company {
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
+  padding-inline: 0;
+}
+
+.company.section--page-width {
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+}
+
+.company.section--full-width {
+  padding-inline: 16px;
+}
+
+.company__card {
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 24px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 72px 80px;
+}
+
+.company__logo-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.company__logo {
+  display: block;
+  width: 280px;
+  height: auto;
+}
+
+.company__tagline {
+  font-size: 32px;
+  line-height: 40px;
+  color: #BC0F0F;
+  text-align: center;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.company__serif {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.company__bold {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.company__product {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -3px;
+}
+
+@media screen and (max-width: 749px) {
+  .company {
+    padding-inline: 16px;
+  }
+
+  .company.section--page-width {
+    padding-inline: 16px;
+  }
+
+  .company__card {
+    border-radius: 16px;
+    gap: 32px;
+    padding: 60px 24px;
+  }
+
+  .company__logo {
+    width: 200px;
+  }
+
+  .company__tagline {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.5px;
+  }
+
+  .company__serif {
+    letter-spacing: -0.5px;
+  }
+
+  .company__product {
+    top: -2px;
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.company",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.section_layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.company"
+    }
+  ]
+}
+{% endschema %}

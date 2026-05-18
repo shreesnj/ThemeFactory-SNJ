@@ -461,7 +461,8 @@
     "deal": "Deal",
     "retailers": "Retailers",
     "retailer_logo": "Retailer logo",
-    "money_back_guarantee": "Money Back Guarantee"
+    "money_back_guarantee": "Money Back Guarantee",
+    "company": "Company"
   },
   "options": {
     "above_carousel": "Above carousel",

@@ -748,6 +748,15 @@
         "padding_block_end": 40
       }
     },
+    "company": {
+      "type": "company",
+      "settings": {
+        "section_width": "full-width",
+        "color_scheme": "scheme-2",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      }
+    },
     "deal": {
       "type": "deal",
       "settings": {
@@ -783,6 +792,7 @@
     "documentary",
     "community",
     "deal",
-    "retailers"
+    "retailers",
+    "company"
   ]
 }
