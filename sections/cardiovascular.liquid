@@ -392,20 +392,16 @@
 
   .cardiovascular__track {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 8px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .cardiovascular__track::-webkit-scrollbar {
-    display: none;
+    flex-direction: column;
+    overflow: visible;
+    gap: 16px;
+    scroll-snap-type: none;
   }
 
   .cardiovascular__video-card {
-    flex: 0 0 280px;
-    scroll-snap-align: start;
+    flex: unset;
+    width: 100%;
+    scroll-snap-align: none;
   }
 
   .cardiovascular__video-title {
@@ -414,8 +410,9 @@
   }
 
   .cardiovascular__article-card {
-    flex: 0 0 280px;
-    scroll-snap-align: start;
+    flex: unset;
+    width: 100%;
+    scroll-snap-align: none;
   }
 
   .cardiovascular__article-category {
