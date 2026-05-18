@@ -574,6 +574,84 @@
         "padding_block_end": 96
       }
     },
+    "cardiovascular-health": {
+      "type": "cardiovascular-health",
+      "blocks": {
+        "vc1": {
+          "type": "video-card",
+          "settings": {
+            "title": "How can we get the body to make more nitric oxide?"
+          }
+        },
+        "vc2": {
+          "type": "video-card",
+          "settings": {
+            "title": "Why does cardiovascular health matter?"
+          }
+        },
+        "vc3": {
+          "type": "video-card",
+          "settings": {
+            "title": "What is nitric oxide and why does it matter?"
+          }
+        },
+        "vc4": {
+          "type": "video-card",
+          "settings": {
+            "title": "How does Humann support heart health?"
+          }
+        },
+        "ac1": {
+          "type": "article-card",
+          "settings": {
+            "category": "Nutrition",
+            "read_time": "3 min",
+            "title": "How can we get the body to make more nitric oxide?",
+            "tag_1": "Blood Pressure",
+            "tag_1_color": "#8c0132",
+            "tag_2": "Blood Flow",
+            "tag_2_color": "#d72a2a"
+          }
+        },
+        "ac2": {
+          "type": "article-card",
+          "settings": {
+            "category": "Science",
+            "read_time": "4 min",
+            "title": "Why does cardiovascular health matter?",
+            "tag_1": "Heart Health",
+            "tag_1_color": "#8c0132"
+          }
+        },
+        "ac3": {
+          "type": "article-card",
+          "settings": {
+            "category": "Lifestyle",
+            "read_time": "3 min",
+            "title": "What does healthy blood pressure mean?",
+            "tag_1": "Blood Pressure",
+            "tag_1_color": "#8c0132"
+          }
+        },
+        "ac4": {
+          "type": "article-card",
+          "settings": {
+            "category": "Products",
+            "read_time": "2 min",
+            "title": "What's inside Humann products?",
+            "tag_1": "Ingredients",
+            "tag_1_color": "#d54427"
+          }
+        }
+      },
+      "block_order": ["vc1", "vc2", "vc3", "vc4", "ac1", "ac2", "ac3", "ac4"],
+      "settings": {
+        "section_width": "full-width",
+        "color_scheme": "scheme-1",
+        "padding_block_start": 80,
+        "padding_block_end": 80
+      }
+    },
     "backed-by": {
       "type": "backed-by-experts",
       "blocks": {
@@ -789,6 +867,7 @@
     "one-routine",
     "money-back-guarantee",
     "ingredients",
+    "cardiovascular-health",
     "documentary",
     "community",
     "deal",

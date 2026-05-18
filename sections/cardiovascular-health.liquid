@@ -1,0 +1,704 @@
+<div
+  class="cvh section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }}"
+  style="
+    --section-padding-top: {{ section.settings.padding_block_start }}px;
+    --section-padding-bottom: {{ section.settings.padding_block_end }}px;
+  "
+>
+  <div class="cvh__inner">
+    {% if section.settings.heading != blank %}
+      <div class="cvh__heading">{{ section.settings.heading }}</div>
+    {% endif %}
+
+    <hr class="cvh__section-divider">
+
+    {% if section.settings.subtitle != blank %}
+      <p class="cvh__subtitle">{{ section.settings.subtitle | escape }}</p>
+    {% endif %}
+
+    {% assign watch_blocks = section.blocks | where: 'type', 'video-card' %}
+    {% assign article_blocks = section.blocks | where: 'type', 'article-card' %}
+
+    {% if watch_blocks.size > 0 %}
+      <div class="cvh__group">
+        <div class="cvh__group-header">
+          <span class="cvh__group-label">{{ section.settings.watch_label | escape }}</span>
+        </div>
+        <div class="cvh__carousel">
+          {% for block in watch_blocks %}
+            <a
+              class="cvh__video-card"
+              {% if block.settings.link != blank %}
+                href="{{ block.settings.link }}"
+              {% else %}
+                role="link" aria-disabled="true"
+              {% endif %}
+              {{ block.shopify_attributes }}
+            >
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 560
+                  | image_tag:
+                    class: 'cvh__video-card__img',
+                    loading: 'lazy',
+                    sizes: '280px',
+                    widths: '280,560',
+                    alt: block.settings.image.alt
+                }}
+              {% else %}
+                <div class="cvh__video-card__placeholder"></div>
+              {% endif %}
+              <div class="cvh__video-card__play" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.5)" stroke="white" stroke-width="1.5"/>
+                  <path d="M10 8.5L16.5 12L10 15.5V8.5Z" fill="white"/>
+                </svg>
+              </div>
+              <div class="cvh__video-card__info">
+                <p class="cvh__video-card__title">{{ block.settings.title | escape }}</p>
+                <span class="cvh__video-card__arrow" aria-hidden="true">
+                  <svg width="16" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M13 6L19 12L13 18" stroke="#414141" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if article_blocks.size > 0 %}
+      <div class="cvh__group">
+        <div class="cvh__group-header">
+          <span class="cvh__group-label">{{ section.settings.popular_label | escape }}</span>
+        </div>
+        <div class="cvh__carousel">
+          {% for block in article_blocks %}
+            <div class="cvh__article-card" {{ block.shopify_attributes }}>
+              {% if block.settings.image != blank %}
+                <a
+                  class="cvh__article-card__img-wrap"
+                  {% if block.settings.cta_url != blank %}
+                    href="{{ block.settings.cta_url }}"
+                  {% else %}
+                    role="link" aria-disabled="true"
+                  {% endif %}
+                >
+                  {{
+                    block.settings.image
+                    | image_url: width: 560
+                    | image_tag:
+                      class: 'cvh__article-card__img',
+                      loading: 'lazy',
+                      sizes: '280px',
+                      widths: '280,560',
+                      alt: block.settings.image.alt
+                  }}
+                </a>
+              {% endif %}
+              <div class="cvh__article-card__body">
+                {% if block.settings.category != blank or block.settings.read_time != blank %}
+                  <div class="cvh__article-card__meta">
+                    {% if block.settings.category != blank %}
+                      <span class="cvh__article-card__category">{{ block.settings.category | escape }}</span>
+                    {% endif %}
+                    {% if block.settings.read_time != blank %}
+                      <span class="cvh__article-card__read-time">{{ block.settings.read_time | escape }}</span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if block.settings.title != blank %}
+                  <p class="cvh__article-card__title">{{ block.settings.title | escape }}</p>
+                {% endif %}
+                {% if block.settings.tag_1 != blank or block.settings.tag_2 != blank %}
+                  <div class="cvh__article-card__tags">
+                    {% if block.settings.tag_1 != blank %}
+                      <span
+                        class="cvh__article-card__tag"
+                        style="background-color: {{ block.settings.tag_1_color }};"
+                      >{{ block.settings.tag_1 | escape }}</span>
+                    {% endif %}
+                    {% if block.settings.tag_2 != blank %}
+                      <span
+                        class="cvh__article-card__tag"
+                        style="background-color: {{ block.settings.tag_2_color }};"
+                      >{{ block.settings.tag_2 | escape }}</span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+                {% if block.settings.cta_text != blank %}
+                  <div class="cvh__article-card__cta-wrap">
+                    <a
+                      class="cvh__article-card__cta"
+                      {% if block.settings.cta_url != blank %}
+                        href="{{ block.settings.cta_url }}"
+                      {% else %}
+                        role="link" aria-disabled="true"
+                      {% endif %}
+                    >{{ block.settings.cta_text | escape }}</a>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings.button_text != blank %}
+      <div class="cvh__cta-wrap">
+        <a
+          class="cvh__cta"
+          {% if section.settings.button_url != blank %}
+            href="{{ section.settings.button_url }}"
+          {% else %}
+            role="link" aria-disabled="true"
+          {% endif %}
+        >{{ section.settings.button_text | escape }}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+.cvh {
+  padding-block-start: var(--section-padding-top, 80px);
+  padding-block-end: var(--section-padding-bottom, 80px);
+}
+
+.cvh.section--page-width,
+.cvh.section--full-width {
+  padding-inline: calc(120px * var(--spacing-scale, 1));
+}
+
+.cvh__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cvh__heading {
+  font-family: var(--font-custom-serif), serif;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 52px;
+  color: #767676;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.cvh__heading p {
+  margin: 0;
+}
+
+.cvh__section-divider {
+  border: none;
+  border-top: 1px solid #dfdfdf;
+  margin: 0;
+}
+
+.cvh__subtitle {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #767676;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.cvh__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cvh__group-header {
+  border-top: 1px solid #dfdfdf;
+  padding: 16px 0;
+}
+
+.cvh__group-label {
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  color: #767676;
+}
+
+.cvh__carousel {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  overflow: hidden;
+}
+
+.cvh__video-card {
+  position: relative;
+  width: 280px;
+  height: 380px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #111;
+  text-decoration: none;
+  display: block;
+}
+
+.cvh__video-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cvh__video-card__placeholder {
+  position: absolute;
+  inset: 0;
+  background-color: #1a1a1a;
+}
+
+.cvh__video-card__play {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+}
+
+.cvh__video-card__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 120px;
+  box-sizing: border-box;
+}
+
+.cvh__video-card__title {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #414141;
+  margin: 0;
+  flex: 1;
+}
+
+.cvh__video-card__arrow {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cvh__article-card {
+  width: 280px;
+  flex-shrink: 0;
+  background-color: transparent;
+}
+
+.cvh__article-card__img-wrap {
+  display: block;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.cvh__article-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cvh__article-card__img-wrap:hover .cvh__article-card__img {
+  transform: scale(1.03);
+}
+
+.cvh__article-card__body {
+  padding: 16px 4px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cvh__article-card__meta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.cvh__article-card__category {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #414141;
+}
+
+.cvh__article-card__read-time {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #a0a0a0;
+}
+
+.cvh__article-card__title {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #414141;
+  margin: 0;
+}
+
+.cvh__article-card__tags {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  flex-wrap: wrap;
+  padding: 4px 0;
+}
+
+.cvh__article-card__tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.cvh__article-card__cta-wrap {
+  padding: 4px 0;
+}
+
+.cvh__article-card__cta {
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #414141;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cvh__article-card__cta:hover {
+  opacity: 0.7;
+}
+
+.cvh__cta-wrap {
+  display: none;
+  justify-content: center;
+  padding-top: 8px;
+}
+
+.cvh__cta {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: #BC0F0F;
+  color: #FFFFFF;
+  border-radius: 28px;
+  font-family: var(--font-custom-cta), sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  text-decoration: none;
+  min-height: 38px;
+  width: 100%;
+}
+
+.cvh__cta:hover {
+  opacity: 0.85;
+}
+
+@media screen and (max-width: 749px) {
+  .cvh.section--page-width,
+  .cvh.section--full-width {
+    padding-inline: 12px;
+  }
+
+  .cvh__inner {
+    gap: 16px;
+  }
+
+  .cvh__heading {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .cvh__subtitle {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .cvh__group-label {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  .cvh__carousel {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    scrollbar-width: none;
+    padding-inline-end: 32px;
+    overflow-y: visible;
+  }
+
+  .cvh__carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cvh__video-card,
+  .cvh__article-card {
+    scroll-snap-align: start;
+  }
+
+  .cvh__video-card__title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .cvh__article-card__title {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .cvh__cta-wrap {
+    display: flex;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cvh__article-card__img {
+      transition: none;
+    }
+  }
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.cardiovascular_health",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Learn more about Cardiovascular Health</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Visit our knowledge center for expert insights, research, and products inspired by Nobel Prize-winning science."
+    },
+    {
+      "type": "header",
+      "content": "Carousel labels"
+    },
+    {
+      "type": "text",
+      "id": "watch_label",
+      "label": "Watch label",
+      "default": "WATCH"
+    },
+    {
+      "type": "text",
+      "id": "popular_label",
+      "label": "Popular label",
+      "default": "POPULAR"
+    },
+    {
+      "type": "header",
+      "content": "t:content.buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "t:settings.button_text",
+      "default": "Explore More"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "t:settings.button_url"
+    },
+    {
+      "type": "header",
+      "content": "t:content.section_layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.section_width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_start",
+      "label": "t:settings.top_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_block_end",
+      "label": "t:settings.bottom_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 80,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video-card",
+      "name": "t:names.video_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Thumbnail"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "How can we get the body to make more nitric oxide?"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Video link"
+        }
+      ]
+    },
+    {
+      "type": "article-card",
+      "name": "t:names.article_card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "Nutrition"
+        },
+        {
+          "type": "text",
+          "id": "read_time",
+          "label": "Read time",
+          "default": "3 min"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "How can we get the body to make more nitric oxide?"
+        },
+        {
+          "type": "text",
+          "id": "tag_1",
+          "label": "Tag 1",
+          "default": "Blood Pressure"
+        },
+        {
+          "type": "color",
+          "id": "tag_1_color",
+          "label": "Tag 1 color",
+          "default": "#8c0132"
+        },
+        {
+          "type": "text",
+          "id": "tag_2",
+          "label": "Tag 2"
+        },
+        {
+          "type": "color",
+          "id": "tag_2_color",
+          "label": "Tag 2 color",
+          "default": "#d72a2a"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA text",
+          "default": "Read more"
+        },
+        {
+          "type": "url",
+          "id": "cta_url",
+          "label": "CTA URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:names.cardiovascular_health",
+      "blocks": [
+        { "type": "video-card", "settings": { "title": "How can we get the body to make more nitric oxide?" } },
+        { "type": "video-card", "settings": { "title": "Why does cardiovascular health matter?" } },
+        { "type": "video-card", "settings": { "title": "What is nitric oxide and why does it matter?" } },
+        { "type": "video-card", "settings": { "title": "How does Humann support heart health?" } },
+        { "type": "article-card", "settings": { "category": "Nutrition", "read_time": "3 min", "title": "How can we get the body to make more nitric oxide?", "tag_1": "Blood Pressure", "tag_1_color": "#8c0132", "tag_2": "Blood Flow", "tag_2_color": "#d72a2a" } },
+        { "type": "article-card", "settings": { "category": "Science", "read_time": "4 min", "title": "Why does cardiovascular health matter?", "tag_1": "Heart Health", "tag_1_color": "#8c0132" } },
+        { "type": "article-card", "settings": { "category": "Lifestyle", "read_time": "3 min", "title": "What does healthy blood pressure mean?", "tag_1": "Blood Pressure", "tag_1_color": "#8c0132" } },
+        { "type": "article-card", "settings": { "category": "Products", "read_time": "2 min", "title": "What's inside Humann products?", "tag_1": "Ingredients", "tag_1_color": "#d54427" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
