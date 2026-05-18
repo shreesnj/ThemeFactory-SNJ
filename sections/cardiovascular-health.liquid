@@ -466,22 +466,22 @@
   }
 
   .cvh__carousel {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 8px;
-    scrollbar-width: none;
-    padding-inline-end: 32px;
-    overflow-y: visible;
-  }
-
-  .cvh__carousel::-webkit-scrollbar {
-    display: none;
+    flex-direction: column;
+    overflow: visible;
+    gap: 16px;
+    padding-inline-end: 0;
+    scroll-snap-type: none;
   }
 
   .cvh__video-card,
   .cvh__article-card {
-    scroll-snap-align: start;
+    width: 100%;
+    flex-shrink: 1;
+    scroll-snap-align: none;
+  }
+
+  .cvh__video-card {
+    height: 300px;
   }
 
   .cvh__video-card__title {
