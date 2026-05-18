@@ -18,27 +18,27 @@
     </div>
     <p class="company__tagline">
       <span class="company__serif">A cardiovascular health company </span><img
-        class="company__product"
+        class="company__product company__product--chew"
         src="{{ 'chew.svg' | asset_url }}"
         alt=""
-        width="33"
-        height="26"
+        width="36"
+        height="24"
         loading="lazy"
       ><span class="company__serif"> focused on the </span><span
         class="company__bold">60,000 miles</span><span
         class="company__serif"> of your cardiovascular system </span><img
-        class="company__product"
+        class="company__product company__product--capsule"
         src="{{ 'capsule.svg' | asset_url }}"
         alt=""
-        width="45"
-        height="26"
+        width="52"
+        height="23"
         loading="lazy"
       ><span class="company__serif"> fueling your </span><img
-        class="company__product"
+        class="company__product company__product--gummie"
         src="{{ 'gummie.svg' | asset_url }}"
         alt=""
-        width="28"
-        height="28"
+        width="27"
+        height="27"
         loading="lazy"
       ><span class="company__bold"> 36 trillion cells.</span>
     </p>
@@ -112,6 +112,21 @@
   top: -3px;
 }
 
+.company__product--chew {
+  width: 36px;
+  height: 24px;
+}
+
+.company__product--capsule {
+  width: 52px;
+  height: 23px;
+}
+
+.company__product--gummie {
+  width: 27px;
+  height: 27px;
+}
+
 @media screen and (max-width: 749px) {
   .company {
     padding-inline: 16px;
@@ -127,8 +142,19 @@
     padding: 60px 24px;
   }
 
-  .company__logo {
-    width: 200px;
+  .company__product--chew {
+    width: 32px;
+    height: 26px;
+  }
+
+  .company__product--capsule {
+    width: 44px;
+    height: 25px;
+  }
+
+  .company__product--gummie {
+    width: 27px;
+    height: 28px;
   }
 
   .company__tagline {
