@@ -10,8 +10,6 @@
       <div class="cvh__heading">{{ section.settings.heading }}</div>
     {% endif %}
 
-    <hr class="cvh__section-divider">
-
     {% if section.settings.subtitle != blank %}
       <p class="cvh__subtitle">{{ section.settings.subtitle | escape }}</p>
     {% endif %}
@@ -59,7 +57,7 @@
                 <p class="cvh__video-card__title">{{ block.settings.title | escape }}</p>
                 <span class="cvh__video-card__arrow" aria-hidden="true">
                   <svg width="16" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M13 6L19 12L13 18" stroke="#414141" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 12H19M13 6L19 12L13 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </span>
               </div>
@@ -182,22 +180,15 @@
 }
 
 .cvh__heading {
-  font-family: var(--font-custom-serif), serif;
-  font-weight: 400;
+  font-family: var(--font-custom-heading), sans-serif;
+  font-weight: 700;
   font-size: 48px;
   line-height: 52px;
   color: #767676;
-  letter-spacing: -1px;
   margin: 0;
 }
 
 .cvh__heading p {
-  margin: 0;
-}
-
-.cvh__section-divider {
-  border: none;
-  border-top: 1px solid #dfdfdf;
   margin: 0;
 }
 
@@ -244,7 +235,7 @@
   width: 280px;
   height: 380px;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   background-color: #111;
   text-decoration: none;
@@ -280,14 +271,16 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   padding: 24px 20px;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 10px;
-  min-height: 120px;
+  height: 120px;
   box-sizing: border-box;
 }
 
@@ -296,7 +289,7 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
-  color: #414141;
+  color: #FFFFFF;
   margin: 0;
   flex: 1;
 }
@@ -444,6 +437,8 @@
   .cvh.section--page-width,
   .cvh.section--full-width {
     padding-inline: 12px;
+    padding-block-start: 32px;
+    padding-block-end: 48px;
   }
 
   .cvh__inner {
@@ -451,7 +446,7 @@
   }
 
   .cvh__heading {
-    font-size: 32px;
+    font-size: 48px;
     line-height: 36px;
   }
 
@@ -466,36 +461,30 @@
   }
 
   .cvh__carousel {
-    flex-direction: column;
-    overflow: visible;
-    gap: 16px;
-    padding-inline-end: 0;
-    scroll-snap-type: none;
+    overflow-x: auto;
+    gap: 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .cvh__carousel::-webkit-scrollbar {
+    display: none;
   }
 
   .cvh__video-card,
   .cvh__article-card {
-    width: 100%;
-    flex-shrink: 1;
-    scroll-snap-align: none;
+    flex-shrink: 0;
+    scroll-snap-align: start;
   }
 
-  .cvh__video-card {
-    height: 300px;
+  .cvh__video-card__info {
+    height: 108px;
   }
 
   .cvh__video-card__title {
     font-size: 18px;
     line-height: 20px;
-  }
-
-  .cvh__article-card__title {
-    font-size: 18px;
-    line-height: 20px;
-  }
-
-  .cvh__cta-wrap {
-    display: flex;
   }
 
   @media (prefers-reduced-motion: reduce) {
